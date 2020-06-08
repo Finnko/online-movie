@@ -11,10 +11,8 @@ const MoviesList = ({movies}) => {
     });
 
     return (
-      <div>
-          <div className="catalog__movies-list">
-              {moviesItems}
-          </div>
+      <div className="catalog__movies-list">
+          {moviesItems}
       </div>
     );
 };
