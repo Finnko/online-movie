@@ -16,7 +16,7 @@ module.exports = (env) => {
             contentBase: path.join(__dirname, `public`),
             publicPath: `/`,
             // proxy: {
-            //     '/offer': {
+            //     '/movie': {
             //         target: `http://localhost:1337/`,
             //         pathRewrite: {'^/offer': ``},
             //     },
