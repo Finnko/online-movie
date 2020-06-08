@@ -4,14 +4,49 @@
   "private": true,
   "description": "Личный проект «Что посмотреть» от HTML Academy",
   "scripts": {
-    "eslint": "eslint src/**/*.js",
-    "test": "npm run eslint"
+    "eslint": "eslint --ext .jsx --ext .js src/",
+    "test.jest": "jest",
+    "test": "npm run eslint && npm run test.jest",
+    "build": "webpack --env.mode=production",
+    "start": "webpack-dev-server --env.mode=development"
   },
   "devDependencies": {
+    "@babel/core": "7.8.4",
+    "@babel/preset-env": "7.10.2",
+    "@babel/preset-react": "7.8.3",
+    "axios-mock-adapter": "1.18.1",
+    "babel-jest": "25.1.0",
+    "babel-loader": "8.0.6",
+    "enzyme": "3.11.0",
+    "enzyme-adapter-react-16": "1.15.2",
     "eslint": "5.13.0",
-    "eslint-config-htmlacademy": "0.5.2"
+    "eslint-config-htmlacademy": "0.5.2",
+    "eslint-plugin-react": "7.18.3",
+    "jest": "25.1.0",
+    "react-test-renderer": "16.12.0",
+    "webpack": "4.41.5",
+    "webpack-cli": "3.3.10",
+    "webpack-dev-server": "3.10.3"
   },
   "engines": {
     "node": "10"
+  },
+  "resolutions": {
+    "@babel/preset-env": "7.8.4"
+  },
+  "dependencies": {
+    "axios": "0.19.2",
+    "moment": "2.24.0",
+    "moment-locales-webpack-plugin": "1.1.2",
+    "nanoid": "2.1.11",
+    "prop-types": "15.7.2",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-redux": "7.2.0",
+    "react-router-dom": "5.1.2",
+    "redux": "4.0.5",
+    "redux-mock-store": "1.5.4",
+    "redux-thunk": "2.3.0",
+    "reselect": "4.0.0"
   }
 }
