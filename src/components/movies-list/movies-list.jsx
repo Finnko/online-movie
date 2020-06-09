@@ -1,23 +1,48 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from "prop-types";
 import MovieCard from "../movie-card/movie-card.jsx";
 import MoviePropType from "../../prop-types/movie";
 
-const MoviesList = ({movies}) => {
-  const moviesItems = movies.map((item) => {
-    return (
-      <MovieCard
-        movie={item}
-        key={item.id}
-      />);
-  });
+class MoviesList extends PureComponent {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div className="catalog__movies-list">
-      {moviesItems}
-    </div>
-  );
-};
+    this.state = {
+      activeMovieId: null,
+    }
+
+    this.movieMouseLeaveHandler = this.movieMouseLeaveHandler.bind(this);
+    this.movieMouseOverHandler = this.movieMouseOverHandler.bind(this);
+  }
+
+  movieMouseOverHandler(movieId) {
+    console.log(movieId)
+    this.setState({activeMovieId: movieId});
+  }
+
+  movieMouseLeaveHandler() {
+    this.setState({activeMovieId: null});
+  }
+
+  render() {
+    const {movies} = this.props;
+    const moviesItems = movies.map((item) => {
+      return (
+        <MovieCard
+          key={item.id}
+          movie={item}
+          onMovieMouseOver={this.movieMouseOverHandler}
+          onMovieMouseLeave={this.movieMouseLeaveHandler}
+        />);
+    });
+
+    return (
+      <div className="catalog__movies-list">
+        {moviesItems}
+      </div>
+    );
+  }
+}
 
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(MoviePropType).isRequired,

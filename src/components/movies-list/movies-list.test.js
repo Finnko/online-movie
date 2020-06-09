@@ -19,9 +19,9 @@ describe(`Main component render correctly`, () => {
   it(`Should Main component render correctly`, () => {
     const tree = renderer
       .create(
-        <MoviesList
-          movies={mocks}
-        />).toJSON();
+          <MoviesList
+            movies={mocks}
+          />).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

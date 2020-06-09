@@ -25,10 +25,10 @@ describe(`App component render correctly`, () => {
   it(`Should App component render correctly`, () => {
     const tree = renderer
       .create(
-        <App
-          promo={promoMovieMock}
-          movies={mocks}
-        />).toJSON();
+          <App
+            promo={promoMovieMock}
+            movies={mocks}
+          />).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

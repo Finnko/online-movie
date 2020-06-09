@@ -25,10 +25,10 @@ describe(`Main component render correctly`, () => {
   it(`Should Main component render correctly`, () => {
     const tree = renderer
       .create(
-        <Main
-          promo={promoMovieMock}
-          movies={mocks}
-        />).toJSON();
+          <Main
+            promo={promoMovieMock}
+            movies={mocks}
+          />).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
