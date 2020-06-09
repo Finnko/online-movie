@@ -1,4 +1,5 @@
 import React from 'react';
+import MoviePropType from "../../prop-types/movie";
 
 const MovieCard = ({movie}) => {
   const {title, thumb} = movie;
@@ -15,6 +16,10 @@ const MovieCard = ({movie}) => {
       </h3>
     </article>
   );
+};
+
+MovieCard.propTypes = {
+  movie: MoviePropType.isRequired,
 };
 
 export default MovieCard;

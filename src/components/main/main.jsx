@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import MoviesList from "../movies-list/movies-list.jsx";
+import MoviePropType from "../../prop-types/movie";
 
 const Main = ({promo, movies}) => {
   const {title, genre, year} = promo;
@@ -126,6 +128,17 @@ const Main = ({promo, movies}) => {
       </div>
     </div>
   );
+};
+
+Main.propTypes = {
+  promo: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    year: PropTypes.number.isRequired,
+  }).isRequired,
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({MoviePropType}).isRequired,
+  ),
 };
 
 export default Main;
