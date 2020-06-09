@@ -2,6 +2,7 @@ import nanoid from 'nanoid';
 import {getRandomArrayNumber} from "../utils/common";
 
 const MOVIES_NUMBER = 8;
+const ID_PREFIX = `id_`;
 
 const promoMovieMock = {
   title: `The Grand Budapest Hotel`,
@@ -56,13 +57,13 @@ const generateMocks = (quantity) => {
   const result = [];
 
   for (let i = 0; i < quantity; i++) {
-    const id = nanoid(10);
+    const id = ID_PREFIX + nanoid(10);
     const item = Object.assign({}, data[getRandomArrayNumber(data)], {id});
     result.push(item);
   }
 
   return result;
-}
+};
 
 const moviesMocks = generateMocks(MOVIES_NUMBER);
 

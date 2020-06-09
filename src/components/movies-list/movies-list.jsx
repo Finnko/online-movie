@@ -4,11 +4,11 @@ import MovieCard from "../movie-card/movie-card.jsx";
 import MoviePropType from "../../prop-types/movie";
 
 const MoviesList = ({movies}) => {
-  const moviesItems = movies.map((item, index) => {
+  const moviesItems = movies.map((item) => {
     return (
       <MovieCard
         movie={item}
-        key={Math.random() + index}
+        key={item.id}
       />);
   });
 
