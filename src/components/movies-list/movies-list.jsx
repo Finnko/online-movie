@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from "prop-types";
 import MovieCard from "../movie-card/movie-card.jsx";
 import MoviePropType from "../../prop-types/movie";
@@ -9,14 +9,13 @@ class MoviesList extends PureComponent {
 
     this.state = {
       activeMovieId: null,
-    }
+    };
 
     this.movieMouseLeaveHandler = this.movieMouseLeaveHandler.bind(this);
     this.movieMouseOverHandler = this.movieMouseOverHandler.bind(this);
   }
 
   movieMouseOverHandler(movieId) {
-    console.log(movieId)
     this.setState({activeMovieId: movieId});
   }
 

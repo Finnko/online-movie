@@ -17,7 +17,7 @@ describe(`Test e2e MovieCard component`, () => {
   const movieMouseOverHandler = jest.fn();
 
   const movieCard = shallow(
-    <MovieCard movie={mock} onMovieMouseOver={movieMouseOverHandler}/>
+      <MovieCard movie={mock} onMovieMouseOver={movieMouseOverHandler}/>
   );
 
   const card = movieCard.find(`article`);

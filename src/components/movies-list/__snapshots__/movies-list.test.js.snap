@@ -6,6 +6,8 @@ exports[`Main component render correctly Should Main component render correctly 
 >
   <article
     className="small-movie-card catalog__movies-card"
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
@@ -30,6 +32,8 @@ exports[`Main component render correctly Should Main component render correctly 
   </article>
   <article
     className="small-movie-card catalog__movies-card"
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
   >
     <div
       className="small-movie-card__image"
