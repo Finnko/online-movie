@@ -1,5 +1,4 @@
 import nanoid from 'nanoid';
-import {getRandomArrayNumber} from "../utils/common";
 
 const MOVIES_NUMBER = 8;
 const ID_PREFIX = `id_`;
@@ -10,61 +9,42 @@ const promoMovieMock = {
   year: 2014,
 };
 
-const data = [
-  {
-    title: `Fantastic Beasts: The Crimes of Grindelwald`,
-    thumb: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-  },
-  {
-    title: `Bohemian Rhapsody`,
-    thumb: `img/bohemian-rhapsody.jpg`,
-  },
-  {
-    title: `Macbeth`,
-    thumb: `img/macbeth.jpg`,
-  },
-  {
-    title: `Aviator`,
-    thumb: `img/aviator.jpg`,
-  },
-  {
-    title: `We need to talk about Kevin`,
-    thumb: `img/we-need-to-talk-about-kevin.jpg`,
-  },
-  {
-    title: `What We Do in the Shadows`,
-    thumb: `img/what-we-do-in-the-shadows.jpg`,
-  },
-  {
-    title: `Revenant`,
-    thumb: `img/revenant.jpg`,
-  },
-  {
-    title: `Johnny English`,
-    thumb: `img/johnny-english.jpg`,
-  },
-  {
-    title: `Shutter Island`,
-    thumb: `img/shutter-island.jpg`,
-  },
-  {
-    title: `Pulp Fiction`,
-    thumb: `img/pulp-fiction.jpg`,
-  },
+const MOVIE_TITLES = [
+  `Fantastic Beasts: The Crimes of Grindelwald`,
+  `Bohemian Rhapsody`,
+  `Macbeth`,
+  `Aviator`,
+  `We need to talk about Kevin`,
+  `What We Do in the Shadows`,
+  `Revenant`,
+  `Johnny English`,
+  `Shutter Island`,
+  `Pulp Fiction`,
 ];
 
-const generateMocks = (quantity) => {
-  const result = [];
+const MOVIES_THUMBS = [
+  `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+  `img/bohemian-rhapsody.jpg`,
+  `img/macbeth.jpg`,
+  `img/aviator.jpg`,
+  `img/we-need-to-talk-about-kevin.jpg`,
+  `img/what-we-do-in-the-shadows.jpg`,
+  `img/revenant.jpg`,
+  `img/johnny-english.jpg`,
+  `img/shutter-island.jpg`,
+  `img/pulp-fiction.jpg`,
+];
 
-  for (let i = 0; i < quantity; i++) {
-    const id = ID_PREFIX + nanoid(10);
-    const item = Object.assign({}, data[getRandomArrayNumber(data)], {id});
-    result.push(item);
-  }
+const generateMovie = () => {
+  const idx = Math.floor(Math.random() * (MOVIES_NUMBER - 1));
 
-  return result;
+  return {
+    id: ID_PREFIX + nanoid(10),
+    title: MOVIE_TITLES[idx],
+    thumb: MOVIES_THUMBS[idx],
+  };
 };
 
-const moviesMocks = generateMocks(MOVIES_NUMBER);
+const moviesMocks = Array(MOVIES_NUMBER).fill(``).map(generateMovie);
 
 export {moviesMocks, promoMovieMock};
