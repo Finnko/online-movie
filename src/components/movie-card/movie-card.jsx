@@ -1,12 +1,21 @@
 import React from 'react';
+import PropTypes from "prop-types";
+import MoviePropType from "../../prop-types/movie";
 
-const MovieCard = ({movie}) => {
-  const {title} = movie;
+const MovieCard = ({movie, onMovieMouseOver, onMovieMouseLeave}) => {
+  const {id, title, thumb} = movie;
+
+  const handleMouseOver = () => onMovieMouseOver(id);
+  const handleMouseLeave = () => onMovieMouseLeave();
 
   return (
-    <article className="small-movie-card catalog__movies-card">
+    <article
+      className="small-movie-card catalog__movies-card"
+      onMouseOver={handleMouseOver}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="small-movie-card__image">
-        <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt={`${title}`} width="280" height="175"/>
+        <img src={`${thumb}`} alt={`${title}`} width="280" height="175"/>
       </div>
       <h3 className="small-movie-card__title">
         <a className="small-movie-card__link" href="movie-page.html">
@@ -15,6 +24,12 @@ const MovieCard = ({movie}) => {
       </h3>
     </article>
   );
+};
+
+MovieCard.propTypes = {
+  onMovieMouseOver: PropTypes.func,
+  onMovieMouseLeave: PropTypes.func,
+  movie: MoviePropType.isRequired,
 };
 
 export default MovieCard;
