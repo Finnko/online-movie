@@ -8,8 +8,8 @@ const mock = {
   thumb: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
 };
 
-describe(`Main component render correctly`, () => {
-  it(`Should Main component render correctly`, () => {
+describe(`MovieCard component render correctly`, () => {
+  it(`Should MovieCard component render correctly`, () => {
     const tree = renderer
       .create(
           <MovieCard

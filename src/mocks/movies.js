@@ -42,6 +42,7 @@ const generateMovie = () => {
     id: ID_PREFIX + nanoid(10),
     title: MOVIE_TITLES[idx],
     thumb: MOVIES_THUMBS[idx],
+    poster: `img/the-grand-budapest-hotel-poster`,
   };
 };
 

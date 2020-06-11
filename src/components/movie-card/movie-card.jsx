@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from "prop-types";
 import MoviePropType from "../../prop-types/movie";
+import PropTypes from "prop-types";
 
 const MovieCard = ({movie, onMovieMouseOver, onMovieMouseLeave}) => {
   const {id, title, thumb} = movie;

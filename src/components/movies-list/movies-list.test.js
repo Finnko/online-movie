@@ -15,8 +15,8 @@ const mocks = [
   },
 ];
 
-describe(`Main component render correctly`, () => {
-  it(`Should Main component render correctly`, () => {
+describe(`MoviesList component render correctly`, () => {
+  it(`Should MoviesList component render correctly`, () => {
     const tree = renderer
       .create(
           <MoviesList
