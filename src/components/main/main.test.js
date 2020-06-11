@@ -1,6 +1,6 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import Main from "./main";
+import React from 'react';
+import renderer from 'react-test-renderer';
+import Main from './main';
 
 const promoMovieMock = {
   title: `The Grand Budapest Hotel`,

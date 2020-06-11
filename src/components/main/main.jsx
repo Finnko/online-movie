@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from "prop-types";
-import MoviePropType from "../../prop-types/movie";
-import MoviesList from "../movies-list/movies-list.jsx";
-import Footer from "../footer/footer";
-import Header from "../header/header";
+import PropTypes from 'prop-types';
+import MoviePropType from '../../prop-types/movie';
+import MoviesList from '../movies-list/movies-list.jsx';
+import Footer from '../footer/footer';
+import Header from '../header/header';
 
 const Main = ({promo, movies}) => {
   const {title, genre, year} = promo;

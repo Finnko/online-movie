@@ -1,6 +1,6 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import MovieCard from "./movie-card";
+import React from 'react';
+import renderer from 'react-test-renderer';
+import MovieCard from './movie-card';
 
 const mock = {
   id: `1`,
