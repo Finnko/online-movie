@@ -1,14 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {Router, Route, Switch} from 'react-router-dom';
 import Main from "../main/main.jsx";
+import history from '../../history';
 import MoviePropType from "../../prop-types/movie";
 
 const App = ({promo, movies}) => {
   return (
-    <Main
-      promo={promo}
-      movies={movies}
-    />
+    <Router history={history}>
+      <Switch>
+        <Route exact path="/">
+          <Main
+            promo={promo}
+            movies={movies}
+          />
+        </Route>
+        <Route path="/movie/:id" />
+      </Switch>
+    </Router>
   );
 };
 
