@@ -26,6 +26,8 @@ exports[`Main component render correctly Should Main component render correctly 
       >
         <a
           className="logo__link"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -277,7 +279,8 @@ exports[`Main component render correctly Should Main component render correctly 
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/movie/1"
+              onClick={[Function]}
             >
               Fantastic Beasts: The Crimes of Grindelwald
             </a>
@@ -303,7 +306,8 @@ exports[`Main component render correctly Should Main component render correctly 
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="/movie/2"
+              onClick={[Function]}
             >
               Bohemian Rhapsody
             </a>

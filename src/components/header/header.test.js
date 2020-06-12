@@ -1,8 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Header from './header';
-import {createMemoryHistory} from "history";
+import {createMemoryHistory} from 'history';
 import {Router} from 'react-router-dom';
+import Header from './header';
 
 describe(`Header component render correctly`, () => {
   it(`Should Header component render correctly`, () => {

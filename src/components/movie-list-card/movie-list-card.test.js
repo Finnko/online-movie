@@ -1,5 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {createMemoryHistory} from 'history';
+import {Router} from 'react-router-dom';
 import MovieListCard from './movie-list-card';
 
 const mock = {
@@ -10,11 +12,16 @@ const mock = {
 
 describe(`MovieListCard component render correctly`, () => {
   it(`Should MovieListCard component render correctly`, () => {
+    const history = createMemoryHistory();
+
     const tree = renderer
       .create(
-          <MovieListCard
-            movie={mock}
-          />).toJSON();
+          <Router history={history}>
+            <MovieListCard
+              movie={mock}
+            />
+          </Router>
+      ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

@@ -13,7 +13,7 @@ const MoviePage = ({movies, match}) => {
   const currentMovie = getMovieById(movies, movieId);
 
   if (!currentMovie) {
-    return <Redirect to={`/`} />;
+    return <Redirect to={`/`}/>;
   }
 
   const {title, genre, releaseYear, poster, description, director, actors, rating, ratingCount} = currentMovie;

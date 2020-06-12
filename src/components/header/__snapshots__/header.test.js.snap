@@ -9,6 +9,8 @@ exports[`Header component render correctly Should Header component render correc
   >
     <a
       className="logo__link"
+      href="/"
+      onClick={[Function]}
     >
       <span
         className="logo__letter logo__letter--1"

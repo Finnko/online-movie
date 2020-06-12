@@ -1,5 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
+import {createMemoryHistory} from 'history';
+import {Router} from 'react-router-dom';
 import Main from './main';
 
 const promoMovieMock = {
@@ -23,12 +25,17 @@ const mocks = [
 
 describe(`Main component render correctly`, () => {
   it(`Should Main component render correctly`, () => {
+    const history = createMemoryHistory();
+
     const tree = renderer
       .create(
-          <Main
-            promo={promoMovieMock}
-            movies={mocks}
-          />).toJSON();
+          <Router history={history}>
+            <Main
+              promo={promoMovieMock}
+              movies={mocks}
+            />
+          </Router>
+      ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
