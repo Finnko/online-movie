@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieCard component render correctly Should MovieCard component render correctly 1`] = `
+exports[`MovieListCard component render correctly Should MovieListCard component render correctly 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
   onMouseLeave={[Function]}

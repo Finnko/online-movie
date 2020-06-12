@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import MovieCard from './movie-card';
+import MovieListCard from './movie-list-card';
 
 const mock = {
   id: `1`,
@@ -8,11 +8,11 @@ const mock = {
   thumb: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
 };
 
-describe(`MovieCard component render correctly`, () => {
-  it(`Should MovieCard component render correctly`, () => {
+describe(`MovieListCard component render correctly`, () => {
+  it(`Should MovieListCard component render correctly`, () => {
     const tree = renderer
       .create(
-          <MovieCard
+          <MovieListCard
             movie={mock}
           />).toJSON();
 

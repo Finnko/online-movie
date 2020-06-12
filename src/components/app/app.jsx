@@ -4,6 +4,7 @@ import {Router, Route, Switch} from 'react-router-dom';
 import history from '../../history';
 import MoviePropType from '../../prop-types/movie';
 import Main from '../main/main.jsx';
+import MoviePage from '../movie-page/movie-page.jsx';
 
 const App = ({promo, movies}) => {
   return (
@@ -15,7 +16,11 @@ const App = ({promo, movies}) => {
             movies={movies}
           />
         </Route>
-        <Route path="/movie/:id" />
+        <Route path="/movie/:id">
+          {({match}) => (
+            <MoviePage movies={movies} match={match}/>
+          )}
+        </Route>
       </Switch>
     </Router>
   );

@@ -51,7 +51,7 @@ const GENRES = [
   `Thrillers`,
 ];
 
-const YEARS = Array.from({length: 10}).fill(2010).map((x, i) => x + i);
+const YEARS = Array.from({length: MOVIES_NUMBER}).fill(2012).map((x, i) => x + i);
 
 const DIRECTORS = [`Wes Anderson`, `Christopher Nolan`, `Stiven Spilberg`];
 
@@ -76,7 +76,7 @@ const generateMovie = () => {
     actors: getRandomArray(ACTORS),
     description: getRandomArray(DESCRIPTION),
     rating: getRandomRating(),
-    ratingsCount: getRandomInRange(MIN_RATINGS_NUMBER, MAX_RATINGS_NUMBER),
+    ratingCount: getRandomInRange(MIN_RATINGS_NUMBER, MAX_RATINGS_NUMBER),
   };
 };
 

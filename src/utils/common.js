@@ -17,7 +17,16 @@ const getRandomArray = (array) => {
 };
 
 const getRandomRating = () => parseFloat((Math.random() * OFFER_MAX_RATING).toFixed(1));
-
 const getRatingPercentage = (rating) => rating * 100 / OFFER_MAX_RATING;
 
-export {getRandomArrayNumber, getRandomArray, getRandomRating, getRatingPercentage, getRandomInRange, extend};
+const getMovieById = (movies, id) => movies.find((movie) => movie.id === id);
+
+export {
+  getRandomArrayNumber,
+  getRandomArray,
+  getRandomRating,
+  getRatingPercentage,
+  getRandomInRange,
+  getMovieById,
+  extend
+};
