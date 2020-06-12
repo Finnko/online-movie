@@ -1,21 +1,24 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
-import Footer from '../footer/footer.jsx';
-import Header from '../header/header.jsx';
-import {getMovieById} from '../../utils/common';
+import {getLevelFromRating, getMovieById} from '../../utils/common';
+import {Config} from '../../const';
 import PropTypes from 'prop-types';
 import MoviePropType from '../../prop-types/movie';
+import Header from '../header/header.jsx';
+import Footer from '../footer/footer.jsx';
 
 
 const MoviePage = ({movies, match}) => {
   const movieId = match.params.id;
+  const currentMovie = getMovieById(movies, movieId);
 
-  if (!movieId) {
+  if (!currentMovie) {
     return <Redirect to={`/`} />;
   }
 
-  const currentMovie = getMovieById(movies, movieId);
-  const {title, genre, year, poster, description, director, actors, rating, ratingCount} = currentMovie;
+  const {title, genre, releaseYear, poster, description, director, actors, rating, ratingCount} = currentMovie;
+  const ratingFormatted = getLevelFromRating(rating, Config.MOVIE_RATING_MAP);
+  const actorsFormatted = actors.slice(0, Config.MOVIE_ACTORS_TO_SHOW).join(`, `);
 
   return (
     <>
@@ -34,7 +37,7 @@ const MoviePage = ({movies, match}) => {
               <h2 className="movie-card__title">{title}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{genre}</span>
-                <span className="movie-card__year">{year}</span>
+                <span className="movie-card__year">{releaseYear}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -80,19 +83,22 @@ const MoviePage = ({movies, match}) => {
               <div className="movie-rating">
                 <div className="movie-rating__score">{rating}</div>
                 <p className="movie-rating__meta">
-                  <span className="movie-rating__level">Very good</span>
+                  <span className="movie-rating__level">{ratingFormatted}</span>
                   <span className="movie-rating__count">{ratingCount} ratings</span>
                 </p>
               </div>
 
               <div className="movie-card__text">
-                <p>{description}</p>
+                <p>{description.toString()}</p>
 
                 <p className="movie-card__director"><strong>Director: {director}</strong></p>
 
                 <p className="movie-card__starring">
                   <strong>
-                    Starring: {actors.slice(0, 4)} and other
+                    Starring:
+                    {` ${actors.length < Config.MOVIE_ACTORS_TO_SHOW
+                      ? actorsFormatted
+                      : `${actorsFormatted} and other`}`}
                   </strong>
                 </p>
               </div>

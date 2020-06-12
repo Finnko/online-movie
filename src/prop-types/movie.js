@@ -5,7 +5,7 @@ const MoviePropType = PropTypes.shape({
   title: PropTypes.string,
   thumb: PropTypes.string,
   genre: PropTypes.string,
-  year: PropTypes.number,
+  releaseYear: PropTypes.number,
   description: PropTypes.arrayOf(PropTypes.string),
   director: PropTypes.string,
   actors: PropTypes.arrayOf(PropTypes.string),

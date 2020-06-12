@@ -1,5 +1,5 @@
 import nanoid from 'nanoid';
-import {getRandomArray, getRandomArrayNumber, getRandomInRange, getRandomRating} from '../utils/common';
+import {getRandomLengthArray, getRandomLengthArrayNumber, getRandomInRange, getRandomRating} from '../utils/common';
 
 const ID_PREFIX = `id_`;
 const MOVIES_NUMBER = 8;
@@ -40,22 +40,22 @@ const MOVIES_THUMBS = [
 ];
 
 const GENRES = [
-  `Comedies`,
+  `Comedie`,
   `Crime`,
   `Documentary`,
-  `Dramas`,
+  `Drama`,
   `Horror`,
   `Kids & Family`,
   `Romance`,
   `Sci-Fi`,
-  `Thrillers`,
+  `Thriller`,
 ];
 
-const YEARS = Array.from({length: MOVIES_NUMBER}).fill(2012).map((x, i) => x + i);
+const RELEASE_YEARS = Array.from({length: MOVIES_NUMBER}).fill(2012).map((x, i) => x + i);
 
 const DIRECTORS = [`Wes Anderson`, `Christopher Nolan`, `Stiven Spilberg`];
 
-const ACTORS = [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `James Franco`, `Jason Statham`, `Tom Hardy`];
+const ACTORS = [`Leonardo Di Caprio`, `Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `James Franco`, `Jason Statham`, `Tom Hardy`];
 
 const DESCRIPTION = `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H.
    (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege. Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there.
@@ -69,12 +69,12 @@ const generateMovie = () => {
     id: ID_PREFIX + nanoid(10),
     title: MOVIE_TITLES[idx],
     thumb: MOVIES_THUMBS[idx],
-    genre: GENRES[getRandomArrayNumber(GENRES)],
-    year: YEARS[getRandomArrayNumber(YEARS)],
-    poster: `img/the-grand-budapest-hotel-poster`,
-    director: DIRECTORS[getRandomArrayNumber(DIRECTORS)],
-    actors: getRandomArray(ACTORS),
-    description: getRandomArray(DESCRIPTION),
+    genre: GENRES[getRandomLengthArrayNumber(GENRES)],
+    releaseYear: RELEASE_YEARS[getRandomLengthArrayNumber(RELEASE_YEARS)],
+    poster: `img/the-grand-budapest-hotel-poster.jpg`,
+    director: DIRECTORS[getRandomLengthArrayNumber(DIRECTORS)],
+    actors: getRandomLengthArray(ACTORS),
+    description: getRandomLengthArray(DESCRIPTION),
     rating: getRandomRating(),
     ratingCount: getRandomInRange(MIN_RATINGS_NUMBER, MAX_RATINGS_NUMBER),
   };
