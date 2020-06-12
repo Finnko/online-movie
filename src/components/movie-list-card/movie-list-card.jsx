@@ -1,8 +1,9 @@
 import React from 'react';
-import PropTypes from "prop-types";
-import MoviePropType from "../../prop-types/movie";
+import {Link} from 'react-router-dom';
+import MoviePropType from '../../prop-types/movie';
+import PropTypes from 'prop-types';
 
-const MovieCard = ({movie, onMovieMouseOver, onMovieMouseLeave}) => {
+const MovieListCard = ({movie, onMovieMouseOver, onMovieMouseLeave}) => {
   const {id, title, thumb} = movie;
 
   const handleMouseOver = () => onMovieMouseOver(id);
@@ -18,18 +19,21 @@ const MovieCard = ({movie, onMovieMouseOver, onMovieMouseLeave}) => {
         <img src={`${thumb}`} alt={`${title}`} width="280" height="175"/>
       </div>
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">
+        <Link
+          className="small-movie-card__link"
+          to={`/movie/${id}`}
+        >
           {title}
-        </a>
+        </Link>
       </h3>
     </article>
   );
 };
 
-MovieCard.propTypes = {
+MovieListCard.propTypes = {
   onMovieMouseOver: PropTypes.func,
   onMovieMouseLeave: PropTypes.func,
   movie: MoviePropType.isRequired,
 };
 
-export default MovieCard;
+export default MovieListCard;

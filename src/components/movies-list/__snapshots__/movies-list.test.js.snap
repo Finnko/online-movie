@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main component render correctly Should Main component render correctly 1`] = `
+exports[`MoviesList component render correctly Should MoviesList component render correctly 1`] = `
 <div
   className="catalog__movies-list"
 >
@@ -24,7 +24,8 @@ exports[`Main component render correctly Should Main component render correctly 
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/movie/1"
+        onClick={[Function]}
       >
         Fantastic Beasts: The Crimes of Grindelwald
       </a>
@@ -50,7 +51,8 @@ exports[`Main component render correctly Should Main component render correctly 
     >
       <a
         className="small-movie-card__link"
-        href="movie-page.html"
+        href="/movie/2"
+        onClick={[Function]}
       >
         Bohemian Rhapsody
       </a>

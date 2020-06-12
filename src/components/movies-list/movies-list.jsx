@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
-import PropTypes from "prop-types";
-import MovieCard from "../movie-card/movie-card.jsx";
-import MoviePropType from "../../prop-types/movie";
+import PropTypes from 'prop-types';
+import MoviePropType from '../../prop-types/movie';
+import MovieListCard from '../movie-list-card/movie-list-card.jsx';
 
 class MoviesList extends PureComponent {
   constructor(props) {
@@ -25,9 +25,9 @@ class MoviesList extends PureComponent {
 
   render() {
     const {movies} = this.props;
-    const moviesItems = movies.map((item) => {
+    const movieItems = movies.map((item) => {
       return (
-        <MovieCard
+        <MovieListCard
           key={item.id}
           movie={item}
           onMovieMouseOver={this.movieMouseOverHandler}
@@ -37,7 +37,7 @@ class MoviesList extends PureComponent {
 
     return (
       <div className="catalog__movies-list">
-        {moviesItems}
+        {movieItems}
       </div>
     );
   }
