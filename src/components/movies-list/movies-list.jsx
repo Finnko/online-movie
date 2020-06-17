@@ -11,15 +11,21 @@ class MoviesList extends PureComponent {
       activeMovieId: null,
     };
 
+    this.timer = null;
     this.movieMouseLeaveHandler = this.movieMouseLeaveHandler.bind(this);
     this.movieMouseOverHandler = this.movieMouseOverHandler.bind(this);
   }
 
   movieMouseOverHandler(movieId) {
-    this.setState({activeMovieId: movieId});
+    this.timer = setTimeout(() => {
+      this.setState({
+        activeMovieId: movieId
+      });
+    }, 1000);
   }
 
   movieMouseLeaveHandler() {
+    clearTimeout(this.timer);
     this.setState({activeMovieId: null});
   }
 
@@ -30,6 +36,7 @@ class MoviesList extends PureComponent {
         <MovieListCard
           key={item.id}
           movie={item}
+          activeItemId={this.state.activeMovieId}
           onMovieMouseOver={this.movieMouseOverHandler}
           onMovieMouseLeave={this.movieMouseLeaveHandler}
         />);

@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 const MoviePropType = PropTypes.shape({
   id: PropTypes.string,
   title: PropTypes.string,
-  thumb: PropTypes.string,
+  posterSrc: PropTypes.string,
+  videoSrc: PropTypes.string,
   genre: PropTypes.string,
   releaseYear: PropTypes.number,
   description: PropTypes.arrayOf(PropTypes.string),

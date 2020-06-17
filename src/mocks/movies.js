@@ -1,5 +1,5 @@
 import nanoid from 'nanoid';
-import {getRandomLengthArray, getRandomLengthArrayNumber, getRandomInRange, getRandomRating} from '../utils/common';
+import {getRandomLengthArray, getRandomArrayNumber, getRandomInRange, getRandomRating} from '../utils/common';
 
 const ID_PREFIX = `id_`;
 const MOVIES_NUMBER = 8;
@@ -26,7 +26,7 @@ const MOVIE_TITLES = [
   `Pulp Fiction`,
 ];
 
-const MOVIES_THUMBS = [
+const MOVIE_THUMBS = [
   `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
   `img/bohemian-rhapsody.jpg`,
   `img/macbeth.jpg`,
@@ -51,6 +51,11 @@ const GENRES = [
   `Thriller`,
 ];
 
+const MOVIE_VIDEOS = [
+  `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+];
+
 const RELEASE_YEARS = Array.from({length: MOVIES_NUMBER}).fill(2012).map((x, i) => x + i);
 
 const DIRECTORS = [`Wes Anderson`, `Christopher Nolan`, `Stiven Spilberg`];
@@ -68,11 +73,12 @@ const generateMovie = () => {
   return {
     id: ID_PREFIX + nanoid(10),
     title: MOVIE_TITLES[idx],
-    thumb: MOVIES_THUMBS[idx],
-    genre: GENRES[getRandomLengthArrayNumber(GENRES)],
-    releaseYear: RELEASE_YEARS[getRandomLengthArrayNumber(RELEASE_YEARS)],
+    posterSrc: MOVIE_THUMBS[idx],
+    videoSrc: MOVIE_VIDEOS[getRandomArrayNumber(MOVIE_VIDEOS)],
+    genre: GENRES[getRandomArrayNumber(GENRES)],
+    releaseYear: RELEASE_YEARS[getRandomArrayNumber(RELEASE_YEARS)],
     poster: `img/the-grand-budapest-hotel-poster.jpg`,
-    director: DIRECTORS[getRandomLengthArrayNumber(DIRECTORS)],
+    director: DIRECTORS[getRandomArrayNumber(DIRECTORS)],
     actors: getRandomLengthArray(ACTORS),
     description: getRandomLengthArray(DESCRIPTION),
     rating: getRandomRating(),

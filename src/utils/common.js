@@ -8,10 +8,10 @@ const getRandomInRange = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-const getRandomLengthArrayNumber = (array) => Math.floor(Math.random() * array.length);
+const getRandomArrayNumber = (array) => Math.floor(Math.random() * array.length);
 
 const getRandomLengthArray = (array) => {
-  const randomNumber = getRandomLengthArrayNumber(array);
+  const randomNumber = getRandomArrayNumber(array);
 
   return randomNumber > 0 ? array.slice(0, randomNumber) : array.slice(0, randomNumber + 1);
 };
@@ -33,7 +33,7 @@ const getLevelFromRating = (rating, levelMap) => {
 };
 
 export {
-  getRandomLengthArrayNumber,
+  getRandomArrayNumber,
   getRandomLengthArray,
   getRandomRating,
   getRandomInRange,
