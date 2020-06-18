@@ -49,7 +49,7 @@ class VideoPlayer extends PureComponent {
         poster={posterSrc}
         src={videoSrc}
         muted
-        width="280"
+        width="100%"
         height="175"
       />
     );
