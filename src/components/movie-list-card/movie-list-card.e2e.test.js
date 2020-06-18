@@ -14,20 +14,20 @@ const mock = {
 };
 
 describe(`Test e2e MovieListCard component`, () => {
-  const movieMouseOverHandler = jest.fn();
+  const movieMouseEnterHandler = jest.fn();
   const movieMouseLeaveHandler = jest.fn();
 
   const movieCard = shallow(
-      <MovieListCard movie={mock} onMovieMouseOver={movieMouseOverHandler} onMovieMouseLeave={movieMouseLeaveHandler}/>
+      <MovieListCard movie={mock} onMovieMouseEnter={movieMouseEnterHandler} onMovieMouseLeave={movieMouseLeaveHandler}/>
   );
 
   const card = movieCard.find(`article`);
 
   it(`Should MovieListCard info passed correctly on hover`, () => {
-    card.simulate(`mouseover`);
+    card.simulate(`mouseenter`);
     card.simulate(`mouseleave`);
 
-    expect(movieMouseOverHandler).toHaveBeenCalledWith(mock.id);
+    expect(movieMouseEnterHandler).toHaveBeenCalledWith(mock.id);
     expect(movieMouseLeaveHandler.mock.calls.length).toBe(1);
   });
 });

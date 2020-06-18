@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {createMemoryHistory} from 'history';
+import {createHistory} from 'history';
 import {Router} from 'react-router-dom';
 import MovieListCard from './movie-list-card';
 
@@ -12,7 +12,7 @@ const mock = {
 
 describe(`MovieListCard component render correctly`, () => {
   it(`Should MovieListCard component render correctly`, () => {
-    const history = createMemoryHistory();
+    const history = createHistory();
 
     const tree = renderer
       .create(
