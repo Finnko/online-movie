@@ -6,20 +6,20 @@ import MovieReviewsItem from './movie-reviews-item.jsx';
 const MovieReviews = ({reviews}) => {
   const middle = Math.ceil(reviews.length / 2);
 
-  const firstHalf = reviews.slice(0, middle);
-  const secondHalf = reviews.slice(middle + 1);
+  const firstColumn = reviews.slice(0, middle);
+  const secondColumn = reviews.slice(middle);
+
+  const renderReviews = (reviewsList) => (
+    reviewsList.map(({id, rating, user, date, comment}) => <MovieReviewsItem key={id} rating={rating} user={user} date={date} comment={comment}/>)
+  );
 
   return (
     <div className="movie-card__reviews movie-card__row">
       <div className="movie-card__reviews-col">
-        {firstHalf.map((review) => (
-          <MovieReviewsItem review={review} key={review.id} />
-        ))}
+        {renderReviews(firstColumn)}
       </div>
       <div className="movie-card__reviews-col">
-        {secondHalf.map((review) => (
-          <MovieReviewsItem review={review} key={review.id} />
-        ))}
+        {secondColumn.length && renderReviews(secondColumn)}
       </div>
     </div>
   );

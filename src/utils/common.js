@@ -45,6 +45,7 @@ const getLevelFromRating = (rating, levelMap) => {
 const getFormattedMovieTime = (time) => `${Math.floor(time / 60)}h ${time % 60}`;
 
 const getFormattedDate = (date) => moment(date).format(`MMMM DD, YYYY`);
+const getFormattedTagDate = (date) => moment(date).format(`YYYY-MM-DD`);
 
 export {
   getRandomArrayNumber,
@@ -56,5 +57,6 @@ export {
   getRandomDate,
   getFormattedDate,
   getFormattedMovieTime,
+  getFormattedTagDate,
   extend
 };

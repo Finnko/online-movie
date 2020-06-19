@@ -7,7 +7,7 @@ import MovieListCard from './movie-list-card';
 const mock = {
   id: `1`,
   title: `Fantastic Beasts: The Crimes of Grindelwald`,
- // isPlaying: true,
+  isPlaying: true,
   videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
   posterSrc: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`
 };
