@@ -25,7 +25,7 @@ class Tabs extends PureComponent {
 
   render() {
     const {movie} = this.props;
-    const {reviews} = movie;
+    const {reviews, actors, releaseYear, director, genre, runTime, rating, ratingCount, description} = movie;
     const {activeTab} = this.state;
     const tabNames = Object.values(TabName);
 
@@ -35,9 +35,27 @@ class Tabs extends PureComponent {
           <TabList activeTab={activeTab} tabNames={tabNames} onTabClick={this.handleClick} />
         </nav>
 
-        {activeTab === TabName.OVERVIEW && <MovieOverview movie={movie}/>}
+        {
+          activeTab === TabName.OVERVIEW &&
+          <MovieOverview
+            actors={actors}
+            director={director}
+            rating={rating}
+            ratingCount={ratingCount}
+            description={description}
+          />
+        }
 
-        {activeTab === TabName.DETAILS && <MovieDetails movie={movie}/>}
+        {
+          activeTab === TabName.DETAILS &&
+          <MovieDetails
+            actors={actors}
+            director={director}
+            genre={genre}
+            releaseYear={releaseYear}
+            runTime={runTime}
+          />
+        }
 
         {activeTab === TabName.REVIEWS && <MovieReviews reviews={reviews}/>}
       </div>

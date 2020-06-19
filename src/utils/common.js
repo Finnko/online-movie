@@ -42,7 +42,7 @@ const getLevelFromRating = (rating, levelMap) => {
   return ``;
 };
 
-const getFormattedMovieTime = (time) => `${Math.floor(time / 60)}h ${time % 60}`;
+const getFormattedMovieTime = (time) => `${Math.floor(time / 60)}h ${time % 60}m`;
 
 const getFormattedDate = (date) => moment(date).format(`MMMM DD, YYYY`);
 const getFormattedTagDate = (date) => moment(date).format(`YYYY-MM-DD`);

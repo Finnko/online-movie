@@ -1,10 +1,9 @@
 import React, {Fragment} from 'react';
-import MoviePropType from '../../prop-types/movie';
+import PropTypes from 'prop-types';
+
 import {getFormattedMovieTime} from '../../utils/common';
 
-const MovieDetails = ({movie}) => {
-  const {actors, releaseYear, genre, runTime, director} = movie;
-
+const MovieDetails = ({actors, releaseYear, genre, runTime, director}) => {
   return (
     <div className="movie-card__text movie-card__row">
       <div className="movie-card__text-col">
@@ -15,8 +14,8 @@ const MovieDetails = ({movie}) => {
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Starring</strong>
           <span className="movie-card__details-value">
-            {actors.map((actor, i) => (
-              <Fragment key={actor + i}>
+            {actors.map((actor, index) => (
+              <Fragment key={actor + index}>
                 {actor}
                 <br/>
               </Fragment>))
@@ -44,7 +43,11 @@ const MovieDetails = ({movie}) => {
 };
 
 MovieDetails.propTypes = {
-  movie: MoviePropType.isRequired,
+  actors: PropTypes.arrayOf(PropTypes.string).isRequired,
+  releaseYear: PropTypes.number.isRequired,
+  genre: PropTypes.string.isRequired,
+  runTime: PropTypes.number.isRequired,
+  director: PropTypes.string.isRequired,
 };
 
 export default MovieDetails;

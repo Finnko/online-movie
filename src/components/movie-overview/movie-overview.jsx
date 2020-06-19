@@ -1,11 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Config} from '../../const';
 import {getLevelFromRating} from '../../utils/common';
-import MoviePropType from '../../prop-types/movie';
 
-const MovieOverview = ({movie}) => {
-  const {actors, rating, ratingCount, director, description} = movie;
 
+const MovieOverview = ({actors, rating, ratingCount, director, description}) => {
   const ratingFormatted = getLevelFromRating(rating, Config.MOVIE_RATING_MAP);
   const actorsFormatted = actors.slice(0, Config.MOVIE_ACTORS_TO_SHOW).join(`, `);
 
@@ -38,7 +37,11 @@ const MovieOverview = ({movie}) => {
 };
 
 MovieOverview.propTypes = {
-  movie: MoviePropType.isRequired,
+  actors: PropTypes.arrayOf(PropTypes.string).isRequired,
+  director: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  ratingCount: PropTypes.number.isRequired,
+  description: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default MovieOverview;
