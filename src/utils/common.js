@@ -1,4 +1,5 @@
 import {Config} from '../const';
+import moment from 'moment';
 
 const extend = (a, b) => {
   return Object.assign({}, a, b);
@@ -6,6 +7,15 @@ const extend = (a, b) => {
 
 const getRandomInRange = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+const getRandomDate = () => {
+  const targetDate = new Date();
+  const diffValue = getRandomInRange(0, 270) * -1;
+
+  targetDate.setDate(targetDate.getDate() + diffValue);
+
+  return targetDate;
 };
 
 const getRandomArrayNumber = (array) => Math.floor(Math.random() * array.length);
@@ -32,6 +42,10 @@ const getLevelFromRating = (rating, levelMap) => {
   return ``;
 };
 
+const getFormattedMovieTime = (time) => `${Math.floor(time / 60)}h ${time % 60}`;
+
+const getFormattedDate = (date) => moment(date).format(`MM DD, YYYY`);
+
 export {
   getRandomArrayNumber,
   getRandomLengthArray,
@@ -39,5 +53,8 @@ export {
   getRandomInRange,
   getMovieById,
   getLevelFromRating,
+  getRandomDate,
+  getFormattedDate,
+  getFormattedMovieTime,
   extend
 };

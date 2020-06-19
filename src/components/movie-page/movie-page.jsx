@@ -1,11 +1,11 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom';
-import {getLevelFromRating, getMovieById} from '../../utils/common';
-import {Config} from '../../const';
 import PropTypes from 'prop-types';
+import {Redirect} from 'react-router-dom';
+import {getMovieById} from '../../utils/common';
 import MoviePropType from '../../prop-types/movie';
 import Header from '../header/header.jsx';
 import Footer from '../footer/footer.jsx';
+import Tabs from '../tabs/tabs.jsx';
 
 
 const MoviePage = ({movies, match}) => {
@@ -16,9 +16,7 @@ const MoviePage = ({movies, match}) => {
     return <Redirect to={`/`}/>;
   }
 
-  const {title, genre, releaseYear, poster, description, director, actors, rating, ratingCount} = currentMovie;
-  const ratingFormatted = getLevelFromRating(rating, Config.MOVIE_RATING_MAP);
-  const actorsFormatted = actors.slice(0, Config.MOVIE_ACTORS_TO_SHOW).join(`, `);
+  const {title, genre, releaseYear, poster} = currentMovie;
 
   return (
     <>
@@ -65,44 +63,7 @@ const MoviePage = ({movies, match}) => {
               <img src={poster} alt={`${title} poster`} width="218" height="327"/>
             </div>
 
-            <div className="movie-card__desc">
-              <nav className="movie-nav movie-card__nav">
-                <ul className="movie-nav__list">
-                  <li className="movie-nav__item movie-nav__item--active">
-                    <a href="#" className="movie-nav__link">Overview</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Details</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Reviews</a>
-                  </li>
-                </ul>
-              </nav>
-
-              <div className="movie-rating">
-                <div className="movie-rating__score">{rating}</div>
-                <p className="movie-rating__meta">
-                  <span className="movie-rating__level">{ratingFormatted}</span>
-                  <span className="movie-rating__count">{ratingCount} ratings</span>
-                </p>
-              </div>
-
-              <div className="movie-card__text">
-                <p>{description.toString()}</p>
-
-                <p className="movie-card__director"><strong>Director: {director}</strong></p>
-
-                <p className="movie-card__starring">
-                  <strong>
-                    Starring:
-                    {` ${actors.length < Config.MOVIE_ACTORS_TO_SHOW
-                      ? actorsFormatted
-                      : `${actorsFormatted} and other`}`}
-                  </strong>
-                </p>
-              </div>
-            </div>
+            <Tabs movie={currentMovie}/>
           </div>
         </div>
       </section>

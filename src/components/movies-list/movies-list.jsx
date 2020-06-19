@@ -16,6 +16,11 @@ class MoviesList extends PureComponent {
     this.movieMouseEnterHandler = this.movieMouseEnterHandler.bind(this);
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+    this.setState({activeMovieId: null});
+  }
+
   movieMouseEnterHandler(movieId) {
     this.timer = setTimeout(() => {
       this.setState({
@@ -23,7 +28,6 @@ class MoviesList extends PureComponent {
       });
     }, 1000);
   }
-
   movieMouseLeaveHandler() {
     clearTimeout(this.timer);
     this.setState({activeMovieId: null});

@@ -16,7 +16,14 @@ const PathName = {
   MOVIE_PAGE: `/movie/`,
 };
 
+const TabName = {
+  OVERVIEW: `overview`,
+  DETAILS: `details`,
+  REVIEWS: `reviews`
+};
+
 export {
   Config,
   PathName,
+  TabName
 };

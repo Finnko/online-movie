@@ -1,10 +1,13 @@
 import nanoid from 'nanoid';
 import {getRandomLengthArray, getRandomArrayNumber, getRandomInRange, getRandomRating} from '../utils/common';
+import {reviewMocks} from './reviews';
 
 const ID_PREFIX = `id_`;
 const MOVIES_NUMBER = 8;
 const MIN_RATINGS_NUMBER = 1;
 const MAX_RATINGS_NUMBER = 1000;
+const MIN_RUNTIME = 60;
+const MAX_RUNTIME = 180;
 
 
 const promoMovieMock = {
@@ -60,7 +63,24 @@ const RELEASE_YEARS = Array.from({length: MOVIES_NUMBER}).fill(2012).map((x, i) 
 
 const DIRECTORS = [`Wes Anderson`, `Christopher Nolan`, `Stiven Spilberg`];
 
-const ACTORS = [`Leonardo Di Caprio`, `Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `James Franco`, `Jason Statham`, `Tom Hardy`];
+const ACTORS = [
+  `Leonardo Di Caprio`,
+  `Bill Murray`,
+  `Edward Norton`,
+  `Jude Law`,
+  `Willem Dafoe`,
+  `James Franco`,
+  `Jason Statham`,
+  `Tom Hardy`,
+  `Saoirse Ronan`,
+  `Tony Revoloru`,
+  `Tilda Swinton`,
+  `Tom Wilkinson`,
+  `Owen Wilkinson`,
+  `Adrien Brody`,
+  `Ralph Fiennes`,
+  `Jeff Goldblu`
+];
 
 const DESCRIPTION = `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H.
    (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege. Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there.
@@ -83,9 +103,11 @@ const generateMovie = () => {
     description: getRandomLengthArray(DESCRIPTION),
     rating: getRandomRating(),
     ratingCount: getRandomInRange(MIN_RATINGS_NUMBER, MAX_RATINGS_NUMBER),
+    runTime: getRandomInRange(MIN_RUNTIME, MAX_RUNTIME),
+    reviews: getRandomLengthArray(reviewMocks),
   };
 };
 
-const moviesMocks = Array(MOVIES_NUMBER).fill(``).map(generateMovie);
+const movieMocks = Array(MOVIES_NUMBER).fill(``).map(generateMovie);
 
-export {moviesMocks, promoMovieMock};
+export {movieMocks, promoMovieMock};

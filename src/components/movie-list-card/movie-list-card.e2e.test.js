@@ -23,10 +23,11 @@ describe(`Test e2e MovieListCard component`, () => {
 
   const card = movieCard.find(`article`);
 
-  it(`Should MovieListCard info passed correctly on hover`, () => {
+  it(`Should MovieListCard info passed correctly`, () => {
     card.simulate(`mouseenter`);
     card.simulate(`mouseleave`);
 
+    expect(movieMouseEnterHandler.mock.calls.length).toBe(1);
     expect(movieMouseEnterHandler).toHaveBeenCalledWith(mock.id);
     expect(movieMouseLeaveHandler.mock.calls.length).toBe(1);
   });
