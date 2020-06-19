@@ -1,5 +1,5 @@
-import {Config} from '../const';
 import moment from 'moment';
+import {Config} from '../const';
 
 const extend = (a, b) => {
   return Object.assign({}, a, b);
@@ -44,7 +44,7 @@ const getLevelFromRating = (rating, levelMap) => {
 
 const getFormattedMovieTime = (time) => `${Math.floor(time / 60)}h ${time % 60}`;
 
-const getFormattedDate = (date) => moment(date).format(`MM DD, YYYY`);
+const getFormattedDate = (date) => moment(date).format(`MMMM DD, YYYY`);
 
 export {
   getRandomArrayNumber,

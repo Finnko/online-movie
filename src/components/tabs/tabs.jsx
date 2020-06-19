@@ -1,8 +1,7 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
 import {TabName} from '../../const';
 import MoviePropType from '../../prop-types/movie';
-import ReviewPropType from '../../prop-types/review';
+import TabList from '../tab-list/tab-list.jsx';
 import MovieOverview from '../movie-overview/movie-overview.jsx';
 import MovieDetails from '../movie-details/movie-details.jsx';
 import MovieReviews from '../movie-reviews/movie-reviews.jsx';
@@ -11,45 +10,36 @@ class Tabs extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {selectedTab: TabName.OVERVIEW};
-    this.getActiveClass = this.getActiveClass.bind(this);
+    this.state = {
+      activeTab: TabName.OVERVIEW,
+    };
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  getActiveClass(tabName) {
-    return this.state.selectedTab === tabName ? `movie-nav__item--active` : ``;
+  handleClick(tabName) {
+    this.setState({
+      activeTab: tabName
+    });
   }
 
   render() {
     const {movie} = this.props;
     const {reviews} = movie;
+    const {activeTab} = this.state;
+    const tabNames = Object.values(TabName);
 
     return (
       <div className="movie-card__desc">
         <nav className="movie-nav movie-card__nav">
-          <ul className="movie-nav__list">
-            <li className="movie-nav__item movie-nav__item--active">
-              <a href="#" className="movie-nav__link">Overview</a>
-            </li>
-            <li className="movie-nav__item">
-              <a href="#" className="movie-nav__link">Details</a>
-            </li>
-            <li className="movie-nav__item">
-              <a href="#" className="movie-nav__link">Reviews</a>
-            </li>
-          </ul>
+          <TabList activeTab={activeTab} tabNames={tabNames} onTabClick={this.handleClick} />
         </nav>
 
-        <MovieOverview
-          movie={movie}
-        />
+        {activeTab === TabName.OVERVIEW && <MovieOverview movie={movie}/>}
 
-        <MovieDetails
-          movie={movie}
-        />
+        {activeTab === TabName.DETAILS && <MovieDetails movie={movie}/>}
 
-        <MovieReviews
-          reviews={reviews}
-        />
+        {activeTab === TabName.REVIEWS && <MovieReviews reviews={reviews}/>}
       </div>
     );
   }

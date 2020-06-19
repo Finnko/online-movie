@@ -2,7 +2,7 @@ import nanoid from 'nanoid';
 import {getRandomArrayNumber, getRandomDate, getRandomRating} from '../utils/common';
 
 const ID_PREFIX = `id_`;
-const REVIEWS_COUNT = 6;
+const REVIEWS_COUNT = 12;
 
 const REVIEWS = [
   `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
