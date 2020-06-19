@@ -1,3 +1,4 @@
+import moment from 'moment';
 import {Config} from '../const';
 
 const extend = (a, b) => {
@@ -8,10 +9,19 @@ const getRandomInRange = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-const getRandomLengthArrayNumber = (array) => Math.floor(Math.random() * array.length);
+const getRandomDate = () => {
+  const targetDate = new Date();
+  const diffValue = getRandomInRange(0, 270) * -1;
+
+  targetDate.setDate(targetDate.getDate() + diffValue);
+
+  return targetDate;
+};
+
+const getRandomArrayNumber = (array) => Math.floor(Math.random() * array.length);
 
 const getRandomLengthArray = (array) => {
-  const randomNumber = getRandomLengthArrayNumber(array);
+  const randomNumber = getRandomArrayNumber(array);
 
   return randomNumber > 0 ? array.slice(0, randomNumber) : array.slice(0, randomNumber + 1);
 };
@@ -32,12 +42,21 @@ const getLevelFromRating = (rating, levelMap) => {
   return ``;
 };
 
+const getFormattedMovieTime = (time) => `${Math.floor(time / 60)}h ${time % 60}m`;
+
+const getFormattedDate = (date) => moment(date).format(`MMMM DD, YYYY`);
+const getFormattedTagDate = (date) => moment(date).format(`YYYY-MM-DD`);
+
 export {
-  getRandomLengthArrayNumber,
+  getRandomArrayNumber,
   getRandomLengthArray,
   getRandomRating,
   getRandomInRange,
   getMovieById,
   getLevelFromRating,
+  getRandomDate,
+  getFormattedDate,
+  getFormattedMovieTime,
+  getFormattedTagDate,
   extend
 };

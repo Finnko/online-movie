@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
+import ReviewPropType from './review';
 
 const MoviePropType = PropTypes.shape({
   id: PropTypes.string,
   title: PropTypes.string,
-  thumb: PropTypes.string,
+  posterSrc: PropTypes.string,
+  videoSrc: PropTypes.string,
   genre: PropTypes.string,
   releaseYear: PropTypes.number,
   description: PropTypes.arrayOf(PropTypes.string),
@@ -11,6 +13,8 @@ const MoviePropType = PropTypes.shape({
   actors: PropTypes.arrayOf(PropTypes.string),
   rating: PropTypes.number,
   ratingCount: PropTypes.number,
+  runTime: PropTypes.number,
+  reviews: PropTypes.arrayOf(ReviewPropType).isRequired,
 });
 
 export default MoviePropType;

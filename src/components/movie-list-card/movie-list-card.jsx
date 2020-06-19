@@ -1,22 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import MoviePropType from '../../prop-types/movie';
-import PropTypes from 'prop-types';
+import VideoPlayer from '../video-player/video-player.jsx';
 
-const MovieListCard = ({movie, onMovieMouseOver, onMovieMouseLeave}) => {
-  const {id, title, thumb} = movie;
+const MovieListCard = ({movie, onMovieMouseEnter, onMovieMouseLeave, activeItemId}) => {
+  const {id, title, posterSrc, videoSrc} = movie;
 
-  const handleMouseOver = () => onMovieMouseOver(id);
+  const handleMouseEnter = () => onMovieMouseEnter(id);
   const handleMouseLeave = () => onMovieMouseLeave();
 
   return (
     <article
       className="small-movie-card catalog__movies-card"
-      onMouseOver={handleMouseOver}
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <div className="small-movie-card__image">
-        <img src={`${thumb}`} alt={`${title}`} width="280" height="175"/>
+        <VideoPlayer isPlaying={activeItemId === id} posterSrc={posterSrc} videoSrc={videoSrc} />
       </div>
       <h3 className="small-movie-card__title">
         <Link
@@ -31,9 +32,10 @@ const MovieListCard = ({movie, onMovieMouseOver, onMovieMouseLeave}) => {
 };
 
 MovieListCard.propTypes = {
-  onMovieMouseOver: PropTypes.func,
+  onMovieMouseEnter: PropTypes.func,
   onMovieMouseLeave: PropTypes.func,
   movie: MoviePropType.isRequired,
+  activeItemId: PropTypes.string,
 };
 
 export default MovieListCard;
