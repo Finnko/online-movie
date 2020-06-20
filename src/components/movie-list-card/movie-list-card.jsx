@@ -5,7 +5,7 @@ import MoviePropType from '../../prop-types/movie';
 import VideoPlayer from '../video-player/video-player.jsx';
 
 const MovieListCard = ({movie, onMovieMouseEnter, onMovieMouseLeave, activeItemId}) => {
-  const {id, title, posterSrc, videoSrc} = movie;
+  const {id, title, preview, videoSrc} = movie;
 
   const handleMouseEnter = () => onMovieMouseEnter(id);
   const handleMouseLeave = () => onMovieMouseLeave();
@@ -17,7 +17,7 @@ const MovieListCard = ({movie, onMovieMouseEnter, onMovieMouseLeave, activeItemI
       onMouseLeave={handleMouseLeave}
     >
       <div className="small-movie-card__image">
-        <VideoPlayer isPlaying={activeItemId === id} posterSrc={posterSrc} videoSrc={videoSrc} />
+        <VideoPlayer isPlaying={activeItemId === id} preview={preview} videoSrc={videoSrc} />
       </div>
       <h3 className="small-movie-card__title">
         <Link

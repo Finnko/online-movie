@@ -5,18 +5,18 @@ import VideoPlayer from './video-player.jsx';
 const mock = {
   isPlaying: true,
   videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-  posterSrc: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`
+  preview: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`
 };
 
 describe(`VideoPlayer snapshot tests`, () => {
   it(`VideoPlayer should render correctly`, () => {
-    const {isPlaying, videoSrc, posterSrc} = mock;
+    const {isPlaying, videoSrc, preview} = mock;
     const tree = renderer
       .create(
           <VideoPlayer
             isPlaying={isPlaying}
             videoSrc={videoSrc}
-            posterSrc={posterSrc}
+            preview={preview}
           />,
           {
             createNodeMock: () => {

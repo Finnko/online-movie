@@ -31,7 +31,9 @@ App.propTypes = {
   promo: PropTypes.shape({
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
+    releaseYear: PropTypes.number.isRequired,
+    poster: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string.isRequired,
   }).isRequired,
   movies: PropTypes.arrayOf(MoviePropType).isRequired,
 };

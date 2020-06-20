@@ -22,8 +22,14 @@ const TabName = {
   REVIEWS: `Reviews`
 };
 
+const PromoViewMode = {
+  MAIN: `MAIN`,
+  DETAILS: `DETAILS`
+};
+
 export {
   Config,
   PathName,
-  TabName
+  TabName,
+  PromoViewMode,
 };
