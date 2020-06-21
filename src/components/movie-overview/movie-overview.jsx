@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {Config} from '../../const';
 import {getLevelFromRating} from '../../utils/common';
@@ -9,7 +9,7 @@ const MovieOverview = ({actors, rating, ratingCount, director, description}) => 
   const actorsFormatted = actors.slice(0, Config.MOVIE_ACTORS_TO_SHOW).join(`, `);
 
   return (
-    <>
+    <Fragment>
       <div className="movie-rating">
         <div className="movie-rating__score">{rating}</div>
         <p className="movie-rating__meta">
@@ -32,7 +32,7 @@ const MovieOverview = ({actors, rating, ratingCount, director, description}) => 
           </strong>
         </p>
       </div>
-    </>
+    </Fragment>
   );
 };
 

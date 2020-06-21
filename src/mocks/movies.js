@@ -13,7 +13,9 @@ const MAX_RUNTIME = 180;
 const promoMovieMock = {
   title: `The Grand Budapest Hotel`,
   genre: `Drama`,
-  year: 2014,
+  releaseYear: 2014,
+  backgroundImage: `img/bg-the-grand-budapest-hotel.jpg`,
+  poster: `img/the-grand-budapest-hotel-poster.jpg`,
 };
 
 const MOVIE_TITLES = [
@@ -93,7 +95,8 @@ const generateMovie = () => {
   return {
     id: ID_PREFIX + nanoid(10),
     title: MOVIE_TITLES[idx],
-    posterSrc: MOVIE_THUMBS[idx],
+    preview: MOVIE_THUMBS[idx],
+    backgroundImage: `img/bg-the-grand-budapest-hotel.jpg`,
     videoSrc: MOVIE_VIDEOS[getRandomArrayNumber(MOVIE_VIDEOS)],
     genre: GENRES[getRandomArrayNumber(GENRES)],
     releaseYear: RELEASE_YEARS[getRandomArrayNumber(RELEASE_YEARS)],

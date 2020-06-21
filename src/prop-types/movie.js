@@ -4,7 +4,8 @@ import ReviewPropType from './review';
 const MoviePropType = PropTypes.shape({
   id: PropTypes.string,
   title: PropTypes.string,
-  posterSrc: PropTypes.string,
+  preview: PropTypes.string,
+  backgroungImage: PropTypes.string,
   videoSrc: PropTypes.string,
   genre: PropTypes.string,
   releaseYear: PropTypes.number,

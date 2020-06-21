@@ -1392,3 +1392,38 @@ main {
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%); }
+
+.loader-wrapper {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  display: inline-flex;
+  width: 1rem;
+  height: 1rem;
+  animation: ripple 600ms linear infinite;
+  border-radius: 50%;
+}
+
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(223, 207, 119, 0.4),
+    0 0 0 1rem rgba(223, 207, 119, 0.4),
+    0 0 0 1.5rem rgba(223, 207, 119, 0.4),
+    0 0 0 3rem rgba(223, 207, 119, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 1rem rgba(223, 207, 119, 0.4),
+    0 0 0 2rem rgba(223, 207, 119, 0.4),
+    0 0 0 3rem rgba(223, 207, 119, 0.4),
+    0 0 0 5rem rgba(223, 207, 119, 0);
+  }
+}
