@@ -1,10 +1,10 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
-import {PromoViewMode} from '../../const';
+import {ViewMode} from '../../const';
 import Header from '../header/header.jsx';
 
 const MoviePromo = ({title, genre, releaseYear, backgroundImage, poster, viewMode}) => {
-  const isMainView = viewMode === PromoViewMode.MAIN;
+  const isMainView = viewMode === ViewMode.PROMO.MAIN;
 
   return (
     <Fragment>

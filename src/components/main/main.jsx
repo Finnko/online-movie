@@ -1,15 +1,18 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import MoviePropType from '../../prop-types/movie';
+import {ViewMode} from '../../const';
 import MoviesList from '../movies-list/movies-list.jsx';
 import Footer from '../footer/footer.jsx';
 import MoviePromo from '../movie-promo/movie-promo.jsx';
-import {PromoViewMode} from '../../const';
+import withPreview from '../../hocs/with-preview/with-preview';
+
+const MoviesListWrapped = withPreview(MoviesList);
 
 const Main = ({promo, movies}) => {
   const {title, genre, releaseYear, poster, backgroundImage} = promo;
   return (
-    <>
+    <Fragment>
       <section className="movie-card">
         <MoviePromo
           title={title}
@@ -17,7 +20,7 @@ const Main = ({promo, movies}) => {
           releaseYear={releaseYear}
           poster={poster}
           backgroundImage={backgroundImage}
-          viewMode={PromoViewMode.MAIN}
+          viewMode={ViewMode.PROMO.MAIN}
         />
       </section>
 
@@ -58,7 +61,7 @@ const Main = ({promo, movies}) => {
             </li>
           </ul>
 
-          <MoviesList movies={movies}/>
+          <MoviesListWrapped movies={movies}/>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
@@ -67,7 +70,7 @@ const Main = ({promo, movies}) => {
 
         <Footer/>
       </div>
-    </>
+    </Fragment>
   );
 };
 

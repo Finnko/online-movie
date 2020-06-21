@@ -1,13 +1,15 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
 import {getMovieById} from '../../utils/common';
-import {PathName, PromoViewMode} from '../../const';
+import {PathName, TabName, ViewMode} from '../../const';
 import MoviePropType from '../../prop-types/movie';
 import MoviePromo from '../movie-promo/movie-promo.jsx';
 import Tabs from '../tabs/tabs.jsx';
 import Footer from '../footer/footer.jsx';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
 
+const TabsWrapped = withActiveItem(Tabs);
 
 const MoviePage = ({movies, match}) => {
   const movieId = match.params.id;
@@ -20,7 +22,7 @@ const MoviePage = ({movies, match}) => {
   const {title, genre, releaseYear, poster, backgroundImage} = currentMovie;
 
   return (
-    <>
+    <Fragment>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <MoviePromo
@@ -29,7 +31,7 @@ const MoviePage = ({movies, match}) => {
             poster={poster}
             releaseYear={releaseYear}
             backgroundImage={backgroundImage}
-            viewMode={PromoViewMode.DETAILS}
+            viewMode={ViewMode.PROMO.DETAILS}
           />
         </div>
 
@@ -39,7 +41,7 @@ const MoviePage = ({movies, match}) => {
               <img src={poster} alt={`${title} poster`} width="218" height="327"/>
             </div>
 
-            <Tabs movie={currentMovie}/>
+            <TabsWrapped activeItem={TabName.OVERVIEW} movie={currentMovie}/>
           </div>
         </div>
       </section>
@@ -91,7 +93,7 @@ const MoviePage = ({movies, match}) => {
 
         <Footer/>
       </div>
-    </>
+    </Fragment>
   );
 };
 
