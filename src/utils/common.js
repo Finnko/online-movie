@@ -5,6 +5,17 @@ const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
 
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * i);
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+
+  return array;
+};
+
 const getRandomInRange = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
@@ -29,6 +40,12 @@ const getRandomLengthArray = (array) => {
 const getRandomRating = () => parseFloat((Math.random() * Config.MOVIE_MAX_RATING).toFixed(1));
 
 const getMovieById = (movies, id) => movies.find((movie) => movie.id === id);
+
+const getSimilarMovies = (movies, id) => {
+  const idx = movies.findIndex((movie) => movie.id === id);
+
+  return shuffleArray([...movies.slice(0, idx), ...movies.slice(idx + 1)]);
+};
 
 const getLevelFromRating = (rating, levelMap) => {
   const levels = Object.keys(levelMap).reverse();
@@ -58,5 +75,6 @@ export {
   getFormattedDate,
   getFormattedMovieTime,
   getFormattedTagDate,
+  getSimilarMovies,
   extend
 };

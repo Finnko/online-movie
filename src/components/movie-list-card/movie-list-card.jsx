@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import MoviePropType from '../../prop-types/movie';
+import {ViewMode} from '../../const';
 import withPreview from '../../hocs/with-preview/with-preview';
 
-const MovieListCard = ({movie, /* from hoc */ renderPlayer, onMovieMouseEnter, onMovieMouseLeave}) => {
+const MovieListCard = ({movie, viewMode, /* from hoc */ renderPlayer, onMovieMouseEnter, onMovieMouseLeave}) => {
   const {id, title, preview, videoSrc} = movie;
+  const isWithPlayer = viewMode === ViewMode.MOVIE_CARD.WITH_PLAYER;
 
   const handleMouseEnter = () => onMovieMouseEnter(id);
   const handleMouseLeave = () => onMovieMouseLeave();
@@ -16,9 +18,16 @@ const MovieListCard = ({movie, /* from hoc */ renderPlayer, onMovieMouseEnter, o
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
+      {isWithPlayer &&
       <div className="small-movie-card__image">
         {renderPlayer(videoSrc, preview, id)}
-      </div>
+      </div>}
+
+      {!isWithPlayer &&
+      <div className="small-movie-card__image">
+        <img src={preview} alt={title} width="280" height="175"/>
+      </div>}
+
       <h3 className="small-movie-card__title">
         <Link
           className="small-movie-card__link"
@@ -36,6 +45,7 @@ MovieListCard.propTypes = {
   onMovieMouseLeave: PropTypes.func,
   movie: MoviePropType.isRequired,
   renderPlayer: PropTypes.func,
+  viewMode: PropTypes.string.isRequired,
 };
 
 const MovieListCardWrapped = withPreview(MovieListCard);

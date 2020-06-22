@@ -1,13 +1,12 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import MoviePropType from '../../prop-types/movie';
 import {ViewMode} from '../../const';
+import NameSpace from '../../store/name-space';
 import MoviesList from '../movies-list/movies-list.jsx';
 import Footer from '../footer/footer.jsx';
 import MoviePromo from '../movie-promo/movie-promo.jsx';
-import withPreview from '../../hocs/with-preview/with-preview';
-
-const MoviesListWrapped = withPreview(MoviesList);
 
 const Main = ({promo, movies}) => {
   const {title, genre, releaseYear, poster, backgroundImage} = promo;
@@ -61,7 +60,7 @@ const Main = ({promo, movies}) => {
             </li>
           </ul>
 
-          <MoviesListWrapped movies={movies}/>
+          <MoviesList movies={movies} viewMode={ViewMode.MOVIE_CARD.WITH_PLAYER}/>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
@@ -85,4 +84,11 @@ Main.propTypes = {
   movies: PropTypes.arrayOf(MoviePropType).isRequired,
 };
 
-export default Main;
+const mapStateToProps = (state) => {
+  return {
+    movies: state[NameSpace.DATA].movies,
+  };
+};
+
+export {Main};
+export default connect(mapStateToProps)(Main);
