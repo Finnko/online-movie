@@ -1,7 +1,9 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import MoviePropType from '../../prop-types/movie';
 import {ViewMode} from '../../const';
+import NameSpace from '../../store/name-space';
 import MoviesList from '../movies-list/movies-list.jsx';
 import Footer from '../footer/footer.jsx';
 import MoviePromo from '../movie-promo/movie-promo.jsx';
@@ -82,4 +84,11 @@ Main.propTypes = {
   movies: PropTypes.arrayOf(MoviePropType).isRequired,
 };
 
-export default Main;
+const mapStateToProps = (state) => {
+  return {
+    movies: state[NameSpace.DATA].movies,
+  };
+};
+
+export {Main};
+export default connect(mapStateToProps)(Main);
