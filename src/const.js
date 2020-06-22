@@ -26,8 +26,11 @@ const ViewMode = {
   PROMO: {
     MAIN: `MAIN`,
     DETAILS: `DETAILS`
+  },
+  MOVIE_CARD: {
+    WITH_PLAYER: `WITH_PLAYER`,
+    IMAGE: `IMAGE`,
   }
-
 };
 
 export {
