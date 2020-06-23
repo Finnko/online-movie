@@ -2,20 +2,21 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import MoviePropType from '../../prop-types/movie';
-import {ViewMode} from '../../const';
+import {Config, ViewMode} from '../../const';
 import NameSpace from '../../store/name-space';
 import MoviesList from '../movies-list/movies-list.jsx';
 import Footer from '../footer/footer.jsx';
 import MoviePromo from '../movie-promo/movie-promo.jsx';
 import Loader from '../loader/loader.jsx';
+import Error from '../error/error.jsx';
 
-const Main = ({promo, movies, loading}) => {
+const Main = ({promo, movies, loading, error}) => {
   const {title, genre, releaseYear, poster, backgroundImage} = promo;
   return (
     <Fragment>
-      {loading && <Loader />}
+      {loading && <Loader size={Config.LOADER.MEDIUM}/>}
 
-      {!loading &&
+      {!loading && !error &&
       <Fragment>
         <section className="movie-card">
           <MoviePromo
@@ -76,6 +77,8 @@ const Main = ({promo, movies, loading}) => {
         </div>
       </Fragment>
       }
+
+      {!loading && error && <Error error={Config.ERRORS.FETCH_DATA} />}
     </Fragment>
   );
 };
@@ -90,12 +93,15 @@ Main.propTypes = {
   }).isRequired,
   movies: PropTypes.arrayOf(MoviePropType).isRequired,
   loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => {
   return {
     movies: state[NameSpace.DATA].movies,
     loading: state[NameSpace.DATA].loading,
+    error: state[NameSpace.DATA].error,
+    promo: state[NameSpace.DATA].promo,
   };
 };
 

@@ -11,6 +11,13 @@ const Config = {
     8: `Very good`,
     10: `Awesome`
   },
+  ERRORS: {
+    FETCH_DATA: `Something went wrong, please try again later.`,
+  },
+  LOADER: {
+    SMALL: `small`,
+    MEDIUM: `medium`,
+  }
 };
 
 const PathName = {

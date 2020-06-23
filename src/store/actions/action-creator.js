@@ -1,15 +1,18 @@
 import {actionTypes} from '../action-types';
 
 const ActionCreator = {
-  fetchMoviesRequest: () => ({
-    type: actionTypes.FETCH_MOVIES_REQUEST,
+  fetchMoviesDataRequest: () => ({
+    type: actionTypes.FETCH_MOVIES_DATA_REQUEST,
   }),
-  fetchMoviesSuccess: (data) => ({
-    type: actionTypes.FETCH_MOVIES_SUCCESS,
-    payload: data,
+  fetchMoviesDataSuccess: (movies, promo) => ({
+    type: actionTypes.FETCH_MOVIES_DATA_SUCCESS,
+    payload: {
+      movies,
+      promo
+    },
   }),
-  fetchMoviesError: () => ({
-    type: actionTypes.FETCH_MOVIES_ERROR,
+  fetchMoviesDataError: () => ({
+    type: actionTypes.FETCH_MOVIES_DATA_ERROR,
   }),
 };
 

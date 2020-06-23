@@ -7,14 +7,12 @@ import {PathName} from '../../const';
 import Main from '../main/main.jsx';
 import MoviePage from '../movie-page/movie-page.jsx';
 
-const App = ({promo, movies}) => {
+const App = ({movies}) => {
   return (
     <Router history={history}>
       <Switch>
         <Route exact path={PathName.ROOT}>
-          <Main
-            promo={promo}
-          />
+          <Main />
         </Route>
         <Route path={`${PathName.MOVIE_PAGE}:id`}>
           {({match}) => (
@@ -27,13 +25,6 @@ const App = ({promo, movies}) => {
 };
 
 App.propTypes = {
-  promo: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    releaseYear: PropTypes.number.isRequired,
-    poster: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string.isRequired,
-  }).isRequired,
   movies: PropTypes.arrayOf(MoviePropType).isRequired,
 };
 
