@@ -13,7 +13,7 @@ const store = createStore(
 
 store.dispatch(ActionCreator.fetchMoviesDataRequest());
 const promiseDelay = (arg) => new Promise((resolve, reject) => {
-  return Math.random() > 0.95 ? setTimeout(resolve, arg) : reject(`error`);
+  return Math.random() > 0.05 ? setTimeout(resolve, arg) : reject(`error`);
 });
 
 promiseDelay(500)
