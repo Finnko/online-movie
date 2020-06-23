@@ -13,10 +13,10 @@ const store = createStore(
 
 store.dispatch(ActionCreator.fetchMoviesRequest());
 const promiseDelay = (arg) => new Promise((resolve, reject) => {
-  return Math.random() > 0.15 ? setTimeout(resolve, arg) : reject(`error`);
+  return Math.random() > 0.05 ? setTimeout(resolve, arg) : reject(`error`);
 });
 
-promiseDelay(500)
+promiseDelay(2500)
   .then(() => store.dispatch(ActionCreator.fetchMoviesSuccess(movieMocks)))
   .catch((e) => {
     console.log(e);

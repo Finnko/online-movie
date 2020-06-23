@@ -16,11 +16,11 @@ const App = ({promo, movies}) => {
             promo={promo}
           />
         </Route>
-        {/*<Route path={`${PathName.MOVIE_PAGE}:id`}>*/}
-        {/*  {({match}) => (*/}
-        {/*    <MoviePage movies={movies} match={match}/>*/}
-        {/*  )}*/}
-        {/*</Route>*/}
+        <Route path={`${PathName.MOVIE_PAGE}:id`}>
+          {({match}) => (
+            <MoviePage movies={movies} match={match}/>
+          )}
+        </Route>
       </Switch>
     </Router>
   );
@@ -34,7 +34,7 @@ App.propTypes = {
     poster: PropTypes.string.isRequired,
     backgroundImage: PropTypes.string.isRequired,
   }).isRequired,
-
+  movies: PropTypes.arrayOf(MoviePropType).isRequired,
 };
 
 export default App;
