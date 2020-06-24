@@ -1,8 +1,7 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
-import {compose} from 'redux';
-import {getFilteredMoviesByGenre, getMovieById, getMoviesWithExludedId, getSimilarMovies} from '../../utils/common';
+import {getMovieById, getSimilarMovies} from '../../utils/common';
 import {Config, PathName, TabName, ViewMode} from '../../const';
 import MoviePropType from '../../prop-types/movie';
 import MoviePromo from '../movie-promo/movie-promo.jsx';

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Main component render correctly Should Main component render correctly 1`] = `
-<div>
+Array [
   <section
     className="movie-card"
   >
@@ -9,7 +9,7 @@ exports[`Main component render correctly Should Main component render correctly 
       className="movie-card__bg"
     >
       <img
-        alt="The Grand Budapest Hotel"
+        alt=""
         src="img/bg-the-grand-budapest-hotel.jpg"
       />
     </div>
@@ -71,7 +71,7 @@ exports[`Main component render correctly Should Main component render correctly 
           className="movie-card__poster"
         >
           <img
-            alt="The Grand Budapest Hotel poster"
+            alt=""
             height="327"
             src="img/the-grand-budapest-hotel-poster.jpg"
             width="218"
@@ -83,7 +83,7 @@ exports[`Main component render correctly Should Main component render correctly 
           <h2
             className="movie-card__title"
           >
-            The Grand Budapest Hotel
+            
           </h2>
           <p
             className="movie-card__meta"
@@ -91,7 +91,7 @@ exports[`Main component render correctly Should Main component render correctly 
             <span
               className="movie-card__genre"
             >
-              Drama
+              Comedy
             </span>
             <span
               className="movie-card__year"
@@ -140,7 +140,7 @@ exports[`Main component render correctly Should Main component render correctly 
         </div>
       </div>
     </div>
-  </section>
+  </section>,
   <div
     className="page-content"
   >
@@ -261,17 +261,18 @@ exports[`Main component render correctly Should Main component render correctly 
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
           onMouseLeave={[Function]}
-          onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
+            <video
               height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-              width="280"
+              muted={true}
+              poster="img/bohemian-rhapsody.jpg"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+              width="100%"
             />
           </div>
           <h3
@@ -282,34 +283,7 @@ exports[`Main component render correctly Should Main component render correctly 
               href="/movie/1"
               onClick={[Function]}
             >
-              Fantastic Beasts: The Crimes of Grindelwald
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseLeave={[Function]}
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Bohemian Rhapsody"
-              height="175"
-              src="img/bohemian-rhapsody.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="/movie/2"
-              onClick={[Function]}
-            >
-              Bohemian Rhapsody
+              The Grand Budapest Hotel
             </a>
           </h3>
         </article>
@@ -359,6 +333,6 @@ exports[`Main component render correctly Should Main component render correctly 
         </p>
       </div>
     </footer>
-  </div>
-</div>
+  </div>,
+]
 `;
