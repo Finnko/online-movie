@@ -20,12 +20,12 @@ const MockComponent = () => {
 const MockComponentWrapped = withActiveItem(MockComponent);
 
 describe(`Tests withActiveItem functionality`, () => {
-  const onActiveItemChange = jest.fn();
+  const activeItemChangeHandler = jest.fn();
 
   it(`withActiveItem set passed value correctly`, () => {
     const wrapper = shallow(<MockComponentWrapped
       activeItem={`Item 2`}
-      onActiveItemChange={onActiveItemChange}
+      onActiveItemChange={activeItemChangeHandler}
     />);
 
     expect(wrapper.state().activeItem).toEqual(`Item 2`);
@@ -34,7 +34,7 @@ describe(`Tests withActiveItem functionality`, () => {
   it(`withActiveItem should change active item`, () => {
     const wrapper = shallow(<MockComponentWrapped
       activeItem={`Item 2`}
-      onActiveItemChange={onActiveItemChange}
+      onActiveItemChange={activeItemChangeHandler}
     />);
 
     wrapper.props().onActiveItemChange(`Item 1`);

@@ -38,7 +38,7 @@ describe(`Tabs component render correctly`, () => {
   it(`Should Tabs component render correctly`, () => {
     const tree = renderer
       .create(
-          <Tabs movie={mock}/>
+          <Tabs movie={mock} activeItem={`Overview`} onActiveItemChange={() => {}}/>
       ).toJSON();
     expect(tree).toMatchSnapshot();
   });

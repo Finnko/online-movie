@@ -53,7 +53,7 @@ exports[`MovieDetails component render correctly Should MovieDetails component r
       <span
         className="movie-card__details-value"
       >
-        3h 5
+        3h 5m
       </span>
     </p>
     <p

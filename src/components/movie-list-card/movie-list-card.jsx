@@ -50,5 +50,5 @@ MovieListCard.propTypes = {
 
 const MovieListCardWrapped = withPreview(MovieListCard);
 
-export default MovieListCardWrapped;
 export {MovieListCard};
+export default MovieListCardWrapped;
