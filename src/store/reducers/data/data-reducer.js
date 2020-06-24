@@ -5,23 +5,24 @@ const initialState = {
   loading: false,
   error: false,
   movies: [],
-  promoMovie: {}
+  promo: {}
 };
 
 export default function dataReducer(state = initialState, action) {
   const {type, payload} = action;
 
   switch (type) {
-    case actionTypes.FETCH_MOVIES_REQUEST:
+    case actionTypes.FETCH_MOVIES_DATA_REQUEST:
       return extend(state, {
         loading: true,
       });
-    case actionTypes.FETCH_MOVIES_SUCCESS:
+    case actionTypes.FETCH_MOVIES_DATA_SUCCESS:
       return extend(state, {
         loading: false,
-        movies: payload,
+        movies: payload.movies,
+        promo: extend(state.promo, payload.promo),
       });
-    case actionTypes.FETCH_MOVIES_ERROR:
+    case actionTypes.FETCH_MOVIES_DATA_ERROR:
       return extend(state, {
         loading: false,
         error: true,

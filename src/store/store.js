@@ -1,7 +1,7 @@
 import {createStore, compose, applyMiddleware} from 'redux';
 import rootReducer from './reducers/root-reducer';
 import {ActionCreator} from './actions/action-creator';
-import {movieMocks} from '../mocks/movies';
+import {movieMocks, promoMovieMock} from '../mocks/movies';
 
 const store = createStore(
     rootReducer,
@@ -11,17 +11,14 @@ const store = createStore(
     )
 );
 
-store.dispatch(ActionCreator.fetchMoviesRequest());
+store.dispatch(ActionCreator.fetchMoviesDataRequest());
 const promiseDelay = (arg) => new Promise((resolve, reject) => {
-  return Math.random() > 0.15 ? setTimeout(resolve, arg) : reject(`error`);
+  return Math.random() > 0.05 ? setTimeout(resolve, arg) : reject(`error`);
 });
 
 promiseDelay(500)
-  .then(() => store.dispatch(ActionCreator.fetchMoviesSuccess(movieMocks)))
-  .catch((e) => {
-    console.log(e);
-    store.dispatch(ActionCreator.fetchMoviesError());
-  });
+  .then(() => store.dispatch(ActionCreator.fetchMoviesDataSuccess(movieMocks, promoMovieMock)))
+  .catch(() => store.dispatch(ActionCreator.fetchMoviesDataError()));
 
 
 export {store};

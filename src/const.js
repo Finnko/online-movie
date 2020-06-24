@@ -2,6 +2,8 @@ const Config = {
   MOVIE_MAX_RATING: 10,
   MOVIE_ACTORS_TO_SHOW: 4,
   SIMILAR_MOVIES_TO_SHOW: 4,
+  MAX_MOVIES_TO_SHOW: 8,
+  MAX_GENRES_TO_SHOW: 9,
   MOVIE_RATING_MAP: {
     0: `Bad`,
     3: `Normal`,
@@ -9,6 +11,13 @@ const Config = {
     8: `Very good`,
     10: `Awesome`
   },
+  ERRORS: {
+    FETCH_DATA: `Something went wrong, please try again later.`,
+  },
+  LOADER: {
+    SMALL: `small`,
+    MEDIUM: `medium`,
+  }
 };
 
 const PathName = {

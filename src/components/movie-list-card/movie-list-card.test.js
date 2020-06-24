@@ -34,8 +34,13 @@ describe(`MovieListCard component render correctly`, () => {
               activeItemId={activeItemId}
               onMovieMouseLeave={onMovieMouseLeave}
               onMovieMouseEnter={onMovieMouseEnter}
+              viewMode={`WITH_PLAYER`}
             />
-          </Router>
+          </Router>, {
+            createNodeMock: () => {
+              return {};
+            },
+          }
       ).toJSON();
 
     expect(tree).toMatchSnapshot();

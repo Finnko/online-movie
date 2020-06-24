@@ -41,10 +41,8 @@ const getRandomRating = () => parseFloat((Math.random() * Config.MOVIE_MAX_RATIN
 
 const getMovieById = (movies, id) => movies.find((movie) => movie.id === id);
 
-const getSimilarMovies = (movies, id) => {
-  const idx = movies.findIndex((movie) => movie.id === id);
-
-  return shuffleArray([...movies.slice(0, idx), ...movies.slice(idx + 1)]);
+const getSimilarMovies = (movies, id, genre) => {
+  return shuffleArray(movies.filter((movie) => movie.genre === genre && movie.id !== id));
 };
 
 const getLevelFromRating = (rating, levelMap) => {

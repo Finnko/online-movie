@@ -20,7 +20,7 @@ const MoviePage = ({movies, match}) => {
     return <Redirect to={PathName.ROOT}/>;
   }
 
-  const similarMovies = getSimilarMovies(movies, movieId).slice(0, Config.SIMILAR_MOVIES_TO_SHOW);
+  const similarMovies = getSimilarMovies(movies, currentMovie.id, currentMovie.genre).slice(0, Config.SIMILAR_MOVIES_TO_SHOW);
 
   const {title, genre, releaseYear, poster, backgroundImage} = currentMovie;
 
@@ -53,7 +53,7 @@ const MoviePage = ({movies, match}) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <MoviesList movies={similarMovies} viewMode={ViewMode.MOVIE_CARD.IMAGE}/>
+          {similarMovies.length && <MoviesList movies={similarMovies} viewMode={ViewMode.MOVIE_CARD.IMAGE}/>}
         </section>
 
         <Footer/>

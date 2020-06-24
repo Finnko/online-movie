@@ -1,28 +1,26 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import {createMemoryHistory} from 'history';
-import {Router} from 'react-router-dom';
-import configureStore from 'redux-mock-store';
-import NameSpace from '../../store/name-space';
-import {Provider} from 'react-redux';
-import {Main} from './main';
+import {actionTypes} from '../../action-types';
+import dataReducer from './data-reducer';
 
-const promo = {
+const initialState = {
+  error: false,
+  loading: false,
+  movies: [],
+  promo: {},
+};
+
+const mockPromo = {
   title: ``,
   genre: `Comedy`,
   releaseYear: 2014,
   backgroundImage: `img/bg-the-grand-budapest-hotel.jpg`,
   poster: `img/the-grand-budapest-hotel-poster.jpg`,
 };
-
-const mock = [
+const mockMovies = [
   {
     id: `1`,
     title: `The Grand Budapest Hotel`,
     genre: `Drama`,
-    preview: `img/bohemian-rhapsody.jpg`,
     releaseYear: 2014,
-    videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     backgroundImage: `img/bg-the-grand-budapest-hotel.jpg`,
     description: [
       `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
@@ -52,41 +50,46 @@ const mock = [
   }
 ];
 
-const mockStore = configureStore([]);
-
-const store = mockStore({
-  [NameSpace.DATA]: {
-    movies: mock,
-    promo,
-    loading: false,
-    error: false,
-  }
-});
-
-const props = {
-  movies: mock,
-  promo,
-  loading: false,
-  error: false,
-};
-
-describe(`Main component render correctly`, () => {
-  it(`Should Main component render correctly`, () => {
-    const history = createMemoryHistory();
-
-    const tree = renderer
-      .create(
-          <Provider store={store}>
-            <Router history={history}>
-              <Main {...props}/>
-            </Router>
-          </Provider>, {
-            createNodeMock: () => {
-              return {};
-            },
-          }
-      ).toJSON();
-
-    expect(tree).toMatchSnapshot();
+describe(`Data reducer works correctly`, () => {
+  it(`Data reducer without additional parameters should return initial state`, () => {
+    expect(dataReducer(void 0, {})).toEqual(initialState);
   });
+
+  it(`Data reducer should change loading value when the request is sent`, () => {
+    expect(dataReducer(initialState, {
+      type: actionTypes.FETCH_MOVIES_DATA_REQUEST,
+    })).toEqual({
+      error: false,
+      loading: true,
+      movies: [],
+      promo: {},
+    });
+  });
+
+  it(`Data reducer should change loading and error value when the error is occurred`, () => {
+    expect(dataReducer(initialState, {
+      type: actionTypes.FETCH_MOVIES_DATA_ERROR,
+    })).toEqual({
+      error: true,
+      loading: false,
+      movies: [],
+      promo: {},
+    });
+  });
+
+  it(`Data reducer should change data on success`, () => {
+    expect(dataReducer(initialState, {
+      type: actionTypes.FETCH_MOVIES_DATA_SUCCESS,
+      payload: {
+        movies: mockMovies,
+        promo: mockPromo
+      }
+    })).toEqual({
+      error: false,
+      loading: false,
+      movies: mockMovies,
+      promo: mockPromo,
+    });
+  });
+
 });
