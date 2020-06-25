@@ -15,7 +15,6 @@ const MoviePropType = PropTypes.shape({
   rating: PropTypes.number,
   ratingCount: PropTypes.number,
   runTime: PropTypes.number,
-  reviews: PropTypes.arrayOf(ReviewPropType).isRequired,
 });
 
 export default MoviePropType;

@@ -1,6 +1,5 @@
 import nanoid from 'nanoid';
 import {getRandomLengthArray, getRandomArrayNumber, getRandomInRange, getRandomRating} from '../utils/common';
-import {reviewMocks} from './reviews';
 
 const ID_PREFIX = `id_`;
 const MOVIES_NUMBER = 8;
@@ -107,7 +106,6 @@ const generateMovie = () => {
     rating: getRandomRating(),
     ratingCount: getRandomInRange(MIN_RATINGS_NUMBER, MAX_RATINGS_NUMBER),
     runTime: getRandomInRange(MIN_RUNTIME, MAX_RUNTIME),
-    reviews: getRandomLengthArray(reviewMocks),
   };
 };
 
