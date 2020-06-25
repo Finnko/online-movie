@@ -45,6 +45,12 @@ const getSimilarMovies = (movies, id, genre) => {
   return shuffleArray(movies.filter((movie) => movie.genre === genre && movie.id !== id));
 };
 
+const getMovieGenres = (movies) => {
+  const temp = [Config.DEFAULT_SORTING, ...movies.map((movie) => movie.genre)];
+
+  return Array.from(new Set(temp));
+};
+
 const getLevelFromRating = (rating, levelMap) => {
   const levels = Object.keys(levelMap).reverse();
 
@@ -74,5 +80,6 @@ export {
   getFormattedMovieTime,
   getFormattedTagDate,
   getSimilarMovies,
+  getMovieGenres,
   extend
 };
