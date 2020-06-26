@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import MoviePropType from '../../prop-types/movie';
-import {ViewMode} from '../../const';
+import {PathName, ViewMode} from '../../const';
 import withPreview from '../../hocs/with-preview/with-preview';
 
 const MovieListCard = ({movie, viewMode, /* from hoc */ renderPlayer, onMovieMouseEnter, onMovieMouseLeave}) => {
@@ -19,19 +19,29 @@ const MovieListCard = ({movie, viewMode, /* from hoc */ renderPlayer, onMovieMou
       onMouseLeave={handleMouseLeave}
     >
       {isWithPlayer &&
-      <div className="small-movie-card__image">
-        {renderPlayer(videoSrc, preview, id)}
-      </div>}
+      <Link
+        className="small-movie-card__link"
+        to={`${PathName.MOVIE_PAGE}${id}`}
+      >
+        <div className="small-movie-card__image">
+          {renderPlayer(videoSrc, preview, id)}
+        </div>
+      </Link>}
 
       {!isWithPlayer &&
-      <div className="small-movie-card__image">
-        <img src={preview} alt={title} width="280" height="175"/>
-      </div>}
+      <Link
+        className="small-movie-card__link"
+        to={`${PathName.MOVIE_PAGE}${id}`}
+      >
+        <div className="small-movie-card__image">
+          <img src={preview} alt={title} width="280" height="175"/>
+        </div>
+      </Link>}
 
       <h3 className="small-movie-card__title">
         <Link
           className="small-movie-card__link"
-          to={`/movie/${id}`}
+          to={`${PathName.MOVIE_PAGE}${id}`}
         >
           {title}
         </Link>
