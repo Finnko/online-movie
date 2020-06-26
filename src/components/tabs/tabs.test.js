@@ -16,29 +16,30 @@ const mock = {
   rating: 7.5,
   ratingCount: 250,
   poster: `/img/the-grand-budapest-hotel-poster.jpg`,
-  reviews: [
-    {
-      id: `1`,
-      comment: `Good comment!`,
-      rating: 8.9,
-      user: `Ozzy Osbourne`,
-      date: new Date(1583591483969),
-    },
-    {
-      id: `3`,
-      comment: `Bad comment!`,
-      rating: 1.9,
-      user: `Axl Rose`,
-      date: new Date(1783591499969),
-    },
-  ],
 };
+
+const reviewMock = [
+  {
+    id: `1`,
+    comment: `Good comment!`,
+    rating: 8.9,
+    user: `Ozzy Osbourne`,
+    date: new Date(1583591483969),
+  },
+  {
+    id: `3`,
+    comment: `Bad comment!`,
+    rating: 1.9,
+    user: `Axl Rose`,
+    date: new Date(1783591499969),
+  },
+];
 
 describe(`Tabs component render correctly`, () => {
   it(`Should Tabs component render correctly`, () => {
     const tree = renderer
       .create(
-          <Tabs movie={mock} activeItem={`Overview`} onActiveItemChange={() => {}}/>
+          <Tabs movie={mock} activeItem={`Overview`} reviews={reviewMock} onActiveItemChange={() => {}}/>
       ).toJSON();
     expect(tree).toMatchSnapshot();
   });

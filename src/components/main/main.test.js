@@ -33,22 +33,6 @@ const mock = [
     rating: 7.5,
     ratingCount: 250,
     poster: `/img/the-grand-budapest-hotel-poster.jpg`,
-    reviews: [
-      {
-        id: `1`,
-        comment: `Good comment!`,
-        rating: 8.9,
-        user: `Ozzy Osbourne`,
-        date: new Date(1583591483969),
-      },
-      {
-        id: `3`,
-        comment: `Bad comment!`,
-        rating: 1.9,
-        user: `Axl Rose`,
-        date: new Date(1783591499969),
-      },
-    ],
   }
 ];
 
@@ -60,14 +44,20 @@ const store = mockStore({
     promo,
     loading: false,
     error: false,
+  },
+  [NameSpace.APP]: {
+    activeGenre: `All genres`,
   }
 });
 
 const props = {
-  movies: mock,
+  filteredMovies: mock,
   promo,
   loading: false,
   error: false,
+  activeGenre: `All genres`,
+  genres: [`All genres`, `Crime`, `Horror`],
+  handleGenreChange: jest.fn(),
 };
 
 describe(`Main component render correctly`, () => {

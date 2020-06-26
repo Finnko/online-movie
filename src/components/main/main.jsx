@@ -3,15 +3,22 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import MoviePropType from '../../prop-types/movie';
 import {Config, ViewMode} from '../../const';
-import NameSpace from '../../store/name-space';
+import {getErrorStatus, getLoadingStatus, getPromo} from '../../store/reducers/data/selectors';
+import {getActiveGenre, getGenres, getMoviesByGenre} from '../../store/reducers/app/selectors';
+import {ActionCreator} from '../../store/actions/action-creator';
 import MoviesList from '../movies-list/movies-list.jsx';
 import Footer from '../footer/footer.jsx';
-import MoviePromo from '../movie-promo/movie-promo.jsx';
+import MovieBanner from '../movie-banner/movie-banner.jsx';
 import Loader from '../loader/loader.jsx';
 import Error from '../error/error.jsx';
+import GenresList from '../genres-list/genres-list.jsx';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
 
-const Main = ({promo, movies, loading, error}) => {
+const GenresListWrapped = withActiveItem(GenresList);
+
+const Main = ({promo, genres, filteredMovies, loading, error, activeGenre, handleGenreChange}) => {
   const {title, genre, releaseYear, poster, backgroundImage} = promo;
+
   return (
     <Fragment>
       {loading && <Loader size={Config.LOADER.MEDIUM}/>}
@@ -19,7 +26,7 @@ const Main = ({promo, movies, loading, error}) => {
       {!loading && !error &&
       <Fragment>
         <section className="movie-card">
-          <MoviePromo
+          <MovieBanner
             title={title}
             genre={genre}
             releaseYear={releaseYear}
@@ -33,40 +40,9 @@ const Main = ({promo, movies, loading, error}) => {
           <section className="catalog">
             <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-            <ul className="catalog__genres-list">
-              <li className="catalog__genres-item catalog__genres-item--active">
-                <a href="#" className="catalog__genres-link">All genres</a>
-              </li>
-              <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Comedies</a>
-              </li>
-              <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Crime</a>
-              </li>
-              <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Documentary</a>
-              </li>
-              <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Dramas</a>
-              </li>
-              <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Horror</a>
-              </li>
-              <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Kids & Family</a>
-              </li>
-              <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Romance</a>
-              </li>
-              <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Sci-Fi</a>
-              </li>
-              <li className="catalog__genres-item">
-                <a href="#" className="catalog__genres-link">Thrillers</a>
-              </li>
-            </ul>
+            <GenresListWrapped activeItem={activeGenre} genres={genres} onGenreChange={handleGenreChange}/>
 
-            <MoviesList movies={movies} viewMode={ViewMode.MOVIE_CARD.WITH_PLAYER}/>
+            <MoviesList movies={filteredMovies} viewMode={ViewMode.MOVIE_CARD.WITH_PLAYER}/>
 
             <div className="catalog__more">
               <button className="catalog__button" type="button">Show more</button>
@@ -85,25 +61,36 @@ const Main = ({promo, movies, loading, error}) => {
 
 Main.propTypes = {
   promo: PropTypes.shape({
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string,
     genre: PropTypes.string.isRequired,
     releaseYear: PropTypes.number.isRequired,
     poster: PropTypes.string.isRequired,
     backgroundImage: PropTypes.string.isRequired,
   }).isRequired,
-  movies: PropTypes.arrayOf(MoviePropType).isRequired,
+  filteredMovies: PropTypes.arrayOf(MoviePropType).isRequired,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
+  activeGenre: PropTypes.string.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+  handleGenreChange: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
   return {
-    movies: state[NameSpace.DATA].movies,
-    loading: state[NameSpace.DATA].loading,
-    error: state[NameSpace.DATA].error,
-    promo: state[NameSpace.DATA].promo,
+    filteredMovies: getMoviesByGenre(state),
+    loading: getLoadingStatus(state),
+    error: getErrorStatus(state),
+    promo: getPromo(state),
+    activeGenre: getActiveGenre(state),
+    genres: getGenres(state),
   };
 };
 
+const mapDispatchToProps = (dispatch) => ({
+  handleGenreChange(genre) {
+    dispatch(ActionCreator.changeActiveGenre(genre));
+  }
+});
+
 export {Main};
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

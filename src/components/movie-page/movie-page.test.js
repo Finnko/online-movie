@@ -2,7 +2,10 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {createMemoryHistory} from 'history';
 import {Router} from 'react-router-dom';
-import MoviePage from './movie-page';
+import configureStore from 'redux-mock-store';
+import NameSpace from '../../store/name-space';
+import {MoviePage} from './movie-page';
+import {Provider} from 'react-redux';
 
 const mock = [
   {
@@ -20,23 +23,24 @@ const mock = [
     rating: 7.5,
     ratingCount: 250,
     poster: `/img/the-grand-budapest-hotel-poster.jpg`,
-    reviews: [
-      {
-        id: `1`,
-        comment: `Good comment!`,
-        rating: 8.9,
-        user: `Ozzy Osbourne`,
-        date: new Date(1583591483969),
-      },
-      {
-        id: `3`,
-        comment: `Bad comment!`,
-        rating: 1.9,
-        user: `Axl Rose`,
-        date: new Date(1783591499969),
-      },
-    ],
   }
+];
+
+const reviewsMock = [
+  {
+    id: `1`,
+    comment: `Good comment!`,
+    rating: 8.9,
+    user: `Ozzy Osbourne`,
+    date: new Date(1583591483969),
+  },
+  {
+    id: `3`,
+    comment: `Bad comment!`,
+    rating: 1.9,
+    user: `Axl Rose`,
+    date: new Date(1783591499969),
+  },
 ];
 
 const match = {
@@ -45,15 +49,26 @@ const match = {
   }
 };
 
+const mockStore = configureStore([]);
+
+const store = mockStore({
+  [NameSpace.DATA]: {
+    movies: mock,
+    reviews: reviewsMock,
+  }
+});
+
 describe(`MoviePage component render correctly`, () => {
   it(`Should MoviePage component render correctly`, () => {
     const history = createMemoryHistory();
 
     const tree = renderer
       .create(
-          <Router history={history}>
-            <MoviePage movies={mock} match={match}/>
-          </Router>
+          <Provider store={store}>
+            <Router history={history}>
+              <MoviePage movies={mock} match={match} reviews={reviewsMock}/>
+            </Router>
+          </Provider>
       ).toJSON();
 
     expect(tree).toMatchSnapshot();

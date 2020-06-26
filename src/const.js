@@ -17,7 +17,8 @@ const Config = {
   LOADER: {
     SMALL: `small`,
     MEDIUM: `medium`,
-  }
+  },
+  DEFAULT_FILTER: `All genres`,
 };
 
 const PathName = {
