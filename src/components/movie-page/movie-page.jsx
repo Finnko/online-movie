@@ -1,9 +1,12 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
 import {getMovieById, getSimilarMovies} from '../../utils/common';
 import {Config, PathName, TabName, ViewMode} from '../../const';
 import MoviePropType from '../../prop-types/movie';
+import ReviewPropType from '../../prop-types/review';
+import NameSpace from '../../store/name-space';
 import MoviePromo from '../movie-promo/movie-promo.jsx';
 import MoviesList from '../movies-list/movies-list.jsx';
 import Tabs from '../tabs/tabs.jsx';
@@ -12,7 +15,7 @@ import withActiveItem from '../../hocs/with-active-item/with-active-item';
 
 const TabsWrapped = withActiveItem(Tabs);
 
-const MoviePage = ({movies, match}) => {
+const MoviePage = ({movies, match, reviews}) => {
   const movieId = match.params.id;
   const currentMovie = getMovieById(movies, movieId);
 
@@ -44,7 +47,7 @@ const MoviePage = ({movies, match}) => {
               <img src={poster} alt={`${title} poster`} width="218" height="327"/>
             </div>
 
-            <TabsWrapped activeItem={TabName.OVERVIEW} movie={currentMovie}/>
+            <TabsWrapped activeItem={TabName.OVERVIEW} movie={currentMovie} reviews={reviews}/>
           </div>
         </div>
       </section>
@@ -65,6 +68,15 @@ const MoviePage = ({movies, match}) => {
 MoviePage.propTypes = {
   movies: PropTypes.arrayOf(MoviePropType).isRequired,
   match: PropTypes.object.isRequired,
+  reviews: PropTypes.arrayOf(ReviewPropType).isRequired,
 };
 
-export default MoviePage;
+const mapStateToProps = (state) => {
+  return {
+    movies: state[NameSpace.DATA].movies,
+    reviews: state[NameSpace.DATA].reviews,
+  };
+};
+
+export {MoviePage};
+export default connect(mapStateToProps)(MoviePage);

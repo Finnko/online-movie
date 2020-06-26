@@ -1,5 +1,5 @@
 import nanoid from 'nanoid';
-import {getRandomArrayNumber, getRandomDate, getRandomRating} from '../utils/common';
+import {getRandomArrayNumber, getRandomDate, getRandomLengthArray, getRandomRating} from '../utils/common';
 
 const ID_PREFIX = `id_`;
 const REVIEWS_COUNT = 12;
@@ -34,6 +34,6 @@ const generateReview = () => {
   };
 };
 
-const reviewMocks = Array(REVIEWS_COUNT).fill(``).map(generateReview);
+const reviewMocks = getRandomLengthArray(Array(REVIEWS_COUNT).fill(``).map(generateReview));
 
 export {reviewMocks};

@@ -61,7 +61,7 @@ const Main = ({promo, movies, loading, error}) => {
 
 Main.propTypes = {
   promo: PropTypes.shape({
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string,
     genre: PropTypes.string.isRequired,
     releaseYear: PropTypes.number.isRequired,
     poster: PropTypes.string.isRequired,
