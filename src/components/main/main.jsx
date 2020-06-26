@@ -8,7 +8,7 @@ import {getActiveGenre, getGenres, getMoviesByGenre} from '../../store/reducers/
 import {ActionCreator} from '../../store/actions/action-creator';
 import MoviesList from '../movies-list/movies-list.jsx';
 import Footer from '../footer/footer.jsx';
-import MoviePromo from '../movie-promo/movie-promo.jsx';
+import MovieBanner from '../movie-banner/movie-banner.jsx';
 import Loader from '../loader/loader.jsx';
 import Error from '../error/error.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
@@ -26,7 +26,7 @@ const Main = ({promo, genres, filteredMovies, loading, error, activeGenre, handl
       {!loading && !error &&
       <Fragment>
         <section className="movie-card">
-          <MoviePromo
+          <MovieBanner
             title={title}
             genre={genre}
             releaseYear={releaseYear}

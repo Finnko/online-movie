@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {ViewMode} from '../../const';
 import Header from '../header/header.jsx';
 
-const MoviePromo = ({title, genre, releaseYear, backgroundImage, poster, viewMode}) => {
+const MovieBanner = ({title, genre, releaseYear, backgroundImage, poster, viewMode}) => {
   const isMainView = viewMode === ViewMode.PROMO.MAIN;
 
   return (
@@ -52,7 +52,7 @@ const MoviePromo = ({title, genre, releaseYear, backgroundImage, poster, viewMod
   );
 };
 
-MoviePromo.propTypes = {
+MovieBanner.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   releaseYear: PropTypes.number.isRequired,
@@ -62,4 +62,4 @@ MoviePromo.propTypes = {
 };
 
 
-export default MoviePromo;
+export default MovieBanner;

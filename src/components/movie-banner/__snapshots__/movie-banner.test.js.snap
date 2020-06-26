@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MoviePromo component render correctly Should MoviePromo component render correctly with main view 1`] = `
+exports[`MovieBanner component render correctly Should MovieBanner component render correctly with main view 1`] = `
 Array [
   <div
     className="movie-card__bg"

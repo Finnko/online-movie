@@ -44,14 +44,20 @@ const store = mockStore({
     promo,
     loading: false,
     error: false,
+  },
+  [NameSpace.APP]: {
+    activeGenre: `All genres`,
   }
 });
 
 const props = {
-  movies: mock,
+  filteredMovies: mock,
   promo,
   loading: false,
   error: false,
+  activeGenre: `All genres`,
+  genres: [`All genres`, `Crime`, `Horror`],
+  handleGenreChange: jest.fn(),
 };
 
 describe(`Main component render correctly`, () => {

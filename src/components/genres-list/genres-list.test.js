@@ -5,6 +5,7 @@ import GenresList from './genres-list';
 const props = {
   activeItem: `All genres`,
   onActiveItemChange: jest.fn(),
+  onGenreChange: jest.fn(),
   genres: [`All genres`, `Crime`, `Horror`],
 };
 

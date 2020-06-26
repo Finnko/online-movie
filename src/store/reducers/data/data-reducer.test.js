@@ -16,6 +16,7 @@ const mockPromo = {
   backgroundImage: `img/bg-the-grand-budapest-hotel.jpg`,
   poster: `img/the-grand-budapest-hotel-poster.jpg`,
 };
+
 const mockMovies = [
   {
     id: `1`,

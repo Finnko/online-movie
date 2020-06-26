@@ -12,6 +12,7 @@ const promo = {
   backgroundImage: `img/bg-the-grand-budapest-hotel.jpg`,
   poster: `img/the-grand-budapest-hotel-poster.jpg`,
 };
+
 const mock = [
   {
     id: `1`,
@@ -41,6 +42,9 @@ const store = mockStore({
     promo,
     loading: false,
     error: false,
+  },
+  [NameSpace.APP]: {
+    activeGenre: `All genres`,
   }
 });
 
@@ -49,9 +53,7 @@ describe(`App component render correctly`, () => {
     const tree = renderer
       .create(
           <Provider store={store}>
-            <App
-              movies={mock}
-            />
+            <App />
           </Provider>, {
             createNodeMock: () => {
               return {};
