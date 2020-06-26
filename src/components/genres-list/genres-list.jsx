@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const GenresList = ({genres, /* from hoc */ activeItem, onActiveItemChange}) => {
+const GenresList = ({genres, onGenreChange, /* from hoc */ activeItem, onActiveItemChange}) => {
   return (
     <ul className="catalog__genres-list">
       {genres.map((genre, index) => {
@@ -18,6 +18,7 @@ const GenresList = ({genres, /* from hoc */ activeItem, onActiveItemChange}) => 
               onClick={(evt) => {
                 evt.preventDefault();
                 onActiveItemChange(genre);
+                onGenreChange(genre);
               }}
             >
               {genre}
@@ -33,6 +34,7 @@ GenresList.propTypes = {
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   activeItem: PropTypes.string.isRequired,
   onActiveItemChange: PropTypes.func.isRequired,
+  onGenreChange: PropTypes.func.isRequired,
 };
 
 export default GenresList;

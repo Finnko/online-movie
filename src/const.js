@@ -18,7 +18,7 @@ const Config = {
     SMALL: `small`,
     MEDIUM: `medium`,
   },
-  DEFAULT_SORTING: `All genres`,
+  DEFAULT_FILTER: `All genres`,
 };
 
 const PathName = {

@@ -15,6 +15,10 @@ const ActionCreator = {
   fetchMoviesDataError: () => ({
     type: actionTypes.FETCH_MOVIES_DATA_ERROR,
   }),
+  changeActiveGenre: (genre) => ({
+    type: actionTypes.CHANGE_ACTIVE_GENRE,
+    payload: genre,
+  }),
 };
 
 export {ActionCreator};

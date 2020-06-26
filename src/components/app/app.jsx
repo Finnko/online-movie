@@ -1,13 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {Router, Route, Switch} from 'react-router-dom';
 import history from '../../history';
-import MoviePropType from '../../prop-types/movie';
 import {PathName} from '../../const';
 import Main from '../main/main.jsx';
 import MoviePage from '../movie-page/movie-page.jsx';
 
-const App = ({movies}) => {
+const App = () => {
   return (
     <Router history={history}>
       <Switch>
@@ -16,7 +14,7 @@ const App = ({movies}) => {
         </Route>
         <Route path={`${PathName.MOVIE_PAGE}:id`}>
           {({match}) => (
-            <MoviePage movies={movies} match={match}/>
+            <MoviePage match={match}/>
           )}
         </Route>
       </Switch>
@@ -24,8 +22,6 @@ const App = ({movies}) => {
   );
 };
 
-App.propTypes = {
-  movies: PropTypes.arrayOf(MoviePropType).isRequired,
-};
+App.propTypes = {};
 
 export default App;

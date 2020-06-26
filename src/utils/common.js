@@ -46,7 +46,7 @@ const getSimilarMovies = (movies, id, genre) => {
 };
 
 const getMovieGenres = (movies) => {
-  const temp = [Config.DEFAULT_SORTING, ...movies.map((movie) => movie.genre)];
+  const temp = [Config.DEFAULT_FILTER, ...movies.map((movie) => movie.genre)];
 
   return Array.from(new Set(temp));
 };
