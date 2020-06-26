@@ -11,7 +11,7 @@ const getCitiesList = (state) => state[NameSpace.DATA].cities;
 
 const getActiveSortType = (state) => state[NameSpace.DATA].sortType;
 
-const getGenres = createSelector(
+const getMoviesByGenre = createSelector(
   [getCurrentCity, getActiveSortType, getOffers],
   (activeCity, activeSortType, offers) => {
     const filteredOffers = offers.filter((offer) => offer.city.name === activeCity.name);

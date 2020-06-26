@@ -6,6 +6,7 @@ const initialState = {
   loading: false,
   movies: [],
   promo: {},
+  reviews: [],
 };
 
 const mockPromo = {
@@ -31,23 +32,24 @@ const mockMovies = [
     rating: 7.5,
     ratingCount: 250,
     poster: `/img/the-grand-budapest-hotel-poster.jpg`,
-    reviews: [
-      {
-        id: `1`,
-        comment: `Good comment!`,
-        rating: 8.9,
-        user: `Ozzy Osbourne`,
-        date: new Date(1583591483969),
-      },
-      {
-        id: `3`,
-        comment: `Bad comment!`,
-        rating: 1.9,
-        user: `Axl Rose`,
-        date: new Date(1783591499969),
-      },
-    ],
   }
+];
+
+const mockReviews = [
+  {
+    id: `1`,
+    comment: `Good comment!`,
+    rating: 8.9,
+    user: `Ozzy Osbourne`,
+    date: new Date(1583591483969),
+  },
+  {
+    id: `3`,
+    comment: `Bad comment!`,
+    rating: 1.9,
+    user: `Axl Rose`,
+    date: new Date(1783591499969),
+  },
 ];
 
 describe(`Data reducer works correctly`, () => {
@@ -63,6 +65,7 @@ describe(`Data reducer works correctly`, () => {
       loading: true,
       movies: [],
       promo: {},
+      reviews: [],
     });
   });
 
@@ -74,6 +77,7 @@ describe(`Data reducer works correctly`, () => {
       loading: false,
       movies: [],
       promo: {},
+      reviews: [],
     });
   });
 
@@ -82,13 +86,15 @@ describe(`Data reducer works correctly`, () => {
       type: actionTypes.FETCH_MOVIES_DATA_SUCCESS,
       payload: {
         movies: mockMovies,
-        promo: mockPromo
+        promo: mockPromo,
+        reviews: mockReviews,
       }
     })).toEqual({
       error: false,
       loading: false,
       movies: mockMovies,
       promo: mockPromo,
+      reviews: mockReviews,
     });
   });
 
