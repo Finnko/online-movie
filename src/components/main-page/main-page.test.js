@@ -5,7 +5,7 @@ import {Router} from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import NameSpace from '../../store/name-space';
 import {Provider} from 'react-redux';
-import {Main} from './main';
+import {MainPage} from './main-page';
 
 const promo = {
   title: ``,
@@ -60,15 +60,15 @@ const props = {
   handleGenreChange: jest.fn(),
 };
 
-describe(`Main component render correctly`, () => {
-  it(`Should Main component render correctly`, () => {
+describe(`MainPage component render correctly`, () => {
+  it(`Should MainPage component render correctly`, () => {
     const history = createMemoryHistory();
 
     const tree = renderer
       .create(
           <Provider store={store}>
             <Router history={history}>
-              <Main {...props}/>
+              <MainPage {...props}/>
             </Router>
           </Provider>, {
             createNodeMock: () => {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main component render correctly Should Main component render correctly 1`] = `
+exports[`MainPage component render correctly Should MainPage component render correctly 1`] = `
 Array [
   <section
     className="movie-card"
@@ -83,7 +83,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            
+
           </h2>
           <p
             className="movie-card__meta"
