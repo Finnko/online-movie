@@ -3,6 +3,7 @@ import appReducer from './app-reducer';
 
 const initialState = {
   activeGenre: `All genres`,
+  moviesRenderNumber: 8,
 };
 
 
@@ -17,6 +18,26 @@ describe(`App reducer works correctly`, () => {
       payload: `Crime`,
     })).toEqual({
       activeGenre: `Crime`,
+      moviesRenderNumber: 8,
+    });
+  });
+
+  it(`App reducer should change movies render limit`, () => {
+    expect(appReducer(initialState, {
+      type: actionTypes.CHANGE_MOVIES_LIMIT,
+      payload: 8,
+    })).toEqual({
+      activeGenre: `All genres`,
+      moviesRenderNumber: 16,
+    });
+  });
+
+  it(`App reducer should reset movies render limit`, () => {
+    expect(appReducer(initialState, {
+      type: actionTypes.RESET_MOVIES_LIMIT,
+    })).toEqual({
+      activeGenre: `All genres`,
+      moviesRenderNumber: 8,
     });
   });
 });

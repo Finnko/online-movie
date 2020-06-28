@@ -19,7 +19,7 @@ const MovieReviews = ({reviews}) => {
         {renderReviews(firstColumn)}
       </div>
       <div className="movie-card__reviews-col">
-        {secondColumn.length && renderReviews(secondColumn)}
+        {secondColumn.length > 0 && renderReviews(secondColumn)}
       </div>
     </div>
   );

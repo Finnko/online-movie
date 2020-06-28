@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Main component render correctly Should Main component render correctly 1`] = `
+exports[`MainPage component render correctly Should MainPage component render correctly 1`] = `
 Array [
   <section
     className="movie-card"
@@ -174,18 +174,7 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            Crime
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item "
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-            onClick={[Function]}
-          >
-            Horror
+            Drama
           </a>
         </li>
       </ul>
@@ -197,17 +186,23 @@ Array [
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          <div
-            className="small-movie-card__image"
+          <a
+            className="small-movie-card__link"
+            href="/movie/1"
+            onClick={[Function]}
           >
-            <video
-              height="175"
-              muted={true}
-              poster="img/bohemian-rhapsody.jpg"
-              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-              width="100%"
-            />
-          </div>
+            <div
+              className="small-movie-card__image"
+            >
+              <video
+                height="175"
+                muted={true}
+                poster="img/bohemian-rhapsody.jpg"
+                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+                width="100%"
+              />
+            </div>
+          </a>
           <h3
             className="small-movie-card__title"
           >
@@ -226,6 +221,7 @@ Array [
       >
         <button
           className="catalog__button"
+          onClick={[Function]}
           type="button"
         >
           Show more

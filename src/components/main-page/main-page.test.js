@@ -5,9 +5,9 @@ import {Router} from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import NameSpace from '../../store/name-space';
 import {Provider} from 'react-redux';
-import {Main} from './main';
+import {MainPage} from './main-page';
 
-const promo = {
+const promoMock = {
   title: ``,
   genre: `Comedy`,
   releaseYear: 2014,
@@ -41,34 +41,32 @@ const mockStore = configureStore([]);
 const store = mockStore({
   [NameSpace.DATA]: {
     movies: mock,
-    promo,
+    promo: promoMock,
     loading: false,
     error: false,
   },
   [NameSpace.APP]: {
     activeGenre: `All genres`,
+    renderLimit: 8,
   }
 });
 
 const props = {
-  filteredMovies: mock,
-  promo,
+  promo: promoMock,
   loading: false,
   error: false,
-  activeGenre: `All genres`,
-  genres: [`All genres`, `Crime`, `Horror`],
-  handleGenreChange: jest.fn(),
+  renderLimit: 8,
 };
 
-describe(`Main component render correctly`, () => {
-  it(`Should Main component render correctly`, () => {
+describe(`MainPage component render correctly`, () => {
+  it(`Should MainPage component render correctly`, () => {
     const history = createMemoryHistory();
 
     const tree = renderer
       .create(
           <Provider store={store}>
             <Router history={history}>
-              <Main {...props}/>
+              <MainPage {...props}/>
             </Router>
           </Provider>, {
             createNodeMock: () => {

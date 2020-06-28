@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 const GenresList = ({genres, onGenreChange, /* from hoc */ activeItem, onActiveItemChange}) => {
   return (
     <ul className="catalog__genres-list">
-      {genres.map((genre, index) => {
+      {genres.map((genre) => {
         const isActive = genre === activeItem;
 
         return (
           <li
             className={`catalog__genres-item ${isActive ? `catalog__genres-item--active` : ``}`}
-            key={genre + index}
+            key={genre}
           >
             <a
               href="#"

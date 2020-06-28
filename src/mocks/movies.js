@@ -1,8 +1,9 @@
 import nanoid from 'nanoid';
 import {getRandomLengthArray, getRandomArrayNumber, getRandomInRange, getRandomRating} from '../utils/common';
+import {Config} from '../const';
 
 const ID_PREFIX = `id_`;
-const MOVIES_NUMBER = 8;
+const UMIQUE_MOVIES_NUMBER = 8;
 const MIN_RATINGS_NUMBER = 1;
 const MAX_RATINGS_NUMBER = 1000;
 const MIN_RUNTIME = 60;
@@ -60,7 +61,7 @@ const MOVIE_VIDEOS = [
   `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 ];
 
-const RELEASE_YEARS = Array.from({length: MOVIES_NUMBER}).fill(2012).map((x, i) => x + i);
+const RELEASE_YEARS = Array.from({length: Config.MOVIES_NUMBER_TO_SHOW}).fill(2004).map((x, i) => x + i);
 
 const DIRECTORS = [`Wes Anderson`, `Christopher Nolan`, `Stiven Spilberg`];
 
@@ -89,7 +90,7 @@ const DESCRIPTION = `In the 1930s, the Grand Budapest Hotel is a popular Europea
 `.split(`. `);
 
 const generateMovie = () => {
-  const idx = Math.floor(Math.random() * (MOVIES_NUMBER - 1));
+  const idx = Math.floor(Math.random() * (UMIQUE_MOVIES_NUMBER - 1));
 
   return {
     id: ID_PREFIX + nanoid(10),
@@ -109,6 +110,6 @@ const generateMovie = () => {
   };
 };
 
-const movieMocks = Array(MOVIES_NUMBER).fill(``).map(generateMovie);
+const movieMocks = Array(Config.MOVIES_NUMBER_TO_SHOW).fill(``).map(generateMovie);
 
 export {movieMocks, promoMovieMock};
