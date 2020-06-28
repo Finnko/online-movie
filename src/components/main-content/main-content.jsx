@@ -5,7 +5,6 @@ import MoviePropType from '../../prop-types/movie';
 import {Config, ViewMode} from '../../const';
 import {ActionCreator} from '../../store/actions/action-creator';
 import {getActiveGenre, getGenres, getMoviesByGenre, getMoviesRenderLimit} from '../../store/reducers/app/selectors';
-import {getErrorStatus, getLoadingStatus, getPromo} from '../../store/reducers/data/selectors';
 import MoviesList from '../movies-list/movies-list.jsx';
 import ShowMore from '../show-more/show-more.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
@@ -40,7 +39,7 @@ MainContent.propTypes = {
   filteredMovies: PropTypes.arrayOf(MoviePropType).isRequired,
   activeGenre: PropTypes.string.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  renderLimit: PropTypes.string.isRequired,
+  renderLimit: PropTypes.number,
   handleGenreChange: PropTypes.func.isRequired,
   handleShowMoreClick: PropTypes.func.isRequired,
 };
@@ -48,9 +47,6 @@ MainContent.propTypes = {
 const mapStateToProps = (state) => {
   return {
     filteredMovies: getMoviesByGenre(state),
-    loading: getLoadingStatus(state),
-    error: getErrorStatus(state),
-    promo: getPromo(state),
     activeGenre: getActiveGenre(state),
     genres: getGenres(state),
     renderLimit: getMoviesRenderLimit(state),
@@ -60,6 +56,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   handleGenreChange(genre) {
     dispatch(ActionCreator.changeActiveGenre(genre));
+    dispatch(ActionCreator.resetMoviesLimit());
   },
   handleShowMoreClick(offset) {
     dispatch(ActionCreator.changeMoviesLimit(offset));

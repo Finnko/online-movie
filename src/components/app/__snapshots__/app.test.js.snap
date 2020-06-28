@@ -186,17 +186,23 @@ Array [
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          <div
-            className="small-movie-card__image"
+          <a
+            className="small-movie-card__link"
+            href="/movie/1"
+            onClick={[Function]}
           >
-            <video
-              height="175"
-              muted={true}
-              poster="img/bohemian-rhapsody.jpg"
-              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-              width="100%"
-            />
-          </div>
+            <div
+              className="small-movie-card__image"
+            >
+              <video
+                height="175"
+                muted={true}
+                poster="img/bohemian-rhapsody.jpg"
+                src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+                width="100%"
+              />
+            </div>
+          </a>
           <h3
             className="small-movie-card__title"
           >
@@ -215,6 +221,7 @@ Array [
       >
         <button
           className="catalog__button"
+          onClick={[Function]}
           type="button"
         >
           Show more

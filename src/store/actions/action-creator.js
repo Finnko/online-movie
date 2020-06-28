@@ -23,6 +23,9 @@ const ActionCreator = {
     type: actionTypes.CHANGE_MOVIES_LIMIT,
     payload: count,
   }),
+  resetMoviesLimit: () => ({
+    type: actionTypes.RESET_MOVIES_LIMIT,
+  })
 };
 
 export {ActionCreator};

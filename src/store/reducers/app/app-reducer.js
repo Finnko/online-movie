@@ -19,6 +19,10 @@ export default function appReducer(state = initialState, action) {
       return extend(state, {
         moviesRenderNumber: state.moviesRenderNumber + payload,
       });
+    case actionTypes.RESET_MOVIES_LIMIT:
+      return extend(state, {
+        moviesRenderNumber: Config.MOVIES_NUMBER_LIMIT,
+      });
   }
 
   return state;
