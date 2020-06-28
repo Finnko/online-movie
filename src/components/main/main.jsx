@@ -12,11 +12,21 @@ import MovieBanner from '../movie-banner/movie-banner.jsx';
 import Loader from '../loader/loader.jsx';
 import Error from '../error/error.jsx';
 import GenresList from '../genres-list/genres-list.jsx';
+import ShowMore from '../show-more/show-more.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
 
 const GenresListWrapped = withActiveItem(GenresList);
 
-const Main = ({promo, genres, filteredMovies, loading, error, activeGenre, handleGenreChange}) => {
+const Main = ({
+  promo,
+  genres,
+  filteredMovies,
+  loading,
+  error,
+  activeGenre,
+  handleGenreChange,
+  handleShowMoreClick
+}) => {
   const {title, genre, releaseYear, poster, backgroundImage} = promo;
 
   return (
@@ -44,9 +54,7 @@ const Main = ({promo, genres, filteredMovies, loading, error, activeGenre, handl
 
             <MoviesList movies={filteredMovies} viewMode={ViewMode.MOVIE_CARD.WITH_PLAYER}/>
 
-            <div className="catalog__more">
-              <button className="catalog__button" type="button">Show more</button>
-            </div>
+            <ShowMore offset={Config.MOVIES_NUMBER_OFFSET} onButtonClick={handleShowMoreClick}/>
           </section>
 
           <Footer/>
@@ -54,7 +62,7 @@ const Main = ({promo, genres, filteredMovies, loading, error, activeGenre, handl
       </Fragment>
       }
 
-      {!loading && error && <Error error={Config.ERRORS.FETCH_DATA} />}
+      {!loading && error && <Error error={Config.ERRORS.FETCH_DATA}/>}
     </Fragment>
   );
 };
@@ -73,6 +81,7 @@ Main.propTypes = {
   activeGenre: PropTypes.string.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   handleGenreChange: PropTypes.func.isRequired,
+  handleShowMoreClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -89,6 +98,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   handleGenreChange(genre) {
     dispatch(ActionCreator.changeActiveGenre(genre));
+  },
+  handleShowMoreClick(offset) {
+    dispatch(ActionCreator.changeMoviesLimit(offset));
   }
 });
 

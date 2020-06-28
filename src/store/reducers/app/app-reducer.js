@@ -4,6 +4,7 @@ import {Config} from '../../../const';
 
 const initialState = {
   activeGenre: Config.DEFAULT_FILTER,
+  moviesRenderNumber: Config.MOVIES_NUMBER_LIMIT,
 };
 
 export default function appReducer(state = initialState, action) {
@@ -13,6 +14,10 @@ export default function appReducer(state = initialState, action) {
     case actionTypes.CHANGE_ACTIVE_GENRE:
       return extend(state, {
         activeGenre: payload,
+      });
+    case actionTypes.CHANGE_MOVIES_LIMIT:
+      return extend(state, {
+        moviesRenderNumber: state.moviesRenderNumber + payload,
       });
   }
 

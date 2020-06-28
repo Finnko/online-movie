@@ -19,6 +19,10 @@ const ActionCreator = {
     type: actionTypes.CHANGE_ACTIVE_GENRE,
     payload: genre,
   }),
+  changeMoviesLimit: (count) => ({
+    type: actionTypes.CHANGE_MOVIES_LIMIT,
+    payload: count,
+  }),
 };
 
 export {ActionCreator};
