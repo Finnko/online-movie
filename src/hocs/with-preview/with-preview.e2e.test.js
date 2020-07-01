@@ -32,7 +32,7 @@ describe(`Tests withPreview functionality`, () => {
           renderPlayer={() => {}}
         />);
 
-    expect(wrapper.state().activeId).toEqual(null);
+    expect(wrapper.state().activeId).toBe(null);
   });
 
   it(`withActiveItem should change active id`, () => {
@@ -44,14 +44,25 @@ describe(`Tests withPreview functionality`, () => {
           renderPlayer={() => {}}
         />);
 
-    wrapper.props().onMovieMouseEnter(`1`);
+
     jest.useFakeTimers();
-
-    // setTimeout(() => {
-    //   expect(wrapper.props().onMovieMouseEnter).toBeInstanceOf(Function);
-    //   expect(wrapper.state().activeId).toBe(`1`);
-    // }, 1500);
-
+    wrapper.props().onMovieMouseEnter(`1`);
     jest.runAllTimers();
+
+    expect(wrapper.state().activeId).toBe(`1`);
+  });
+
+  it(`withActiveItem should change active id on mouseleave`, () => {
+    const wrapper = shallow(
+        <MockComponentWrapped
+          {...props}
+          onMovieMouseEnter={onMovieMouseEnter}
+          onMovieMouseLeave={onMovieMouseLeave}
+          renderPlayer={() => {}}
+        />);
+
+    wrapper.props().onMovieMouseLeave();
+
+    expect(wrapper.state().activeId).toBe(null);
   });
 });
