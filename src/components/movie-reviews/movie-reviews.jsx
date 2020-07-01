@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReviewPropType from '../../prop-types/review';
-import MovieReviewsItem from './movie-reviews-item.jsx';
+import MovieReviewsItem from '../movie-reviews-item/movie-reviews-item.jsx';
 
 const MovieReviews = ({reviews}) => {
   const middle = Math.ceil(reviews.length / 2);
