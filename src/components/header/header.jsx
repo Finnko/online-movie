@@ -4,7 +4,6 @@ import Logo from '../logo/logo.jsx';
 import Avatar from '../avatar/avatar.jsx';
 
 const Header = ({children}) => {
-
   return (
     <header className={`page-header ${children ? `` : `movie-card__head`}`}>
       <Logo />

@@ -14,11 +14,15 @@ const Config = {
     10: `Awesome`
   },
   COMMENT_RATING_MAP: {
-    1: `1`,
-    2: `2`,
-    3: `3`,
-    4: `4`,
-    5: `5`,
+    1: 1,
+    2: 2,
+    3: 3,
+    4: 4,
+    5: 5,
+  },
+  COMMENT_LENGTH: {
+    MIN: 50,
+    MAX: 400,
   },
   ERRORS: {
     FETCH_DATA: `Something went wrong, please try again.`,
