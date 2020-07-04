@@ -1,27 +1,20 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
+import Logo from '../logo/logo.jsx';
+import Avatar from '../avatar/avatar.jsx';
 
-const Header = () => {
+const Header = ({children}) => {
   return (
-    <header className="page-header movie-card__head">
-      <div className="logo">
-        <Link
-          className="logo__link"
-          to={`/`}
-        >
-          <span className="logo__letter logo__letter--1">W</span>
-          <span className="logo__letter logo__letter--2">T</span>
-          <span className="logo__letter logo__letter--3">W</span>
-        </Link>
-      </div>
-
-      <div className="user-block">
-        <div className="user-block__avatar">
-          <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-        </div>
-      </div>
+    <header className={`page-header ${children ? `` : `movie-card__head`}`}>
+      <Logo />
+      {children}
+      <Avatar />
     </header>
   );
+};
+
+Header.propTypes = {
+  children: PropTypes.node,
 };
 
 export default Header;

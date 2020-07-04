@@ -4,11 +4,11 @@ import {connect} from 'react-redux';
 import MoviePropType from '../../prop-types/movie';
 import {Config, ViewMode} from '../../const';
 import {getErrorStatus, getLoadingStatus, getPromo} from '../../store/reducers/data/selectors';
-import Footer from '../footer/footer.jsx';
-import MovieBanner from '../movie-banner/movie-banner.jsx';
-import Loader from '../loader/loader.jsx';
-import Error from '../error/error.jsx';
-import MainContent from '../main-content/main-content.jsx';
+import Footer from '../../components/footer/footer.jsx';
+import MovieBanner from '../../components/movie-banner/movie-banner.jsx';
+import Loader from '../../components/loader/loader.jsx';
+import Error from '../../components/error/error.jsx';
+import MainContent from '../../components/main-content/main-content.jsx';
 
 
 const MainPage = ({

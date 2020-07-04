@@ -1,9 +1,10 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
-import {ViewMode} from '../../const';
+import {PathName, ViewMode} from '../../const';
+import {Link} from 'react-router-dom';
 import Header from '../header/header.jsx';
 
-const MovieBanner = ({title, genre, releaseYear, backgroundImage, poster, viewMode}) => {
+const MovieBanner = ({id, title, genre, releaseYear, backgroundImage, poster, viewMode}) => {
   const isMainView = viewMode === ViewMode.PROMO.MAIN;
 
   return (
@@ -43,7 +44,14 @@ const MovieBanner = ({title, genre, releaseYear, backgroundImage, poster, viewMo
                 </svg>
                 <span>My list</span>
               </button>
-              {!isMainView && <a href="add-review.html" className="btn movie-card__button">Add review</a>}
+              {!isMainView &&
+                <Link
+                  to={`${PathName.MOVIE_PAGE}${id}${PathName.ADD_REVIEW}`}
+                  className="btn movie-card__button"
+                >
+                  Add review
+                </Link>
+              }
             </div>
           </div>
         </div>
@@ -53,6 +61,7 @@ const MovieBanner = ({title, genre, releaseYear, backgroundImage, poster, viewMo
 };
 
 MovieBanner.propTypes = {
+  id: PropTypes.string,
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   releaseYear: PropTypes.number.isRequired,

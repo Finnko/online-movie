@@ -13,6 +13,17 @@ const Config = {
     8: `Very good`,
     10: `Awesome`
   },
+  COMMENT_RATING_MAP: {
+    1: 1,
+    2: 2,
+    3: 3,
+    4: 4,
+    5: 5,
+  },
+  COMMENT_LENGTH: {
+    MIN: 50,
+    MAX: 400,
+  },
   ERRORS: {
     FETCH_DATA: `Something went wrong, please try again.`,
   },
@@ -25,7 +36,8 @@ const Config = {
 
 const PathName = {
   ROOT: `/`,
-  MOVIE_PAGE: `/movie/`,
+  MOVIE_PAGE: `/films/`,
+  ADD_REVIEW: `/review`,
 };
 
 const TabName = {

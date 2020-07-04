@@ -1,4 +1,3 @@
-import nanoid from 'nanoid';
 import {getRandomLengthArray, getRandomArrayNumber, getRandomInRange, getRandomRating} from '../utils/common';
 import {Config} from '../const';
 
@@ -58,6 +57,11 @@ const GENRES = [
 
 const MOVIE_VIDEOS = [
   `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  `https://upload.wikimedia.org/wikipedia/commons/1/19/Ziteil%2C_aerial_video.webm`,
+  `https://upload.wikimedia.org/wikipedia/commons/0/02/Germany_Falkenstein_rock_fly_around_May_2020.webm`,
+  `https://upload.wikimedia.org/wikipedia/commons/7/72/Landwasserviadukt%2C_aerial_video.webm`,
+  `https://upload.wikimedia.org/wikipedia/commons/3/3e/Around_the_Corner_%281937%29_24fps_selection.webm`,
+  `https://upload.wikimedia.org/wikipedia/commons/a/a8/Solis_Viaduct%2C_Schinschlucht_and_Solis_dam%2C_aerial_video.webm`,
   `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
 ];
 
@@ -89,11 +93,12 @@ const DESCRIPTION = `In the 1930s, the Grand Budapest Hotel is a popular Europea
    When one of Gustave's lovers dies mysteriously. Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.
 `.split(`. `);
 
+let counter = 0;
 const generateMovie = () => {
   const idx = Math.floor(Math.random() * (UMIQUE_MOVIES_NUMBER - 1));
 
   return {
-    id: ID_PREFIX + nanoid(10),
+    id: ID_PREFIX + counter++,
     title: MOVIE_TITLES[idx],
     preview: MOVIE_THUMBS[idx],
     backgroundImage: `img/bg-the-grand-budapest-hotel.jpg`,
