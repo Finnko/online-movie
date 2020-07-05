@@ -1,18 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
+function isFieldInvalid(valid, touched, shouldValidate) {
+  return !valid && shouldValidate && touched;
+}
+
 const Input = ({
   id,
   label,
   placeholder,
   name,
   value,
+  valid,
+  touched,
+  shouldValidate,
   onInputChange,
 }) => {
-
+  let isInvalid = isFieldInvalid(valid, touched, shouldValidate);
 
   return (
-    <div className="sign-in__field">
+    <div className={`sign-in__field ${isInvalid ? `sign-in__field--error` : ``}`}>
       <input
         type={name}
         id={id}
@@ -39,6 +47,9 @@ Input.propTypes = {
   placeholder: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
+  valid: PropTypes.bool.isRequired,
+  touched: PropTypes.bool.isRequired,
+  shouldValidate: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
 };
 

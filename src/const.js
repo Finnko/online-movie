@@ -41,6 +41,7 @@ const ServerError = {
 
 const END_POINT = `https://htmlacademy-react-4.appspot.com/wtw`;
 const TIMEOUT = 1000 * 5;
+const EMAIL_PATTERN = /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i;
 
 const PathName = {
   ROOT: `/`,
@@ -75,5 +76,6 @@ export {
   ViewMode,
   ServerError,
   END_POINT,
-  TIMEOUT
+  TIMEOUT,
+  EMAIL_PATTERN,
 };
