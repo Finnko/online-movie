@@ -15,7 +15,7 @@ const MovieBanner = ({id, title, genre, releaseYear, backgroundImage, poster, vi
 
       <h1 className="visually-hidden">WTW</h1>
 
-      <Header />
+      <Header className={`movie-card__head`}/>
 
       <div className="movie-card__wrap">
         <div className={isMainView ? `movie-card__info` : ``}>
