@@ -15,12 +15,6 @@ module.exports = (env) => {
     devServer: {
       contentBase: path.join(__dirname, `public`),
       publicPath: `/`,
-      proxy: {
-        '/films': {
-          target: `http://localhost:1337/`,
-          pathRewrite: {'^/films': ``},
-        },
-      },
       open: true,
       inline: true,
       port: 1337,

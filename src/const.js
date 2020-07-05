@@ -34,6 +34,14 @@ const Config = {
   DEFAULT_FILTER: `All genres`,
 };
 
+const ServerError = {
+  UNAUTHORIZED: 401,
+  BAD_REQUEST: 400,
+};
+
+const END_POINT = `https://htmlacademy-react-4.appspot.com/wtw`;
+const TIMEOUT = 1000 * 5;
+
 const PathName = {
   ROOT: `/`,
   MOVIE_PAGE: `/films/`,
@@ -62,4 +70,7 @@ export {
   PathName,
   TabName,
   ViewMode,
+  ServerError,
+  END_POINT,
+  TIMEOUT
 };
