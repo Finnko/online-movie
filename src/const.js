@@ -24,13 +24,6 @@ const Config = {
     MIN: 50,
     MAX: 400,
   },
-  ERRORS: {
-    FETCH_DATA: `Something went wrong, please try again.`,
-  },
-  LOADER: {
-    SMALL: `small`,
-    MEDIUM: `medium`,
-  },
   DEFAULT_FILTER: `All genres`,
 };
 
@@ -39,7 +32,29 @@ const ServerError = {
   BAD_REQUEST: 400,
 };
 
-const END_POINT = `https://htmlacademy-react-4.appspot.com/wtw`;
+const AuthStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
+
+const Errors = {
+  FETCH_DATA: `Something went wrong, please try again.`,
+  WRONG_EMAIL: `Please enter a valid email address`,
+  WRONG_PASSWORD: `Please enter a valid password. Minlength - `,
+};
+
+const LoaderSetup = {
+  SIZE: {
+    SMALL: `small`,
+    MEDIUM: `medium`,
+  },
+  POSITION: {
+    ABSOLUTE: `absolute`,
+    FIXED: `fixed`,
+  }
+};
+
+const END_POINT = `https://4.react.pages.academy/wtw`;
 const TIMEOUT = 1000 * 5;
 const EMAIL_PATTERN = /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i;
 
@@ -75,6 +90,9 @@ export {
   TabName,
   ViewMode,
   ServerError,
+  AuthStatus,
+  LoaderSetup,
+  Errors,
   END_POINT,
   TIMEOUT,
   EMAIL_PATTERN,

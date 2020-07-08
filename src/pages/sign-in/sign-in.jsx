@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {Operation as UserOperation} from '../../store/reducers/user/operations';
 import {validateControl} from '../../utils/validation';
 import Header from '../../components/header/header.jsx';
 import Footer from '../../components/footer/footer.jsx';
 import Input from '../../components/Input/input.jsx';
 import Loader from '../../components/loader/loader.jsx';
+import {getErrorStatus, getLoadingStatus} from '../../store/reducers/user/selectors';
+import {Errors, LoaderSetup} from '../../const';
 
 const inputNames = {
   email: `Email address`,
@@ -11,6 +16,7 @@ const inputNames = {
 };
 
 const inputs = Object.keys(inputNames);
+
 
 class SignIn extends Component {
   constructor(props) {
@@ -41,6 +47,7 @@ class SignIn extends Component {
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
   handleInputChange(evt) {
@@ -62,6 +69,16 @@ class SignIn extends Component {
     this.setState({
       formControls,
       isFormValid,
+    });
+  }
+
+  handleFormSubmit(evt) {
+    evt.preventDefault();
+
+    const {email, password} = this.state.formControls;
+    this.props.onFormSubmit({
+      email: email.value,
+      password: password.value,
     });
   }
 
@@ -87,23 +104,45 @@ class SignIn extends Component {
   }
 
   render() {
+    const {loading, error} = this.props;
+    const {email, password} = this.state.formControls;
+
     return (
       <div className="user-page">
         <Header className={`user-page__head`}/>
 
         <div className="sign-in user-page__content">
-          <form action="#" className="sign-in__form">
+          <form
+            action="#"
+            className="sign-in__form"
+            onSubmit={this.handleFormSubmit}
+          >
+            <div className="sign-in__message">
+              {!email.valid && email.touched && <p>{`${Errors.WRONG_EMAIL}`}</p>}
+              {!password.valid && password.touched && <p>{`${Errors.WRONG_PASSWORD}${password.validation.minLength}`}</p>}
+              {error && <p>We can’t recognize this email <br /> and password combination. Please try again.</p>}
+            </div>
+
             <div className="sign-in__fields">
               {this.renderInputs()}
             </div>
+
             <div className="sign-in__submit">
+
               <button
                 className="sign-in__btn"
                 type="submit"
                 disabled={!this.state.isFormValid}
               >
-                Sign in
+                {loading &&
+                  <Loader
+                    size={LoaderSetup.SIZE.SMALL}
+                    position={LoaderSetup.POSITION.ABSOLUTE}
+                  />
+                }
+                {!loading && `Sign in` }
               </button>
+
             </div>
           </form>
         </div>
@@ -114,4 +153,24 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+SignIn.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    loading: getLoadingStatus(state),
+    error: getErrorStatus(state),
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  onFormSubmit(authData) {
+    dispatch(UserOperation.login(authData));
+  }
+});
+
+export {SignIn};
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

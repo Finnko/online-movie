@@ -73,7 +73,9 @@ MoviePage.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(ownProps);
+  const {id} = ownProps.match.params;
+
+  console.log(ownProps.match.params);
 
   return {
     movies: state[NameSpace.DATA].movies,

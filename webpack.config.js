@@ -14,9 +14,8 @@ module.exports = (env) => {
     },
     devServer: {
       contentBase: path.join(__dirname, `public`),
-      publicPath: `/`,
+      inline: false,
       open: true,
-      inline: true,
       port: 1337,
       historyApiFallback: true,
     },

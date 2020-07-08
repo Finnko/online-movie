@@ -1,12 +1,14 @@
 import NameSpace from '../../name-space';
 
-const getMovies = (state) => state[NameSpace.DATA].movies;
+const NAME_SPACE = NameSpace.DATA;
 
-const getPromo = (state) => state[NameSpace.DATA].promo;
+const getMovies = (state) => state[NAME_SPACE].movies;
 
-const getLoadingStatus = (state) => state[NameSpace.DATA].loading;
+const getPromo = (state) => state[NAME_SPACE].promo;
 
-const getErrorStatus = (state) => state[NameSpace.DATA].error;
+const getLoadingStatus = (state) => state[NAME_SPACE].loading;
+
+const getErrorStatus = (state) => state[NAME_SPACE].error;
 
 
 export {getMovies, getPromo, getLoadingStatus, getErrorStatus};
