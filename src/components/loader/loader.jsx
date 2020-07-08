@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Loader = ({size}) => {
+const Loader = ({size, position}) => {
   return (
-    <div className="loader-wrapper">
+    <div className="loader-wrapper" style={{position}}>
       <div className={`loader ${size}`}/>
     </div>
   );
@@ -11,6 +11,7 @@ const Loader = ({size}) => {
 
 Loader.propTypes = {
   size: PropTypes.string.isRequired,
+  position: PropTypes.string.isRequired,
 };
 
 export default Loader;

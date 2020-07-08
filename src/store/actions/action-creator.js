@@ -25,7 +25,24 @@ const ActionCreator = {
   }),
   resetMoviesLimit: () => ({
     type: actionTypes.RESET_MOVIES_LIMIT,
-  })
+  }),
+  setAuth: (status) => ({
+    type: actionTypes.SET_AUTH,
+    payload: status,
+  }),
+  changeUserData: (data) => ({
+    type: actionTypes.AUTHORIZE_USER,
+    payload: data,
+  }),
+  loginRequest: () => ({
+    type: actionTypes.LOGIN_REQUEST,
+  }),
+  loginSuccess: () => ({
+    type: actionTypes.LOGIN_SUCCESS,
+  }),
+  loginError: () => ({
+    type: actionTypes.LOGIN_ERROR,
+  }),
 };
 
 export {ActionCreator};

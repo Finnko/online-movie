@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import MoviePropType from '../../prop-types/movie';
-import {Config, ViewMode} from '../../const';
+import {ViewMode, LoaderSetup, Errors} from '../../const';
 import {getErrorStatus, getLoadingStatus, getPromo} from '../../store/reducers/data/selectors';
 import Footer from '../../components/footer/footer.jsx';
 import MovieBanner from '../../components/movie-banner/movie-banner.jsx';
@@ -20,30 +20,35 @@ const MainPage = ({
 
   return (
     <Fragment>
-      {loading && <Loader size={Config.LOADER.MEDIUM}/>}
-
-      {!loading && !error &&
-      <Fragment>
-        <section className="movie-card">
-          <MovieBanner
-            title={title}
-            genre={genre}
-            releaseYear={releaseYear}
-            poster={poster}
-            backgroundImage={backgroundImage}
-            viewMode={ViewMode.PROMO.MAIN}
-          />
-        </section>
-
-        <div className="page-content">
-          <MainContent />
-
-          <Footer/>
-        </div>
-      </Fragment>
+      {loading &&
+        <Loader
+          size={LoaderSetup.SIZE.MEDIUM}
+          position={LoaderSetup.POSITION.FIXED}
+        />
       }
 
-      {!loading && error && <Error error={Config.ERRORS.FETCH_DATA}/>}
+      {!loading && !error &&
+        <Fragment>
+          <section className="movie-card">
+            <MovieBanner
+              title={title}
+              genre={genre}
+              releaseYear={releaseYear}
+              poster={poster}
+              backgroundImage={backgroundImage}
+              viewMode={ViewMode.PROMO.MAIN}
+            />
+          </section>
+
+          <div className="page-content">
+            <MainContent />
+
+            <Footer/>
+          </div>
+        </Fragment>
+      }
+
+      {!loading && error && <Error error={Errors.FETCH_DATA}/>}
     </Fragment>
   );
 };

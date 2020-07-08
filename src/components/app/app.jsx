@@ -5,6 +5,7 @@ import {PathName} from '../../const';
 import MainPage from '../../pages/main-page/main-page.jsx';
 import MoviePage from '../../pages/movie-page/movie-page.jsx';
 import AddReviewPage from '../../pages/add-review-page/add-review-page.jsx';
+import SignIn from '../../pages/sign-in/sign-in.jsx';
 
 const AddReviewPageWrapped = withRouter(AddReviewPage);
 const MoviePageWrapped = withRouter(MoviePage);
@@ -21,6 +22,9 @@ const App = () => {
         </Route>
         <Route path={`${PathName.MOVIE_PAGE}:id`}>
           <MoviePageWrapped />
+        </Route>
+        <Route path={`${PathName.SIGN_IN}`}>
+          <SignIn />
         </Route>
       </Switch>
     </Router>

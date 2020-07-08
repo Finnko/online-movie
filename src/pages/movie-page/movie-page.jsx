@@ -72,7 +72,11 @@ MoviePage.propTypes = {
   reviews: PropTypes.arrayOf(ReviewPropType).isRequired,
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+  const {id} = ownProps.match.params;
+
+  console.log(ownProps.match.params);
+
   return {
     movies: state[NameSpace.DATA].movies,
     reviews: state[NameSpace.DATA].reviews,

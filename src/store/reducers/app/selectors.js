@@ -4,10 +4,11 @@ import NameSpace from '../../name-space';
 import {getFilteredMovies} from '../../../utils/filter';
 import {getMovieGenres} from '../../../utils/common';
 
+const NAME_SPACE = NameSpace.APP;
 
-const getActiveGenre = (state) => state[NameSpace.APP].activeGenre;
+const getActiveGenre = (state) => state[NAME_SPACE].activeGenre;
 
-const getMoviesRenderLimit = (state) => state[NameSpace.APP].moviesRenderNumber;
+const getMoviesRenderLimit = (state) => state[NAME_SPACE].moviesRenderNumber;
 
 const getGenres = createSelector(getMovies, (movies) => getMovieGenres(movies));
 
