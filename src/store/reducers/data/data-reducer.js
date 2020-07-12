@@ -6,7 +6,6 @@ const initialState = {
   error: false,
   movies: [],
   promo: {},
-  reviews: [],
 };
 
 export default function dataReducer(state = initialState, action) {
@@ -22,7 +21,6 @@ export default function dataReducer(state = initialState, action) {
         loading: false,
         movies: payload.movies,
         promo: extend(state.promo, payload.promo),
-        reviews: payload.reviews,
       });
     case actionTypes.FETCH_MOVIES_DATA_ERROR:
       return extend(state, {

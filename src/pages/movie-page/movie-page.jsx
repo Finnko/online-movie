@@ -15,8 +15,8 @@ import withActiveItem from '../../hocs/with-active-item/with-active-item';
 
 const TabsWrapped = withActiveItem(Tabs);
 
-const MoviePage = ({movies, match, reviews}) => {
-  const movieId = match.params.id;
+const MoviePage = ({movies, match}) => {
+  const movieId = parseInt(match.params.id, 10);
   const currentMovie = getMovieById(movies, movieId);
 
   if (!currentMovie) {
@@ -48,7 +48,7 @@ const MoviePage = ({movies, match, reviews}) => {
               <img src={poster} alt={`${title} poster`} width="218" height="327"/>
             </div>
 
-            <TabsWrapped activeItem={TabName.OVERVIEW} movie={currentMovie} reviews={reviews}/>
+            <TabsWrapped activeItem={TabName.OVERVIEW} movie={currentMovie}/>
           </div>
         </div>
       </section>
@@ -69,17 +69,11 @@ const MoviePage = ({movies, match, reviews}) => {
 MoviePage.propTypes = {
   movies: PropTypes.arrayOf(MoviePropType).isRequired,
   match: PropTypes.object.isRequired,
-  reviews: PropTypes.arrayOf(ReviewPropType).isRequired,
 };
 
-const mapStateToProps = (state, ownProps) => {
-  const {id} = ownProps.match.params;
-
-  console.log(ownProps.match.params);
-
+const mapStateToProps = (state) => {
   return {
     movies: state[NameSpace.DATA].movies,
-    reviews: state[NameSpace.DATA].reviews,
   };
 };
 

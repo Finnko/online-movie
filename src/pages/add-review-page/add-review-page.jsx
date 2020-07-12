@@ -1,136 +1,202 @@
-import React, {useState} from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {Redirect, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {Config, PathName} from '../../const';
+import {Config, Errors, LoaderSetup, PathName} from '../../const';
 import {getMovieById} from '../../utils/common';
 import MoviePropType from '../../prop-types/movie';
-import NameSpace from '../../store/name-space';
+import {getMovies} from '../../store/reducers/data/selectors';
+import {getErrorStatus, getLoadingStatus} from '../../store/reducers/comments/selectors';
+import {Operation as CommentOperation} from '../../store/reducers/comments/operations';
 import Header from '../../components/header/header.jsx';
 import RadioButton from '../../components/radio-button/radio-button.jsx';
 import Loader from '../../components/loader/loader.jsx';
 
-const AddReviewPage = ({movies, match}) => {
-  const [radioValue, setRadioValue] = useState(3);
-  const [comment, setComment] = useState(``);
 
-  const movieId = match.params.id;
-  const currentMovie = getMovieById(movies, movieId);
+class AddReviewPage extends PureComponent {
+  constructor(props) {
+    super(props);
 
-  if (!currentMovie) {
-    return <Redirect to={PathName.ROOT}/>;
+    this.state = {
+      isFormValid: false,
+      rating: {
+        value: `3`
+      },
+      review: {
+        value: ``,
+      },
+    };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
-  const handleRadioChange = (evt) => {
-    const {value} = evt.target;
-    setRadioValue(parseInt(value, 10));
-  };
+  handleInputChange(evt) {
+    let {value, name} = evt.target;
+    const {review} = this.state;
 
-  const handleCommentChange = (evt) => {
-    const {value} = evt.target;
-    setComment(value);
-  };
+    const isFormValid = review.value.length > Config.COMMENT_LENGTH.MIN &&
+      review.value.length < Config.COMMENT_LENGTH.MAX;
 
-  const {title, poster, backgroundImage} = currentMovie;
-  const radioGroupIds = Object.keys(Config.COMMENT_RATING_MAP);
+    this.setState((prevState) => Object.assign({}, prevState, {
+      [name]: {
+        value,
+      },
+      isFormValid,
+    }));
+  }
 
-  return (
-    <section className="movie-card movie-card--full">
-      <div className="movie-card__header">
-        <div className="movie-card__bg">
-          <img src={backgroundImage} alt={title}/>
-        </div>
+  handleFormSubmit(evt) {
+    evt.preventDefault();
+    const {movieId} = this.props;
 
-        <h1 className="visually-hidden">WTW</h1>
+    const {rating, review} = this.state;
+    this.props.onFormSubmit({
+      rating: parseInt(rating.value, 10),
+      comment: review.value,
+      id: movieId,
+    });
+  }
 
-        <Header>
-          <nav className="breadcrumbs">
-            <ul className="breadcrumbs__list">
-              <li className="breadcrumbs__item">
-                <Link
-                  className="breadcrumbs__link"
-                  to={`${PathName.MOVIE_PAGE}${movieId}`}
-                >
-                  {title}
-                </Link>
-              </li>
-              <li className="breadcrumbs__item">
-                <a className="breadcrumbs__link">
-                  Add review
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </Header>
+  render() {
+    const {currentMovie, loading, error, movieId} = this.props;
+    const {review, rating, isFormValid} = this.state;
 
-        <div className="movie-card__poster movie-card__poster--small">
-          <img
-            src={poster}
-            alt={title}
-            width="218"
-            height="327"
-          />
-        </div>
-      </div>
+    if (!currentMovie) {
+      return <Redirect to={PathName.ROOT}/>;
+    }
 
-      <div className="add-review">
-        <form action="#" className="add-review__form">
-          <div className="rating">
-            <div className="rating__stars">
-              {radioGroupIds.map((id) => (
-                <RadioButton
-                  key={id}
-                  id={`star-${id}`}
-                  groupName="rating"
-                  checked={radioValue === Config.COMMENT_RATING_MAP[id]}
-                  value={Config.COMMENT_RATING_MAP[id]}
-                  label={`Rating ${Config.COMMENT_RATING_MAP[id]}`}
-                  onRadioChange={handleRadioChange}
-                />
-              ))}
-            </div>
+    const {title, poster, backgroundImage} = currentMovie;
+    const radioGroupIds = Object.keys(Config.COMMENT_RATING_MAP);
+
+    return (
+      <section className="movie-card movie-card--full">
+        <div className="movie-card__header">
+          <div className="movie-card__bg">
+            <img src={backgroundImage} alt={title}/>
           </div>
 
-          <div className="add-review__text">
-            <textarea
-              className="add-review__textarea"
-              name="review-text"
-              id="review-text"
-              placeholder="Review text"
-              value={comment}
-              onChange={handleCommentChange}
+          <h1 className="visually-hidden">WTW</h1>
+
+          <Header>
+            <nav className="breadcrumbs">
+              <ul className="breadcrumbs__list">
+                <li className="breadcrumbs__item">
+                  <Link
+                    className="breadcrumbs__link"
+                    to={`${PathName.MOVIE_PAGE}${movieId}`}
+                  >
+                    {title}
+                  </Link>
+                </li>
+                <li className="breadcrumbs__item">
+                  <a className="breadcrumbs__link">
+                    Add review
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </Header>
+
+          <div className="movie-card__poster movie-card__poster--small">
+            <img
+              src={poster}
+              alt={title}
+              width="218"
+              height="327"
             />
+          </div>
+        </div>
 
-            <div className="add-review__submit">
-              <button
-                className="add-review__btn"
-                type="submit"
-                disabled={comment.length < Config.COMMENT_LENGTH.MIN || comment.length > Config.COMMENT_LENGTH.MAX}
-              >
-                Post
-              </button>
+        <div className="add-review">
+          <form
+            action="#"
+            className="add-review__form"
+            onSubmit={this.handleFormSubmit}
+          >
+            <div className="rating">
+              <div className="rating__stars">
+                {radioGroupIds.map((id) => (
+                  <RadioButton
+                    key={id}
+                    id={`star-${id}`}
+                    groupName="rating"
+                    checked={rating.value === Config.COMMENT_RATING_MAP[id]}
+                    value={Config.COMMENT_RATING_MAP[id]}
+                    label={`Rating ${Config.COMMENT_RATING_MAP[id]}`}
+                    disabled={loading}
+                    onRadioChange={this.handleInputChange}
+                  />
+                ))}
+              </div>
             </div>
 
-          </div>
-        </form>
-      </div>
-    </section>
-  );
-};
+            <div className="add-review__text">
+              <textarea
+                className="add-review__textarea"
+                name="review"
+                id="review"
+                placeholder="Review text"
+                value={review.value}
+                disabled={loading}
+                onChange={this.handleInputChange}
+              />
+
+              <div className="add-review__submit">
+                {loading &&
+                  <Loader
+                    position={LoaderSetup.POSITION.ABSOLUTE}
+                    size={LoaderSetup.SIZE.SMALL}
+                  />
+                }
+
+                {!loading && error &&
+                  <p>{Errors.FETCH_DATA}</p>
+                }
+
+                {!loading &&
+                  <button
+                    className="add-review__btn"
+                    type="submit"
+                    disabled={!isFormValid}
+                  >
+                    Post
+                  </button>
+                }
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    );
+  }
+}
 
 AddReviewPage.propTypes = {
-  movies: PropTypes.arrayOf(MoviePropType).isRequired,
-  match: PropTypes.object.isRequired,
+  currentMovie: MoviePropType.isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
+  movieId: PropTypes.number.isRequired,
+  onFormSubmit: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+  const {match} = ownProps;
+  const movieId = parseInt(match.params.id, 10);
+
   return {
-    movies: state[NameSpace.DATA].movies,
+    loading: getLoadingStatus(state),
+    error: getErrorStatus(state),
+    currentMovie: getMovieById(getMovies(state), movieId),
+    movieId,
   };
 };
 
-// const mapDispatchToProps = (state) => {
-// };
+const mapDispatchToProps = (dispatch) => ({
+  onFormSubmit(commentData) {
+    dispatch(CommentOperation.sendComment(commentData));
+  }
+});
 
 export {AddReviewPage};
-export default connect(mapStateToProps)(AddReviewPage);
+export default connect(mapStateToProps, mapDispatchToProps)(AddReviewPage);

@@ -4,7 +4,7 @@ import {extend} from '../../../utils/common';
 
 const initialState = {
   authStatus: AuthStatus.NO_AUTH,
-  loading: true,
+  loading: false,
   error: false,
   user: null,
 };

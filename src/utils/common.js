@@ -83,6 +83,14 @@ const renameKeys = (obj) => {
   return obj;
 };
 
+const divideReviewsIntoColumns = (arr) => {
+  const middle = Math.ceil(arr.length / 2);
+  const firstColumn = arr.slice(0, middle);
+  const secondColumn = arr.slice(middle);
+
+  return {firstColumn, secondColumn};
+};
+
 const getFormattedMovieTime = (time) => `${Math.floor(time / 60)}h ${time % 60}m`;
 
 const getFormattedDate = (date) => moment(date).format(`MMMM DD, YYYY`);
@@ -101,6 +109,7 @@ export {
   getFormattedTagDate,
   getSimilarMovies,
   getMovieGenres,
+  divideReviewsIntoColumns,
   renameKeys,
   extend
 };

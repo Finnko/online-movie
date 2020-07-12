@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Operation as UserOperation} from '../../store/reducers/user/operations';
@@ -18,7 +18,7 @@ const inputNames = {
 const inputs = Object.keys(inputNames);
 
 
-class SignIn extends Component {
+class SignIn extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -120,7 +120,7 @@ class SignIn extends Component {
             <div className="sign-in__message">
               {!email.valid && email.touched && <p>{`${Errors.WRONG_EMAIL}`}</p>}
               {!password.valid && password.touched && <p>{`${Errors.WRONG_PASSWORD}${password.validation.minLength}`}</p>}
-              {error && <p>We can’t recognize this email <br /> and password combination. Please try again.</p>}
+              {error && <p>{`${Errors.WRONG_LOGIN_DATA}`}</p>}
             </div>
 
             <div className="sign-in__fields">

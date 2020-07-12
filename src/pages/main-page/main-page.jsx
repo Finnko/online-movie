@@ -54,7 +54,7 @@ const MainPage = ({
 };
 
 MainPage.propTypes = {
-  promo: PropTypes.shape(MoviePropType),
+  promo: MoviePropType,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
 };

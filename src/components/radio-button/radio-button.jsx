@@ -33,7 +33,7 @@ RadioButton.propTypes = {
   groupName: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.string.isRequired,
   onRadioChange: PropTypes.func.isRequired,
 };
 
