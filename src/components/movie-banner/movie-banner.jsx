@@ -61,7 +61,7 @@ const MovieBanner = ({id, title, genre, releaseYear, backgroundImage, poster, vi
 };
 
 MovieBanner.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number,
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   releaseYear: PropTypes.number.isRequired,
