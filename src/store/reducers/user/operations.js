@@ -1,5 +1,7 @@
 import {ActionCreator} from '../../actions/action-creator';
-import {AuthStatus} from '../../../const';
+import {AuthStatus, PathName} from '../../../const';
+import history from '../../../history';
+import {renameKeys} from '../../../utils/common';
 
 const Operation = {
   checkAuth: () => (dispatch, _, api) => {
@@ -11,18 +13,21 @@ const Operation = {
         throw err;
       });
   },
-  login: (authData) => (dispatch, _, api) => {
-    const {email, password} = authData;
+  login: ({email, password}) => (dispatch, _, api) => {
     dispatch(ActionCreator.loginRequest());
 
     return api.post(`/login`, {
       email,
       password,
     })
-      .then(() => {
+      .then(({data}) => {
+        const adaptedData = renameKeys(data);
+
         dispatch(ActionCreator.setAuth(AuthStatus.AUTH));
-        dispatch(ActionCreator.changeUserData(authData));
+        dispatch(ActionCreator.changeUserData(adaptedData));
         dispatch(ActionCreator.loginSuccess());
+
+        history.push(PathName.ROOT);
       })
       .catch(() => {
         dispatch(ActionCreator.setAuth(AuthStatus.NO_AUTH));

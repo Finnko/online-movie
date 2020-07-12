@@ -11,20 +11,25 @@ const Config = {
     3: `Normal`,
     5: `Good`,
     8: `Very good`,
-    10: `Awesome`
+    10: `Awesome`,
   },
   COMMENT_RATING_MAP: {
-    1: 1,
-    2: 2,
-    3: 3,
-    4: 4,
-    5: 5,
+    1: `1`,
+    2: `2`,
+    3: `3`,
+    4: `4`,
+    5: `5`,
   },
   COMMENT_LENGTH: {
     MIN: 50,
     MAX: 400,
   },
   DEFAULT_FILTER: `All genres`,
+  SERVER_ORIGIN: `https://4.react.pages.academy`,
+};
+
+const EmptyText = {
+  COMMENTS: `There are no comments for this movie. Add the first one!`,
 };
 
 const ServerError = {
@@ -41,6 +46,7 @@ const Errors = {
   FETCH_DATA: `Something went wrong, please try again.`,
   WRONG_EMAIL: `Please enter a valid email address`,
   WRONG_PASSWORD: `Please enter a valid password. Minlength - `,
+  WRONG_LOGIN_DATA: `We can’t recognize this email and password combination. Please try again.`,
 };
 
 const LoaderSetup = {
@@ -93,6 +99,7 @@ export {
   AuthStatus,
   LoaderSetup,
   Errors,
+  EmptyText,
   END_POINT,
   TIMEOUT,
   EMAIL_PATTERN,

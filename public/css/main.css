@@ -393,13 +393,15 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  position: relative;
+  justify-content: space-between;
+  color: #866866;
+  min-height: 47px;
   padding: 10px 20px; }
 
 .add-review__btn {
   display: block;
+  margin-left: auto;
   padding: 0;
   border: none;
   background: none;
@@ -1439,6 +1441,11 @@ main {
 .error-message {
   font-size: 30px;
   line-height: 36px;
+}
+
+.movie-card__reviews {
+  position: relative;
+  min-height: 200px;
 }
 
 @keyframes rotation {

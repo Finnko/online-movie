@@ -1,18 +1,18 @@
 import NameSpace from '../../name-space';
 
-const NAME_SPACE = NameSpace.USER;
+const NAME_SPACE = NameSpace.COMMENTS;
 
 const getLoadingStatus = (state) => state[NAME_SPACE].loading;
 
 const getErrorStatus = (state) => state[NAME_SPACE].error;
 
-const getAuthStatus = (state) => state[NAME_SPACE].authStatus;
+const getOnceLoadedStatus = (state) => state[NAME_SPACE].onceLoaded;
 
-const getUser = (state) => state[NAME_SPACE].user;
+const getComments = (state) => state[NAME_SPACE].comments;
 
 export {
   getLoadingStatus,
   getErrorStatus,
-  getAuthStatus,
-  getUser,
+  getOnceLoadedStatus,
+  getComments,
 };

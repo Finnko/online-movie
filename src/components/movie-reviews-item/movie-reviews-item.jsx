@@ -1,16 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import {getFormattedDate, getFormattedTagDate} from '../../utils/common';
+import ReviewPropType from '../../prop-types/review';
 
-const MovieReviewsItem = ({comment, user, date, rating}) => {
+const MovieReviewsItem = ({review}) => {
+  const {comment, user, date, rating} = review;
+
   return (
     <div className="review">
       <blockquote className="review__quote">
         <p className="review__text">{comment}</p>
 
         <footer className="review__details">
-          <cite className="review__author">{user}</cite>
+          <cite className="review__author">{user.name}</cite>
           <time className="review__date" dateTime={getFormattedTagDate(date)}>{getFormattedDate(date)}</time>
         </footer>
       </blockquote>
@@ -21,10 +22,7 @@ const MovieReviewsItem = ({comment, user, date, rating}) => {
 };
 
 MovieReviewsItem.propTypes = {
-  comment: PropTypes.string.isRequired,
-  user: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-  date: PropTypes.object.isRequired,
+  review: ReviewPropType,
 };
 
 export default MovieReviewsItem;

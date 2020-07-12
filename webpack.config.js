@@ -10,11 +10,11 @@ module.exports = (env) => {
     mode: isProd ? `production` : isDev && `development`,
     output: {
       filename: `bundle.js`,
-      path: path.join(__dirname, `public`)
+      path: path.join(__dirname, `public/`)
     },
     devServer: {
-      contentBase: path.join(__dirname, `public`),
-      inline: false,
+      contentBase: `public`,
+      hot: true,
       open: true,
       port: 1337,
       historyApiFallback: true,

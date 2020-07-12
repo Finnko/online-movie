@@ -1,8 +1,8 @@
 import {getRandomLengthArray, getRandomArrayNumber, getRandomInRange, getRandomRating} from '../utils/common';
 import {Config} from '../const';
 
-const ID_PREFIX = `id_`;
-const UMIQUE_MOVIES_NUMBER = 8;
+
+const UNIQUE_MOVIES_NUMBER = 8;
 const MIN_RATINGS_NUMBER = 1;
 const MAX_RATINGS_NUMBER = 1000;
 const MIN_RUNTIME = 60;
@@ -95,10 +95,10 @@ const DESCRIPTION = `In the 1930s, the Grand Budapest Hotel is a popular Europea
 
 let counter = 0;
 const generateMovie = () => {
-  const idx = Math.floor(Math.random() * (UMIQUE_MOVIES_NUMBER - 1));
+  const idx = Math.floor(Math.random() * (UNIQUE_MOVIES_NUMBER - 1));
 
   return {
-    id: ID_PREFIX + counter++,
+    id: counter++,
     title: MOVIE_TITLES[idx],
     preview: MOVIE_THUMBS[idx],
     backgroundImage: `img/bg-the-grand-budapest-hotel.jpg`,

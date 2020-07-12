@@ -43,6 +43,26 @@ const ActionCreator = {
   loginError: () => ({
     type: actionTypes.LOGIN_ERROR,
   }),
+  fetchCommentsRequest: () => ({
+    type: actionTypes.FETCH_COMMENTS_REQUEST,
+  }),
+  fetchCommentsSuccess: (comments) => ({
+    type: actionTypes.FETCH_COMMENTS_SUCCESS,
+    payload: comments,
+  }),
+  fetchCommentsError: () => ({
+    type: actionTypes.FETCH_COMMENTS_ERROR,
+  }),
+  sendCommentRequest: () => ({
+    type: actionTypes.SEND_COMMENT_REQUEST,
+  }),
+  sendCommentSuccess: (comment) => ({
+    type: actionTypes.SEND_COMMENT_SUCCESS,
+    payload: comment,
+  }),
+  sendCommentError: () => ({
+    type: actionTypes.SEND_COMMENT_ERROR,
+  }),
 };
 
 export {ActionCreator};
