@@ -16,7 +16,11 @@ import withActiveItem from '../../hocs/with-active-item/with-active-item';
 const TabsWrapped = withActiveItem(Tabs);
 
 
-const MoviePage = ({currentMovie, movies, movieId}) => {
+const MoviePage = ({
+  currentMovie,
+  movies,
+  movieId
+}) => {
   if (!currentMovie) {
     return <Redirect to={PathName.ROOT}/>;
   }

@@ -26,11 +26,23 @@ const MainContent = ({
     <section className="catalog">
       <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-      <GenresListWrapped activeItem={activeGenre} genres={genres} onGenreChange={handleGenreChange}/>
+      <GenresListWrapped
+        activeItem={activeGenre}
+        genres={genres}
+        onGenreChange={handleGenreChange}
+      />
 
-      <MoviesList movies={filteredMovies} viewMode={ViewMode.MOVIE_CARD.WITH_PLAYER}/>
+      <MoviesList
+        movies={filteredMovies}
+        viewMode={ViewMode.MOVIE_CARD.WITH_PLAYER}
+      />
 
-      {!isShowMoreVisible && <ShowMore offset={Config.MOVIES_NUMBER_OFFSET} onButtonClick={handleShowMoreClick}/>}
+      {!isShowMoreVisible &&
+        <ShowMore
+          offset={Config.MOVIES_NUMBER_OFFSET}
+          onButtonClick={handleShowMoreClick}
+        />
+      }
     </section>
   );
 };
