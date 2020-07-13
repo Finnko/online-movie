@@ -65,7 +65,7 @@ const MoviePage = ({
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          {similarMovies.length && <MoviesList movies={similarMovies} viewMode={ViewMode.MOVIE_CARD.IMAGE}/>}
+          {similarMovies.length > 0 && <MoviesList movies={similarMovies} viewMode={ViewMode.MOVIE_CARD.IMAGE}/>}
         </section>
 
         <Footer/>

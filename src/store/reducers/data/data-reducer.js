@@ -7,6 +7,7 @@ const initialState = {
   errorText: ``,
   movies: [],
   promo: {},
+  favorites: [],
 };
 
 export default function dataReducer(state = initialState, action) {
@@ -25,6 +26,21 @@ export default function dataReducer(state = initialState, action) {
         promo: extend(state.promo, payload.promo),
       });
     case actionTypes.FETCH_MOVIES_DATA_ERROR:
+      return extend(state, {
+        loading: false,
+        error: true,
+      });
+    case actionTypes.FETCH_FAVORITES_MOVIES_REQUEST:
+      return extend(state, {
+        loading: true,
+      });
+    case actionTypes.FETCH_FAVORITES_MOVIES_SUCCESS:
+      return extend(state, {
+        loading: false,
+        error: false,
+        favorites: payload,
+      });
+    case actionTypes.FETCH_FAVORITES_MOVIES_ERROR:
       return extend(state, {
         loading: false,
         error: true,

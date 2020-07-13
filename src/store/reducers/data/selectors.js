@@ -10,6 +10,8 @@ const getLoadingStatus = (state) => state[NAME_SPACE].loading;
 
 const getErrorStatus = (state) => state[NAME_SPACE].error;
 
+const getFavorites = (state) => state[NAME_SPACE].favorites;
+
 const getErrorText = (state) => state[NAME_SPACE].errorText;
 
 export {
@@ -17,5 +19,6 @@ export {
   getPromo,
   getLoadingStatus,
   getErrorStatus,
+  getFavorites,
   getErrorText,
 };

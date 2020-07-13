@@ -22,6 +22,20 @@ const Operation = {
         dispatch(ActionCreator.fetchMoviesDataError());
       });
   },
+  fetchFavoriteMovies: () => (dispatch, _, api) => {
+    dispatch(ActionCreator.fetchFavoritesRequest());
+
+    return api.get(`/favorite`)
+      .then(({data}) => {
+        const adaptedMovies = adaptMovies(data);
+        console.log(adaptedMovies);
+
+        dispatch(ActionCreator.fetchFavoritesSuccess(adaptedMovies));
+      })
+      .catch(() => {
+        dispatch(ActionCreator.fetchFavoritesError());
+      });
+  }
 };
 
 export {Operation};

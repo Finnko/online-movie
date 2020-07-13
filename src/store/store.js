@@ -1,12 +1,16 @@
 import {createStore, compose, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import {createAPI} from '../api/api';
+import history from '../history';
 import rootReducer from './reducers/root-reducer';
 import {ActionCreator} from './actions/action-creator';
-import {AuthStatus, Errors} from '../const';
+import {AuthStatus, Errors, PathName} from '../const';
 
 const interceptors = {
-  handleUnauthorized: () => store.dispatch(ActionCreator.setAuth(AuthStatus.NO_AUTH)),
+  handleUnauthorized: () => {
+    store.dispatch(ActionCreator.setAuth(AuthStatus.NO_AUTH));
+    history.push(PathName.ROOT);
+  },
   handleNoResponse: () => store.dispatch(ActionCreator.setError(Errors.NO_RESPONSE)),
   handleNotFound: () => store.dispatch(ActionCreator.setError(Errors.FETCHING_DATA)),
   handleBadRequest: () => store.dispatch(ActionCreator.setError(Errors.BAD_REQUEST)),

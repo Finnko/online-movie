@@ -66,6 +66,16 @@ const ActionCreator = {
   sendCommentError: () => ({
     type: actionTypes.SEND_COMMENT_ERROR,
   }),
+  fetchFavoritesRequest: () => ({
+    type: actionTypes.FETCH_FAVORITES_MOVIES_REQUEST,
+  }),
+  fetchFavoritesSuccess: (movies) => ({
+    type: actionTypes.FETCH_FAVORITES_MOVIES_SUCCESS,
+    payload: movies,
+  }),
+  fetchFavoritesError: () => ({
+    type: actionTypes.FETCH_FAVORITES_MOVIES_ERROR,
+  }),
 };
 
 export {ActionCreator};
