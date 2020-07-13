@@ -19,7 +19,7 @@ const MovieOverview = ({actors, rating, ratingCount, director, description}) => 
       </div>
 
       <div className="movie-card__text">
-        <p>{description.toString()}</p>
+        <p>{description}</p>
 
         <p className="movie-card__director"><strong>Director: {director}</strong></p>
 
@@ -41,7 +41,7 @@ MovieOverview.propTypes = {
   director: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
   ratingCount: PropTypes.number.isRequired,
-  description: PropTypes.arrayOf(PropTypes.string).isRequired,
+  description: PropTypes.string.isRequired,
 };
 
 export default MovieOverview;

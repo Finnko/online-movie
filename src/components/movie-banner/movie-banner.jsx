@@ -4,12 +4,20 @@ import {PathName, ViewMode} from '../../const';
 import {Link} from 'react-router-dom';
 import Header from '../header/header.jsx';
 
-const MovieBanner = ({id, title, genre, releaseYear, backgroundImage, poster, viewMode}) => {
+const MovieBanner = ({
+  id,
+  title,
+  genre,
+  releaseYear,
+  backgroundImage,
+  poster,
+  viewMode
+}) => {
   const isMainView = viewMode === ViewMode.PROMO.MAIN;
 
   return (
     <Fragment>
-      <div className="movie-card__bg">
+      <div className="movie-card__bg" >
         <img src={backgroundImage} alt={title}/>
       </div>
 

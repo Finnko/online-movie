@@ -26,11 +26,18 @@ const MoviePage = ({
   }
 
   const similarMovies = getSimilarMovies(movies, currentMovie.id, currentMovie.genre).slice(0, Config.SIMILAR_MOVIES_TO_SHOW);
-  const {title, genre, releaseYear, poster, backgroundImage} = currentMovie;
+  const {
+    title,
+    genre,
+    releaseYear,
+    poster,
+    backgroundColor,
+    backgroundImage
+  } = currentMovie;
 
   return (
     <Fragment>
-      <section className="movie-card movie-card--full">
+      <section className="movie-card movie-card--full" style={{backgroundColor}}>
         <div className="movie-card__hero">
           <MovieBanner
             id={movieId}

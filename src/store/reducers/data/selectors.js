@@ -10,5 +10,12 @@ const getLoadingStatus = (state) => state[NAME_SPACE].loading;
 
 const getErrorStatus = (state) => state[NAME_SPACE].error;
 
+const getErrorText = (state) => state[NAME_SPACE].errorText;
 
-export {getMovies, getPromo, getLoadingStatus, getErrorStatus};
+export {
+  getMovies,
+  getPromo,
+  getLoadingStatus,
+  getErrorStatus,
+  getErrorText,
+};

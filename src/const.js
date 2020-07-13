@@ -35,6 +35,7 @@ const EmptyText = {
 const ServerError = {
   UNAUTHORIZED: 401,
   BAD_REQUEST: 400,
+  NOT_FOUND: 404,
 };
 
 const AuthStatus = {
@@ -43,7 +44,9 @@ const AuthStatus = {
 };
 
 const Errors = {
-  FETCH_DATA: `Something went wrong, please try again.`,
+  FETCHING_DATA: `Something went wrong, please try again.`,
+  NO_RESPONSE: `Sorry, server is not responding, try again later.`,
+  BAD_REQUEST: `Sorry, try again to send your request.`,
   WRONG_EMAIL: `Please enter a valid email address`,
   WRONG_PASSWORD: `Please enter a valid password. Minlength - `,
   WRONG_LOGIN_DATA: `We can’t recognize this email and password combination. Please try again.`,

@@ -4,6 +4,7 @@ import {extend} from '../../../utils/common';
 const initialState = {
   loading: false,
   error: false,
+  errorText: ``,
   movies: [],
   promo: {},
 };
@@ -19,6 +20,7 @@ export default function dataReducer(state = initialState, action) {
     case actionTypes.FETCH_MOVIES_DATA_SUCCESS:
       return extend(state, {
         loading: false,
+        error: false,
         movies: payload.movies,
         promo: extend(state.promo, payload.promo),
       });
@@ -26,6 +28,10 @@ export default function dataReducer(state = initialState, action) {
       return extend(state, {
         loading: false,
         error: true,
+      });
+    case actionTypes.SET_ERROR:
+      return extend(state, {
+        errorText: payload,
       });
   }
 
