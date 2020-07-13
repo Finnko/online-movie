@@ -29,7 +29,7 @@ const Avatar = ({userInfo, authStatus}) => {
 
 Avatar.propTypes = {
   authStatus: PropTypes.string,
-  userInfo: PropTypes.shape(UserPropType),
+  userInfo: UserPropType,
 };
 
 const mapStateToProps = (state) => {

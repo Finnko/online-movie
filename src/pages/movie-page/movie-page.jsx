@@ -26,7 +26,14 @@ const MoviePage = ({
   }
 
   const similarMovies = getSimilarMovies(movies, currentMovie.id, currentMovie.genre).slice(0, Config.SIMILAR_MOVIES_TO_SHOW);
-  const {title, genre, releaseYear, poster, backgroundImage} = currentMovie;
+  const {
+    title,
+    genre,
+    releaseYear,
+    poster,
+    backgroundColor,
+    backgroundImage
+  } = currentMovie;
 
   return (
     <Fragment>
@@ -38,6 +45,7 @@ const MoviePage = ({
             genre={genre}
             poster={poster}
             releaseYear={releaseYear}
+            backgroundColor={backgroundColor}
             backgroundImage={backgroundImage}
             viewMode={ViewMode.PROMO.DETAILS}
           />

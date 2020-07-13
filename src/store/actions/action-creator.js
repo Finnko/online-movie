@@ -4,12 +4,11 @@ const ActionCreator = {
   fetchMoviesDataRequest: () => ({
     type: actionTypes.FETCH_MOVIES_DATA_REQUEST,
   }),
-  fetchMoviesDataSuccess: (movies, promo, reviews) => ({
+  fetchMoviesDataSuccess: (movies, promo) => ({
     type: actionTypes.FETCH_MOVIES_DATA_SUCCESS,
     payload: {
       movies,
       promo,
-      reviews,
     },
   }),
   fetchMoviesDataError: () => ({
@@ -29,6 +28,10 @@ const ActionCreator = {
   setAuth: (status) => ({
     type: actionTypes.SET_AUTH,
     payload: status,
+  }),
+  setError: (error) => ({
+    type: actionTypes.SET_ERROR,
+    payload: error,
   }),
   changeUserData: (data) => ({
     type: actionTypes.AUTHORIZE_USER,

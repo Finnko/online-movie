@@ -6,8 +6,11 @@ import {renameKeys} from '../../../utils/common';
 const Operation = {
   checkAuth: () => (dispatch, _, api) => {
     return api.get(`/login`)
-      .then(() => {
+      .then(({data}) => {
+        const adaptedData = renameKeys(data);
+
         dispatch(ActionCreator.setAuth(AuthStatus.AUTH));
+        dispatch(ActionCreator.changeUserData(adaptedData));
       })
       .catch((err) => {
         throw err;
