@@ -37,7 +37,7 @@ const MoviePage = ({
 
   return (
     <Fragment>
-      <section className="movie-card movie-card--full">
+      <section className="movie-card movie-card--full" style={{backgroundColor}}>
         <div className="movie-card__hero">
           <MovieBanner
             id={movieId}
@@ -45,7 +45,6 @@ const MoviePage = ({
             genre={genre}
             poster={poster}
             releaseYear={releaseYear}
-            backgroundColor={backgroundColor}
             backgroundImage={backgroundImage}
             viewMode={ViewMode.PROMO.DETAILS}
           />

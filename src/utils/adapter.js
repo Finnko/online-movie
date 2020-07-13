@@ -9,7 +9,7 @@ const adaptMovie = (data) => {
     releaseYear: data.released,
     description: data.description,
     backgroundImage: data[`background_image`],
-    backgroundColor: data[`background_image`],
+    backgroundColor: data[`background_color`],
     rating: data.rating,
     ratingCount: data[`scores_count`],
     director: data.director,

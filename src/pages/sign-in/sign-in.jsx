@@ -5,7 +5,7 @@ import {Operation as UserOperation} from '../../store/reducers/user/operations';
 import {validateControl} from '../../utils/validation';
 import Header from '../../components/header/header.jsx';
 import Footer from '../../components/footer/footer.jsx';
-import Input from '../../components/Input/input.jsx';
+import Input from '../../components/input/input.jsx';
 import Loader from '../../components/loader/loader.jsx';
 import {getErrorStatus, getLoadingStatus} from '../../store/reducers/user/selectors';
 import {Errors, LoaderSetup} from '../../const';

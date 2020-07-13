@@ -10,7 +10,6 @@ const MovieBanner = ({
   genre,
   releaseYear,
   backgroundImage,
-  backgroundColor,
   poster,
   viewMode
 }) => {
@@ -18,7 +17,7 @@ const MovieBanner = ({
 
   return (
     <Fragment>
-      <div className="movie-card__bg" style={{backgroundColor}}>
+      <div className="movie-card__bg" >
         <img src={backgroundImage} alt={title}/>
       </div>
 
@@ -76,7 +75,6 @@ MovieBanner.propTypes = {
   releaseYear: PropTypes.number.isRequired,
   poster: PropTypes.string.isRequired,
   backgroundImage: PropTypes.string.isRequired,
-  backgroundColor: PropTypes.string.isRequired,
   viewMode: PropTypes.string.isRequired,
 };
 

@@ -6,7 +6,7 @@ import {PathName, ViewMode} from '../../const';
 import withPreview from '../../hocs/with-preview/with-preview';
 
 const MovieListCard = ({movie, viewMode, /* from hoc */ renderPlayer, onMovieMouseEnter, onMovieMouseLeave}) => {
-  const {id, title, preview, videoSrc} = movie;
+  const {id, title, thumb, videoSrc} = movie;
   const isWithPlayer = viewMode === ViewMode.MOVIE_CARD.WITH_PLAYER;
 
   const handleMouseEnter = () => onMovieMouseEnter(id);
@@ -18,25 +18,17 @@ const MovieListCard = ({movie, viewMode, /* from hoc */ renderPlayer, onMovieMou
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {isWithPlayer &&
       <Link
         className="small-movie-card__link"
         to={`${PathName.MOVIE_PAGE}${id}`}
       >
         <div className="small-movie-card__image">
-          {renderPlayer(videoSrc, preview, id)}
+          {isWithPlayer
+            ? renderPlayer(videoSrc, thumb, id)
+            : <img src={thumb} alt={title} width="280" height="175"/>
+          }
         </div>
-      </Link>}
-
-      {!isWithPlayer &&
-      <Link
-        className="small-movie-card__link"
-        to={`${PathName.MOVIE_PAGE}${id}`}
-      >
-        <div className="small-movie-card__image">
-          <img src={preview} alt={title} width="280" height="175"/>
-        </div>
-      </Link>}
+      </Link>
 
       <h3 className="small-movie-card__title">
         <Link
