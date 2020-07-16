@@ -6,7 +6,7 @@ import rootReducer from './reducers/root-reducer';
 import {ActionCreator} from './actions/action-creator';
 import {AuthStatus, Errors, PathName} from '../const';
 
-const interceptors = {
+const handlers = {
   handleUnauthorized: () => {
     store.dispatch(ActionCreator.setAuth(AuthStatus.NO_AUTH));
     history.push(PathName.ROOT);
@@ -16,7 +16,7 @@ const interceptors = {
   handleBadRequest: () => store.dispatch(ActionCreator.setError(Errors.BAD_REQUEST)),
 };
 
-const api = createAPI(interceptors);
+const api = createAPI(handlers);
 
 const store = createStore(
     rootReducer,

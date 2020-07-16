@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import UserPropType from '../../prop-types/user';
-import {AuthStatus, Config} from '../../const';
+import {AuthStatus, Config, PathName} from '../../const';
 import {connect} from 'react-redux';
 import {getAuthStatus, getUser} from '../../store/reducers/user/selectors';
+import {Link} from 'react-router-dom';
 
 const Avatar = ({userInfo, authStatus}) => {
   let avatar = ``;
@@ -15,15 +16,33 @@ const Avatar = ({userInfo, authStatus}) => {
 
   return (
     <div className="user-block">
-      <div className="user-block__avatar">
-        <img
-          src={`${isLogged ? `${Config.SERVER_ORIGIN}${avatar}` : `img/avatar.jpg`}`}
-          alt="User avatar"
-          width="63"
-          height="63"
-        />
-      </div>
+      {isLogged
+        ?
+        <Link
+          to={PathName.MY_LIST}
+          className="user-block__avatar"
+        >
+          <img
+            src={`${isLogged ? `${Config.SERVER_ORIGIN}${avatar}` : `img/avatar.jpg`}`}
+            alt="User avatar"
+            width="63"
+            height="63"
+          />
+        </Link>
+        :
+        <Link
+          to={PathName.SIGN_IN}
+          className="user-block__link"
+        >
+            Sign In
+        </Link>
+      }
     </div>
+
+
+  // <div className="user-block">
+  //   <a href="sign-in.html" className="user-block__link">Sign in</a>
+  // </div>
   );
 };
 
