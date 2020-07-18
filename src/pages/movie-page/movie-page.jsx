@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getMovieById, getSimilarMovies} from '../../utils/common';
-import {Config, PathName, TabName, ViewMode} from '../../const';
+import {AuthStatus, Config, PathName, TabName, ViewMode} from '../../const';
 import MoviePropType from '../../prop-types/movie';
 import {
   getFavoriteError,
@@ -26,6 +26,7 @@ const MoviePage = ({
   movies,
   favoriteError,
   favoriteLoading,
+  authStatus,
   updateFavoriteStatus,
 }) => {
   if (!currentMovie) {
@@ -34,6 +35,7 @@ const MoviePage = ({
 
   const similarMovies = getSimilarMovies(movies, currentMovie.id, currentMovie.genre).slice(0, Config.SIMILAR_MOVIES_TO_SHOW);
   const {poster, title, backgroundColor} = currentMovie;
+  const isAuth = AuthStatus.AUTH === authStatus;
 
   return (
     <Fragment>
@@ -44,6 +46,7 @@ const MoviePage = ({
             viewMode={ViewMode.PROMO.DETAILS}
             loading={favoriteLoading}
             error={favoriteError}
+            isAuth={isAuth}
             updateFavoriteStatus={updateFavoriteStatus}
           />
         </div>
@@ -77,6 +80,7 @@ MoviePage.propTypes = {
   favoriteLoading: PropTypes.bool.isRequired,
   favoriteError: PropTypes.bool.isRequired,
   movies: PropTypes.arrayOf(MoviePropType).isRequired,
+  authStatus: PropTypes.string.isRequired,
   updateFavoriteStatus: PropTypes.func.isRequired,
 };
 

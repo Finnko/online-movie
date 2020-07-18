@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import MoviePropType from '../../prop-types/movie';
-import {ViewMode, LoaderSetup} from '../../const';
+import {ViewMode, LoaderSetup, AuthStatus} from '../../const';
 import {
   getErrorStatus,
   getErrorText,
@@ -17,6 +17,7 @@ import MovieBanner from '../../components/movie-banner/movie-banner.jsx';
 import Loader from '../../components/loader/loader.jsx';
 import Error from '../../components/error/error.jsx';
 import MainContent from '../../components/main-content/main-content.jsx';
+import {getAuthStatus} from '../../store/reducers/user/selectors';
 
 
 const MainPage = ({
@@ -26,8 +27,11 @@ const MainPage = ({
   errorText,
   favoriteLoading,
   favoriteError,
+  authStatus,
   updateFavoriteStatus,
 }) => {
+  const isAuth = AuthStatus.AUTH === authStatus;
+
   return (
     <Fragment>
       {loading &&
@@ -45,6 +49,7 @@ const MainPage = ({
               viewMode={ViewMode.PROMO.MAIN}
               loading={favoriteLoading}
               error={favoriteError}
+              isAuth={isAuth}
               updateFavoriteStatus={updateFavoriteStatus}
             />
           </section>
@@ -69,6 +74,7 @@ MainPage.propTypes = {
   favoriteLoading: PropTypes.bool.isRequired,
   favoriteError: PropTypes.bool.isRequired,
   errorText: PropTypes.string.isRequired,
+  authStatus: PropTypes.string.isRequired,
   updateFavoriteStatus: PropTypes.func.isRequired,
 };
 
@@ -80,6 +86,7 @@ const mapStateToProps = (state) => {
     promo: getPromo(state),
     favoriteLoading: getFavoriteLoading(state),
     favoriteError: getFavoriteError(state),
+    authStatus: getAuthStatus(state),
   };
 };
 

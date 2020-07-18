@@ -1,10 +1,11 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
-import {Errors, PathName, ViewMode} from '../../const';
 import {Link} from 'react-router-dom';
+import {Errors, PathName, ViewMode} from '../../const';
+import MoviePropType from '../../prop-types/movie';
+import history from '../../history';
 import Header from '../header/header.jsx';
 import Icon from '../Icon/icon.jsx';
-import MoviePropType from '../../prop-types/movie';
 
 const MovieBanner = ({
   movie,
@@ -12,6 +13,7 @@ const MovieBanner = ({
   updateFavoriteStatus,
   loading,
   error,
+  isAuth,
 }) => {
   const {
     id,
@@ -26,6 +28,10 @@ const MovieBanner = ({
   const isMainView = viewMode === ViewMode.PROMO.MAIN;
 
   const handleMyListButtonClick = () => {
+    if (!isAuth) {
+      history.push(PathName.SIGN_IN);
+      return;
+    }
     updateFavoriteStatus(id, Number(!isFavorite));
   };
 
@@ -98,6 +104,7 @@ MovieBanner.propTypes = {
   updateFavoriteStatus: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
+  isAuth: PropTypes.bool.isRequired,
 };
 
 

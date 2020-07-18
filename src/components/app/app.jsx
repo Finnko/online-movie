@@ -7,6 +7,7 @@ import MoviePage from '../../pages/movie-page/movie-page.jsx';
 import AddReviewPage from '../../pages/add-review-page/add-review-page.jsx';
 import SignIn from '../../pages/sign-in/sign-in.jsx';
 import MyListPage from '../../pages/my-list-page/my-list-page.jsx';
+import PrivateRoute from '../private-route/private-route.jsx';
 
 const AddReviewPageWrapped = withRouter(AddReviewPage);
 const MoviePageWrapped = withRouter(MoviePage);
@@ -18,18 +19,28 @@ const App = () => {
         <Route exact path={PathName.ROOT}>
           <MainPage />
         </Route>
-        <Route path={`${PathName.MOVIE_PAGE}:id${PathName.ADD_REVIEW}`}>
-          <AddReviewPageWrapped />
-        </Route>
-        <Route path={`${PathName.MOVIE_PAGE}:id`}>
-          <MoviePageWrapped />
-        </Route>
         <Route path={`${PathName.SIGN_IN}`}>
           <SignIn />
         </Route>
-        <Route path={`${PathName.MY_LIST}`}>
-          <MyListPage />
+        <PrivateRoute
+          exact={false}
+          path={`${PathName.MOVIE_PAGE}:id${PathName.ADD_REVIEW}`}
+          render={() => {
+            return <AddReviewPageWrapped />;
+          }}
+        >
+        </PrivateRoute>
+        <Route path={`${PathName.MOVIE_PAGE}:id`}>
+          <MoviePageWrapped />
         </Route>
+        <PrivateRoute
+          exact
+          path={`${PathName.MY_LIST}`}
+          render={() => {
+            return <MyListPage />;
+          }}
+        >
+        </PrivateRoute>
       </Switch>
     </Router>
   );
