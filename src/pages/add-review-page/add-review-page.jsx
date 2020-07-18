@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {Config, Errors, LoaderSetup, PathName} from '../../const';
 import {getMovieById} from '../../utils/common';
 import MoviePropType from '../../prop-types/movie';
-import {getMovies} from '../../store/reducers/data/selectors';
+import {getMovies} from '../../store/reducers/movies/selectors';
 import {getErrorStatus, getLoadingStatus} from '../../store/reducers/comments/selectors';
 import {Operation as CommentOperation} from '../../store/reducers/comments/operations';
 import Header from '../../components/header/header.jsx';

@@ -3,15 +3,20 @@ import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getMovieById, getSimilarMovies} from '../../utils/common';
-import {Config, PathName, TabName, ViewMode} from '../../const';
+import {AuthStatus, Config, PathName, TabName, ViewMode} from '../../const';
 import MoviePropType from '../../prop-types/movie';
-import {getErrorStatus, getLoadingStatus} from '../../store/reducers/comments/selectors';
-import {getMovies} from '../../store/reducers/data/selectors';
+import {
+  getFavoriteError,
+  getFavoriteLoading,
+  getMovies
+} from '../../store/reducers/movies/selectors';
 import MovieBanner from '../../components/movie-banner/movie-banner.jsx';
 import MoviesList from '../../components/movies-list/movies-list.jsx';
 import Tabs from '../../components/tabs/tabs.jsx';
 import Footer from '../../components/footer/footer.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
+import {getAuthStatus} from '../../store/reducers/user/selectors';
+import {Operation as MoviesOperation} from '../../store/reducers/movies/operations';
 
 const TabsWrapped = withActiveItem(Tabs);
 
@@ -19,34 +24,30 @@ const TabsWrapped = withActiveItem(Tabs);
 const MoviePage = ({
   currentMovie,
   movies,
-  movieId
+  favoriteError,
+  favoriteLoading,
+  authStatus,
+  updateFavoriteStatus,
 }) => {
   if (!currentMovie) {
     return <Redirect to={PathName.ROOT}/>;
   }
 
   const similarMovies = getSimilarMovies(movies, currentMovie.id, currentMovie.genre).slice(0, Config.SIMILAR_MOVIES_TO_SHOW);
-  const {
-    title,
-    genre,
-    releaseYear,
-    poster,
-    backgroundColor,
-    backgroundImage
-  } = currentMovie;
+  const {poster, title, backgroundColor} = currentMovie;
+  const isAuth = AuthStatus.AUTH === authStatus;
 
   return (
     <Fragment>
       <section className="movie-card movie-card--full" style={{backgroundColor}}>
         <div className="movie-card__hero">
           <MovieBanner
-            id={movieId}
-            title={title}
-            genre={genre}
-            poster={poster}
-            releaseYear={releaseYear}
-            backgroundImage={backgroundImage}
+            movie={currentMovie}
             viewMode={ViewMode.PROMO.DETAILS}
+            loading={favoriteLoading}
+            error={favoriteError}
+            isAuth={isAuth}
+            updateFavoriteStatus={updateFavoriteStatus}
           />
         </div>
 
@@ -65,7 +66,7 @@ const MoviePage = ({
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          {similarMovies.length && <MoviesList movies={similarMovies} viewMode={ViewMode.MOVIE_CARD.IMAGE}/>}
+          {similarMovies.length > 0 && <MoviesList movies={similarMovies} viewMode={ViewMode.MOVIE_CARD.IMAGE}/>}
         </section>
 
         <Footer/>
@@ -76,8 +77,11 @@ const MoviePage = ({
 
 MoviePage.propTypes = {
   currentMovie: MoviePropType.isRequired,
+  favoriteLoading: PropTypes.bool.isRequired,
+  favoriteError: PropTypes.bool.isRequired,
   movies: PropTypes.arrayOf(MoviePropType).isRequired,
-  movieId: PropTypes.number.isRequired,
+  authStatus: PropTypes.string.isRequired,
+  updateFavoriteStatus: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -85,13 +89,19 @@ const mapStateToProps = (state, ownProps) => {
   const movieId = parseInt(match.params.id, 10);
 
   return {
-    loading: getLoadingStatus(state),
-    error: getErrorStatus(state),
+    favoriteLoading: getFavoriteLoading(state),
+    favoriteError: getFavoriteError(state),
     movies: getMovies(state),
     currentMovie: getMovieById(getMovies(state), movieId),
-    movieId,
+    authStatus: getAuthStatus(state),
   };
 };
 
+const mapDispatchToProps = (dispatch) => ({
+  updateFavoriteStatus(id, status) {
+    dispatch(MoviesOperation.updateFavoriteStatus(id, status));
+  }
+});
+
 export {MoviePage};
-export default connect(mapStateToProps)(MoviePage);
+export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);

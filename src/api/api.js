@@ -1,7 +1,7 @@
 import axios from "axios";
 import {END_POINT, TIMEOUT, ServerError} from '../const';
 
-const createAPI = (interceptors) => {
+const createAPI = (handlers) => {
   const api = axios.create({
     baseURL: END_POINT,
     timeout: TIMEOUT,
@@ -14,7 +14,7 @@ const createAPI = (interceptors) => {
     const {response} = error;
 
     if (!response) {
-      interceptors.handleNoResponse();
+      handlers.handleNoResponse();
       throw error;
     }
 
@@ -22,15 +22,15 @@ const createAPI = (interceptors) => {
 
     switch (status) {
       case ServerError.UNAUTHORIZED:
-        interceptors.handleUnauthorized();
+        handlers.handleUnauthorized();
         throw error;
 
       case ServerError.NOT_FOUND:
-        interceptors.handleNotFound();
+        handlers.handleNotFound();
         throw error;
 
       case ServerError.BAD_REQUEST:
-        interceptors.handleBadRequest();
+        handlers.handleBadRequest();
         throw error;
 
       default:

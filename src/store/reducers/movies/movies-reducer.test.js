@@ -1,5 +1,5 @@
 import {actionTypes} from '../../action-types';
-import dataReducer from './data-reducer';
+import moviesReducer from './movies-reducer';
 
 const initialState = {
   error: false,
@@ -36,66 +36,45 @@ const mockMovies = [
   }
 ];
 
-const mockReviews = [
-  {
-    id: `1`,
-    comment: `Good comment!`,
-    rating: 8.9,
-    user: `Ozzy Osbourne`,
-    date: new Date(1583591483969),
-  },
-  {
-    id: `3`,
-    comment: `Bad comment!`,
-    rating: 1.9,
-    user: `Axl Rose`,
-    date: new Date(1783591499969),
-  },
-];
-
 describe(`Data reducer works correctly`, () => {
   it(`Data reducer without additional parameters should return initial state`, () => {
-    expect(dataReducer(void 0, {})).toEqual(initialState);
+    expect(moviesReducer(void 0, {})).toEqual(initialState);
   });
 
   it(`Data reducer should change loading value when the request is sent`, () => {
-    expect(dataReducer(initialState, {
+    expect(moviesReducer(initialState, {
       type: actionTypes.FETCH_MOVIES_DATA_REQUEST,
     })).toEqual({
       error: false,
       loading: true,
       movies: [],
       promo: {},
-      reviews: [],
     });
   });
 
   it(`Data reducer should change loading and error value when the error is occurred`, () => {
-    expect(dataReducer(initialState, {
+    expect(moviesReducer(initialState, {
       type: actionTypes.FETCH_MOVIES_DATA_ERROR,
     })).toEqual({
       error: true,
       loading: false,
       movies: [],
       promo: {},
-      reviews: [],
     });
   });
 
   it(`Data reducer should change data on success`, () => {
-    expect(dataReducer(initialState, {
+    expect(moviesReducer(initialState, {
       type: actionTypes.FETCH_MOVIES_DATA_SUCCESS,
       payload: {
         movies: mockMovies,
         promo: mockPromo,
-        reviews: mockReviews,
       }
     })).toEqual({
       error: false,
       loading: false,
       movies: mockMovies,
       promo: mockPromo,
-      reviews: mockReviews,
     });
   });
 

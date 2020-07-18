@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import MoviePropType from '../../prop-types/movie';
@@ -50,7 +50,8 @@ MovieListCard.propTypes = {
   viewMode: PropTypes.string.isRequired,
 };
 
-const MovieListCardWrapped = withPreview(MovieListCard);
+const MovieListCard_ = memo(MovieListCard);
+const MovieListCardWrapped = withPreview(MovieListCard_);
 
 export {MovieListCard};
 export default MovieListCardWrapped;

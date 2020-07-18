@@ -45,6 +45,7 @@ const AuthStatus = {
 
 const Errors = {
   FETCHING_DATA: `Something went wrong, please try again.`,
+  UPDATE_FAVORITE: `Ooops, please try again.`,
   NO_RESPONSE: `Sorry, server is not responding, try again later.`,
   BAD_REQUEST: `Sorry, try again to send your request.`,
   WRONG_EMAIL: `Please enter a valid email address`,

@@ -5,14 +5,16 @@ import rootReducer from './reducers/root-reducer';
 import {ActionCreator} from './actions/action-creator';
 import {AuthStatus, Errors} from '../const';
 
-const interceptors = {
-  handleUnauthorized: () => store.dispatch(ActionCreator.setAuth(AuthStatus.NO_AUTH)),
+const handlers = {
+  handleUnauthorized: () => {
+    store.dispatch(ActionCreator.setAuth(AuthStatus.NO_AUTH));
+  },
   handleNoResponse: () => store.dispatch(ActionCreator.setError(Errors.NO_RESPONSE)),
   handleNotFound: () => store.dispatch(ActionCreator.setError(Errors.FETCHING_DATA)),
   handleBadRequest: () => store.dispatch(ActionCreator.setError(Errors.BAD_REQUEST)),
 };
 
-const api = createAPI(interceptors);
+const api = createAPI(handlers);
 
 const store = createStore(
     rootReducer,
