@@ -1,19 +1,33 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
-import {PathName, ViewMode} from '../../const';
+import {Errors, PathName, ViewMode} from '../../const';
 import {Link} from 'react-router-dom';
 import Header from '../header/header.jsx';
+import Icon from '../Icon/icon.jsx';
+import MoviePropType from '../../prop-types/movie';
 
 const MovieBanner = ({
-  id,
-  title,
-  genre,
-  releaseYear,
-  backgroundImage,
-  poster,
-  viewMode
+  movie,
+  viewMode,
+  updateFavoriteStatus,
+  loading,
+  error,
 }) => {
+  const {
+    id,
+    title,
+    genre,
+    releaseYear,
+    poster,
+    backgroundImage,
+    isFavorite,
+  } = movie;
+
   const isMainView = viewMode === ViewMode.PROMO.MAIN;
+
+  const handleMyListButtonClick = () => {
+    updateFavoriteStatus(id, Number(!isFavorite));
+  };
 
   return (
     <Fragment>
@@ -28,8 +42,7 @@ const MovieBanner = ({
       <div className="movie-card__wrap">
         <div className={isMainView ? `movie-card__info` : ``}>
           <div className={isMainView ? `movie-card__poster` : `visually-hidden`}>
-            <img src={poster} alt={title} width="218"
-              height="327"/>
+            <img src={poster} alt={title} width="218" height="327"/>
           </div>
 
           <div className="movie-card__desc">
@@ -40,18 +53,29 @@ const MovieBanner = ({
             </p>
 
             <div className="movie-card__buttons">
-              <button className="btn btn--play movie-card__button" type="button">
-                <svg viewBox="0 0 19 19" width="19" height="19">
-                  <use xlinkHref="#play-s"></use>
-                </svg>
+              <button
+                className="btn btn--play movie-card__button"
+                type="button"
+              >
+                <Icon width="19" height="19" name="play-s"/>
                 <span>Play</span>
               </button>
-              <button className="btn btn--list movie-card__button" type="button">
-                <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use xlinkHref="#add"></use>
-                </svg>
+
+              <button
+                className="btn btn--list movie-card__button"
+                type="button"
+                disabled={loading}
+                onClick={handleMyListButtonClick}
+              >
+                {!isFavorite
+                  ? <Icon width="19" height="20" name="add"/>
+                  : <Icon width="18" height="14" name="in-list"/>
+                }
                 <span>My list</span>
               </button>
+
+              {!loading && error && Errors.UPDATE_FAVORITE}
+
               {!isMainView &&
                 <Link
                   to={`${PathName.MOVIE_PAGE}${id}${PathName.ADD_REVIEW}`}
@@ -69,13 +93,11 @@ const MovieBanner = ({
 };
 
 MovieBanner.propTypes = {
-  id: PropTypes.number,
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  releaseYear: PropTypes.number.isRequired,
-  poster: PropTypes.string.isRequired,
-  backgroundImage: PropTypes.string.isRequired,
+  movie: MoviePropType.isRequired,
   viewMode: PropTypes.string.isRequired,
+  updateFavoriteStatus: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
 };
 
 

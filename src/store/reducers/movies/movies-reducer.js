@@ -8,9 +8,11 @@ const initialState = {
   movies: [],
   promo: {},
   favorites: [],
+  favoriteLoading: false,
+  favoriteError: false,
 };
 
-export default function dataReducer(state = initialState, action) {
+export default function moviesReducer(state = initialState, action) {
   const {type, payload} = action;
 
   switch (type) {
@@ -30,6 +32,10 @@ export default function dataReducer(state = initialState, action) {
         loading: false,
         error: true,
       });
+    case actionTypes.FETCH_PROMO:
+      return extend(state, {
+        promo: extend(state.promo, payload),
+      });
     case actionTypes.FETCH_FAVORITES_MOVIES_REQUEST:
       return extend(state, {
         loading: true,
@@ -48,6 +54,25 @@ export default function dataReducer(state = initialState, action) {
     case actionTypes.SET_ERROR:
       return extend(state, {
         errorText: payload,
+      });
+    case actionTypes.UPDATE_FAVORITE_STATUS_REQUEST:
+      return extend(state, {
+        favoriteLoading: true,
+      });
+    case actionTypes.UPDATE_FAVORITE_STATUS_SUCCESS:
+      const updatedMovies = state.movies.map((movie) => {
+        return movie.id === payload.id ? payload : movie;
+      });
+
+      return extend(state, {
+        favoriteLoading: false,
+        favoriteError: false,
+        movies: updatedMovies,
+      });
+    case actionTypes.UPDATE_FAVORITE_STATUS_ERROR:
+      return extend(state, {
+        favoriteLoading: false,
+        favoriteError: true,
       });
   }
 

@@ -1,5 +1,5 @@
 import {createSelector} from 'reselect';
-import {getMovies} from '../data/selectors';
+import {getMovies} from '../movies/selectors';
 import NameSpace from '../../name-space';
 import {getFilteredMovies} from '../../../utils/filter';
 import {getMovieGenres} from '../../../utils/common';

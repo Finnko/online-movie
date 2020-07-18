@@ -14,6 +14,10 @@ const ActionCreator = {
   fetchMoviesDataError: () => ({
     type: actionTypes.FETCH_MOVIES_DATA_ERROR,
   }),
+  fetchPromo: (promo) => ({
+    type: actionTypes.FETCH_PROMO,
+    payload: promo,
+  }),
   changeActiveGenre: (genre) => ({
     type: actionTypes.CHANGE_ACTIVE_GENRE,
     payload: genre,
@@ -75,6 +79,16 @@ const ActionCreator = {
   }),
   fetchFavoritesError: () => ({
     type: actionTypes.FETCH_FAVORITES_MOVIES_ERROR,
+  }),
+  updateFavoriteStatusRequest: () => ({
+    type: actionTypes.UPDATE_FAVORITE_STATUS_REQUEST,
+  }),
+  updateFavoriteStatusSuccess: (movie) => ({
+    type: actionTypes.UPDATE_FAVORITE_STATUS_SUCCESS,
+    payload: movie,
+  }),
+  updateFavoriteStatusError: () => ({
+    type: actionTypes.UPDATE_FAVORITE_STATUS_ERROR,
   }),
 };
 

@@ -2,8 +2,8 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import MoviePropType from '../../prop-types/movie';
-import {Operation as DataOperation} from '../../store/reducers/data/operations';
-import {getErrorStatus, getLoadingStatus, getFavorites} from '../../store/reducers/data/selectors';
+import {Operation as MoviesOperation} from '../../store/reducers/movies/operations';
+import {getErrorStatus, getLoadingStatus, getFavorites} from '../../store/reducers/movies/selectors';
 import Header from '../../components/header/header.jsx';
 import Footer from '../../components/footer/footer.jsx';
 import MovieListCardWrapped from '../../components/movie-list-card/movie-list-card.jsx';
@@ -86,7 +86,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   fetchFavoriteMovies() {
-    dispatch(DataOperation.fetchFavoriteMovies());
+    dispatch(MoviesOperation.fetchFavoriteMovies());
   }
 });
 

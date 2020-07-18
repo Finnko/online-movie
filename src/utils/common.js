@@ -5,17 +5,6 @@ const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
 
-const shuffleArray = (array) => {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * i);
-    const temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
-  }
-
-  return array;
-};
-
 const getRandomInRange = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
@@ -42,7 +31,7 @@ const getRandomRating = () => parseFloat((Math.random() * Config.MOVIE_MAX_RATIN
 const getMovieById = (movies, id) => movies.find((movie) => movie.id === id);
 
 const getSimilarMovies = (movies, id, genre) => {
-  return shuffleArray(movies.filter((movie) => movie.genre === genre && movie.id !== id));
+  return movies.filter((movie) => movie.genre === genre && movie.id !== id);
 };
 
 const getMovieGenres = (movies) => {
