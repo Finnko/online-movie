@@ -28,7 +28,9 @@ const getRandomLengthArray = (array) => {
 
 const getRandomRating = () => parseFloat((Math.random() * Config.MOVIE_MAX_RATING).toFixed(1));
 
-const getMovieById = (movies, id) => movies.find((movie) => movie.id === id);
+const getMovieById = (movies, id) => movies.find((movie) => {
+  return movie.id === id;
+});
 
 const getSimilarMovies = (movies, id, genre) => {
   return movies.filter((movie) => movie.genre === genre && movie.id !== id);

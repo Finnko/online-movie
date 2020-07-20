@@ -151,7 +151,7 @@ class AddReviewPage extends PureComponent {
                 }
 
                 {!loading && error &&
-                  <p>{Errors.FETCH_DATA}</p>
+                  <p>{Errors.FETCHING_DATA}</p>
                 }
 
                 {!loading &&
