@@ -38,18 +38,4 @@ describe(`Test e2e Input component`, () => {
     input.simulate(`change`);
     expect(onInputChange).toHaveBeenCalledTimes(1);
   });
-
-  it(`Should input calls callback with right value`, () => {
-    const inputComponent = mount(
-        <Input
-          {...props}
-          onInputChange={onInputChange}
-        />
-    );
-
-    const input = inputComponent.find(`input`);
-
-    input.simulate(`change`, {target: `ally@a.ru`});
-    expect(inputComponent.find(`input`).props().value).toEqual(`ally@a.ru`);
-  });
 });

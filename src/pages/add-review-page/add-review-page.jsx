@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import {Redirect, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {Config, Errors, LoaderSetup, PathName} from '../../const';
-import {getMovieById} from '../../utils/common';
 import MoviePropType from '../../prop-types/movie';
-import {getMovies} from '../../store/reducers/movies/selectors';
+import {getMovieById} from '../../store/reducers/movies/selectors';
 import {getErrorStatus, getLoadingStatus} from '../../store/reducers/comments/selectors';
 import {Operation as CommentOperation} from '../../store/reducers/comments/operations';
 import Header from '../../components/header/header.jsx';
@@ -20,7 +19,7 @@ class AddReviewPage extends PureComponent {
     this.state = {
       isFormValid: false,
       rating: {
-        value: `3`
+        value: ``
       },
       review: {
         value: ``,
@@ -33,10 +32,11 @@ class AddReviewPage extends PureComponent {
 
   handleInputChange(evt) {
     let {value, name} = evt.target;
-    const {review} = this.state;
+    const {review, rating} = this.state;
 
     const isFormValid = review.value.length > Config.COMMENT_LENGTH.MIN &&
-      review.value.length < Config.COMMENT_LENGTH.MAX;
+      review.value.length < Config.COMMENT_LENGTH.MAX
+      || rating === ``;
 
     this.setState((prevState) => Object.assign({}, prevState, {
       [name]: {
@@ -187,7 +187,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     loading: getLoadingStatus(state),
     error: getErrorStatus(state),
-    currentMovie: getMovieById(getMovies(state), movieId),
+    currentMovie: getMovieById(state, movieId),
     movieId,
   };
 };

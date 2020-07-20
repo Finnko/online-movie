@@ -28,14 +28,6 @@ const getRandomLengthArray = (array) => {
 
 const getRandomRating = () => parseFloat((Math.random() * Config.MOVIE_MAX_RATING).toFixed(1));
 
-const getMovieById = (movies, id) => movies.find((movie) => {
-  return movie.id === id;
-});
-
-const getSimilarMovies = (movies, id, genre) => {
-  return movies.filter((movie) => movie.genre === genre && movie.id !== id);
-};
-
 const getMovieGenres = (movies) => {
   const temp = [Config.DEFAULT_FILTER, ...movies.map((movie) => movie.genre)];
 
@@ -92,13 +84,11 @@ export {
   getRandomLengthArray,
   getRandomRating,
   getRandomInRange,
-  getMovieById,
   getLevelFromRating,
   getRandomDate,
   getFormattedDate,
   getFormattedMovieTime,
   getFormattedTagDate,
-  getSimilarMovies,
   getMovieGenres,
   divideReviewsIntoColumns,
   renameKeys,

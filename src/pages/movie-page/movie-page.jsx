@@ -2,14 +2,11 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {getMovieById, getSimilarMovies} from '../../utils/common';
+import {getSimilarMovies} from '../../store/reducers/movies/selectors';
+import {getMovieById} from '../../store/reducers/movies/selectors';
 import {AuthStatus, Config, PathName, TabName, ViewMode} from '../../const';
 import MoviePropType from '../../prop-types/movie';
-import {
-  getFavoriteError,
-  getFavoriteLoading,
-  getMovies
-} from '../../store/reducers/movies/selectors';
+import {getFavoriteError, getFavoriteLoading} from '../../store/reducers/movies/selectors';
 import MovieBanner from '../../components/movie-banner/movie-banner.jsx';
 import MoviesList from '../../components/movies-list/movies-list.jsx';
 import Tabs from '../../components/tabs/tabs.jsx';
@@ -23,7 +20,7 @@ const TabsWrapped = withActiveItem(Tabs);
 
 const MoviePage = ({
   currentMovie,
-  movies,
+  similarMovies,
   favoriteError,
   favoriteLoading,
   authStatus,
@@ -33,7 +30,6 @@ const MoviePage = ({
     return <Redirect to={PathName.ROOT}/>;
   }
 
-  const similarMovies = getSimilarMovies(movies, currentMovie.id, currentMovie.genre).slice(0, Config.SIMILAR_MOVIES_TO_SHOW);
   const {poster, title, backgroundColor} = currentMovie;
   const isAuth = AuthStatus.AUTH === authStatus;
 
@@ -63,11 +59,16 @@ const MoviePage = ({
       </section>
 
       <div className="page-content">
-        <section className="catalog catalog--like-this">
-          <h2 className="catalog__title">More like this</h2>
+        {similarMovies.length > 0 &&
+          <section className="catalog catalog--like-this">
+            <h2 className="catalog__title">More like this</h2>
 
-          {similarMovies.length > 0 && <MoviesList movies={similarMovies} viewMode={ViewMode.MOVIE_CARD.IMAGE}/>}
-        </section>
+            <MoviesList
+              movies={similarMovies.slice(0, Config.SIMILAR_MOVIES_TO_SHOW)}
+              viewMode={ViewMode.MOVIE_CARD.IMAGE}
+            />
+          </section>
+        }
 
         <Footer/>
       </div>
@@ -79,7 +80,7 @@ MoviePage.propTypes = {
   currentMovie: MoviePropType.isRequired,
   favoriteLoading: PropTypes.bool.isRequired,
   favoriteError: PropTypes.bool.isRequired,
-  movies: PropTypes.arrayOf(MoviePropType).isRequired,
+  similarMovies: PropTypes.arrayOf(MoviePropType).isRequired,
   authStatus: PropTypes.string.isRequired,
   updateFavoriteStatus: PropTypes.func.isRequired,
 };
@@ -91,8 +92,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     favoriteLoading: getFavoriteLoading(state),
     favoriteError: getFavoriteError(state),
-    movies: getMovies(state),
-    currentMovie: getMovieById(getMovies(state), movieId),
+    similarMovies: getSimilarMovies(state, movieId),
+    currentMovie: getMovieById(state, movieId),
     authStatus: getAuthStatus(state),
   };
 };
