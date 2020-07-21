@@ -1,22 +1,21 @@
 import React, {memo} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+import {compose} from 'redux';
 import MoviePropType from '../../prop-types/movie';
 import {PathName, ViewMode} from '../../const';
 import withPreview from '../../hocs/with-preview/with-preview';
+import VideoPlayer from '../video-player/video-player.jsx';
 
-const MovieListCard = ({movie, viewMode, /* from hoc */ renderPlayer, onMovieMouseEnter, onMovieMouseLeave}) => {
-  const {id, title, thumb, videoSrc} = movie;
+const MovieListCard = ({movie, viewMode, /* from hoc */ isPlaying, onMovieMouseEnter, onMovieMouseLeave}) => {
+  const {id, title, thumb, preview} = movie;
   const isWithPlayer = viewMode === ViewMode.MOVIE_CARD.WITH_PLAYER;
-
-  const handleMouseEnter = () => onMovieMouseEnter(id);
-  const handleMouseLeave = () => onMovieMouseLeave();
 
   return (
     <article
       className="small-movie-card catalog__movies-card"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={onMovieMouseEnter}
+      onMouseLeave={onMovieMouseLeave}
     >
       <Link
         className="small-movie-card__link"
@@ -24,7 +23,13 @@ const MovieListCard = ({movie, viewMode, /* from hoc */ renderPlayer, onMovieMou
       >
         <div className="small-movie-card__image">
           {isWithPlayer
-            ? renderPlayer(videoSrc, thumb, id)
+            ? (
+              <VideoPlayer
+                muted
+                videoSrc={preview}
+                poster={thumb}
+                isPlaying={isPlaying}
+              />)
             : <img src={thumb} alt={title} width="280" height="175"/>
           }
         </div>
@@ -48,10 +53,13 @@ MovieListCard.propTypes = {
   movie: MoviePropType.isRequired,
   renderPlayer: PropTypes.func,
   viewMode: PropTypes.string.isRequired,
+  isPlaying: PropTypes.bool.isRequired,
 };
 
-const MovieListCard_ = memo(MovieListCard);
-const MovieListCardWrapped = withPreview(MovieListCard_);
+const MovieListCardWrapped = compose(
+    withPreview,
+    memo
+)(MovieListCard);
 
 export {MovieListCard};
 export default MovieListCardWrapped;

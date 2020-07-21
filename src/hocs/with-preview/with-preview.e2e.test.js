@@ -1,7 +1,7 @@
 import React from "react";
 import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import withVideo from '../with-video/with-video';
+import withVideoControls from '../with-video-controls/with-video-controls';
 import VideoPlayer from '../../components/video-player/video-player';
 import withPreview from './with-preview';
 
@@ -15,7 +15,7 @@ const props = {
   preview: `img/the-grand-budapest-hotel-poster.jpg`,
 };
 
-const VideoPlayerWrapped = withVideo(VideoPlayer);
+const VideoPlayerWrapped = withVideoControls(VideoPlayer);
 
 const MockComponentWrapped = withPreview(VideoPlayerWrapped);
 

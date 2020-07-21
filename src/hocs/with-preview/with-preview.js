@@ -1,65 +1,44 @@
-import React, {PureComponent} from 'react';
-import withVideo from '../with-video/with-video';
-import VideoPlayer from '../../components/video-player/video-player.jsx';
-
-const VideoPlayerWrapped = withVideo(VideoPlayer);
+import React, {PureComponent} from "react";
+import PropTypes from 'prop-types';
 
 const withPreview = (Component) => {
   class WithPreview extends PureComponent {
     constructor(props) {
       super(props);
 
-      this.timer = null;
-
       this.state = {
-        activeId: null,
+        isPlaying: false
       };
 
-      this.handleMouseEnter = this.handleMouseEnter.bind(this);
-      this.handleMouseLeave = this.handleMouseLeave.bind(this);
+      this.handleCardMouseEnter = this.handleCardMouseEnter.bind(this);
+      this.handleCardMouseLeave = this.handleCardMouseLeave.bind(this);
     }
 
-    componentWillUnmount() {
-      clearTimeout(this.timer);
+    handleCardMouseEnter() {
       this.setState({
-        activeId: null,
+        isPlaying: true
       });
     }
 
-    handleMouseEnter(id) {
-      this.timer = setTimeout(() => {
-        this.setState({
-          activeId: id
-        });
-      }, 1000);
-    }
-
-    handleMouseLeave() {
-      clearTimeout(this.timer);
+    handleCardMouseLeave() {
       this.setState({
-        activeId: null,
+        isPlaying: false
       });
     }
 
     render() {
-      const {activeId} = this.state;
+      const {isPlaying} = this.state;
 
       return <Component
         {...this.props}
-        onMovieMouseEnter={this.handleMouseEnter}
-        onMovieMouseLeave={this.handleMouseLeave}
-        renderPlayer={(videoSrc, preview, id) => {
-          return (
-            <VideoPlayerWrapped
-              videoSrc={videoSrc}
-              preview={preview}
-              isPlaying={id === activeId}
-            />
-          );
-        }}
+        onMovieMouseEnter={this.handleCardMouseEnter}
+        onMovieMouseLeave={this.handleCardMouseLeave}
+        isPlaying={isPlaying}
       />;
     }
   }
+
+  WithPreview.propTypes = {};
 
   return WithPreview;
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import withPreview from './with-preview';
-import withVideo from '../with-video/with-video';
+import withVideoControls from '../with-video-controls/with-video-controls';
 import VideoPlayer from '../../components/video-player/video-player.jsx';
 
 const props = {
@@ -10,7 +10,7 @@ const props = {
   preview: `img/the-grand-budapest-hotel-poster.jpg`,
 };
 
-const VideoPlayerWrapped = withVideo(VideoPlayer);
+const VideoPlayerWrapped = withVideoControls(VideoPlayer);
 
 const MockComponentWrapped = withPreview(VideoPlayerWrapped);
 
