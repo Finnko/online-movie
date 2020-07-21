@@ -75,7 +75,7 @@ const PathName = {
   ADD_REVIEW: `/review`,
   SIGN_IN: `/login`,
   MY_LIST: `/mylist`,
-  PLAYER: `/player`
+  PLAYER: `/player/`
 };
 
 const TabName = {

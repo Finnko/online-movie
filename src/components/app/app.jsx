@@ -7,10 +7,12 @@ import MoviePage from '../../pages/movie-page/movie-page.jsx';
 import AddReviewPage from '../../pages/add-review-page/add-review-page.jsx';
 import SignIn from '../../pages/sign-in/sign-in.jsx';
 import MyListPage from '../../pages/my-list-page/my-list-page.jsx';
+import PlayerPage from '../../pages/player-page/player-page.jsx';
 import PrivateRoute from '../private-route/private-route.jsx';
 
 const AddReviewPageWrapped = withRouter(AddReviewPage);
 const MoviePageWrapped = withRouter(MoviePage);
+const PlayerPageWrapped = withRouter(PlayerPage);
 
 const App = () => {
   return (
@@ -32,6 +34,9 @@ const App = () => {
         </PrivateRoute>
         <Route path={`${PathName.MOVIE_PAGE}:id`}>
           <MoviePageWrapped />
+        </Route>
+        <Route path={`${PathName.PLAYER}:id`}>
+          <PlayerPageWrapped />
         </Route>
         <PrivateRoute
           exact
