@@ -20,8 +20,6 @@ const props = {
   shouldValidate: true,
 };
 
-// wrapper.find('input').simulate('change', {target: {value: 'My new value'}});
-
 describe(`Test e2e Input component`, () => {
   const onInputChange = jest.fn();
 
