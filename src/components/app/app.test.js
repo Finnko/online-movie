@@ -2,8 +2,8 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import App from './app';
 import {Provider} from 'react-redux';
-import NameSpace from '../../store/name-space';
 import configureStore from 'redux-mock-store';
+import NameSpace from '../../store/name-space';
 
 const promo = {
   title: ``,

@@ -1,18 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Avatar component render correctly Should Avatar component render correctly 1`] = `
+exports[`Avatar component render correctly Should Avatar component render correctly when user not logged 1`] = `
 <div
   className="user-block"
 >
-  <div
+  <a
+    className="user-block__link"
+    href="/login"
+    onClick={[Function]}
+  >
+    Sign In
+  </a>
+</div>
+`;
+
+exports[`Avatar component render correctly Should Avatar component render correctly when user was authorized 1`] = `
+<div
+  className="user-block"
+>
+  <a
     className="user-block__avatar"
+    href="/mylist"
+    onClick={[Function]}
   >
     <img
       alt="User avatar"
       height="63"
-      src="img/avatar.jpg"
+      src="https://4.react.pages.academyimg/1.png"
       width="63"
     />
-  </div>
+  </a>
 </div>
 `;

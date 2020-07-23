@@ -38,11 +38,6 @@ const Avatar = ({userInfo, authStatus}) => {
         </Link>
       }
     </div>
-
-
-  // <div className="user-block">
-  //   <a href="sign-in.html" className="user-block__link">Sign in</a>
-  // </div>
   );
 };
 

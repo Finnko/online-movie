@@ -84,7 +84,7 @@ class MovieReviews extends PureComponent {
         {!loading && error &&
           <Fragment>
             <div className="movie-card__reviews-col">
-              {Errors.FETCH_DATA}
+              {Errors.FETCHING_DATA}
             </div>
           </Fragment>
         }

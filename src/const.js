@@ -24,6 +24,7 @@ const Config = {
     MIN: 50,
     MAX: 400,
   },
+  PASSWORD_MIN_LENGTH: 6,
   DEFAULT_FILTER: `All genres`,
   SERVER_ORIGIN: `https://4.react.pages.academy`,
 };
@@ -74,7 +75,7 @@ const PathName = {
   ADD_REVIEW: `/review`,
   SIGN_IN: `/login`,
   MY_LIST: `/mylist`,
-  PLAYER: `/player`
+  PLAYER: `/player/`
 };
 
 const TabName = {

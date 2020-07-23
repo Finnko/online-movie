@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Operation as UserOperation} from '../../store/reducers/user/operations';
 import {validateControl} from '../../utils/validation';
+import {getErrorStatus, getLoadingStatus} from '../../store/reducers/user/selectors';
+import {Config, Errors, LoaderSetup} from '../../const';
 import Header from '../../components/header/header.jsx';
 import Footer from '../../components/footer/footer.jsx';
 import Input from '../../components/input/input.jsx';
 import Loader from '../../components/loader/loader.jsx';
-import {getErrorStatus, getLoadingStatus} from '../../store/reducers/user/selectors';
-import {Errors, LoaderSetup} from '../../const';
 
 const inputNames = {
   email: `Email address`,
@@ -40,7 +40,7 @@ class SignIn extends PureComponent {
           touched: false,
           validation: {
             required: true,
-            minLength: 6
+            minLength: Config.PASSWORD_MIN_LENGTH,
           }
         }
       }

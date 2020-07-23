@@ -1,3 +1,4 @@
+import {createSelector} from 'reselect';
 import NameSpace from '../../name-space';
 
 const NAME_SPACE = NameSpace.MOVIES;
@@ -18,6 +19,22 @@ const getFavoriteError = (state) => state[NAME_SPACE].favoriteError;
 
 const getErrorText = (state) => state[NAME_SPACE].errorText;
 
+const getMovieById = createSelector(
+    getMovies,
+    (state, id) => id,
+    (movies, id) => {
+      return movies.find((movie) => movie.id === id);
+    }
+);
+
+const getSimilarMovies = createSelector(
+    getMovies,
+    getMovieById,
+    (movies, currentMovie) => {
+      return movies.filter((movie) => movie.genre === currentMovie.genre && movie.id !== currentMovie.id);
+    }
+);
+
 export {
   getMovies,
   getPromo,
@@ -27,4 +44,6 @@ export {
   getErrorText,
   getFavoriteError,
   getFavoriteLoading,
+  getMovieById,
+  getSimilarMovies,
 };

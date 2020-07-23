@@ -11,12 +11,12 @@ const props = {
   type: `radio`,
   groupName: `rating`,
   id: `1`,
-  value: 5,
+  value: `5`,
   checked: true,
   label: `rating 5`
 };
 
-describe(`Test e2e GenresList component`, () => {
+describe(`Test e2e RadioButton component`, () => {
   const onRadioChange = jest.fn();
 
   const radioBtn = shallow(
@@ -28,7 +28,7 @@ describe(`Test e2e GenresList component`, () => {
 
   const input = radioBtn.find(`.rating__input`);
 
-  it(`Should radio button be pressed correctly`, () => {
+  it(`Should radio button calls callback on action`, () => {
     input.simulate(`change`);
     expect(onRadioChange).toHaveBeenCalledTimes(1);
   });

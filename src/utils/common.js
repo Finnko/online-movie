@@ -28,12 +28,6 @@ const getRandomLengthArray = (array) => {
 
 const getRandomRating = () => parseFloat((Math.random() * Config.MOVIE_MAX_RATING).toFixed(1));
 
-const getMovieById = (movies, id) => movies.find((movie) => movie.id === id);
-
-const getSimilarMovies = (movies, id, genre) => {
-  return movies.filter((movie) => movie.genre === genre && movie.id !== id);
-};
-
 const getMovieGenres = (movies) => {
   const temp = [Config.DEFAULT_FILTER, ...movies.map((movie) => movie.genre)];
 
@@ -80,6 +74,15 @@ const divideReviewsIntoColumns = (arr) => {
   return {firstColumn, secondColumn};
 };
 
+const formatSecondsToTime = (duration) => {
+  const time = parseInt(duration, 10);
+  const hours = Math.floor(time / 3600).toString().padStart(2, `0`);
+  const minutes = Math.floor((time - (hours * 3600)) / 60).toString().padStart(2, `0`);
+  const seconds = (time - (hours * 3600) - (minutes * 60)).toString().padStart(2, `0`);
+
+  return `${hours}:${minutes}:${seconds}`;
+};
+
 const getFormattedMovieTime = (time) => `${Math.floor(time / 60)}h ${time % 60}m`;
 
 const getFormattedDate = (date) => moment(date).format(`MMMM DD, YYYY`);
@@ -90,15 +93,14 @@ export {
   getRandomLengthArray,
   getRandomRating,
   getRandomInRange,
-  getMovieById,
   getLevelFromRating,
   getRandomDate,
   getFormattedDate,
   getFormattedMovieTime,
   getFormattedTagDate,
-  getSimilarMovies,
   getMovieGenres,
   divideReviewsIntoColumns,
+  formatSecondsToTime,
   renameKeys,
   extend
 };

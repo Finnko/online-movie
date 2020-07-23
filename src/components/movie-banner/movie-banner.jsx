@@ -59,13 +59,14 @@ const MovieBanner = ({
             </p>
 
             <div className="movie-card__buttons">
-              <button
+              <Link
+                to={`${PathName.PLAYER}${id}`}
                 className="btn btn--play movie-card__button"
                 type="button"
               >
                 <Icon width="19" height="19" name="play-s"/>
                 <span>Play</span>
-              </button>
+              </Link>
 
               <button
                 className="btn btn--list movie-card__button"

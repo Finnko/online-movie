@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input component render correctly Should Input component render correctly when its invalid 1`] = `
+<div
+  className="sign-in__field sign-in__field--error"
+>
+  <input
+    className="sign-in__input"
+    id="1"
+    name="email"
+    onChange={[Function]}
+    placeholder="Email"
+    type="email"
+    value="a@a.ru"
+  />
+  <label
+    className="sign-in__label visually-hidden"
+    htmlFor="1"
+  >
+    Email
+  </label>
+</div>
+`;
+
+exports[`Input component render correctly Should Input component render correctly when its valid 1`] = `
+<div
+  className="sign-in__field "
+>
+  <input
+    className="sign-in__input"
+    id="1"
+    name="email"
+    onChange={[Function]}
+    placeholder="Email"
+    type="email"
+    value="a@a.ru"
+  />
+  <label
+    className="sign-in__label visually-hidden"
+    htmlFor="1"
+  >
+    Email
+  </label>
+</div>
+`;
