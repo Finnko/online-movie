@@ -31,7 +31,6 @@ const commentsMock = [
   }
 ];
 
-
 describe(`Comments reducer works correctly`, () => {
   it(`Comments reducer without additional parameters should return initial state`, () => {
     expect(commentsReducer(void 0, {})).toEqual(initialState);
