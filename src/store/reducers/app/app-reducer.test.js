@@ -6,7 +6,6 @@ const initialState = {
   moviesRenderNumber: 8,
 };
 
-
 describe(`App reducer works correctly`, () => {
   it(`App reducer without additional parameters should return initial state`, () => {
     expect(appReducer(void 0, {})).toEqual(initialState);
