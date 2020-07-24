@@ -9,7 +9,17 @@ import MovieReviews from '../movie-reviews/movie-reviews.jsx';
 
 
 const Tabs = ({movie, /* from hoc */ activeItem, onActiveItemChange}) => {
-  const {actors, releaseYear, director, genre, runTime, rating, ratingCount, description} = movie;
+  const {
+    id,
+    actors,
+    releaseYear,
+    director,
+    genre,
+    runTime,
+    rating,
+    ratingCount,
+    description
+  } = movie;
   const tabNames = Object.values(TabName);
 
   return (
@@ -40,7 +50,7 @@ const Tabs = ({movie, /* from hoc */ activeItem, onActiveItemChange}) => {
         />
       }
 
-      {activeItem === TabName.REVIEWS && <MovieReviews />}
+      {activeItem === TabName.REVIEWS && <MovieReviews movieId={id} />}
     </div>
   );
 };

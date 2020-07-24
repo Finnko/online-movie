@@ -18,26 +18,18 @@ import Loader from '../loader/loader.jsx';
 class MovieReviews extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      movieId: null,
-    };
   }
 
   componentDidMount() {
-    const {match, fetchCommentsData} = this.props;
-    const movieId = match.params.id;
-    this.setState({movieId});
-
+    const {movieId, fetchCommentsData} = this.props;
     fetchCommentsData(movieId);
   }
 
-  componentDidUpdate() {
-    const {match, fetchCommentsData} = this.props;
-    const newId = match.params.id;
+  componentDidUpdate(prevProps) {
+    const {movieId} = prevProps;
+    const {movieId: newId, fetchCommentsData} = this.props;
 
-    if (newId !== this.state.movieId) {
-      this.setState(() => ({movieId: newId}));
+    if (newId !== movieId) {
       fetchCommentsData(newId);
     }
   }
@@ -94,7 +86,7 @@ class MovieReviews extends PureComponent {
 }
 
 MovieReviews.propTypes = {
-  match: PropTypes.object.isRequired,
+  movieId: PropTypes.number.isRequired,
   reviews: PropTypes.arrayOf(ReviewPropType).isRequired,
   fetchCommentsData: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,

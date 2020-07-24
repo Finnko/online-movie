@@ -53,7 +53,10 @@ const MoviePage = ({
               <img src={poster} alt={`${title} poster`} width="218" height="327"/>
             </div>
 
-            <TabsWrapped activeItem={TabName.OVERVIEW} movie={currentMovie}/>
+            <TabsWrapped
+              activeItem={TabName.OVERVIEW}
+              movie={currentMovie}
+            />
           </div>
         </div>
       </section>
