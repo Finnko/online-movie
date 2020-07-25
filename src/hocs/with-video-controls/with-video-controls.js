@@ -21,6 +21,7 @@ const withVideoControls = (Component) => {
         timeLeft: `00:00:00`,
         isPlaying: true,
         isLoading: true,
+        isWaiting: true,
       };
     }
 
@@ -33,8 +34,14 @@ const withVideoControls = (Component) => {
 
       video.onloadedmetadata = () => {
         this.setState({
-          isLoading: false,
+          isWaiting: false,
           duration: Math.floor(video.duration),
+        });
+      };
+
+      video.oncanplaythrough = () => {
+        this.setState({
+          isLoading: false,
         });
       };
 
@@ -113,6 +120,7 @@ const withVideoControls = (Component) => {
         timeLeft,
         currentTime,
         isLoading,
+        isWaiting,
         isPlaying
       } = this.state;
       const {poster} = this.props;
@@ -124,6 +132,7 @@ const withVideoControls = (Component) => {
         timeLeft={timeLeft}
         currentTime={currentTime}
         isPlaying={isPlaying}
+        isWaiting={isWaiting}
         isLoading={isLoading}
         onTogglePlay={this.handleTogglePlay}
         onRequestFullScreen={this.handleFullScreenChange}

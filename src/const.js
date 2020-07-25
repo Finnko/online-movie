@@ -33,10 +33,11 @@ const EmptyText = {
   COMMENTS: `There are no comments for this movie. Add the first one!`,
 };
 
-const ServerError = {
+const ServerCodes = {
   UNAUTHORIZED: 401,
   BAD_REQUEST: 400,
   NOT_FOUND: 404,
+  SUCCESS: 200,
 };
 
 const AuthStatus = {
@@ -100,7 +101,7 @@ export {
   PathName,
   TabName,
   ViewMode,
-  ServerError,
+  ServerCodes,
   AuthStatus,
   LoaderSetup,
   Errors,

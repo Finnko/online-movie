@@ -1,5 +1,5 @@
-import axios from "axios";
-import {END_POINT, TIMEOUT, ServerError} from '../const';
+import axios from 'axios';
+import {END_POINT, TIMEOUT, ServerCodes} from '../const';
 
 const createAPI = (handlers) => {
   const api = axios.create({
@@ -21,15 +21,15 @@ const createAPI = (handlers) => {
     const {status} = response;
 
     switch (status) {
-      case ServerError.UNAUTHORIZED:
+      case ServerCodes.UNAUTHORIZED:
         handlers.handleUnauthorized();
         throw error;
 
-      case ServerError.NOT_FOUND:
+      case ServerCodes.NOT_FOUND:
         handlers.handleNotFound();
         throw error;
 
-      case ServerError.BAD_REQUEST:
+      case ServerCodes.BAD_REQUEST:
         handlers.handleBadRequest();
         throw error;
 

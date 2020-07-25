@@ -111,30 +111,33 @@ const updatedFavoriteFilm = {
 
 describe(`Action creators work correctly`, () => {
   it(`Action creator for fetching movies and promo data returns correct action`, () => {
-    expect(ActionCreator.fetchMoviesDataRequest()).toEqual({
-      type: actionTypes.FETCH_MOVIES_DATA_REQUEST,
+    expect(ActionCreator.fetchMoviesRequest()).toEqual({
+      type: actionTypes.FETCH_MOVIES_REQUEST,
     });
   });
 
   it(`Action creator for fetching movies and promo data returns correct action if error occurred`, () => {
-    expect(ActionCreator.fetchMoviesDataError()).toEqual({
-      type: actionTypes.FETCH_MOVIES_DATA_ERROR,
+    expect(ActionCreator.fetchMoviesError()).toEqual({
+      type: actionTypes.FETCH_MOVIES_ERROR,
     });
   });
 
   it(`Action creator for fetching movies and promo data returns correct action and data if success`, () => {
-    expect(ActionCreator.fetchMoviesDataSuccess(movies, promo)).toEqual({
-      type: actionTypes.FETCH_MOVIES_DATA_SUCCESS,
-      payload: {
-        movies,
-        promo,
-      },
+    expect(ActionCreator.fetchMoviesSuccess(movies, promo)).toEqual({
+      type: actionTypes.FETCH_MOVIES_SUCCESS,
+      payload: movies,
+    });
+  });
+
+  it(`Action creator for fetching promo data returns correct action and data if error occurred`, () => {
+    expect(ActionCreator.fetchPromoError()).toEqual({
+      type: actionTypes.FETCH_PROMO_ERROR,
     });
   });
 
   it(`Action creator for fetching promo data returns correct action and data if success`, () => {
-    expect(ActionCreator.fetchPromo(promo)).toEqual({
-      type: actionTypes.FETCH_PROMO,
+    expect(ActionCreator.fetchPromoSuccess(promo)).toEqual({
+      type: actionTypes.FETCH_PROMO_SUCCESS,
       payload: promo,
     });
   });

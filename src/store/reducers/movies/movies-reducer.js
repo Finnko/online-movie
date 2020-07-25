@@ -16,25 +16,29 @@ export default function moviesReducer(state = initialState, action) {
   const {type, payload} = action;
 
   switch (type) {
-    case actionTypes.FETCH_MOVIES_DATA_REQUEST:
+    case actionTypes.FETCH_MOVIES_REQUEST:
       return extend(state, {
         loading: true,
       });
-    case actionTypes.FETCH_MOVIES_DATA_SUCCESS:
+    case actionTypes.FETCH_MOVIES_SUCCESS:
       return extend(state, {
         loading: false,
         error: false,
-        movies: payload.movies,
-        promo: extend(state.promo, payload.promo),
+        movies: payload,
       });
-    case actionTypes.FETCH_MOVIES_DATA_ERROR:
+    case actionTypes.FETCH_MOVIES_ERROR:
       return extend(state, {
         loading: false,
         error: true,
       });
-    case actionTypes.FETCH_PROMO:
+    case actionTypes.FETCH_PROMO_SUCCESS:
       return extend(state, {
+        error: false,
         promo: extend(state.promo, payload),
+      });
+    case actionTypes.FETCH_PROMO_ERROR:
+      return extend(state, {
+        error: true,
       });
     case actionTypes.FETCH_FAVORITES_MOVIES_REQUEST:
       return extend(state, {

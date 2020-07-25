@@ -93,6 +93,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   updateFavoriteStatus(id, status) {
     dispatch(MoviesOperation.updateFavoriteStatus(id, status));
+    dispatch(MoviesOperation.fetchPromo());
   }
 });
 

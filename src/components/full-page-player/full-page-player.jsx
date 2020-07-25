@@ -40,6 +40,7 @@ class FullPagePlayer extends PureComponent {
       currentTime,
       isLoading,
       isPlaying,
+      isWaiting,
       onTogglePlay,
       onRequestFullScreen,
       onProgressBarClick,
@@ -51,13 +52,13 @@ class FullPagePlayer extends PureComponent {
       <div className="player">
         {children}
 
-        {isLoading &&
+        {isLoading && isWaiting &&
         <Loader
           size={LoaderSetup.SIZE.MEDIUM}
           position={LoaderSetup.POSITION.FIXED}
         />}
 
-        {!isLoading &&
+        {!isLoading && !isWaiting &&
         <Fragment >
           <button
             type="button"
@@ -128,6 +129,7 @@ FullPagePlayer.propTypes = {
   timeLeft: PropTypes.string.isRequired,
   isPlaying: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  isWaiting: PropTypes.bool.isRequired,
   onTogglePlay: PropTypes.func.isRequired,
   onRequestFullScreen: PropTypes.func.isRequired,
   onProgressBarClick: PropTypes.func.isRequired,

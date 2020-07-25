@@ -6,7 +6,8 @@ import {Operation as MoviesOperation} from './store/reducers/movies/operations';
 import {Operation as UserOperation} from './store/reducers/user/operations';
 import App from './components/app/app.jsx';
 
-store.dispatch(MoviesOperation.fetchAppData());
+store.dispatch(MoviesOperation.fetchPromo());
+store.dispatch(MoviesOperation.fetchMovies());
 store.dispatch(UserOperation.checkAuth());
 
 ReactDOM.render(
