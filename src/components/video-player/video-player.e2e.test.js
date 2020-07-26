@@ -49,5 +49,3 @@ describe(`Test e2e Video Player Component`, () => {
     expect(_videoRef.current.load).toHaveBeenCalledTimes(1);
   });
 });
-
-

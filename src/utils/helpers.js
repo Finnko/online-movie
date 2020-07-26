@@ -9,7 +9,7 @@ const apiMockHandlers = {
 
 const promisifyApiMockReply = (data = []) => {
   return new Promise((resolve) => {
-    if (Math.random() > 0.01) {
+    if (Math.random() > 0.5) {
       resolve([ServerCodes.SUCCESS, data]);
     } else {
       resolve(ServerCodes.BAD_REQUEST);

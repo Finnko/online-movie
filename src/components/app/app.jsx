@@ -27,10 +27,8 @@ const App = () => {
         <PrivateRoute
           exact={false}
           path={`${PathName.MOVIE_PAGE}:id${PathName.ADD_REVIEW}`}
-          render={() => {
-            return <AddReviewPageWrapped />;
-          }}
         >
+          <AddReviewPageWrapped />
         </PrivateRoute>
         <Route path={`${PathName.MOVIE_PAGE}:id`}>
           <MoviePageWrapped />
@@ -41,10 +39,8 @@ const App = () => {
         <PrivateRoute
           exact
           path={`${PathName.MY_LIST}`}
-          render={() => {
-            return <MyListPage />;
-          }}
         >
+          <MyListPage />
         </PrivateRoute>
       </Switch>
     </Router>

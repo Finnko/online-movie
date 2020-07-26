@@ -26,9 +26,9 @@ const MoviePage = ({
   authStatus,
   updateFavoriteStatus,
 }) => {
-  if (!currentMovie) {
-    return <Redirect to={PathName.ROOT}/>;
-  }
+  // if (!currentMovie) {
+  //   return <Redirect to={PathName.ROOT}/>;
+  // }
 
   const {poster, title, backgroundColor} = currentMovie;
   const isAuth = AuthStatus.AUTH === authStatus;
@@ -88,8 +88,7 @@ MoviePage.propTypes = {
   updateFavoriteStatus: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state, ownProps) => {
-  const {match} = ownProps;
+const mapStateToProps = (state, {match}) => {
   const movieId = parseInt(match.params.id, 10);
 
   return {
