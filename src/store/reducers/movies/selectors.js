@@ -23,6 +23,8 @@ const getMovieById = createSelector(
     getMovies,
     (state, id) => id,
     (movies, id) => {
+      console.log({id});
+      console.log({movies});
       return movies.find((movie) => movie.id === id);
     }
 );

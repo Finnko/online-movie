@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {Redirect, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {Config, Errors, LoaderSetup, PathName} from '../../const';
 import MoviePropType from '../../prop-types/movie';
@@ -63,7 +63,7 @@ class AddReviewPage extends PureComponent {
     const {review, rating, isFormValid} = this.state;
 
     if (!currentMovie) {
-      return <Redirect to={PathName.ROOT}/>;
+      return null;
     }
 
     const {title, poster, backgroundImage} = currentMovie;

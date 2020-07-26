@@ -26,9 +26,9 @@ const MoviePage = ({
   authStatus,
   updateFavoriteStatus,
 }) => {
-  // if (!currentMovie) {
-  //   return <Redirect to={PathName.ROOT}/>;
-  // }
+  if (!currentMovie) {
+    return null;
+  }
 
   const {poster, title, backgroundColor} = currentMovie;
   const isAuth = AuthStatus.AUTH === authStatus;
@@ -80,7 +80,7 @@ const MoviePage = ({
 };
 
 MoviePage.propTypes = {
-  currentMovie: MoviePropType.isRequired,
+  currentMovie: MoviePropType,
   favoriteLoading: PropTypes.bool.isRequired,
   favoriteError: PropTypes.bool.isRequired,
   similarMovies: PropTypes.arrayOf(MoviePropType).isRequired,
@@ -94,8 +94,8 @@ const mapStateToProps = (state, {match}) => {
   return {
     favoriteLoading: getFavoriteLoading(state),
     favoriteError: getFavoriteError(state),
-    similarMovies: getSimilarMovies(state, movieId),
     currentMovie: getMovieById(state, movieId),
+    similarMovies: getSimilarMovies(state, movieId),
     authStatus: getAuthStatus(state),
   };
 };
