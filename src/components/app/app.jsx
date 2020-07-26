@@ -1,5 +1,6 @@
 import React from 'react';
 import {Router, Route, Switch, withRouter} from 'react-router-dom';
+import {compose} from 'redux';
 import history from '../../history';
 import {PathName} from '../../const';
 import MainPage from '../../pages/main-page/main-page.jsx';
@@ -9,10 +10,16 @@ import SignIn from '../../pages/sign-in/sign-in.jsx';
 import MyListPage from '../../pages/my-list-page/my-list-page.jsx';
 import PlayerPage from '../../pages/player-page/player-page.jsx';
 import PrivateRoute from '../private-route/private-route.jsx';
+import withReviewData from '../../hocs/with-review-data/with-review-data';
+import withAuthData from '../../hocs/with-auth-data/with-auth-data';
 
-const AddReviewPageWrapped = withRouter(AddReviewPage);
+const AddReviewPageWrapped = compose(
+    withRouter,
+    withReviewData
+)(AddReviewPage);
 const MoviePageWrapped = withRouter(MoviePage);
 const PlayerPageWrapped = withRouter(PlayerPage);
+const SignInPageWrapped = withAuthData(SignIn);
 
 const App = () => {
   return (
@@ -22,7 +29,7 @@ const App = () => {
           <MainPage />
         </Route>
         <Route path={`${PathName.SIGN_IN}`}>
-          <SignIn />
+          <SignInPageWrapped />
         </Route>
         <PrivateRoute
           exact={false}

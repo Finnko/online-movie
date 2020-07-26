@@ -1,10 +1,9 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
-import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getSimilarMovies} from '../../store/reducers/movies/selectors';
 import {getMovieById} from '../../store/reducers/movies/selectors';
-import {AuthStatus, Config, PathName, TabName, ViewMode} from '../../const';
+import {AuthStatus, Config, DEFAULT_MOVIE, TabName, ViewMode} from '../../const';
 import MoviePropType from '../../prop-types/movie';
 import {getFavoriteError, getFavoriteLoading} from '../../store/reducers/movies/selectors';
 import MovieBanner from '../../components/movie-banner/movie-banner.jsx';
@@ -26,10 +25,6 @@ const MoviePage = ({
   authStatus,
   updateFavoriteStatus,
 }) => {
-  if (!currentMovie) {
-    return null;
-  }
-
   const {poster, title, backgroundColor} = currentMovie;
   const isAuth = AuthStatus.AUTH === authStatus;
 
@@ -94,7 +89,7 @@ const mapStateToProps = (state, {match}) => {
   return {
     favoriteLoading: getFavoriteLoading(state),
     favoriteError: getFavoriteError(state),
-    currentMovie: getMovieById(state, movieId),
+    currentMovie: getMovieById(state, movieId) || DEFAULT_MOVIE,
     similarMovies: getSimilarMovies(state, movieId),
     authStatus: getAuthStatus(state),
   };

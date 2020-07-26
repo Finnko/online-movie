@@ -67,7 +67,7 @@ const LoaderSetup = {
 };
 
 const END_POINT = `https://4.react.pages.academy/wtw`;
-const TIMEOUT = 1000 * 5;
+const TIMEOUT = 5000; // ms
 const EMAIL_PATTERN = /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i;
 
 const PathName = {
@@ -96,6 +96,26 @@ const ViewMode = {
   }
 };
 
+const DEFAULT_MOVIE = {
+  id: 0,
+  title: `Something went wrong, please check address and try again`,
+  thumb: `default`,
+  poster: `default`,
+  preview: `default`,
+  videoSrc: `default`,
+  isFavorite: false,
+  backgroundImage: `default`,
+  backgroundColor: `#f5f5f5`,
+  genre: `default`,
+  releaseYear: 0,
+  description: `default`,
+  rating: 0,
+  ratingCount: 0,
+  runTime: 0,
+  director: `default`,
+  actors: [`default`],
+};
+
 export {
   Config,
   PathName,
@@ -109,4 +129,5 @@ export {
   END_POINT,
   TIMEOUT,
   EMAIL_PATTERN,
+  DEFAULT_MOVIE,
 };

@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {Config, Errors, LoaderSetup, PathName} from '../../const';
 import MoviePropType from '../../prop-types/movie';
@@ -16,54 +16,34 @@ class AddReviewPage extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      isFormValid: false,
-      rating: {
-        value: ``
-      },
-      review: {
-        value: ``,
-      },
-    };
-
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this._handleFormSubmit = this._handleFormSubmit.bind(this);
   }
 
-  handleInputChange(evt) {
-    let {value, name} = evt.target;
-    const {review, rating} = this.state;
-
-    const isFormValid = review.value.length > Config.COMMENT_LENGTH.MIN &&
-      review.value.length < Config.COMMENT_LENGTH.MAX
-      || rating === ``;
-
-    this.setState((prevState) => Object.assign({}, prevState, {
-      [name]: {
-        value,
-      },
-      isFormValid,
-    }));
-  }
-
-  handleFormSubmit(evt) {
+  _handleFormSubmit(evt) {
     evt.preventDefault();
-    const {movieId} = this.props;
+    const {movieId, rating, review} = this.props;
 
-    const {rating, review} = this.state;
     this.props.onFormSubmit({
-      rating: parseInt(rating.value, 10),
-      comment: review.value,
+      rating: parseInt(rating, 10),
+      comment: review,
       id: movieId,
     });
   }
 
   render() {
-    const {currentMovie, loading, error, movieId} = this.props;
-    const {review, rating, isFormValid} = this.state;
+    const {
+      currentMovie,
+      loading,
+      error,
+      movieId,
+      review,
+      rating,
+      isFormValid,
+      onInputChange,
+    } = this.props;
 
     if (!currentMovie) {
-      return null;
+      return <Redirect to={PathName.ROOT}/>;
     }
 
     const {title, poster, backgroundImage} = currentMovie;
@@ -112,7 +92,7 @@ class AddReviewPage extends PureComponent {
           <form
             action="#"
             className="add-review__form"
-            onSubmit={this.handleFormSubmit}
+            onSubmit={this._handleFormSubmit}
           >
             <div className="rating">
               <div className="rating__stars">
@@ -121,11 +101,11 @@ class AddReviewPage extends PureComponent {
                     key={id}
                     id={`star-${id}`}
                     groupName="rating"
-                    checked={rating.value === Config.COMMENT_RATING_MAP[id]}
+                    checked={rating === Config.COMMENT_RATING_MAP[id]}
                     value={Config.COMMENT_RATING_MAP[id]}
                     label={`Rating ${Config.COMMENT_RATING_MAP[id]}`}
                     disabled={loading}
-                    onRadioChange={this.handleInputChange}
+                    onRadioChange={onInputChange}
                   />
                 ))}
               </div>
@@ -137,9 +117,9 @@ class AddReviewPage extends PureComponent {
                 name="review"
                 id="review"
                 placeholder="Review text"
-                value={review.value}
+                value={review}
                 disabled={loading}
-                onChange={this.handleInputChange}
+                onChange={onInputChange}
               />
 
               <div className="add-review__submit">
@@ -177,11 +157,14 @@ AddReviewPage.propTypes = {
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
   movieId: PropTypes.number.isRequired,
+  rating: PropTypes.string.isRequired,
+  review: PropTypes.string.isRequired,
+  isFormValid: PropTypes.bool.isRequired,
+  onInputChange: PropTypes.func.isRequired,
   onFormSubmit: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state, ownProps) => {
-  const {match} = ownProps;
+const mapStateToProps = (state, {match}) => {
   const movieId = parseInt(match.params.id, 10);
 
   return {

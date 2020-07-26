@@ -9,10 +9,10 @@ const withVideoControls = (Component) => {
 
       this._videoRef = createRef();
 
-      this.handleTogglePlay = this.handleTogglePlay.bind(this);
-      this.handleFullScreenChange = this.handleFullScreenChange.bind(this);
-      this.handleEnded = this.handleEnded.bind(this);
-      this.handleProgressBarClick = this.handleProgressBarClick.bind(this);
+      this._handleTogglePlay = this._handleTogglePlay.bind(this);
+      this._handleFullScreenChange = this._handleFullScreenChange.bind(this);
+      this._handleEnded = this._handleEnded.bind(this);
+      this._handleProgressBarClick = this._handleProgressBarClick.bind(this);
 
       this.state = {
         progress: 0,
@@ -82,7 +82,7 @@ const withVideoControls = (Component) => {
       video.src = ``;
     }
 
-    handleTogglePlay() {
+    _handleTogglePlay() {
       this.setState((prevState) => {
         return {
           isPlaying: !prevState.isPlaying
@@ -90,17 +90,17 @@ const withVideoControls = (Component) => {
       });
     }
 
-    handleFullScreenChange() {
+    _handleFullScreenChange() {
       const video = this._videoRef.current;
       video.requestFullscreen();
     }
 
-    handleEnded() {
+    _handleEnded() {
       const video = this._videoRef.current;
       video.play();
     }
 
-    handleProgressBarClick({clientX, target}) {
+    _handleProgressBarClick({clientX, target}) {
       const video = this._videoRef.current;
       const progressBar = target;
       const offsetX = clientX - progressBar.getBoundingClientRect().left;
@@ -134,16 +134,16 @@ const withVideoControls = (Component) => {
         isPlaying={isPlaying}
         isWaiting={isWaiting}
         isLoading={isLoading}
-        onTogglePlay={this.handleTogglePlay}
-        onRequestFullScreen={this.handleFullScreenChange}
-        onProgressBarClick={this.handleProgressBarClick}
+        onTogglePlay={this._handleTogglePlay}
+        onRequestFullScreen={this._handleFullScreenChange}
+        onProgressBarClick={this._handleProgressBarClick}
       >
         <video
           ref={this._videoRef}
           autoPlay
           className="player__video"
           poster={poster}
-          onEnded={this.handleEnded}
+          onEnded={this._handleEnded}
         />
       </Component>;
     }

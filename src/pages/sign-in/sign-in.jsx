@@ -2,9 +2,8 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Operation as UserOperation} from '../../store/reducers/user/operations';
-import {validateControl} from '../../utils/validation';
 import {getErrorStatus, getLoadingStatus} from '../../store/reducers/user/selectors';
-import {Config, Errors, LoaderSetup} from '../../const';
+import {Errors, LoaderSetup} from '../../const';
 import Header from '../../components/header/header.jsx';
 import Footer from '../../components/footer/footer.jsx';
 import Input from '../../components/input/input.jsx';
@@ -22,60 +21,13 @@ class SignIn extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      isFormValid: false,
-      formControls: {
-        email: {
-          value: ``,
-          valid: false,
-          touched: false,
-          validation: {
-            required: true,
-            email: true
-          }
-        },
-        password: {
-          value: ``,
-          valid: false,
-          touched: false,
-          validation: {
-            required: true,
-            minLength: Config.PASSWORD_MIN_LENGTH,
-          }
-        }
-      }
-    };
-
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this._handleFormSubmit = this._handleFormSubmit.bind(this);
   }
 
-  handleInputChange(evt) {
-    const {value, name} = evt.target;
-    let isFormValid = true;
-    const formControls = Object.assign({}, this.state.formControls);
-    const control = Object.assign({}, this.state.formControls[name]);
-
-    control.value = value;
-    control.touched = true;
-    control.valid = validateControl(control.value, control.validation);
-
-    formControls[name] = control;
-
-    Object.keys(formControls).forEach((controlName) => {
-      isFormValid = formControls[controlName].valid && isFormValid;
-    });
-
-    this.setState({
-      formControls,
-      isFormValid,
-    });
-  }
-
-  handleFormSubmit(evt) {
+  _handleFormSubmit(evt) {
     evt.preventDefault();
 
-    const {email, password} = this.state.formControls;
+    const {email, password} = this.props.formControls;
     this.props.onFormSubmit({
       email: email.value,
       password: password.value,
@@ -84,7 +36,13 @@ class SignIn extends PureComponent {
 
   renderInputs() {
     return inputs.map((name, index) => {
-      const {value, valid, touched, validation} = this.state.formControls[name];
+      const {onInputChange, formControls} = this.props;
+      const {
+        value,
+        valid,
+        touched,
+        validation
+      } = formControls[name];
 
       return (
         <Input
@@ -97,15 +55,20 @@ class SignIn extends PureComponent {
           valid={valid}
           touched={touched}
           shouldValidate={!!validation}
-          onInputChange={this.handleInputChange}
+          onInputChange={onInputChange}
         />
       );
     });
   }
 
   render() {
-    const {loading, error} = this.props;
-    const {email, password} = this.state.formControls;
+    const {
+      loading,
+      error,
+      formControls,
+      isFormValid,
+    } = this.props;
+    const {email, password} = formControls;
 
     return (
       <div className="user-page">
@@ -115,7 +78,7 @@ class SignIn extends PureComponent {
           <form
             action="#"
             className="sign-in__form"
-            onSubmit={this.handleFormSubmit}
+            onSubmit={this._handleFormSubmit}
           >
             <div className="sign-in__message">
               {!email.valid && email.touched && <p>{`${Errors.WRONG_EMAIL}`}</p>}
@@ -132,7 +95,7 @@ class SignIn extends PureComponent {
               <button
                 className="sign-in__btn"
                 type="submit"
-                disabled={!this.state.isFormValid}
+                disabled={!isFormValid}
               >
                 {loading &&
                   <Loader
@@ -156,6 +119,9 @@ class SignIn extends PureComponent {
 SignIn.propTypes = {
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
+  formControls: PropTypes.object,
+  isFormValid: PropTypes.bool.isRequired,
+  onInputChange: PropTypes.func.isRequired,
   onFormSubmit: PropTypes.func.isRequired,
 };
 
