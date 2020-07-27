@@ -1,28 +1,18 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import App from './app';
+import Enzyme, {mount} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import {Router, Link} from 'react-router-dom';
+import {createMemoryHistory} from 'history';
+import {Config, PathName} from '../../const';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import NameSpace from '../../store/name-space';
-import {AuthStatus} from '../../const';
+import {MainContent} from './main-content';
 
-const promo = {
-  id: 1,
-  title: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  thumb: `img/bohemian-rhapsody.jpg`,
-  releaseYear: 2014,
-  preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-  backgroundColor: `#FDFDFC`,
-  backgroundImage: `img/bg-the-grand-budapest-hotel.jpg`,
-  description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
-  director: `Michael Bay`,
-  actors: [`Leonardo Di Caprio`],
-  rating: 7.5,
-  ratingCount: 250,
-  isFavorite: false,
-  poster: `/img/the-grand-budapest-hotel-poster.jpg`,
-};
+Enzyme.configure({
+  adapter: new Adapter(),
+});
+
 const mockMovies = [
   {
     id: 1,
@@ -79,45 +69,93 @@ const mockMovies = [
     videoSrc: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
   }
 ];
-const mockUser = {
-  id: 1,
-  email: `Oliver.conner@gmail.com`,
-  name: `Oliver.conner`,
-  avatarUrl: `img/1.png`
-};
 
 const mockStore = configureStore([]);
-
 const store = mockStore({
   [NameSpace.MOVIES]: {
     movies: mockMovies,
-    promo,
-    loading: false,
-    error: false,
-    favoriteLoading: false,
-    favoriteError: false,
-    errorText: ``,
   },
   [NameSpace.APP]: {
     activeGenre: `All genres`,
-  },
-  [NameSpace.USER]: {
-    user: mockUser,
-    authStatus: AuthStatus.NO_AUTH,
+    renderLimit: 2,
   }
 });
 
-describe(`App component render correctly`, () => {
-  it(`Should App component render correctly`, () => {
-    const tree = renderer
-      .create(
-          <Provider store={store}>
-            <App />
-          </Provider>, {
-            createNodeMock: () => {
-              return {};
-            },
-          }).toJSON();
-    expect(tree).toMatchSnapshot();
+const props = {
+  filteredMovies: mockMovies,
+  activeGenre: `All genres`,
+  genres: [`All genres`, `Crime`, `Horror`],
+};
+
+describe(`Test e2e MainContent component`, () => {
+  const handleShowMoreClick = jest.fn();
+  const handleGenreChange = jest.fn();
+  const history = createMemoryHistory();
+
+  it(`Test MainContent handleShowMoreClick callback works correctly`, () => {
+    const wrapper = mount(
+        <Provider store={store}>
+          <Router history={history}>
+            <MainContent
+              {...props}
+              renderLimit={2}
+              handleGenreChange={handleGenreChange}
+              handleShowMoreClick={handleShowMoreClick}
+            />
+          </Router>
+        </Provider>
+    );
+
+    const btn = wrapper.find(`button.catalog__button`);
+    btn.simulate(`click`);
+
+    expect(handleShowMoreClick).toHaveBeenCalledTimes(1);
+    expect(handleShowMoreClick).toHaveBeenCalledWith(Config.MOVIES_NUMBER_OFFSET);
+  });
+
+  it(`Test MainContent handleGenreChange callback works correctly`, () => {
+    const wrapper = mount(
+        <Provider store={store}>
+          <Router history={history}>
+            <MainContent
+              {...props}
+              renderLimit={2}
+              handleGenreChange={handleGenreChange}
+              handleShowMoreClick={handleShowMoreClick}
+            />
+          </Router>
+        </Provider>
+    );
+
+    const tab = wrapper.find(`a.catalog__genres-link`).at(1);
+    tab.simulate(`click`, {preventDefault() {}});
+
+    expect(handleGenreChange).toHaveBeenCalledTimes(1);
+    expect(handleGenreChange).toHaveBeenCalledWith(`Crime`);
+  });
+
+  it(`MainContent should render correct routes`, () => {
+    const wrapper = mount(
+        <Provider store={store}>
+          <Router history={history}>
+            <MainContent
+              {...props}
+              renderLimit={2}
+              handleGenreChange={handleGenreChange}
+              handleShowMoreClick={handleShowMoreClick}
+            />
+          </Router>
+        </Provider>
+    );
+
+    const movieCardsLinks = wrapper.find(Link);
+    expect(movieCardsLinks.length).toBe(mockMovies.length * 2);
+
+    const movieCards = wrapper.find(`a.small-movie-card`);
+
+    movieCards.forEach((item) => {
+      const link = item.find(Link).first();
+      expect(link.props().to).toBe(`${PathName.MOVIE_PAGE}${item.id}`);
+    });
   });
 });

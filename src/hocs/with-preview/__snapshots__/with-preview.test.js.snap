@@ -3,9 +3,8 @@
 exports[`withPreview works correctly withPreview is rendered correctly 1`] = `
 <video
   height="175"
-  muted={true}
   poster="img/the-grand-budapest-hotel-poster.jpg"
   src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-  width="100%"
+  width="280"
 />
 `;

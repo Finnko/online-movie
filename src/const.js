@@ -96,26 +96,6 @@ const ViewMode = {
   }
 };
 
-const DEFAULT_MOVIE = {
-  id: 0,
-  title: `Something went wrong, please check address and try again`,
-  thumb: `default`,
-  poster: `default`,
-  preview: `default`,
-  videoSrc: `default`,
-  isFavorite: false,
-  backgroundImage: `default`,
-  backgroundColor: `#f5f5f5`,
-  genre: `default`,
-  releaseYear: 0,
-  description: `default`,
-  rating: 0,
-  ratingCount: 0,
-  runTime: 0,
-  director: `default`,
-  actors: [`default`],
-};
-
 export {
   Config,
   PathName,
@@ -129,5 +109,4 @@ export {
   END_POINT,
   TIMEOUT,
   EMAIL_PATTERN,
-  DEFAULT_MOVIE,
 };

@@ -9,7 +9,7 @@ Array [
       className="movie-card__bg"
     >
       <img
-        alt=""
+        alt="The Grand Budapest Hotel"
         src="img/bg-the-grand-budapest-hotel.jpg"
       />
     </div>
@@ -49,16 +49,13 @@ Array [
       <div
         className="user-block"
       >
-        <div
-          className="user-block__avatar"
+        <a
+          className="user-block__link"
+          href="/login"
+          onClick={[Function]}
         >
-          <img
-            alt="User avatar"
-            height="63"
-            src="img/avatar.jpg"
-            width="63"
-          />
-        </div>
+          Sign In
+        </a>
       </div>
     </header>
     <div
@@ -71,9 +68,9 @@ Array [
           className="movie-card__poster"
         >
           <img
-            alt=""
+            alt="The Grand Budapest Hotel"
             height="327"
-            src="img/the-grand-budapest-hotel-poster.jpg"
+            src="/img/the-grand-budapest-hotel-poster.jpg"
             width="218"
           />
         </div>
@@ -83,7 +80,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            
+            The Grand Budapest Hotel
           </h2>
           <p
             className="movie-card__meta"
@@ -91,7 +88,7 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Comedy
+              Drama
             </span>
             <span
               className="movie-card__year"
@@ -102,8 +99,10 @@ Array [
           <div
             className="movie-card__buttons"
           >
-            <button
+            <a
               className="btn btn--play movie-card__button"
+              href="/player/1"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -118,9 +117,11 @@ Array [
               <span>
                 Play
               </span>
-            </button>
+            </a>
             <button
               className="btn btn--list movie-card__button"
+              disabled={false}
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -177,6 +178,28 @@ Array [
             Drama
           </a>
         </li>
+        <li
+          className="catalog__genres-item "
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+            onClick={[Function]}
+          >
+            Comedy
+          </a>
+        </li>
+        <li
+          className="catalog__genres-item "
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+            onClick={[Function]}
+          >
+            Fantasy
+          </a>
+        </li>
       </ul>
       <div
         className="catalog__movies-list"
@@ -188,7 +211,7 @@ Array [
         >
           <a
             className="small-movie-card__link"
-            href="/movie/1"
+            href="/films/1"
             onClick={[Function]}
           >
             <div
@@ -196,10 +219,9 @@ Array [
             >
               <video
                 height="175"
-                muted={true}
                 poster="img/bohemian-rhapsody.jpg"
                 src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-                width="100%"
+                width="280"
               />
             </div>
           </a>
@@ -208,11 +230,73 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="/movie/1"
+              href="/films/1"
               onClick={[Function]}
             >
               The Grand Budapest Hotel
             </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <a
+            className="small-movie-card__link"
+            href="/films/14"
+            onClick={[Function]}
+          >
+            <div
+              className="small-movie-card__image"
+            >
+              <video
+                height="175"
+                poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/snatch.jpg"
+                src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+                width="280"
+              />
+            </div>
+          </a>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="/films/14"
+              onClick={[Function]}
+            />
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <a
+            className="small-movie-card__link"
+            href="/films/15"
+            onClick={[Function]}
+          >
+            <div
+              className="small-movie-card__image"
+            >
+              <video
+                height="175"
+                poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+                src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+                width="280"
+              />
+            </div>
+          </a>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="/films/15"
+              onClick={[Function]}
+            />
           </h3>
         </article>
       </div>
@@ -236,6 +320,8 @@ Array [
       >
         <a
           className="logo__link logo__link--light"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -264,4 +350,117 @@ Array [
     </footer>
   </div>,
 ]
+`;
+
+exports[`MainPage component render correctly Should MainPage component render correctly with error 1`] = `
+Array [
+  <header
+    className="page-header "
+  >
+    <div
+      className="logo"
+    >
+      <a
+        className="logo__link"
+        href="/"
+        onClick={[Function]}
+      >
+        <span
+          className="logo__letter logo__letter--1"
+        >
+          W
+        </span>
+        <span
+          className="logo__letter logo__letter--2"
+        >
+          T
+        </span>
+        <span
+          className="logo__letter logo__letter--3"
+        >
+          W
+        </span>
+      </a>
+    </div>
+    <div
+      className="user-block"
+    >
+      <a
+        className="user-block__link"
+        href="/login"
+        onClick={[Function]}
+      >
+        Sign In
+      </a>
+    </div>
+  </header>,
+  <section
+    className="catalog"
+  >
+    <div
+      className="page-content"
+    >
+      <div
+        className="error-wrapper"
+      >
+        <p
+          className="error-message"
+        >
+          Error
+        </p>
+      </div>
+    </div>
+  </section>,
+  <footer
+    className="page-footer"
+  >
+    <div
+      className="logo"
+    >
+      <a
+        className="logo__link logo__link--light"
+        href="/"
+        onClick={[Function]}
+      >
+        <span
+          className="logo__letter logo__letter--1"
+        >
+          W
+        </span>
+        <span
+          className="logo__letter logo__letter--2"
+        >
+          T
+        </span>
+        <span
+          className="logo__letter logo__letter--3"
+        >
+          W
+        </span>
+      </a>
+    </div>
+    <div
+      className="copyright"
+    >
+      <p>
+        © 2019 What to watch Ltd.
+      </p>
+    </div>
+  </footer>,
+]
+`;
+
+exports[`MainPage component render correctly Should MainPage component render correctly with loading 1`] = `
+<div
+  className="loader-wrapper"
+  style={
+    Object {
+      "position": "fixed",
+    }
+  }
+>
+  <div
+    className="loader medium"
+  />
+</div>
 `;

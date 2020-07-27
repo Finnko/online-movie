@@ -137,11 +137,11 @@ describe(`Movies reducer works correctly`, () => {
     expect(moviesReducer(void 0, {})).toEqual(initialState);
   });
 
-  it(`Movies reducer should change loading value when the request is sent`, () => {
+  it(`Movies reducer should change loading value when the movies request is sent`, () => {
     expect(moviesReducer({
       loading: false
     }, {
-      type: actionTypes.FETCH_MOVIES_DATA_REQUEST,
+      type: actionTypes.FETCH_MOVIES_REQUEST,
     })).toEqual({
       loading: true,
     });
@@ -151,7 +151,7 @@ describe(`Movies reducer works correctly`, () => {
     expect(moviesReducer({
       error: true,
     }, {
-      type: actionTypes.FETCH_MOVIES_DATA_ERROR,
+      type: actionTypes.FETCH_MOVIES_ERROR,
     })).toEqual({
       error: true,
       loading: false,
@@ -161,29 +161,36 @@ describe(`Movies reducer works correctly`, () => {
   it(`Movies reducer should change data on success`, () => {
     expect(moviesReducer({
       movies: [],
-      promo: {},
     }, {
-      type: actionTypes.FETCH_MOVIES_DATA_SUCCESS,
-      payload: {
-        movies: mockMovies,
-        promo: mockPromo,
-      }
+      type: actionTypes.FETCH_MOVIES_SUCCESS,
+      payload: mockMovies
     })).toEqual({
       error: false,
       loading: false,
       movies: mockMovies,
-      promo: mockPromo,
     });
   });
 
   it(`Movies reducer should change promo data on success`, () => {
     expect(moviesReducer({
+      error: false,
       promo: {},
     }, {
-      type: actionTypes.FETCH_PROMO,
+      type: actionTypes.FETCH_PROMO_SUCCESS,
       payload: mockPromo,
     })).toEqual({
+      error: false,
       promo: mockPromo,
+    });
+  });
+
+  it(`Movies reducer should change error value`, () => {
+    expect(moviesReducer({
+      error: false,
+    }, {
+      type: actionTypes.FETCH_PROMO_ERROR,
+    })).toEqual({
+      error: true,
     });
   });
 

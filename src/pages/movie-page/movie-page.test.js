@@ -6,67 +6,150 @@ import configureStore from 'redux-mock-store';
 import NameSpace from '../../store/name-space';
 import {MoviePage} from './movie-page';
 import {Provider} from 'react-redux';
+import {AuthStatus} from '../../const';
 
-const mock = [
+const currentMovie = {
+  id: 1,
+  title: `The Grand Budapest Hotel`,
+  genre: `Drama`,
+  thumb: `img/bohemian-rhapsody.jpg`,
+  releaseYear: 2014,
+  preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  backgroundColor: `#FDFDFC`,
+  backgroundImage: `img/bg-the-grand-budapest-hotel.jpg`,
+  description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
+  director: `Michael Bay`,
+  actors: [`Leonardo Di Caprio`],
+  rating: 7.5,
+  ratingCount: 250,
+  isFavorite: false,
+  poster: `/img/the-grand-budapest-hotel-poster.jpg`,
+};
+const mockMovies = [
   {
-    id: `1`,
+    id: 1,
     title: `The Grand Budapest Hotel`,
     genre: `Drama`,
+    thumb: `img/bohemian-rhapsody.jpg`,
     releaseYear: 2014,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    backgroundColor: `#FDFDFC`,
     backgroundImage: `img/bg-the-grand-budapest-hotel.jpg`,
-    description: [
-      `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
-      `Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`
-    ],
+    description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
     director: `Michael Bay`,
     actors: [`Leonardo Di Caprio`],
     rating: 7.5,
     ratingCount: 250,
+    isFavorite: false,
     poster: `/img/the-grand-budapest-hotel-poster.jpg`,
-  }
-];
-
-const reviewsMock = [
-  {
-    id: `1`,
-    comment: `Good comment!`,
-    rating: 8.9,
-    user: `Ozzy Osbourne`,
-    date: new Date(1583591483969),
+  }, {
+    backgroundColor: `#FDFDFC`,
+    backgroundImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/background/Snatch.jpg`,
+    description: `Unscrupulous boxing promoters, violent bookmakers, a Russian gangster, incompetent amateur robbers and supposedly Jewish jewelers fight to track down a priceless stolen diamond.`,
+    director: `Guy Ritchie`,
+    genre: `Comedy`,
+    id: 14,
+    isFavorite: false,
+    name: `Snatch`,
+    poster: `https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Snatch.jpg`,
+    thumb: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/snatch.jpg`,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    rating: 0.2,
+    released: 2000,
+    runTime: 104,
+    ratingCount: 716577,
+    starring: [`Jason Statham`, `Brad Pitt`, `Benicio Del Toro`],
+    videoSrc: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
   },
   {
-    id: `3`,
-    comment: `Bad comment!`,
-    rating: 1.9,
-    user: `Axl Rose`,
-    date: new Date(1783591499969),
-  },
-];
-
-const match = {
-  params: {
-    id: `1`
+    backgroundColor: `#B6A99F`,
+    backgroundImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/background/Fantastic_Beasts.jpg`,
+    description: `In an effort to thwart Grindelwald's plans of raising pure-blood wizards to rule over all non-magical beings, Albus Dumbledore enlists his former student Newt Scamander, who agrees to help, though he's unaware of the dangers that lie ahead. Lines are drawn as love and loyalty are tested, even among the truest friends and family, in an increasingly divided wizarding world.`,
+    director: `David Yates`,
+    genre: `Fantasy`,
+    id: 15,
+    isFavorite: false,
+    name: `Fantastic Beasts: The Crimes of Grindelwald`,
+    poster: `https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Fantastic_Beasts.jpg`,
+    thumb: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    preview: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    rating: 3.4,
+    released: 2018,
+    runTime: 134,
+    ratingCount: 160757,
+    starring: [`Eddie Redmayne`, `Katherine Waterston`, `Dan Fogler`],
+    videoSrc: `http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4`,
   }
+];
+const mockUser = {
+  id: 1,
+  email: `Oliver.conner@gmail.com`,
+  name: `Oliver.conner`,
+  avatarUrl: `img/1.png`
 };
 
 const mockStore = configureStore([]);
 
 const store = mockStore({
-  [NameSpace.DATA]: {
-    movies: mock,
-    reviews: reviewsMock,
+  [NameSpace.MOVIES]: {
+    movies: mockMovies,
+    promo: currentMovie,
+    loading: false,
+    error: false,
+    favoriteLoading: false,
+    favoriteError: false,
+    errorText: ``,
+  },
+  [NameSpace.APP]: {
+    activeGenre: `All genres`,
+    renderLimit: 8,
+  },
+  [NameSpace.USER]: {
+    user: mockUser,
+    authStatus: AuthStatus.NO_AUTH,
   }
 });
 
-describe(`MoviePage component render correctly`, () => {
-  it(`Should MoviePage component render correctly`, () => {
-    const history = createMemoryHistory();
+const props = {
+  currentMovie,
+  renderLimit: 8,
+  similarMovies: [],
+  favoriteLoading: false,
+  favoriteError: false,
+  authStatus: AuthStatus.NO_AUTH,
+  updateFavoriteStatus: () => {},
+};
 
+describe(`MoviePage component render correctly`, () => {
+  const history = createMemoryHistory();
+
+  it(`Should MoviePage component render correctly`, () => {
     const tree = renderer
       .create(
           <Provider store={store}>
             <Router history={history}>
-              <MoviePage movies={mock} match={match} reviews={reviewsMock}/>
+              <MoviePage
+                {...props}
+                error={false}
+                loading={false}
+              />
+            </Router>
+          </Provider>
+      ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`Should MoviePage component render correctly with loading`, () => {
+    const tree = renderer
+      .create(
+          <Provider store={store}>
+            <Router history={history}>
+              <MoviePage
+                {...props}
+                error={false}
+                loading={true}
+              />
             </Router>
           </Provider>
       ).toJSON();

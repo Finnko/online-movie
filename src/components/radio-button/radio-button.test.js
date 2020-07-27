@@ -6,7 +6,7 @@ const props = {
   type: `radio`,
   groupName: `rating`,
   id: `1`,
-  value: 5,
+  value: `5`,
   checked: true,
   label: `rating 5`,
   onRadioChange: () => {},

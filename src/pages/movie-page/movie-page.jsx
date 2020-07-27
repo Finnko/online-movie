@@ -1,9 +1,10 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {getSimilarMovies} from '../../store/reducers/movies/selectors';
+import {Redirect} from 'react-router-dom';
+import {getErrorStatus, getLoadingStatus, getSimilarMovies} from '../../store/reducers/movies/selectors';
 import {getMovieById} from '../../store/reducers/movies/selectors';
-import {AuthStatus, Config, DEFAULT_MOVIE, TabName, ViewMode} from '../../const';
+import {AuthStatus, Config, LoaderSetup, PathName, TabName, ViewMode} from '../../const';
 import MoviePropType from '../../prop-types/movie';
 import {getFavoriteError, getFavoriteLoading} from '../../store/reducers/movies/selectors';
 import MovieBanner from '../../components/movie-banner/movie-banner.jsx';
@@ -13,6 +14,7 @@ import Footer from '../../components/footer/footer.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
 import {getAuthStatus} from '../../store/reducers/user/selectors';
 import {Operation as MoviesOperation} from '../../store/reducers/movies/operations';
+import Loader from '../../components/loader/loader.jsx';
 
 const TabsWrapped = withActiveItem(Tabs);
 
@@ -20,11 +22,21 @@ const TabsWrapped = withActiveItem(Tabs);
 const MoviePage = ({
   currentMovie,
   similarMovies,
+  error,
+  loading,
   favoriteError,
   favoriteLoading,
   authStatus,
   updateFavoriteStatus,
 }) => {
+  if (loading) {
+    return <Loader position={LoaderSetup.POSITION.FIXED} size={LoaderSetup.SIZE.MEDIUM}/>;
+  }
+
+  if (!loading && !error && !currentMovie) {
+    return <Redirect to={PathName.ROOT} />;
+  }
+
   const {poster, title, backgroundColor} = currentMovie;
   const isAuth = AuthStatus.AUTH === authStatus;
 
@@ -76,6 +88,8 @@ const MoviePage = ({
 
 MoviePage.propTypes = {
   currentMovie: MoviePropType,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
   favoriteLoading: PropTypes.bool.isRequired,
   favoriteError: PropTypes.bool.isRequired,
   similarMovies: PropTypes.arrayOf(MoviePropType).isRequired,
@@ -89,9 +103,11 @@ const mapStateToProps = (state, {match}) => {
   return {
     favoriteLoading: getFavoriteLoading(state),
     favoriteError: getFavoriteError(state),
-    currentMovie: getMovieById(state, movieId) || DEFAULT_MOVIE,
+    currentMovie: getMovieById(state, movieId),
     similarMovies: getSimilarMovies(state, movieId),
     authStatus: getAuthStatus(state),
+    loading: getLoadingStatus(state),
+    error: getErrorStatus(state),
   };
 };
 

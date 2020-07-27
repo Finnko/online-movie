@@ -4,6 +4,11 @@ exports[`MoviePage component render correctly Should MoviePage component render 
 Array [
   <section
     className="movie-card movie-card--full"
+    style={
+      Object {
+        "backgroundColor": "#FDFDFC",
+      }
+    }
   >
     <div
       className="movie-card__hero"
@@ -52,16 +57,13 @@ Array [
         <div
           className="user-block"
         >
-          <div
-            className="user-block__avatar"
+          <a
+            className="user-block__link"
+            href="/login"
+            onClick={[Function]}
           >
-            <img
-              alt="User avatar"
-              height="63"
-              src="img/avatar.jpg"
-              width="63"
-            />
-          </div>
+            Sign In
+          </a>
         </div>
       </header>
       <div
@@ -105,8 +107,10 @@ Array [
             <div
               className="movie-card__buttons"
             >
-              <button
+              <a
                 className="btn btn--play movie-card__button"
+                href="/player/1"
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -121,9 +125,11 @@ Array [
                 <span>
                   Play
                 </span>
-              </button>
+              </a>
               <button
                 className="btn btn--list movie-card__button"
+                disabled={false}
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -141,7 +147,8 @@ Array [
               </button>
               <a
                 className="btn movie-card__button"
-                href="add-review.html"
+                href="/films/1/review"
+                onClick={[Function]}
               >
                 Add review
               </a>
@@ -238,7 +245,7 @@ Array [
             className="movie-card__text"
           >
             <p>
-              In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.,Gustave prides himself on providing first-class service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.
+              In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.
             </p>
             <p
               className="movie-card__director"
@@ -264,16 +271,6 @@ Array [
   <div
     className="page-content"
   >
-    <section
-      className="catalog catalog--like-this"
-    >
-      <h2
-        className="catalog__title"
-      >
-        More like this
-      </h2>
-      0
-    </section>
     <footer
       className="page-footer"
     >
@@ -282,6 +279,8 @@ Array [
       >
         <a
           className="logo__link logo__link--light"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -310,4 +309,19 @@ Array [
     </footer>
   </div>,
 ]
+`;
+
+exports[`MoviePage component render correctly Should MoviePage component render correctly with loading 1`] = `
+<div
+  className="loader-wrapper"
+  style={
+    Object {
+      "position": "fixed",
+    }
+  }
+>
+  <div
+    className="loader medium"
+  />
+</div>
 `;

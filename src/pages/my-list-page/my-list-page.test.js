@@ -1,53 +1,22 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from './app';
-import {Provider} from 'react-redux';
+import {createMemoryHistory} from 'history';
+import {Router} from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import NameSpace from '../../store/name-space';
+import {Provider} from 'react-redux';
+import {MyListPage} from './my-list-page.jsx';
 import {AuthStatus} from '../../const';
 
-const promo = {
-  id: 1,
-  title: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  thumb: `img/bohemian-rhapsody.jpg`,
-  releaseYear: 2014,
-  preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-  backgroundColor: `#FDFDFC`,
-  backgroundImage: `img/bg-the-grand-budapest-hotel.jpg`,
-  description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
-  director: `Michael Bay`,
-  actors: [`Leonardo Di Caprio`],
-  rating: 7.5,
-  ratingCount: 250,
-  isFavorite: false,
-  poster: `/img/the-grand-budapest-hotel-poster.jpg`,
-};
 const mockMovies = [
   {
-    id: 1,
-    title: `The Grand Budapest Hotel`,
-    genre: `Drama`,
-    thumb: `img/bohemian-rhapsody.jpg`,
-    releaseYear: 2014,
-    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-    backgroundColor: `#FDFDFC`,
-    backgroundImage: `img/bg-the-grand-budapest-hotel.jpg`,
-    description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
-    director: `Michael Bay`,
-    actors: [`Leonardo Di Caprio`],
-    rating: 7.5,
-    ratingCount: 250,
-    isFavorite: false,
-    poster: `/img/the-grand-budapest-hotel-poster.jpg`,
-  }, {
     backgroundColor: `#FDFDFC`,
     backgroundImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/background/Snatch.jpg`,
     description: `Unscrupulous boxing promoters, violent bookmakers, a Russian gangster, incompetent amateur robbers and supposedly Jewish jewelers fight to track down a priceless stolen diamond.`,
     director: `Guy Ritchie`,
     genre: `Comedy`,
     id: 14,
-    isFavorite: false,
+    isFavorite: true,
     name: `Snatch`,
     poster: `https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Snatch.jpg`,
     thumb: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/snatch.jpg`,
@@ -66,7 +35,7 @@ const mockMovies = [
     director: `David Yates`,
     genre: `Fantasy`,
     id: 15,
-    isFavorite: false,
+    isFavorite: true,
     name: `Fantastic Beasts: The Crimes of Grindelwald`,
     poster: `https://htmlacademy-react-3.appspot.com/wtw/static/film/poster/Fantastic_Beasts.jpg`,
     thumb: `https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -90,16 +59,9 @@ const mockStore = configureStore([]);
 
 const store = mockStore({
   [NameSpace.MOVIES]: {
-    movies: mockMovies,
-    promo,
     loading: false,
     error: false,
-    favoriteLoading: false,
-    favoriteError: false,
-    errorText: ``,
-  },
-  [NameSpace.APP]: {
-    activeGenre: `All genres`,
+    favorites: mockMovies,
   },
   [NameSpace.USER]: {
     user: mockUser,
@@ -107,17 +69,62 @@ const store = mockStore({
   }
 });
 
-describe(`App component render correctly`, () => {
-  it(`Should App component render correctly`, () => {
+const props = {
+  favorites: mockMovies,
+  fetchFavoriteMovies: () => {},
+};
+
+describe(`MyListPage component render correctly`, () => {
+  const history = createMemoryHistory();
+
+  it(`Should MyListPage component render correctly`, () => {
     const tree = renderer
       .create(
           <Provider store={store}>
-            <App />
-          </Provider>, {
-            createNodeMock: () => {
-              return {};
-            },
-          }).toJSON();
+            <Router history={history}>
+              <MyListPage
+                {...props}
+                error={false}
+                loading={false}
+              />
+            </Router>
+          </Provider>
+      ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`Should MyListPage component render correctly with loading`, () => {
+    const tree = renderer
+      .create(
+          <Provider store={store}>
+            <Router history={history}>
+              <MyListPage
+                {...props}
+                error={false}
+                loading={true}
+              />
+            </Router>
+          </Provider>
+      ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`Should MyListPage component render correctly with error`, () => {
+    const tree = renderer
+      .create(
+          <Provider store={store}>
+            <Router history={history}>
+              <MyListPage
+                {...props}
+                error={true}
+                loading={false}
+              />
+            </Router>
+          </Provider>
+      ).toJSON();
+
     expect(tree).toMatchSnapshot();
   });
 });

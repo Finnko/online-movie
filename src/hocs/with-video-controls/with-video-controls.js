@@ -140,7 +140,6 @@ const withVideoControls = (Component) => {
       >
         <video
           ref={this._videoRef}
-          autoPlay
           className="player__video"
           poster={poster}
           onEnded={this._handleEnded}

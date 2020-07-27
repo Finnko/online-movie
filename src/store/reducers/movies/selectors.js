@@ -1,6 +1,5 @@
 import {createSelector} from 'reselect';
 import NameSpace from '../../name-space';
-import {DEFAULT_MOVIE} from '../../../const';
 
 const NAME_SPACE = NameSpace.MOVIES;
 
@@ -31,7 +30,7 @@ const getMovieById = createSelector(
 const getSimilarMovies = createSelector(
     getMovies,
     getMovieById,
-    (movies, currentMovie = DEFAULT_MOVIE) => {
+    (movies, currentMovie) => {
       return movies.filter((movie) => movie.genre === currentMovie.genre && movie.id !== currentMovie.id);
     }
 );

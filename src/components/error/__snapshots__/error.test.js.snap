@@ -3,7 +3,7 @@
 exports[`Error component render correctly Should Error component render correctly 1`] = `
 Array [
   <header
-    className="page-header movie-card__head"
+    className="page-header "
   >
     <div
       className="logo"
@@ -33,16 +33,13 @@ Array [
     <div
       className="user-block"
     >
-      <div
-        className="user-block__avatar"
+      <a
+        className="user-block__link"
+        href="/login"
+        onClick={[Function]}
       >
-        <img
-          alt="User avatar"
-          height="63"
-          src="img/avatar.jpg"
-          width="63"
-        />
-      </div>
+        Sign In
+      </a>
     </div>
   </header>,
   <section
@@ -70,6 +67,8 @@ Array [
     >
       <a
         className="logo__link logo__link--light"
+        href="/"
+        onClick={[Function]}
       >
         <span
           className="logo__letter logo__letter--1"

@@ -9,7 +9,7 @@ Array [
     name="rating"
     onChange={[Function]}
     type="radio"
-    value={5}
+    value="5"
   />,
   <label
     className="rating__label"
