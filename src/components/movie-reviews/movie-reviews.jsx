@@ -1,7 +1,6 @@
 import React, {Fragment, PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router-dom';
 import ReviewPropType from '../../prop-types/review';
 import {
   getLoadingStatus,
@@ -111,4 +110,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 export {MovieReviews};
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(MovieReviews));
+export default connect(mapStateToProps, mapDispatchToProps)(MovieReviews);

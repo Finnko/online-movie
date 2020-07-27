@@ -8,7 +8,7 @@ const props = {
   rating: 5.5,
   ratingCount: 199,
   actors: [`Ozzy Osbourne`, `Emilia Clarke`],
-  description: [`Something`, `Something Else`],
+  description: `Something, something Else`,
 };
 
 describe(`MovieOverview component render correctly`, () => {

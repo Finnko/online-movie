@@ -11,7 +11,7 @@ exports[`MoviesList component render correctly Should MoviesList component rende
   >
     <a
       className="small-movie-card__link"
-      href="/movie/1"
+      href="/films/1"
       onClick={[Function]}
     >
       <div
@@ -19,10 +19,9 @@ exports[`MoviesList component render correctly Should MoviesList component rende
       >
         <video
           height="175"
-          muted={true}
           poster="img/bohemian-rhapsody.jpg"
           src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-          width="100%"
+          width="280"
         />
       </div>
     </a>
@@ -31,7 +30,7 @@ exports[`MoviesList component render correctly Should MoviesList component rende
     >
       <a
         className="small-movie-card__link"
-        href="/movie/1"
+        href="/films/1"
         onClick={[Function]}
       >
         The Grand Budapest Hotel

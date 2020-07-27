@@ -5,36 +5,46 @@ import {Router} from 'react-router-dom';
 import MovieListCard from './movie-list-card';
 
 const mock = {
-  id: `1`,
+  id: 1,
   title: `Fantastic Beasts: The Crimes of Grindelwald`,
-  videoSrc: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
-  preview: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-  reviews: [{
-    id: `1`,
-    comment: `Good comment!`,
-    rating: 8.9,
-    user: `Ozzy Osbourne`,
-    date: new Date(1583591483969)
-  }]
+  preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  thumb: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
 };
 
-const activeItemId = `1`;
-
 describe(`MovieListCard component render correctly`, () => {
-  it(`Should MovieListCard component render correctly`, () => {
-    const history = createMemoryHistory();
-    const onMovieMouseEnter = jest.fn();
-    const onMovieMouseLeave = jest.fn();
+  const history = createMemoryHistory();
+  const onMovieMouseEnter = jest.fn();
+  const onMovieMouseLeave = jest.fn();
 
+  it(`Should MovieListCard with video render correctly`, () => {
     const tree = renderer
       .create(
           <Router history={history}>
             <MovieListCard
               movie={mock}
-              activeItemId={activeItemId}
               onMovieMouseLeave={onMovieMouseLeave}
               onMovieMouseEnter={onMovieMouseEnter}
               viewMode={`WITH_PLAYER`}
+            />
+          </Router>, {
+            createNodeMock: () => {
+              return {};
+            },
+          }
+      ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it(`Should MovieListCard without video render correctly`, () => {
+    const tree = renderer
+      .create(
+          <Router history={history}>
+            <MovieListCard
+              movie={mock}
+              onMovieMouseLeave={onMovieMouseLeave}
+              onMovieMouseEnter={onMovieMouseEnter}
+              viewMode={`IMAGE`}
             />
           </Router>, {
             createNodeMock: () => {

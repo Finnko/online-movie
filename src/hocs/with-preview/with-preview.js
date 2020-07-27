@@ -1,5 +1,4 @@
 import React, {PureComponent} from "react";
-import PropTypes from 'prop-types';
 
 const withPreview = (Component) => {
   class WithPreview extends PureComponent {

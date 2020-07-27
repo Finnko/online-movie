@@ -30,7 +30,7 @@ Array [
     className="movie-card__text"
   >
     <p>
-      Something,Something Else
+      Something, something Else
     </p>
     <p
       className="movie-card__director"

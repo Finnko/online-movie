@@ -51,7 +51,6 @@ MovieListCard.propTypes = {
   onMovieMouseEnter: PropTypes.func,
   onMovieMouseLeave: PropTypes.func,
   movie: MoviePropType.isRequired,
-  renderPlayer: PropTypes.func,
   viewMode: PropTypes.string.isRequired,
   isPlaying: PropTypes.bool.isRequired,
 };

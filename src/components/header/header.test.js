@@ -1,12 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {createMemoryHistory} from 'history';
-import {Link, Router} from 'react-router-dom';
+import {Router} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import NameSpace from '../../store/name-space';
 import configureStore from 'redux-mock-store';
 import Header from './header';
-import {PathName} from '../../const';
 
 
 const mockUser = {

@@ -22,16 +22,16 @@ exports[`MovieReviewsItem component render correctly Should MovieReviewsItem com
       </cite>
       <time
         className="review__date"
-        dateTime="2020-03-07"
+        dateTime="2020-07-09"
       >
-        March 07, 2020
+        July 09, 2020
       </time>
     </footer>
   </blockquote>
   <div
     className="review__rating"
   >
-    8.9
+    9.3
   </div>
 </div>
 `;

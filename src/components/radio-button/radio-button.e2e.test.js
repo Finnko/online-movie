@@ -26,10 +26,12 @@ describe(`Test e2e RadioButton component`, () => {
       />
   );
 
+  const mockEvent = {target: {value: `5`}};
   const input = radioBtn.find(`.rating__input`);
 
   it(`Should radio button calls callback on action`, () => {
-    input.simulate(`change`);
+    input.simulate(`change`, mockEvent);
     expect(onRadioChange).toHaveBeenCalledTimes(1);
+    expect(onRadioChange).toHaveBeenCalledWith(mockEvent);
   });
 });

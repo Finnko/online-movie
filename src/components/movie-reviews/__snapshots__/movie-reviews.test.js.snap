@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieReviews component render correctly Should MovieReviews component render correctly 1`] = `
+exports[`MovieReviews component render correctly Should MovieReviews component render correctly  1`] = `
 <div
   className="movie-card__reviews movie-card__row"
 >
@@ -28,9 +28,9 @@ exports[`MovieReviews component render correctly Should MovieReviews component r
           </cite>
           <time
             className="review__date"
-            dateTime="2020-03-07"
+            dateTime="2020-07-09"
           >
-            March 07, 2020
+            July 09, 2020
           </time>
         </footer>
       </blockquote>
@@ -38,39 +38,6 @@ exports[`MovieReviews component render correctly Should MovieReviews component r
         className="review__rating"
       >
         8.9
-      </div>
-    </div>
-    <div
-      className="review"
-    >
-      <blockquote
-        className="review__quote"
-      >
-        <p
-          className="review__text"
-        >
-          Neutral comment!
-        </p>
-        <footer
-          className="review__details"
-        >
-          <cite
-            className="review__author"
-          >
-            James Hatfield
-          </cite>
-          <time
-            className="review__date"
-            dateTime="2020-07-01"
-          >
-            July 01, 2020
-          </time>
-        </footer>
-      </blockquote>
-      <div
-        className="review__rating"
-      >
-        5.9
       </div>
     </div>
   </div>
@@ -86,7 +53,7 @@ exports[`MovieReviews component render correctly Should MovieReviews component r
         <p
           className="review__text"
         >
-          Bad comment!
+          Good comment!
         </p>
         <footer
           className="review__details"
@@ -98,18 +65,61 @@ exports[`MovieReviews component render correctly Should MovieReviews component r
           </cite>
           <time
             className="review__date"
-            dateTime="2026-07-09"
+            dateTime="2020-07-09"
           >
-            July 09, 2026
+            July 09, 2020
           </time>
         </footer>
       </blockquote>
       <div
         className="review__rating"
       >
-        1.9
+        8.9
       </div>
     </div>
+  </div>
+</div>
+`;
+
+exports[`MovieReviews component render correctly Should MovieReviews component render correctly on loading 1`] = `
+<div
+  className="movie-card__reviews movie-card__row"
+>
+  <div
+    className="loader-wrapper"
+    style={
+      Object {
+        "position": "absolute",
+      }
+    }
+  >
+    <div
+      className="loader medium"
+    />
+  </div>
+</div>
+`;
+
+exports[`MovieReviews component render correctly Should MovieReviews component render correctly when error occurred 1`] = `
+<div
+  className="movie-card__reviews movie-card__row"
+>
+  <div
+    className="movie-card__reviews-col"
+  >
+    Something went wrong, please try again.
+  </div>
+</div>
+`;
+
+exports[`MovieReviews component render correctly Should MovieReviews component render correctly without comments 1`] = `
+<div
+  className="movie-card__reviews movie-card__row"
+>
+  <div
+    className="movie-card__reviews-col"
+  >
+    There are no comments for this movie. Add the first one!
   </div>
 </div>
 `;

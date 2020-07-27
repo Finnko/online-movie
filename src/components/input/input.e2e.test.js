@@ -31,9 +31,11 @@ describe(`Test e2e Input component`, () => {
         />
     );
 
+    const mockEvent = {target: {value: `Alex`}};
     const input = inputComponent.find(`input`);
 
-    input.simulate(`change`);
+    input.simulate(`change`, mockEvent);
     expect(onInputChange).toHaveBeenCalledTimes(1);
+    expect(onInputChange).toHaveBeenCalledWith(mockEvent);
   });
 });

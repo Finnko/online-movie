@@ -2,12 +2,15 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import MovieReviewsItem from './movie-reviews-item.jsx';
 
-const props = {
-  id: `1`,
+const mockReview = {
   comment: `Good comment!`,
-  rating: 8.9,
-  user: `Ozzy Osbourne`,
-  date: new Date(1583591483969)
+  date: `2020-07-09T16:06:01.831Z`,
+  id: 2,
+  rating: 9.3,
+  user: {
+    id: 15,
+    name: `Ozzy Osbourne`
+  },
 };
 
 describe(`MovieReviewsItem component render correctly`, () => {
@@ -15,7 +18,7 @@ describe(`MovieReviewsItem component render correctly`, () => {
     const tree = renderer
       .create(
           <MovieReviewsItem
-            {...props}
+            review={mockReview}
           />
       ).toJSON();
 
