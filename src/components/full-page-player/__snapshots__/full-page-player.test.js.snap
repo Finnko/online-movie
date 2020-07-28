@@ -4,6 +4,7 @@ exports[`FullPagePlayer snapshot test FullPagePlayer should render correctly 1`]
 <div
   className="player"
 >
+  <video />
   <button
     className="player__exit"
     onClick={[Function]}

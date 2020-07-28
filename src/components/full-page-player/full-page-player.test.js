@@ -11,7 +11,6 @@ const props = {
   onTogglePlay: () => {},
   onRequestFullScreen: () => {},
   onProgressBarClick: () => {},
-  children: [],
 };
 
 describe(`FullPagePlayer snapshot test`, () => {
@@ -23,7 +22,9 @@ describe(`FullPagePlayer snapshot test`, () => {
             isLoading={false}
             isWaiting={false}
             {...props}
-          />,
+          >
+            <video />
+          </FullPagePlayer>,
           {
             createNodeMock: () => {
               return {};

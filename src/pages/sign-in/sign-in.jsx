@@ -14,8 +14,6 @@ const inputNames = {
   password: `Password`,
 };
 
-const inputs = Object.keys(inputNames);
-
 
 class SignIn extends PureComponent {
   constructor(props) {
@@ -35,8 +33,9 @@ class SignIn extends PureComponent {
   }
 
   renderInputs() {
-    return inputs.map((name, index) => {
-      const {onInputChange, formControls} = this.props;
+    const {onInputChange, formControls} = this.props;
+
+    return Object.keys(formControls).map((name, index) => {
       const {
         value,
         valid,
