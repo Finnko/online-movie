@@ -23,28 +23,27 @@ describe(`Test FullPage player fucntionality`, () => {
   const onTogglePlay = jest.fn();
   const onRequestFullScreen = jest.fn();
   const onProgressBarClick = jest.fn();
-  // const handleExitClick = jest.fn();
+
+  const player = mount(
+      <FullPagePlayer
+        {...props}
+        onTogglePlay={onTogglePlay}
+        onRequestFullScreen={onRequestFullScreen}
+        onProgressBarClick={onProgressBarClick}
+      />);
+
 
   it(`Player should call callbacks`, () => {
-    const player = mount(
-        <FullPagePlayer
-          {...props}
-          onTogglePlay={onTogglePlay}
-          onRequestFullScreen={onRequestFullScreen}
-          onProgressBarClick={onProgressBarClick}
-        />
-    );
-
     const playBtn = player.find(`button.player__play`);
     playBtn.simulate(`click`);
-    expect(onTogglePlay).toBeCalledTimes(1);
+    expect(onTogglePlay).toHaveBeenCalledTimes(1);
 
     const fullScreenBtn = player.find(`button.player__full-screen`);
     fullScreenBtn.simulate(`click`);
-    expect(onRequestFullScreen).toBeCalledTimes(1);
+    expect(onRequestFullScreen).toHaveBeenCalledTimes(1);
 
     const progressBtn = player.find(`progress.player__progress`);
     progressBtn.simulate(`click`);
-    expect(onProgressBarClick).toBeCalledTimes(1);
+    expect(onProgressBarClick).toHaveBeenCalledTimes(1);
   });
 });

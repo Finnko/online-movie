@@ -9,17 +9,17 @@ const withPreview = (Component) => {
         isPlaying: false
       };
 
-      this.handleCardMouseEnter = this.handleCardMouseEnter.bind(this);
-      this.handleCardMouseLeave = this.handleCardMouseLeave.bind(this);
+      this._handleCardMouseEnter = this._handleCardMouseEnter.bind(this);
+      this._handleCardMouseLeave = this._handleCardMouseLeave.bind(this);
     }
 
-    handleCardMouseEnter() {
+    _handleCardMouseEnter() {
       this.setState({
         isPlaying: true
       });
     }
 
-    handleCardMouseLeave() {
+    _handleCardMouseLeave() {
       this.setState({
         isPlaying: false
       });
@@ -30,8 +30,8 @@ const withPreview = (Component) => {
 
       return <Component
         {...this.props}
-        onMovieMouseEnter={this.handleCardMouseEnter}
-        onMovieMouseLeave={this.handleCardMouseLeave}
+        onMovieMouseEnter={this._handleCardMouseEnter}
+        onMovieMouseLeave={this._handleCardMouseLeave}
         isPlaying={isPlaying}
       />;
     }

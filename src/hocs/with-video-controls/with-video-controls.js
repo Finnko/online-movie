@@ -30,7 +30,6 @@ const withVideoControls = (Component) => {
       const video = this._videoRef.current;
 
       video.src = src;
-      video.play();
 
       video.onloadedmetadata = () => {
         this.setState({

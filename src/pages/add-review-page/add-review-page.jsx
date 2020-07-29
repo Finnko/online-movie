@@ -16,10 +16,10 @@ class AddReviewPage extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._handleFormSubmit = this._handleFormSubmit.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
-  _handleFormSubmit(evt) {
+  handleFormSubmit(evt) {
     evt.preventDefault();
     const {movieId, rating, review} = this.props;
 
@@ -92,7 +92,7 @@ class AddReviewPage extends PureComponent {
           <form
             action="#"
             className="add-review__form"
-            onSubmit={this._handleFormSubmit}
+            onSubmit={this.handleFormSubmit}
           >
             <div className="rating">
               <div className="rating__stars">

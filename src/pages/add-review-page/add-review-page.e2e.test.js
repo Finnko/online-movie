@@ -95,5 +95,6 @@ describe(`Test e2e AddReviewPage component`, () => {
 
     expect(onInputChange).toHaveBeenCalledTimes(2);
     expect(onFormSubmit).toHaveBeenCalledTimes(1);
+    expect(onFormSubmit).toHaveBeenCalledWith({"comment": `Test`, "id": 14, "rating": 3});
   });
 });

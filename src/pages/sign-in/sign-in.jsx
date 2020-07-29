@@ -19,10 +19,10 @@ class SignIn extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._handleFormSubmit = this._handleFormSubmit.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
-  _handleFormSubmit(evt) {
+  handleFormSubmit(evt) {
     evt.preventDefault();
 
     const {email, password} = this.props.formControls;
@@ -77,7 +77,7 @@ class SignIn extends PureComponent {
           <form
             action="#"
             className="sign-in__form"
-            onSubmit={this._handleFormSubmit}
+            onSubmit={this.handleFormSubmit}
           >
             <div className="sign-in__message">
               {!email.valid && email.touched && <p>{`${Errors.WRONG_EMAIL}`}</p>}

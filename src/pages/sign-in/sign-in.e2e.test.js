@@ -35,12 +35,12 @@ const store = mockStore({
 const props = {
   formControls: {
     email: {
-      value: ``,
+      value: `a@a.ru`,
       valid: false,
       touched: false,
     },
     password: {
-      value: ``,
+      value: `123456`,
       valid: false,
       touched: false,
     }
@@ -78,5 +78,6 @@ describe(`Test e2e SignIn component`, () => {
 
     expect(onInputChange).toHaveBeenCalledTimes(2);
     expect(onFormSubmit).toHaveBeenCalledTimes(1);
+    expect(onFormSubmit).toHaveBeenCalledWith({"email": `a@a.ru`, "password": `123456`});
   });
 });
