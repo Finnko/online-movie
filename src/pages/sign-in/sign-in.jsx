@@ -7,7 +7,7 @@ import {Errors, LoaderSetup} from '../../const';
 import Header from '../../components/header/header.jsx';
 import Footer from '../../components/footer/footer.jsx';
 import Input from '../../components/input/input.jsx';
-import Loader from '../../components/loader/loader.jsx';
+import Loader from '../../components/loader/loader.tsx';
 
 const inputNames = {
   email: `Email address`,

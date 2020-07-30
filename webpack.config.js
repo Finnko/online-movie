@@ -27,10 +27,17 @@ module.exports = (env) => {
           use: {
             loader: `babel-loader`,
           },
-        }
+        },
+        {
+          test: /\.(tsx|ts)?$/,
+          loader: `ts-loader`,
+        },
       ],
     },
-    devtool: isDev ? `eval-source-map` : `none`,
+    resolve: {
+      extensions: [`.ts`, `.tsx`, `.js`, `json`]
+    },
+    devtool: isDev ? `eval-source-map` : false,
     plugins: [
       new MomentLocalesPlugin({
         localesToKeep: [`en`],

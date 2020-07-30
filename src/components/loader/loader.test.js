@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Loader from './loader.jsx';
+import Loader from './loader.tsx';
 
 const props = {
   position: `absolute`,

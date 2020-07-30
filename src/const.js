@@ -61,8 +61,12 @@ const LoaderSetup = {
     MEDIUM: `medium`,
   },
   POSITION: {
-    ABSOLUTE: `absolute`,
-    FIXED: `fixed`,
+    ABSOLUTE: {
+      position: `absolute`,
+    },
+    FIXED: {
+      position: `fixed`,
+    },
   }
 };
 

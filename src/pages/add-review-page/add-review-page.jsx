@@ -9,7 +9,7 @@ import {getErrorStatus, getLoadingStatus} from '../../store/reducers/comments/se
 import {Operation as CommentOperation} from '../../store/reducers/comments/operations';
 import Header from '../../components/header/header.jsx';
 import RadioButton from '../../components/radio-button/radio-button.jsx';
-import Loader from '../../components/loader/loader.jsx';
+import Loader from '../../components/loader/loader.tsx';
 
 
 class AddReviewPage extends PureComponent {

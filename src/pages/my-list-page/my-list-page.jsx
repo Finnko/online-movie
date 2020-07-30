@@ -7,7 +7,7 @@ import {getErrorStatus, getLoadingStatus, getFavorites} from '../../store/reduce
 import Header from '../../components/header/header.jsx';
 import Footer from '../../components/footer/footer.jsx';
 import MovieListCardWrapped from '../../components/movie-list-card/movie-list-card.jsx';
-import Loader from '../../components/loader/loader.jsx';
+import Loader from '../../components/loader/loader.tsx';
 import {Errors, LoaderSetup, ViewMode} from '../../const';
 
 

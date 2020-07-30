@@ -14,7 +14,7 @@ import {
 import {Operation as MoviesOperation} from '../../store/reducers/movies/operations';
 import Footer from '../../components/footer/footer.jsx';
 import MovieBanner from '../../components/movie-banner/movie-banner.jsx';
-import Loader from '../../components/loader/loader.jsx';
+import Loader from '../../components/loader/loader.tsx';
 import Error from '../../components/error/error.jsx';
 import MainContent from '../../components/main-content/main-content.jsx';
 import {getAuthStatus} from '../../store/reducers/user/selectors';

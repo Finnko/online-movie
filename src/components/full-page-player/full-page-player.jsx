@@ -1,7 +1,7 @@
 import React, {Fragment, PureComponent} from "react";
 import PropTypes from "prop-types";
 import history from '../../history';
-import Loader from '../loader/loader.jsx';
+import Loader from '../loader/loader.tsx';
 import Icon from '../../components/icon/icon.jsx';
 import {LoaderSetup} from '../../const';
 

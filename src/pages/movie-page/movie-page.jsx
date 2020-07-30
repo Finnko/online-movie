@@ -14,7 +14,7 @@ import Footer from '../../components/footer/footer.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
 import {getAuthStatus} from '../../store/reducers/user/selectors';
 import {Operation as MoviesOperation} from '../../store/reducers/movies/operations';
-import Loader from '../../components/loader/loader.jsx';
+import Loader from '../../components/loader/loader.tsx';
 
 const TabsWrapped = withActiveItem(Tabs);
 

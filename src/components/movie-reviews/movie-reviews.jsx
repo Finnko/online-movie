@@ -12,7 +12,7 @@ import {divideReviewsIntoColumns} from '../../utils/common';
 import {Operation as CommentsOperation} from '../../store/reducers/comments/operations';
 import {EmptyText, Errors, LoaderSetup} from '../../const';
 import MovieReviewsItem from '../movie-reviews-item/movie-reviews-item.jsx';
-import Loader from '../loader/loader.jsx';
+import Loader from '../loader/loader.tsx';
 
 class MovieReviews extends PureComponent {
   constructor(props) {
