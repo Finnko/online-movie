@@ -19,7 +19,7 @@ const withVideoControls = (Component) => {
         duration: 0,
         currentTime: 0,
         timeLeft: `00:00:00`,
-        isPlaying: true,
+        isPlaying: false,
         isLoading: true,
         isWaiting: true,
       };
@@ -41,6 +41,7 @@ const withVideoControls = (Component) => {
       video.oncanplaythrough = () => {
         this.setState({
           isLoading: false,
+          isPlaying: true,
         });
       };
 
@@ -91,7 +92,7 @@ const withVideoControls = (Component) => {
 
     _handleFullScreenChange() {
       const video = this._videoRef.current;
-      video.requestFullscreen();
+      video.requestFullscreen({navigationUI: `show`});
     }
 
     _handleEnded() {
@@ -109,6 +110,7 @@ const withVideoControls = (Component) => {
       video.currentTime = time;
       this.setState({
         isPlaying: true,
+        currentTime: time,
       });
     }
 
