@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MainPage component render correctly Should MainPage component render correctly 1`] = `
+exports[`App component render correctly Should App component render correctly 1`] = `
 Array [
   <section
     className="movie-card"
@@ -168,7 +168,7 @@ Array [
           </a>
         </li>
         <li
-          className="catalog__genres-item "
+          className="catalog__genres-item"
         >
           <a
             className="catalog__genres-link"
@@ -176,28 +176,6 @@ Array [
             onClick={[Function]}
           >
             Drama
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item "
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-            onClick={[Function]}
-          >
-            Comedy
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item "
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-            onClick={[Function]}
-          >
-            Fantasy
           </a>
         </li>
       </ul>
@@ -235,68 +213,6 @@ Array [
             >
               The Grand Budapest Hotel
             </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <a
-            className="small-movie-card__link"
-            href="/films/14"
-            onClick={[Function]}
-          >
-            <div
-              className="small-movie-card__image"
-            >
-              <video
-                height="175"
-                poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/snatch.jpg"
-                src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
-                width="280"
-              />
-            </div>
-          </a>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="/films/14"
-              onClick={[Function]}
-            />
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <a
-            className="small-movie-card__link"
-            href="/films/15"
-            onClick={[Function]}
-          >
-            <div
-              className="small-movie-card__image"
-            >
-              <video
-                height="175"
-                poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-                src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
-                width="280"
-              />
-            </div>
-          </a>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="/films/15"
-              onClick={[Function]}
-            />
           </h3>
         </article>
       </div>
@@ -350,117 +266,4 @@ Array [
     </footer>
   </div>,
 ]
-`;
-
-exports[`MainPage component render correctly Should MainPage component render correctly with error 1`] = `
-Array [
-  <header
-    className="page-header "
-  >
-    <div
-      className="logo"
-    >
-      <a
-        className="logo__link"
-        href="/"
-        onClick={[Function]}
-      >
-        <span
-          className="logo__letter logo__letter--1"
-        >
-          W
-        </span>
-        <span
-          className="logo__letter logo__letter--2"
-        >
-          T
-        </span>
-        <span
-          className="logo__letter logo__letter--3"
-        >
-          W
-        </span>
-      </a>
-    </div>
-    <div
-      className="user-block"
-    >
-      <a
-        className="user-block__link"
-        href="/login"
-        onClick={[Function]}
-      >
-        Sign In
-      </a>
-    </div>
-  </header>,
-  <section
-    className="catalog"
-  >
-    <div
-      className="page-content"
-    >
-      <div
-        className="error-wrapper"
-      >
-        <p
-          className="error-message"
-        >
-          Error
-        </p>
-      </div>
-    </div>
-  </section>,
-  <footer
-    className="page-footer"
-  >
-    <div
-      className="logo"
-    >
-      <a
-        className="logo__link logo__link--light"
-        href="/"
-        onClick={[Function]}
-      >
-        <span
-          className="logo__letter logo__letter--1"
-        >
-          W
-        </span>
-        <span
-          className="logo__letter logo__letter--2"
-        >
-          T
-        </span>
-        <span
-          className="logo__letter logo__letter--3"
-        >
-          W
-        </span>
-      </a>
-    </div>
-    <div
-      className="copyright"
-    >
-      <p>
-        © 2019 What to watch Ltd.
-      </p>
-    </div>
-  </footer>,
-]
-`;
-
-exports[`MainPage component render correctly Should MainPage component render correctly with loading 1`] = `
-<div
-  className="loader-wrapper"
-  style={
-    Object {
-      "position": "fixed",
-    }
-  }
->
-  <div
-    className="loader medium"
-  />
-</div>
 `;
