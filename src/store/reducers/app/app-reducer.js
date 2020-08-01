@@ -1,6 +1,6 @@
 import {actionTypes} from '../../action-types';
 import {extend} from '../../../utils/common';
-import {Config} from '../../../const';
+import {Config} from '../../../const.ts';
 
 const initialState = {
   activeGenre: Config.DEFAULT_FILTER,

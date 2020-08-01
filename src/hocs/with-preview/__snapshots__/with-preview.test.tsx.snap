@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withPreview works correctly withPreview is rendered correctly 1`] = `
+<video
+  height="175"
+  poster="img/the-grand-budapest-hotel-poster.jpg"
+  src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+  width="280"
+/>
+`;

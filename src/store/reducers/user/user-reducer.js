@@ -1,4 +1,4 @@
-import {AuthStatus} from '../../../const';
+import {AuthStatus} from '../../../const.ts';
 import {actionTypes} from '../../action-types';
 import {extend} from '../../../utils/common';
 

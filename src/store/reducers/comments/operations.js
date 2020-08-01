@@ -1,6 +1,6 @@
 import {ActionCreator} from '../../actions/action-creator';
 import history from '../../../history';
-import {PathName} from '../../../const';
+import {PathName} from '../../../const.ts';
 
 const Operation = {
   fetchComments: (id) => (dispatch, _, api) => {

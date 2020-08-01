@@ -1,4 +1,4 @@
-import {Config} from '../const';
+import {Config} from '../const.ts';
 
 const getMoviesByGenre = (movies, genre) => {
   return movies.filter((movie) => movie.genre.toLowerCase() === genre.toLowerCase());

@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MoviesList component render correctly Should MoviesList component render correctly 1`] = `
+<div
+  className="catalog__movies-list"
+>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <a
+      className="small-movie-card__link"
+      href="/films/1"
+      onClick={[Function]}
+    >
+      <div
+        className="small-movie-card__image"
+      >
+        <video
+          height="175"
+          poster="img/bohemian-rhapsody.jpg"
+          src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+          width="280"
+        />
+      </div>
+    </a>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/1"
+        onClick={[Function]}
+      >
+        The Grand Budapest Hotel
+      </a>
+    </h3>
+  </article>
+</div>
+`;

@@ -1,5 +1,5 @@
 import {ActionCreator} from '../../actions/action-creator';
-import {AuthStatus, PathName} from '../../../const';
+import {AuthStatus, PathName} from '../../../const.ts';
 import history from '../../../history';
 import {renameKeys} from '../../../utils/common';
 

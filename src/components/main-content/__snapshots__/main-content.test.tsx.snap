@@ -1,0 +1,316 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainContent component render correctly Should MainContent component render correctly with show more button 1`] = `
+<section
+  className="catalog"
+>
+  <h2
+    className="catalog__title visually-hidden"
+  >
+    Catalog
+  </h2>
+  <ul
+    className="catalog__genres-list"
+  >
+    <li
+      className="catalog__genres-item catalog__genres-item--active"
+    >
+      <a
+        className="catalog__genres-link"
+        href="#"
+        onClick={[Function]}
+      >
+        All genres
+      </a>
+    </li>
+    <li
+      className="catalog__genres-item"
+    >
+      <a
+        className="catalog__genres-link"
+        href="#"
+        onClick={[Function]}
+      >
+        Crime
+      </a>
+    </li>
+    <li
+      className="catalog__genres-item"
+    >
+      <a
+        className="catalog__genres-link"
+        href="#"
+        onClick={[Function]}
+      >
+        Horror
+      </a>
+    </li>
+  </ul>
+  <div
+    className="catalog__movies-list"
+  >
+    <article
+      className="small-movie-card catalog__movies-card"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/1"
+        onClick={[Function]}
+      >
+        <div
+          className="small-movie-card__image"
+        >
+          <video
+            height="175"
+            poster="img/bohemian-rhapsody.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            width="280"
+          />
+        </div>
+      </a>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="/films/1"
+          onClick={[Function]}
+        >
+          The Grand Budapest Hotel
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/14"
+        onClick={[Function]}
+      >
+        <div
+          className="small-movie-card__image"
+        >
+          <video
+            height="175"
+            poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/snatch.jpg"
+            src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+            width="280"
+          />
+        </div>
+      </a>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="/films/14"
+          onClick={[Function]}
+        >
+          Snatch
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/15"
+        onClick={[Function]}
+      >
+        <div
+          className="small-movie-card__image"
+        >
+          <video
+            height="175"
+            poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+            src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+            width="280"
+          />
+        </div>
+      </a>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="/films/15"
+          onClick={[Function]}
+        >
+          Fantastic Beasts: The Crimes of Grindelwald
+        </a>
+      </h3>
+    </article>
+  </div>
+  <div
+    className="catalog__more"
+  >
+    <button
+      className="catalog__button"
+      onClick={[Function]}
+      type="button"
+    >
+      Show more
+    </button>
+  </div>
+</section>
+`;
+
+exports[`MainContent component render correctly Should MainContent component render correctly without show more button 1`] = `
+<section
+  className="catalog"
+>
+  <h2
+    className="catalog__title visually-hidden"
+  >
+    Catalog
+  </h2>
+  <ul
+    className="catalog__genres-list"
+  >
+    <li
+      className="catalog__genres-item catalog__genres-item--active"
+    >
+      <a
+        className="catalog__genres-link"
+        href="#"
+        onClick={[Function]}
+      >
+        All genres
+      </a>
+    </li>
+    <li
+      className="catalog__genres-item"
+    >
+      <a
+        className="catalog__genres-link"
+        href="#"
+        onClick={[Function]}
+      >
+        Crime
+      </a>
+    </li>
+    <li
+      className="catalog__genres-item"
+    >
+      <a
+        className="catalog__genres-link"
+        href="#"
+        onClick={[Function]}
+      >
+        Horror
+      </a>
+    </li>
+  </ul>
+  <div
+    className="catalog__movies-list"
+  >
+    <article
+      className="small-movie-card catalog__movies-card"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/1"
+        onClick={[Function]}
+      >
+        <div
+          className="small-movie-card__image"
+        >
+          <video
+            height="175"
+            poster="img/bohemian-rhapsody.jpg"
+            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+            width="280"
+          />
+        </div>
+      </a>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="/films/1"
+          onClick={[Function]}
+        >
+          The Grand Budapest Hotel
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/14"
+        onClick={[Function]}
+      >
+        <div
+          className="small-movie-card__image"
+        >
+          <video
+            height="175"
+            poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/snatch.jpg"
+            src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+            width="280"
+          />
+        </div>
+      </a>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="/films/14"
+          onClick={[Function]}
+        >
+          Snatch
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <a
+        className="small-movie-card__link"
+        href="/films/15"
+        onClick={[Function]}
+      >
+        <div
+          className="small-movie-card__image"
+        >
+          <video
+            height="175"
+            poster="https://htmlacademy-react-3.appspot.com/wtw/static/film/preview/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+            src="https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm"
+            width="280"
+          />
+        </div>
+      </a>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="/films/15"
+          onClick={[Function]}
+        >
+          Fantastic Beasts: The Crimes of Grindelwald
+        </a>
+      </h3>
+    </article>
+  </div>
+</section>
+`;

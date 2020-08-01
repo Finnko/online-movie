@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieReviews component render correctly Should MovieReviews component render correctly  1`] = `
+<div
+  className="movie-card__reviews movie-card__row"
+>
+  <div
+    className="movie-card__reviews-col"
+  >
+    <div
+      className="review"
+    >
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          Good comment!
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            Ozzy Osbourne
+          </cite>
+          <time
+            className="review__date"
+            dateTime="2020-07-09"
+          >
+            July 09, 2020
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        8.9
+      </div>
+    </div>
+  </div>
+  <div
+    className="movie-card__reviews-col"
+  >
+    <div
+      className="review"
+    >
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          Good comment!
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            Axl Rose
+          </cite>
+          <time
+            className="review__date"
+            dateTime="2020-07-09"
+          >
+            July 09, 2020
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        8.9
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`MovieReviews component render correctly Should MovieReviews component render correctly on loading 1`] = `
+<div
+  className="movie-card__reviews movie-card__row"
+>
+  <div
+    className="loader-wrapper"
+    style={
+      Object {
+        "position": "absolute",
+      }
+    }
+  >
+    <div
+      className="loader medium"
+    />
+  </div>
+</div>
+`;
+
+exports[`MovieReviews component render correctly Should MovieReviews component render correctly when error occurred 1`] = `
+<div
+  className="movie-card__reviews movie-card__row"
+>
+  <div
+    className="movie-card__reviews-col"
+  >
+    Something went wrong, please try again.
+  </div>
+</div>
+`;
+
+exports[`MovieReviews component render correctly Should MovieReviews component render correctly without comments 1`] = `
+<div
+  className="movie-card__reviews movie-card__row"
+>
+  <div
+    className="movie-card__reviews-col"
+  >
+    There are no comments for this movie. Add the first one!
+  </div>
+</div>
+`;

@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import {createAPI} from '../api/api';
 import rootReducer from './reducers/root-reducer';
 import {ActionCreator} from './actions/action-creator';
-import {AuthStatus, Errors} from '../const';
+import {AuthStatus, Errors} from '../const.ts';
 
 const handlers = {
   handleUnauthorized: () => {
