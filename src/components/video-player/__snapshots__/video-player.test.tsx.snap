@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VideoPlayer snapshot test VideoPlayer should render correctly 1`] = `
+<video
+  height="175"
+  poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+  src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+  width="280"
+/>
+`;

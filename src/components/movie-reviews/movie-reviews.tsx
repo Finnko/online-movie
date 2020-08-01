@@ -16,7 +16,7 @@ import Loader from '../loader/loader';
 type MovieReviewProps = {
   movieId: number;
   reviews: Review[];
-  fetchCommentsData: (id: number) => Review[];
+  fetchCommentsData: (id: number) => void;
   loading: boolean;
   error: boolean;
   onceLoaded: boolean;

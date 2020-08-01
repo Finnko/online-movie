@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlayerPage component render correctly Should PlayerPage component render correctly 1`] = `
+<div
+  className="player"
+>
+  <video
+    className="player__video"
+    onEnded={[Function]}
+    poster="img/bg-the-grand-budapest-hotel.jpg"
+  />
+  <div
+    className="loader-wrapper"
+    style={
+      Object {
+        "position": "fixed",
+      }
+    }
+  >
+    <div
+      className="loader medium"
+    />
+  </div>
+</div>
+`;

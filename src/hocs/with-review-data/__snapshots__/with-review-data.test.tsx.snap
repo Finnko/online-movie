@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should hoc withReviewData render correctly Snapshot render withReviewData 1`] = `
+<div>
+  <div
+    className="rating__stars"
+  >
+    <input
+      checked={false}
+      className="rating__input"
+      disabled={false}
+      id="star-1"
+      name="rating"
+      onChange={[Function]}
+      type="radio"
+      value="1"
+    />
+    <label
+      className="rating__label"
+      htmlFor="star-1"
+    >
+      Rating 1
+    </label>
+  </div>
+  <textarea
+    className="add-review__textarea"
+    id="review"
+    name="review"
+    onChange={[Function]}
+    placeholder="Review text"
+    value=""
+  />
+  <button
+    className="add-review__btn"
+    disabled={true}
+    type="submit"
+  >
+    Post
+  </button>
+</div>
+`;

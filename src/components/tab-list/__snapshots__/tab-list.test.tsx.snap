@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabList component render correctly Should TabList component render correctly 1`] = `
+<ul
+  className="movie-nav__list"
+>
+  <li
+    className="movie-nav__item "
+  >
+    <a
+      className="movie-nav__link"
+      href="#"
+      onClick={[Function]}
+    >
+      Something
+    </a>
+  </li>
+  <li
+    className="movie-nav__item "
+  >
+    <a
+      className="movie-nav__link"
+      href="#"
+      onClick={[Function]}
+    >
+      Something Else
+    </a>
+  </li>
+</ul>
+`;
