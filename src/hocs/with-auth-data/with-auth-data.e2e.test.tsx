@@ -16,9 +16,9 @@ const inputNames = {
 
 type MockComponentProps = {
   formControls: {
-    email: FormField,
-    password: FormField,
-  }
+    email: FormField;
+    password: FormField;
+  };
   isFormValid: boolean;
   onInputChange: () => void;
 }

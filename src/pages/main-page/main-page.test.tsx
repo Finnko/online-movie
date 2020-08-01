@@ -85,7 +85,7 @@ const props = {
   favoriteError: false,
   errorText: `Error`,
   authStatus: AuthStatus.NO_AUTH,
-  updateFavoriteStatus: () => {},
+  updateFavoriteStatus: () => null,
 };
 
 describe(`MainPage component render correctly`, () => {

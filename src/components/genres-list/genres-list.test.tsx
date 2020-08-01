@@ -4,8 +4,8 @@ import GenresList from './genres-list';
 
 const props = {
   activeItem: `All genres`,
-  onActiveItemChange: () => {},
-  onGenreChange: () => {},
+  onActiveItemChange: () => null,
+  onGenreChange: () => null,
   genres: [`All genres`, `Crime`, `Horror`],
 };
 

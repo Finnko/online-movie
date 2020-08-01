@@ -78,8 +78,8 @@ describe(`Test e2e MovieListCard component`, () => {
           <MovieListCard
             isPlaying={false}
             movie={mock}
-            onMovieMouseLeave={() => {}}
-            onMovieMouseEnter={() => {}}
+            onMovieMouseLeave={() => null}
+            onMovieMouseEnter={() => null}
             viewMode={`IMAGE`}
           />
         </Router>

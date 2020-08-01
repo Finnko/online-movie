@@ -57,8 +57,8 @@ const props = {
   review: `Test`,
   rating: `3`,
   isFormValid: true,
-  onFormSubmit: () => {},
-  onInputChange: () => {},
+  onFormSubmit: () => null,
+  onInputChange: () => null,
 };
 
 describe(`AddReviewPage component render correctly`, () => {
@@ -128,8 +128,8 @@ describe(`AddReviewPage component render correctly`, () => {
                 loading={false}
                 movieId={mock[0].id}
                 currentMovie={mock[0]}
-                onInputChange={() => {}}
-                onFormSubmit={() => {}}
+                onInputChange={() => null}
+                onFormSubmit={() => null}
               />
             </Router>
           </Provider>

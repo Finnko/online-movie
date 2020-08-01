@@ -4,7 +4,7 @@ import TabList from './tab-list';
 
 const props = {
   activeTab: `Overview`,
-  onTabClick: jest.fn(),
+  onTabClick: () => null,
   tabNames: [`Something`, `Something Else`],
 };
 

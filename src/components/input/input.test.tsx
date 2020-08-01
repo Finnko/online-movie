@@ -13,7 +13,7 @@ const props = {
   touched: true,
   disabled: false,
   shouldValidate: true,
-  onInputChange: () => {},
+  onInputChange: () => null,
 };
 
 describe(`Input component render correctly`, () => {

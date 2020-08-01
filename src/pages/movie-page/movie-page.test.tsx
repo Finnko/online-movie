@@ -85,7 +85,7 @@ const props = {
   favoriteLoading: false,
   favoriteError: false,
   authStatus: AuthStatus.NO_AUTH,
-  updateFavoriteStatus: () => {},
+  updateFavoriteStatus: () => null,
 };
 
 describe(`MoviePage component render correctly`, () => {

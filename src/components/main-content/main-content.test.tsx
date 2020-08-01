@@ -73,8 +73,8 @@ const props = {
   filteredMovies: mockMovies,
   activeGenre: `All genres`,
   genres: [`All genres`, `Crime`, `Horror`],
-  handleGenreChange: () => {},
-  handleShowMoreClick: () => {},
+  handleGenreChange: () => null,
+  handleShowMoreClick: () => null,
 };
 
 describe(`MainContent component render correctly`, () => {

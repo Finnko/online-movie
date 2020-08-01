@@ -53,7 +53,7 @@ const store = mockStore({
 
 const props = {
   favorites: mock,
-  fetchFavoriteMovies: () => {},
+  fetchFavoriteMovies: () => null,
 };
 
 describe(`MyListPage component render correctly`, () => {

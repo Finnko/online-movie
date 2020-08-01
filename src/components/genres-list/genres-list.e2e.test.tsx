@@ -26,12 +26,12 @@ describe(`Test e2e GenresList component`, () => {
   const genre = genresList.find(`.catalog__genres-link`).at(1);
 
   it(`Should tab be pressed correctly`, () => {
-    genre.simulate(`click`, {preventDefault: () => {}});
+    genre.simulate(`click`, {preventDefault: () => null});
     expect(onActiveItemChange).toHaveBeenCalledTimes(1);
   });
 
   it(`Should tab info passed correctly on click`, () => {
-    genre.simulate(`click`, {preventDefault: () => {}});
+    genre.simulate(`click`, {preventDefault: () => null});
     expect(onActiveItemChange).toHaveBeenCalledWith(props.genres[1]);
     expect(onGenreChange).toHaveBeenCalledWith(props.genres[1]);
   });

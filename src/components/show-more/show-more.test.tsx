@@ -6,7 +6,10 @@ describe(`ShowMore component render correctly`, () => {
   it(`Should ShowMore component render correctly`, () => {
     const tree = renderer
       .create(
-          <ShowMore offset={8} onButtonClick={() => {}}/>
+          <ShowMore
+            offset={8}
+            onButtonClick={() => null}
+          />
       ).toJSON();
     expect(tree).toMatchSnapshot();
   });

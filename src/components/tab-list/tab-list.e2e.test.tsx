@@ -22,12 +22,12 @@ describe(`Test e2e TabList component`, () => {
   const tabName = tabsList.find(`.movie-nav__link`).at(1);
 
   it(`Should tab be pressed correctly`, () => {
-    tabName.simulate(`click`, {preventDefault: () => {}});
+    tabName.simulate(`click`, {preventDefault: () => null});
     expect(onTabClick).toHaveBeenCalledTimes(1);
   });
 
   it(`Should tab info passed correctly on hover`, () => {
-    tabName.simulate(`click`, {preventDefault: () => {}});
+    tabName.simulate(`click`, {preventDefault: () => null});
     expect(onTabClick).toHaveBeenCalledWith(props.tabNames[1]);
   });
 });

@@ -39,7 +39,7 @@ const mockUser: User = {
 const props = {
   movie: mock,
   isAuth: true,
-  updateFavoriteStatus: () => {},
+  updateFavoriteStatus: () => null,
 };
 
 const mockStore = configureStore([]);

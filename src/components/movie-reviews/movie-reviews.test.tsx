@@ -29,7 +29,7 @@ const reviewMock: Review[] = [
 const props = {
   movieId: 12,
   reviews: reviewMock,
-  fetchCommentsData: () => {},
+  fetchCommentsData: () => null,
 };
 
 describe(`MovieReviews component render correctly`, () => {
@@ -81,7 +81,7 @@ describe(`MovieReviews component render correctly`, () => {
           <MovieReviews
             movieId={12}
             reviews={[]}
-            fetchCommentsData={() => {}}
+            fetchCommentsData={() => null}
             loading={false}
             error={false}
             onceLoaded={true}

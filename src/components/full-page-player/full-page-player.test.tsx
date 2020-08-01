@@ -8,9 +8,9 @@ const props = {
   duration: 300,
   timeLeft: `01:00:00`,
   currentTime: 200,
-  onTogglePlay: () => {},
-  onRequestFullScreen: () => {},
-  onProgressBarClick: () => {},
+  onTogglePlay: () => null,
+  onRequestFullScreen: () => null,
+  onProgressBarClick: () => null,
 };
 
 describe(`FullPagePlayer snapshot test`, () => {

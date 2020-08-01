@@ -20,7 +20,7 @@ describe(`withActiveItem works correctly`, () => {
     const tree = renderer.create((
       <MockComponentWrapped
         activeItem={`Item 1`}
-        onActiveItemChange={() => {}}
+        onActiveItemChange={() => null}
       />
     ), {
       createNodeMock() {

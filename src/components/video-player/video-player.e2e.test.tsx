@@ -31,7 +31,7 @@ describe(`Test e2e Video Player Component`, () => {
   });
 
   it(`Testing load(stop) works correctly`, () => {
-    window.HTMLMediaElement.prototype.load = () => {};
+    window.HTMLMediaElement.prototype.load = () => null;
 
     const videoPlayer = Enzyme.mount(
         <VideoPlayer

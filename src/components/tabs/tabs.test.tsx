@@ -30,7 +30,7 @@ describe(`Tabs component render correctly`, () => {
           <Tabs
             movie={mock}
             activeItem={`Overview`}
-            onActiveItemChange={() => {}}
+            onActiveItemChange={() => null}
           />
       ).toJSON();
     expect(tree).toMatchSnapshot();

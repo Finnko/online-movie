@@ -24,7 +24,7 @@ const emailMock: FormField = {
     required: true,
     email: true,
   }
-}
+};
 
 const passwordMock: FormField = {
   value: ``,
@@ -34,7 +34,7 @@ const passwordMock: FormField = {
     required: true,
     minLength: 6,
   }
-}
+};
 
 const mockStore = configureStore([]);
 
@@ -53,8 +53,8 @@ const props = {
     password: passwordMock,
   },
   isFormValid: true,
-  onFormSubmit: () => {},
-  onInputChange: () => {},
+  onFormSubmit: () => null,
+  onInputChange: () => null,
 };
 
 describe(`SignIn component render correctly`, () => {

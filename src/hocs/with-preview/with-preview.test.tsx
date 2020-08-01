@@ -18,8 +18,8 @@ describe(`withPreview works correctly`, () => {
     const tree = renderer.create((
       <MockComponentWrapped
         {...props}
-        onMovieMouseEnter={() => {}}
-        onMovieMouseLeave={() => {}}
+        onMovieMouseEnter={() => null}
+        onMovieMouseLeave={() => null}
         isPlaying
       />
     ), {

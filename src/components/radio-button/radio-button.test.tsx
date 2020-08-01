@@ -10,7 +10,7 @@ const props = {
   checked: true,
   label: `rating 5`,
   disabled: false,
-  onRadioChange: () => {},
+  onRadioChange: () => null,
 };
 
 describe(`RadioButton component render correctly`, () => {

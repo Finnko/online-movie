@@ -131,7 +131,7 @@ describe(`Test e2e MainContent component`, () => {
     );
 
     const tab = wrapper.find(`a.catalog__genres-link`).at(1);
-    tab.simulate(`click`, {preventDefault() {}});
+    tab.simulate(`click`, {preventDefault: () => null});
 
     expect(handleGenreChange).toHaveBeenCalledTimes(1);
     expect(handleGenreChange).toHaveBeenCalledWith(`Crime`);

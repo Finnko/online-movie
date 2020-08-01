@@ -29,7 +29,7 @@ const emailMock: FormField = {
     required: true,
     email: true,
   }
-}
+};
 
 const passwordMock: FormField = {
   value: `123456`,
@@ -39,7 +39,7 @@ const passwordMock: FormField = {
     required: true,
     minLength: 6,
   }
-}
+};
 
 const mockStore = configureStore([]);
 
