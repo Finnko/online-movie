@@ -5,7 +5,7 @@ import {Router} from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import NameSpace from '../../store/name-space';
-import {AuthStatus} from '../../const';
+import {AuthStatus} from '../../const.ts';
 import MovieBanner from './movie-banner.jsx';
 
 const mock = {

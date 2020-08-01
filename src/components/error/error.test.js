@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {Router} from 'react-router-dom';
 import {createMemoryHistory} from 'history';
-import Error from './error.jsx';
+import Error from './error.tsx';
 import configureStore from 'redux-mock-store';
 import NameSpace from '../../store/name-space';
 import {Provider} from 'react-redux';

@@ -5,7 +5,7 @@ import {Router} from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import NameSpace from '../../store/name-space';
 import {Provider} from 'react-redux';
-import {AuthStatus} from '../../const';
+import {AuthStatus} from '../../const.ts';
 import {AddReviewPage} from './add-review-page';
 
 const mockMovies = [

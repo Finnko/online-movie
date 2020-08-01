@@ -3,7 +3,7 @@ import Enzyme, {mount, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {Router, Link} from 'react-router-dom';
 import {createMemoryHistory} from 'history';
-import {AuthStatus, PathName} from '../../const';
+import {AuthStatus, PathName} from '../../const.ts';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import NameSpace from '../../store/name-space';

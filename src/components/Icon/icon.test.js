@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Icon from './icon.jsx';
+import Icon from './icon.tsx';
 
 const props = {
   width: `20`,

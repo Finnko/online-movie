@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {END_POINT, TIMEOUT, ServerCodes} from '../const';
+import {END_POINT, TIMEOUT, ServerCodes} from '../const.ts';
 
 const createAPI = (handlers) => {
   const api = axios.create({

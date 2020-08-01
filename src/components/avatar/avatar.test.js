@@ -5,8 +5,8 @@ import NameSpace from '../../store/name-space';
 import {Provider} from 'react-redux';
 import {createMemoryHistory} from 'history';
 import {Router} from 'react-router-dom';
-import {Avatar} from './avatar.jsx';
-import {AuthStatus} from '../../const';
+import {Avatar} from './avatar.tsx';
+import {AuthStatus} from '../../const.ts';
 
 const mockUser = {
   id: 1,

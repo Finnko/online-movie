@@ -1,6 +1,6 @@
 import {actionTypes} from '../../action-types';
 import userReducer from './user-reducer';
-import {AuthStatus} from '../../../const';
+import {AuthStatus} from '../../../const.ts';
 import {renameKeys} from '../../../utils/common';
 
 const initialState = {

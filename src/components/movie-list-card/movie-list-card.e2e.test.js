@@ -3,7 +3,7 @@ import Enzyme, {mount, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {Router, Link} from 'react-router-dom';
 import {createMemoryHistory} from 'history';
-import {PathName} from '../../const';
+import {PathName} from '../../const.ts';
 import {MovieListCard} from './movie-list-card';
 
 Enzyme.configure({

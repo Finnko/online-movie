@@ -6,7 +6,7 @@ import configureStore from 'redux-mock-store';
 import NameSpace from '../../store/name-space';
 import {Provider} from 'react-redux';
 import {MyListPage} from './my-list-page.jsx';
-import {AuthStatus} from '../../const';
+import {AuthStatus} from '../../const.ts';
 
 const mockMovies = [
   {

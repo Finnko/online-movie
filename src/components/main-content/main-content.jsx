@@ -7,7 +7,7 @@ import {ActionCreator} from '../../store/actions/action-creator';
 import {getActiveGenre, getGenres, getMoviesByGenre, getMoviesRenderLimit} from '../../store/reducers/app/selectors';
 import MoviesList from '../movies-list/movies-list.jsx';
 import ShowMore from '../show-more/show-more.jsx';
-import GenresList from '../genres-list/genres-list.jsx';
+import GenresList from '../genres-list/genres-list.tsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
 
 const GenresListWrapped = withActiveItem(GenresList);

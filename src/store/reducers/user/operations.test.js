@@ -3,7 +3,7 @@ import {createAPI} from '../../../api/api';
 import {Operation} from './operations';
 import {actionTypes} from '../../action-types';
 import {renameKeys} from '../../../utils/common';
-import {AuthStatus} from '../../../const';
+import {AuthStatus} from '../../../const.ts';
 import {apiMockHandlers, promisifyApiMockReply} from '../../../utils/helpers';
 
 const authData = {

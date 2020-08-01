@@ -12,10 +12,10 @@ import {
   getPromo
 } from '../../store/reducers/movies/selectors';
 import {Operation as MoviesOperation} from '../../store/reducers/movies/operations';
-import Footer from '../../components/footer/footer.jsx';
+import Footer from '../../components/footer/footer';
 import MovieBanner from '../../components/movie-banner/movie-banner.jsx';
-import Loader from '../../components/loader/loader.tsx';
-import Error from '../../components/error/error.jsx';
+import Loader from '../../components/loader/loader';
+import Error from '../../components/error/error';
 import MainContent from '../../components/main-content/main-content.jsx';
 import {getAuthStatus} from '../../store/reducers/user/selectors';
 
@@ -37,7 +37,7 @@ const MainPage = ({
       {loading &&
         <Loader
           size={LoaderSetup.SIZE.MEDIUM}
-          position={LoaderSetup.POSITION.FIXED}
+          style={LoaderSetup.POSITION.FIXED}
         />
       }
 

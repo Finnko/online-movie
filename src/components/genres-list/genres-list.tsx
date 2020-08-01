@@ -1,15 +1,30 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import classNames from 'classnames';
 
-const GenresList = ({genres, onGenreChange, /* from hoc */ activeItem, onActiveItemChange}) => {
+type Props = {
+  genres: string[],
+  activeItem: string,
+  onGenreChange: (genre: string) => void,
+  onActiveItemChange: (genre: string) => void,
+}
+
+const GenresList:React.FC<Props> = ({
+  genres,
+  onGenreChange,
+  activeItem,
+  onActiveItemChange
+}) => {
   return (
     <ul className="catalog__genres-list">
       {genres.map((genre) => {
-        const isActive = genre === activeItem;
+        const tabClass = classNames({
+          'catalog__genres-item': true,
+          'catalog__genres-item--active': genre === activeItem,
+        });
 
         return (
           <li
-            className={`catalog__genres-item ${isActive ? `catalog__genres-item--active` : ``}`}
+            className={tabClass}
             key={genre}
           >
             <a
@@ -28,13 +43,6 @@ const GenresList = ({genres, onGenreChange, /* from hoc */ activeItem, onActiveI
       })}
     </ul>
   );
-};
-
-GenresList.propTypes = {
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  activeItem: PropTypes.string.isRequired,
-  onActiveItemChange: PropTypes.func.isRequired,
-  onGenreChange: PropTypes.func.isRequired,
 };
 
 export default GenresList;

@@ -1,5 +1,5 @@
 import moment from 'moment';
-import {Config} from '../const';
+import {Config} from '../const.ts';
 
 const extend = (a, b) => {
   return Object.assign({}, a, b);

@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom';
 import {Errors, PathName, ViewMode} from '../../const';
 import MoviePropType from '../../prop-types/movie';
 import history from '../../history';
-import Header from '../header/header.jsx';
-import Icon from '../Icon/icon.jsx';
+import Header from '../header/header.tsx';
+import Icon from '../icon/icon.tsx';
 
 const MovieBanner = ({
   movie,

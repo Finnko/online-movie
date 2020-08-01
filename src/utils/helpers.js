@@ -1,4 +1,4 @@
-import {ServerCodes} from '../const';
+import {ServerCodes} from '../const.ts';
 
 const apiMockHandlers = {
   handleUnauthorized: () => {},

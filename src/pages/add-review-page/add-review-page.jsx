@@ -7,7 +7,7 @@ import MoviePropType from '../../prop-types/movie';
 import {getMovieById} from '../../store/reducers/movies/selectors';
 import {getErrorStatus, getLoadingStatus} from '../../store/reducers/comments/selectors';
 import {Operation as CommentOperation} from '../../store/reducers/comments/operations';
-import Header from '../../components/header/header.jsx';
+import Header from '../../components/header/header.tsx';
 import RadioButton from '../../components/radio-button/radio-button.jsx';
 import Loader from '../../components/loader/loader.tsx';
 
@@ -125,7 +125,7 @@ class AddReviewPage extends PureComponent {
               <div className="add-review__submit">
                 {loading &&
                   <Loader
-                    position={LoaderSetup.POSITION.ABSOLUTE}
+                    style={LoaderSetup.POSITION.ABSOLUTE}
                     size={LoaderSetup.SIZE.SMALL}
                   />
                 }

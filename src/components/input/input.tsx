@@ -1,12 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
+type InputProps = {
+  id: string,
+  label: string,
+  placeholder: string,
+  name: string,
+  value: string,
+  valid: boolean,
+  touched: boolean,
+  shouldValidate: boolean,
+  onInputChange: () => void,
+}
 
 function isFieldInvalid(valid, touched, shouldValidate) {
   return !valid && shouldValidate && touched;
 }
 
-const Input = ({
+const Input:React.FC<InputProps> = ({
   id,
   label,
   placeholder,
@@ -39,18 +49,6 @@ const Input = ({
       </label>
     </div>
   );
-};
-
-Input.propTypes = {
-  id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  valid: PropTypes.bool.isRequired,
-  touched: PropTypes.bool.isRequired,
-  shouldValidate: PropTypes.bool.isRequired,
-  onInputChange: PropTypes.func.isRequired,
 };
 
 export default Input;

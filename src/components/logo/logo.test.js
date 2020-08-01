@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {createMemoryHistory} from 'history';
 import {Router} from 'react-router-dom';
-import Logo from './logo.jsx';
+import Logo from './logo.tsx';
 
 describe(`Logo component render correctly`, () => {
   it(`Should Logo component render correctly`, () => {

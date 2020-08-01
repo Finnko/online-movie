@@ -4,10 +4,10 @@ import {connect} from 'react-redux';
 import {Operation as UserOperation} from '../../store/reducers/user/operations';
 import {getErrorStatus, getLoadingStatus} from '../../store/reducers/user/selectors';
 import {Errors, LoaderSetup} from '../../const';
-import Header from '../../components/header/header.jsx';
-import Footer from '../../components/footer/footer.jsx';
-import Input from '../../components/input/input.jsx';
-import Loader from '../../components/loader/loader.tsx';
+import Header from '../../components/header/header';
+import Footer from '../../components/footer/footer';
+import Input from '../../components/input/input';
+import Loader from '../../components/loader/loader';
 
 const inputNames = {
   email: `Email address`,
@@ -99,7 +99,7 @@ class SignIn extends PureComponent {
                 {loading &&
                   <Loader
                     size={LoaderSetup.SIZE.SMALL}
-                    position={LoaderSetup.POSITION.ABSOLUTE}
+                    style={LoaderSetup.POSITION.ABSOLUTE}
                   />
                 }
                 {!loading && `Sign in` }

@@ -2,7 +2,7 @@ import React, {Fragment, PureComponent} from "react";
 import PropTypes from "prop-types";
 import history from '../../history';
 import Loader from '../loader/loader.tsx';
-import Icon from '../../components/icon/icon.jsx';
+import Icon from '../icon/icon.tsx';
 import {LoaderSetup} from '../../const';
 
 class FullPagePlayer extends PureComponent {
@@ -55,7 +55,7 @@ class FullPagePlayer extends PureComponent {
         {isLoading && isWaiting &&
         <Loader
           size={LoaderSetup.SIZE.MEDIUM}
-          position={LoaderSetup.POSITION.FIXED}
+          style={LoaderSetup.POSITION.FIXED}
         />}
 
         {!isLoading && !isWaiting &&

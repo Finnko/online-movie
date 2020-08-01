@@ -1,11 +1,10 @@
-import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
-import Header from '../header/header.jsx';
-import Footer from '../footer/footer.jsx';
+import * as React from 'react';
+import Header from '../header/header';
+import Footer from '../footer/footer';
 
-const Error = ({error}) => {
+const Error:React.FC<{error: string}> = ({error}) => {
   return (
-    <Fragment>
+    <React.Fragment>
       <Header />
       <section className="catalog">
         <div className="page-content">
@@ -17,12 +16,8 @@ const Error = ({error}) => {
         </div>
       </section>
       <Footer />
-    </Fragment>
+    </React.Fragment>
   );
-};
-
-Error.propTypes = {
-  error: PropTypes.string.isRequired,
 };
 
 export default Error;

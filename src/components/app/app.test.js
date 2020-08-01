@@ -4,7 +4,7 @@ import App from './app';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import NameSpace from '../../store/name-space';
-import {AuthStatus} from '../../const';
+import {AuthStatus} from '../../const.ts';
 
 const promo = {
   id: 1,

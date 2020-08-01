@@ -10,7 +10,7 @@ import {getFavoriteError, getFavoriteLoading} from '../../store/reducers/movies/
 import MovieBanner from '../../components/movie-banner/movie-banner.jsx';
 import MoviesList from '../../components/movies-list/movies-list.jsx';
 import Tabs from '../../components/tabs/tabs.jsx';
-import Footer from '../../components/footer/footer.jsx';
+import Footer from '../../components/footer/footer.tsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
 import {getAuthStatus} from '../../store/reducers/user/selectors';
 import {Operation as MoviesOperation} from '../../store/reducers/movies/operations';
@@ -30,7 +30,7 @@ const MoviePage = ({
   updateFavoriteStatus,
 }) => {
   if (loading) {
-    return <Loader position={LoaderSetup.POSITION.FIXED} size={LoaderSetup.SIZE.MEDIUM}/>;
+    return <Loader style={LoaderSetup.POSITION.FIXED} size={LoaderSetup.SIZE.MEDIUM}/>;
   }
 
   if (!loading && !error && !currentMovie) {

@@ -6,7 +6,7 @@ import configureStore from 'redux-mock-store';
 import NameSpace from '../../store/name-space';
 import {MoviePage} from './movie-page';
 import {Provider} from 'react-redux';
-import {AuthStatus} from '../../const';
+import {AuthStatus} from '../../const.ts';
 
 const currentMovie = {
   id: 1,

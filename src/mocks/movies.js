@@ -1,5 +1,5 @@
 import {getRandomLengthArray, getRandomArrayNumber, getRandomInRange, getRandomRating} from '../utils/common';
-import {Config} from '../const';
+import {Config} from '../const.ts';
 
 
 const UNIQUE_MOVIES_NUMBER = 8;

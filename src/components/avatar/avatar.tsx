@@ -1,12 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import UserPropType from '../../prop-types/user';
+import * as React from 'react';
 import {AuthStatus, Config, PathName} from '../../const';
 import {connect} from 'react-redux';
 import {getAuthStatus, getUser} from '../../store/reducers/user/selectors';
 import {Link} from 'react-router-dom';
+import {User} from "../../interfaces";
 
-const Avatar = ({userInfo, authStatus}) => {
+type AvatarProps = {
+  userInfo: User,
+  authStatus: string,
+}
+
+const Avatar:React.FC<AvatarProps> = ({userInfo, authStatus}) => {
   let avatar = ``;
   if (userInfo !== null) {
     avatar = userInfo.avatarUrl;
@@ -39,11 +43,6 @@ const Avatar = ({userInfo, authStatus}) => {
       }
     </div>
   );
-};
-
-Avatar.propTypes = {
-  authStatus: PropTypes.string,
-  userInfo: UserPropType,
 };
 
 const mapStateToProps = (state) => {

@@ -1,8 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import {Link} from 'react-router-dom';
 import {PathName} from '../../const';
 
-const Logo = () => {
+const Logo:React.FC = () => {
   return (
     <div className="logo">
       <Link

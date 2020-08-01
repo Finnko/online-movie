@@ -1,9 +1,21 @@
-import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
-
+import * as React from 'react';
 import {getFormattedMovieTime} from '../../utils/common';
 
-const MovieDetails = ({actors, releaseYear, genre, runTime, director}) => {
+type Props = {
+  actors: string[],
+  releaseYear: number,
+  genre: string,
+  runTime: number,
+  director: string,
+}
+
+const MovieDetails:React.FC<Props> = ({
+  actors,
+  releaseYear,
+  genre,
+  runTime,
+  director
+}) => {
   return (
     <div className="movie-card__text movie-card__row">
       <div className="movie-card__text-col">
@@ -15,10 +27,10 @@ const MovieDetails = ({actors, releaseYear, genre, runTime, director}) => {
           <strong className="movie-card__details-name">Starring</strong>
           <span className="movie-card__details-value">
             {actors.map((actor, index) => (
-              <Fragment key={actor + index}>
+              <React.Fragment key={actor + index}>
                 {actor}
                 <br/>
-              </Fragment>))
+              </React.Fragment>))
             }
           </span>
         </p>
@@ -40,14 +52,6 @@ const MovieDetails = ({actors, releaseYear, genre, runTime, director}) => {
       </div>
     </div>
   );
-};
-
-MovieDetails.propTypes = {
-  actors: PropTypes.arrayOf(PropTypes.string).isRequired,
-  releaseYear: PropTypes.number.isRequired,
-  genre: PropTypes.string.isRequired,
-  runTime: PropTypes.number.isRequired,
-  director: PropTypes.string.isRequired,
 };
 
 export default MovieDetails;

@@ -48,7 +48,7 @@ class MovieReviews extends PureComponent {
       <div className="movie-card__reviews movie-card__row">
         {loading &&
           <Loader
-            position={LoaderSetup.POSITION.ABSOLUTE}
+            style={LoaderSetup.POSITION.ABSOLUTE}
             size={LoaderSetup.SIZE.MEDIUM}
           />
         }

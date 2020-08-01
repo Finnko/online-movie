@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import {Config} from '../../const';
+import {Config} from '../../const.ts';
 import {validateControl} from '../../utils/validation';
 
 const withAuthData = (Component) => {

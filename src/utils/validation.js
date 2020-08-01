@@ -1,4 +1,4 @@
-import {EMAIL_PATTERN} from '../const';
+import {EMAIL_PATTERN} from '../const.ts';
 
 const validateControl = (value, validation) => {
   if (!validation) {

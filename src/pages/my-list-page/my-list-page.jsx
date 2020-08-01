@@ -4,8 +4,8 @@ import {connect} from 'react-redux';
 import MoviePropType from '../../prop-types/movie';
 import {Operation as MoviesOperation} from '../../store/reducers/movies/operations';
 import {getErrorStatus, getLoadingStatus, getFavorites} from '../../store/reducers/movies/selectors';
-import Header from '../../components/header/header.jsx';
-import Footer from '../../components/footer/footer.jsx';
+import Header from '../../components/header/header.tsx';
+import Footer from '../../components/footer/footer.tsx';
 import MovieListCardWrapped from '../../components/movie-list-card/movie-list-card.jsx';
 import Loader from '../../components/loader/loader.tsx';
 import {Errors, LoaderSetup, ViewMode} from '../../const';
@@ -37,7 +37,7 @@ class MyListPage extends PureComponent {
 
           {loading &&
             <Loader
-              position={LoaderSetup.POSITION.FIXED}
+              style={LoaderSetup.POSITION.FIXED}
               size={LoaderSetup.SIZE.MEDIUM}
             />
           }

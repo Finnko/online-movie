@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import {Config} from '../../const';
+import {Config} from '../../const.ts';
 
 const withReviewData = (Component) => {
   class WithReviewData extends PureComponent {
