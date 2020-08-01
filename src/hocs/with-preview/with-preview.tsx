@@ -1,7 +1,21 @@
-import React, {PureComponent} from "react";
+import * as React from 'react';
+import {Subtract} from 'utility-types';
+
+type State = {
+  isPlaying: boolean,
+}
+
+type InjectingProps = {
+  isPlaying: boolean,
+  onMovieMouseEnter: () => void,
+  onMovieMouseLeave: () => void,
+}
 
 const withPreview = (Component) => {
-  class WithPreview extends PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithPreview extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 
@@ -13,13 +27,13 @@ const withPreview = (Component) => {
       this._handleCardMouseLeave = this._handleCardMouseLeave.bind(this);
     }
 
-    _handleCardMouseEnter() {
+    _handleCardMouseEnter():void {
       this.setState({
         isPlaying: true
       });
     }
 
-    _handleCardMouseLeave() {
+    _handleCardMouseLeave():void {
       this.setState({
         isPlaying: false
       });
@@ -36,8 +50,6 @@ const withPreview = (Component) => {
       />;
     }
   }
-
-  WithPreview.propTypes = {};
 
   return WithPreview;
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import withActiveItem from "./with-active-item.js";
+import withActiveItem from "./with-active-item.tsx";
 
 const MockComponent = () => {
   return (

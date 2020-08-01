@@ -13,7 +13,7 @@ interface Movie {
   rating: number,
   ratingCount: number,
   runTime: number,
-  starring: string[],
+  actors: string[],
   genre: string,
   isFavorite: boolean,
 }
@@ -36,8 +36,20 @@ interface User {
   avatarUrl: string,
 }
 
+interface FormField {
+  value: string,
+  valid: boolean,
+  touched: boolean,
+  validation: {
+    required: boolean,
+    email?: boolean ,
+    minLength?: number,
+  }
+}
+
 export {
   Movie,
   Review,
   User,
+  FormField,
 }

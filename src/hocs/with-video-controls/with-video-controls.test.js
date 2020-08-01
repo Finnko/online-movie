@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import withVideoControls from './with-video-controls';
+import withVideoControls from './with-video-controls.tsx';
 import FullPagePlayer from '../../components/full-page-player/full-page-player.tsx';
 
 const props = {

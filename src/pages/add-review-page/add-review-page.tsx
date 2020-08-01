@@ -29,7 +29,7 @@ class AddReviewPage extends React.PureComponent<AddReviewProps> {
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
-  handleFormSubmit(evt) {
+  handleFormSubmit(evt: React.FormEvent<HTMLFormElement>) {
     evt.preventDefault();
     const {movieId, rating, review} = this.props;
 

@@ -1,14 +1,22 @@
-import React from 'react';
-import PropTypes from "prop-types";
+import * as React from 'react';
+import {Movie} from '../../interfaces';
 import {TabName} from '../../const';
-import MoviePropType from '../../prop-types/movie';
-import TabList from '../tab-list/tab-list.tsx';
-import MovieOverview from '../movie-overview/movie-overview.tsx';
-import MovieDetails from '../movie-details/movie-details.tsx';
-import MovieReviews from '../movie-reviews/movie-reviews.tsx';
+import TabList from '../tab-list/tab-list';
+import MovieOverview from '../movie-overview/movie-overview';
+import MovieDetails from '../movie-details/movie-details';
+import MovieReviews from '../movie-reviews/movie-reviews';
 
+type Props = {
+  movie: Movie,
+  activeItem: string,
+  onActiveItemChange: () => void,
+}
 
-const Tabs = ({movie, /* from hoc */ activeItem, onActiveItemChange}) => {
+const Tabs:React.FC<Props> = ({
+  movie,
+  activeItem,
+  onActiveItemChange
+}) => {
   const {
     id,
     actors,
@@ -53,12 +61,6 @@ const Tabs = ({movie, /* from hoc */ activeItem, onActiveItemChange}) => {
       {activeItem === TabName.REVIEWS && <MovieReviews movieId={id} />}
     </div>
   );
-};
-
-Tabs.propTypes = {
-  movie: MoviePropType.isRequired,
-  activeItem: PropTypes.string.isRequired,
-  onActiveItemChange: PropTypes.func.isRequired,
 };
 
 export default Tabs;

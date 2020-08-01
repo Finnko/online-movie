@@ -21,7 +21,7 @@ class MyListPage extends React.PureComponent<Props> {
     super(props);
   }
 
-  componentDidMount() {
+  componentDidMount():void {
     const {fetchFavoriteMovies} = this.props;
     fetchFavoriteMovies();
   }

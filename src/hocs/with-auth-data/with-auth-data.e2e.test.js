@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Input from '../../components/input/input';
-import withAuthData from './with-auth-data';
+import withAuthData from './with-auth-data.tsx';
 
 Enzyme.configure({
   adapter: new Adapter(),

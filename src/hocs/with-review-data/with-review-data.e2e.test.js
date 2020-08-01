@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import withReviewData from './with-review-data';
+import withReviewData from './with-review-data.tsx';
 import RadioButton from '../../components/radio-button/radio-button.tsx';
 
 Enzyme.configure({

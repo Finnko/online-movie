@@ -16,7 +16,7 @@ const inputNames = {
 type SignInProps = {
   loading: boolean,
   error: boolean,
-  formControls: {},
+  formControls: any,
   isFormValid: boolean,
   onInputChange: () => void,
   onFormSubmit: ({}) => void,
@@ -29,7 +29,7 @@ class SignIn extends React.PureComponent<SignInProps> {
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
-  handleFormSubmit(evt) {
+  handleFormSubmit(evt: React.FormEvent<HTMLFormElement>) {
     evt.preventDefault();
 
     const {email, password} = this.props.formControls;

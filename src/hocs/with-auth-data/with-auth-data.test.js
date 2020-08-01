@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import renderer from 'react-test-renderer';
 import Input from '../../components/input/input.tsx';
-import withAuthData from './with-auth-data';
+import withAuthData from './with-auth-data.tsx';
 
 const inputNames = {
   email: `Email address`,

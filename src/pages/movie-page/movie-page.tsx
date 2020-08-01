@@ -10,7 +10,7 @@ import {Operation as MoviesOperation} from '../../store/reducers/movies/operatio
 import {Movie} from '../../interfaces';
 import MovieBanner from '../../components/movie-banner/movie-banner';
 import MoviesList from '../../components/movies-list/movies-list';
-import Tabs from '../../components/tabs/tabs.jsx';
+import Tabs from '../../components/tabs/tabs';
 import Footer from '../../components/footer/footer';
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
 import Loader from '../../components/loader/loader';

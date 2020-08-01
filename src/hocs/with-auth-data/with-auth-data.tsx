@@ -1,9 +1,31 @@
-import React, {PureComponent} from 'react';
-import {Config} from '../../const.ts';
+import * as React from 'react';
+import {Subtract} from 'utility-types';
+import {Config} from '../../const';
 import {validateControl} from '../../utils/validation';
+import {FormField} from "../../interfaces";
+
+type State = {
+  isFormValid: boolean,
+  formControls: {
+    email: FormField,
+    password: FormField,
+  }
+}
+
+type InjectingProps = {
+  formControls: {
+    email: FormField,
+    password: FormField,
+  },
+  isFormValid: boolean,
+  onInputChange: () => void,
+}
 
 const withAuthData = (Component) => {
-  class WithAuthData extends PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithAuthData extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 
@@ -34,7 +56,7 @@ const withAuthData = (Component) => {
       this._handleInputChange = this._handleInputChange.bind(this);
     }
 
-    _handleInputChange(evt) {
+    _handleInputChange(evt: React.ChangeEvent<HTMLInputElement>):void {
       const {value, name} = evt.target;
       let isFormValid = true;
       const formControls = Object.assign({}, this.state.formControls);
@@ -71,8 +93,6 @@ const withAuthData = (Component) => {
       );
     }
   }
-
-  WithAuthData.propTypes = {};
 
   return WithAuthData;
 };

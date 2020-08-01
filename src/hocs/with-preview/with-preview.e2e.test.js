@@ -2,7 +2,7 @@ import React from "react";
 import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import VideoPlayer from '../../components/video-player/video-player';
-import withPreview from './with-preview';
+import withPreview from './with-preview.tsx';
 
 configure({
   adapter: new Adapter()

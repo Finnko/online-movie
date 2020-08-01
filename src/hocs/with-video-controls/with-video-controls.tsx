@@ -1,13 +1,46 @@
-import React, {createRef, PureComponent} from 'react';
-import PropTypes from "prop-types";
+import * as React from 'react';
+import {Subtract} from 'utility-types';
 import {formatSecondsToTime} from '../../utils/common';
 
+type State = {
+  progress: number,
+  duration: number,
+  currentTime: number,
+  timeLeft: string,
+  isPlaying: boolean,
+  isLoading: boolean,
+  isWaiting: boolean,
+}
+
+type InjectingProps = {
+  title: string,
+  src: string,
+  poster: string,
+  activeItem: string,
+  onActiveItemChange: () => void,
+  progress: number,
+  duration: number,
+  currentTime: number,
+  timeLeft: string,
+  isPlaying: boolean,
+  isLoading: boolean,
+  isWaiting: boolean,
+  onTogglePlay: () => void,
+  onRequestFullScreen: () => void,
+  onProgressBarClick: () => void,
+}
+
 const withVideoControls = (Component) => {
-  class WithVideoControls extends PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithVideoControls extends React.PureComponent<T, State> {
+    private readonly _videoRef: React.RefObject<HTMLVideoElement>;
+
     constructor(props) {
       super(props);
 
-      this._videoRef = createRef();
+      this._videoRef = React.createRef();
 
       this._handleTogglePlay = this._handleTogglePlay.bind(this);
       this._handleFullScreenChange = this._handleFullScreenChange.bind(this);
@@ -54,7 +87,7 @@ const withVideoControls = (Component) => {
       };
     }
 
-    componentDidUpdate() {
+    componentDidUpdate():void {
       const video = this._videoRef.current;
       const {isPlaying} = this.state;
 
@@ -69,7 +102,7 @@ const withVideoControls = (Component) => {
       }
     }
 
-    componentWillUnmount() {
+    componentWillUnmount():void {
       const video = this._videoRef.current;
       video.onplay = null;
       video.onpause = null;
@@ -78,7 +111,7 @@ const withVideoControls = (Component) => {
       video.src = ``;
     }
 
-    _handleTogglePlay() {
+    _handleTogglePlay():void {
       this.setState((prevState) => {
         return {
           isPlaying: !prevState.isPlaying
@@ -86,20 +119,21 @@ const withVideoControls = (Component) => {
       });
     }
 
-    _handleFullScreenChange() {
+    _handleFullScreenChange():void {
       const video = this._videoRef.current;
       video.requestFullscreen();
       video.controls = true;
     }
 
-    _handleEnded() {
+    _handleEnded():void {
       const video = this._videoRef.current;
       video.play();
     }
 
-    _handleProgressBarClick({clientX, target}) {
+    _handleProgressBarClick(evt: React.MouseEvent<HTMLProgressElement>):void {
+      const {clientX, currentTarget} = evt;
       const video = this._videoRef.current;
-      const progressBar = target;
+      const progressBar = currentTarget;
       const offsetX = clientX - progressBar.getBoundingClientRect().left;
 
       const time = Math.round((offsetX / progressBar.clientWidth) * parseInt(progressBar.getAttribute(`max`), 10));
@@ -145,12 +179,6 @@ const withVideoControls = (Component) => {
       </Component>;
     }
   }
-
-  WithVideoControls.propTypes = {
-    title: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-  };
 
   return WithVideoControls;
 };

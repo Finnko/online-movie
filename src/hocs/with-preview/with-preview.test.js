@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import VideoPlayer from '../../components/video-player/video-player.tsx';
-import withPreview from './with-preview';
+import withPreview from './with-preview.tsx';
 
 const props = {
   muted: true,

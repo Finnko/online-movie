@@ -1,8 +1,29 @@
-import React, {PureComponent} from 'react';
-import {Config} from '../../const.ts';
+import * as React from 'react';
+import {Subtract} from 'utility-types';
+import {Config} from '../../const';
+
+type State = {
+  isFormValid: boolean,
+  rating: {
+    value: string,
+  },
+  review: {
+    value: string,
+  }
+}
+
+type InjectingProps = {
+  isFormValid: boolean,
+  rating: string,
+  review: string,
+  onInputChange: () => void,
+}
 
 const withReviewData = (Component) => {
-  class WithReviewData extends PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithReviewData extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 
@@ -19,13 +40,12 @@ const withReviewData = (Component) => {
       this._handleInputChange = this._handleInputChange.bind(this);
     }
 
-    _handleInputChange(evt) {
+    _handleInputChange(evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>):void {
       const {value, name} = evt.target;
       const {review, rating} = this.state;
 
       const isFormValid = review.value.length > Config.COMMENT_LENGTH.MIN &&
-        review.value.length < Config.COMMENT_LENGTH.MAX
-        || rating === ``;
+        review.value.length < Config.COMMENT_LENGTH.MAX || rating.value === ``;
 
       this.setState((prevState) => Object.assign({}, prevState, {
         [name]: {
@@ -52,8 +72,6 @@ const withReviewData = (Component) => {
       );
     }
   }
-
-  WithReviewData.propTypes = {};
 
   return WithReviewData;
 };
