@@ -5,7 +5,7 @@ import {Router} from 'react-router-dom';
 import configureStore from 'redux-mock-store';
 import NameSpace from '../../store/name-space';
 import {Provider} from 'react-redux';
-import {MyListPage} from './my-list-page.jsx';
+import {MyListPage} from './my-list-page.tsx';
 import {AuthStatus} from '../../const.ts';
 
 const mockMovies = [

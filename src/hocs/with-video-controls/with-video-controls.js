@@ -45,14 +45,6 @@ const withVideoControls = (Component) => {
         });
       };
 
-      video.onplay = () => this.setState({
-        isPlaying: true,
-      });
-
-      video.onpause = () => this.setState({
-        isPlaying: false,
-      });
-
       video.ontimeupdate = () => {
         this.setState({
           currentTime: Math.floor(video.currentTime),
@@ -65,6 +57,10 @@ const withVideoControls = (Component) => {
     componentDidUpdate() {
       const video = this._videoRef.current;
       const {isPlaying} = this.state;
+
+      if (!document.fullscreenElement) {
+        video.controls = false;
+      }
 
       if (isPlaying && !video.ended) {
         video.play();
@@ -92,7 +88,8 @@ const withVideoControls = (Component) => {
 
     _handleFullScreenChange() {
       const video = this._videoRef.current;
-      video.requestFullscreen({navigationUI: `show`});
+      video.requestFullscreen();
+      video.controls = true;
     }
 
     _handleEnded() {

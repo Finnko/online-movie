@@ -1,15 +1,15 @@
-import React from "react";
+import * as React from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {getMovieById} from '../../store/reducers/movies/selectors';
 import {PathName} from '../../const';
-import MoviePropType from '../../prop-types/movie';
+import {Movie} from '../../interfaces';
+import FullPagePlayer from '../../components/full-page-player/full-page-player';
 import withVideoControls from '../../hocs/with-video-controls/with-video-controls';
-import FullPagePlayer from '../../components/full-page-player/full-page-player.jsx';
 
 const FullPagePlayerWrapped = withVideoControls(FullPagePlayer);
 
-const PlayerPage = ({currentMovie}) => {
+const PlayerPage:React.FC<{currentMovie: Movie}> = ({currentMovie}) => {
   if (!currentMovie) {
     return <Redirect to={PathName.ROOT}/>;
   }
@@ -21,10 +21,6 @@ const PlayerPage = ({currentMovie}) => {
     title={title}
     poster={backgroundImage}
   />;
-};
-
-PlayerPage.propTypes = {
-  currentMovie: MoviePropType.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {

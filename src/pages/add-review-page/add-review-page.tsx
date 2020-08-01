@@ -1,18 +1,28 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {Config, Errors, LoaderSetup, PathName} from '../../const';
-import MoviePropType from '../../prop-types/movie';
 import {getMovieById} from '../../store/reducers/movies/selectors';
 import {getErrorStatus, getLoadingStatus} from '../../store/reducers/comments/selectors';
 import {Operation as CommentOperation} from '../../store/reducers/comments/operations';
-import Header from '../../components/header/header.tsx';
-import RadioButton from '../../components/radio-button/radio-button.tsx';
-import Loader from '../../components/loader/loader.tsx';
+import Header from '../../components/header/header';
+import RadioButton from '../../components/radio-button/radio-button';
+import Loader from '../../components/loader/loader';
+import {Movie} from '../../interfaces';
 
+type AddReviewProps = {
+  currentMovie: Movie,
+  loading: boolean,
+  error: boolean,
+  movieId: number,
+  rating: string,
+  review: string,
+  isFormValid: boolean,
+  onInputChange: () => void,
+  onFormSubmit: ({}) => void,
+}
 
-class AddReviewPage extends PureComponent {
+class AddReviewPage extends React.PureComponent<AddReviewProps> {
   constructor(props) {
     super(props);
 
@@ -151,18 +161,6 @@ class AddReviewPage extends PureComponent {
     );
   }
 }
-
-AddReviewPage.propTypes = {
-  currentMovie: MoviePropType.isRequired,
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.bool.isRequired,
-  movieId: PropTypes.number.isRequired,
-  rating: PropTypes.string.isRequired,
-  review: PropTypes.string.isRequired,
-  isFormValid: PropTypes.bool.isRequired,
-  onInputChange: PropTypes.func.isRequired,
-  onFormSubmit: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = (state, {match}) => {
   const movieId = parseInt(match.params.id, 10);

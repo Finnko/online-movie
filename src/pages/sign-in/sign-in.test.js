@@ -6,7 +6,7 @@ import configureStore from 'redux-mock-store';
 import NameSpace from '../../store/name-space';
 import {Provider} from 'react-redux';
 import {AuthStatus} from '../../const.ts';
-import {SignIn} from './sign-in.jsx';
+import {SignIn} from './sign-in.tsx';
 
 const mockUser = {
   id: 1,

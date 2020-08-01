@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import FullPagePlayer from './full-page-player.jsx';
+import FullPagePlayer from './full-page-player.tsx';
 
 const props = {
   title: `Title`,

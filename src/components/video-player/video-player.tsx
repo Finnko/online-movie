@@ -1,22 +1,31 @@
-import React, {PureComponent, createRef} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
-class VideoPlayer extends PureComponent {
+type PlayerProps = {
+  isPlaying: boolean,
+  muted: boolean,
+  poster: string,
+  videoSrc: string,
+}
+
+class VideoPlayer extends React.PureComponent<PlayerProps> {
+  private readonly _videoRef: React.RefObject<HTMLVideoElement>;
+  private _timer: ReturnType<typeof setTimeout>;
+
   constructor(props) {
     super(props);
 
-    this._videoRef = createRef();
+    this._videoRef = React.createRef();
     this._timer = null;
   }
 
-  componentDidMount() {
+  componentDidMount():void {
     const {muted} = this.props;
 
     const video = this._videoRef.current;
     video.muted = muted;
   }
 
-  componentDidUpdate() {
+  componentDidUpdate():void {
     const video = this._videoRef.current;
 
     if (this.props.isPlaying) {
@@ -27,7 +36,7 @@ class VideoPlayer extends PureComponent {
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount():void {
     const video = this._videoRef.current;
     clearTimeout(this._timer);
 
@@ -36,11 +45,9 @@ class VideoPlayer extends PureComponent {
     video.onplay = null;
   }
 
-  play() {
+  play():void {
     const video = this._videoRef.current;
-    const videoPlay = () => {
-      video.play();
-    };
+    const videoPlay = () => video.play();
     this._timer = setTimeout(videoPlay, 1000);
   }
 
@@ -58,12 +65,5 @@ class VideoPlayer extends PureComponent {
     );
   }
 }
-
-VideoPlayer.propTypes = {
-  isPlaying: PropTypes.bool.isRequired,
-  muted: PropTypes.bool.isRequired,
-  poster: PropTypes.string.isRequired,
-  videoSrc: PropTypes.string.isRequired,
-};
 
 export default VideoPlayer;

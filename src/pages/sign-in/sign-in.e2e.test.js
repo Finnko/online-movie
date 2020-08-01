@@ -7,7 +7,7 @@ import configureStore from 'redux-mock-store';
 import NameSpace from '../../store/name-space';
 import {AuthStatus} from '../../const.ts';
 import {Provider} from 'react-redux';
-import {SignIn} from './sign-in.jsx';
+import {SignIn} from './sign-in.tsx';
 
 Enzyme.configure({
   adapter: new Adapter(),

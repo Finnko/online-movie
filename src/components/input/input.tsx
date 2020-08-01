@@ -9,6 +9,7 @@ type InputProps = {
   valid: boolean,
   touched: boolean,
   shouldValidate: boolean,
+  disabled: boolean,
   onInputChange: () => void,
 }
 
@@ -25,6 +26,7 @@ const Input:React.FC<InputProps> = ({
   valid,
   touched,
   shouldValidate,
+  disabled,
   onInputChange,
 }) => {
   let isInvalid = isFieldInvalid(valid, touched, shouldValidate);
@@ -38,6 +40,7 @@ const Input:React.FC<InputProps> = ({
         name={name}
         placeholder={placeholder}
         className="sign-in__input"
+        disabled={disabled}
         onChange={onInputChange}
       />
 

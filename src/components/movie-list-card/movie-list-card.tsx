@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Link} from 'react-router-dom';
 import {PathName, ViewMode} from '../../const';
 import withPreview from '../../hocs/with-preview/with-preview';
-import VideoPlayer from '../video-player/video-player.jsx';
+import VideoPlayer from '../video-player/video-player';
 import {Movie} from "../../interfaces";
 
 type Props = {
@@ -59,7 +59,7 @@ const MovieListCard:React.FC<Props> = ({
   );
 };
 
-const MovieListCardWrapped = withPreview(MovieListCard);
+const MovieListCardWrapped = withPreview(React.memo(MovieListCard));
 
 export {MovieListCard};
 export default MovieListCardWrapped;

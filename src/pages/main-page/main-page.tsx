@@ -1,5 +1,4 @@
-import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {connect} from 'react-redux';
 import MoviePropType from '../../prop-types/movie';
 import {ViewMode, LoaderSetup, AuthStatus} from '../../const';
@@ -13,14 +12,24 @@ import {
 } from '../../store/reducers/movies/selectors';
 import {Operation as MoviesOperation} from '../../store/reducers/movies/operations';
 import Footer from '../../components/footer/footer';
-import MovieBanner from '../../components/movie-banner/movie-banner.tsx';
+import MovieBanner from '../../components/movie-banner/movie-banner';
 import Loader from '../../components/loader/loader';
 import Error from '../../components/error/error';
-import MainContent from '../../components/main-content/main-content.tsx';
+import MainContent from '../../components/main-content/main-content';
 import {getAuthStatus} from '../../store/reducers/user/selectors';
 
+type MainProps = {
+  promo: MoviePropType,
+  loading: boolean,
+  error: boolean,
+  favoriteLoading: boolean,
+  favoriteError: boolean,
+  errorText: string,
+  authStatus: string,
+  updateFavoriteStatus: () => void,
+}
 
-const MainPage = ({
+const MainPage:React.FC<MainProps> = ({
   promo,
   loading,
   error,
@@ -33,7 +42,7 @@ const MainPage = ({
   const isAuth = AuthStatus.AUTH === authStatus;
 
   return (
-    <Fragment>
+    <React.Fragment>
       {loading &&
         <Loader
           size={LoaderSetup.SIZE.MEDIUM}
@@ -42,7 +51,7 @@ const MainPage = ({
       }
 
       {!loading && !error &&
-        <Fragment>
+        <React.Fragment>
           <section className="movie-card">
             <MovieBanner
               movie={promo}
@@ -59,23 +68,12 @@ const MainPage = ({
 
             <Footer/>
           </div>
-        </Fragment>
+        </React.Fragment>
       }
 
       {!loading && error && <Error error={errorText}/>}
-    </Fragment>
+    </React.Fragment>
   );
-};
-
-MainPage.propTypes = {
-  promo: MoviePropType,
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.bool.isRequired,
-  favoriteLoading: PropTypes.bool.isRequired,
-  favoriteError: PropTypes.bool.isRequired,
-  errorText: PropTypes.string.isRequired,
-  authStatus: PropTypes.string.isRequired,
-  updateFavoriteStatus: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {

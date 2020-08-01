@@ -1,5 +1,4 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {connect} from 'react-redux';
 import {Operation as UserOperation} from '../../store/reducers/user/operations';
 import {getErrorStatus, getLoadingStatus} from '../../store/reducers/user/selectors';
@@ -14,8 +13,16 @@ const inputNames = {
   password: `Password`,
 };
 
+type SignInProps = {
+  loading: boolean,
+  error: boolean,
+  formControls: {},
+  isFormValid: boolean,
+  onInputChange: () => void,
+  onFormSubmit: ({}) => void,
+}
 
-class SignIn extends PureComponent {
+class SignIn extends React.PureComponent<SignInProps> {
   constructor(props) {
     super(props);
 
@@ -33,7 +40,7 @@ class SignIn extends PureComponent {
   }
 
   renderInputs() {
-    const {onInputChange, formControls} = this.props;
+    const {onInputChange, formControls, loading} = this.props;
 
     return Object.keys(formControls).map((name, index) => {
       const {
@@ -54,6 +61,7 @@ class SignIn extends PureComponent {
           valid={valid}
           touched={touched}
           shouldValidate={!!validation}
+          disabled={loading}
           onInputChange={onInputChange}
         />
       );
@@ -114,15 +122,6 @@ class SignIn extends PureComponent {
     );
   }
 }
-
-SignIn.propTypes = {
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.bool.isRequired,
-  formControls: PropTypes.object,
-  isFormValid: PropTypes.bool.isRequired,
-  onInputChange: PropTypes.func.isRequired,
-  onFormSubmit: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = (state) => {
   return {

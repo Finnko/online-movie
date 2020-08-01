@@ -1,25 +1,34 @@
-import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {getErrorStatus, getLoadingStatus, getSimilarMovies} from '../../store/reducers/movies/selectors';
 import {getMovieById} from '../../store/reducers/movies/selectors';
 import {AuthStatus, Config, LoaderSetup, PathName, TabName, ViewMode} from '../../const';
-import MoviePropType from '../../prop-types/movie';
 import {getFavoriteError, getFavoriteLoading} from '../../store/reducers/movies/selectors';
-import MovieBanner from '../../components/movie-banner/movie-banner.tsx';
-import MoviesList from '../../components/movies-list/movies-list.tsx';
-import Tabs from '../../components/tabs/tabs.jsx';
-import Footer from '../../components/footer/footer.tsx';
-import withActiveItem from '../../hocs/with-active-item/with-active-item';
 import {getAuthStatus} from '../../store/reducers/user/selectors';
 import {Operation as MoviesOperation} from '../../store/reducers/movies/operations';
-import Loader from '../../components/loader/loader.tsx';
+import {Movie} from '../../interfaces';
+import MovieBanner from '../../components/movie-banner/movie-banner';
+import MoviesList from '../../components/movies-list/movies-list';
+import Tabs from '../../components/tabs/tabs.jsx';
+import Footer from '../../components/footer/footer';
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
+import Loader from '../../components/loader/loader';
 
 const TabsWrapped = withActiveItem(Tabs);
 
+type MoviePageProps = {
+  currentMovie: Movie,
+  loading: boolean,
+  error: boolean,
+  favoriteLoading: boolean,
+  favoriteError: boolean,
+  similarMovies: Movie[],
+  authStatus: string,
+  updateFavoriteStatus: () => void,
+}
 
-const MoviePage = ({
+const MoviePage:React.FC<MoviePageProps> = ({
   currentMovie,
   similarMovies,
   error,
@@ -41,7 +50,7 @@ const MoviePage = ({
   const isAuth = AuthStatus.AUTH === authStatus;
 
   return (
-    <Fragment>
+    <React.Fragment>
       <section className="movie-card movie-card--full" style={{backgroundColor}}>
         <div className="movie-card__hero">
           <MovieBanner
@@ -82,19 +91,8 @@ const MoviePage = ({
 
         <Footer/>
       </div>
-    </Fragment>
+    </React.Fragment>
   );
-};
-
-MoviePage.propTypes = {
-  currentMovie: MoviePropType,
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.bool.isRequired,
-  favoriteLoading: PropTypes.bool.isRequired,
-  favoriteError: PropTypes.bool.isRequired,
-  similarMovies: PropTypes.arrayOf(MoviePropType).isRequired,
-  authStatus: PropTypes.string.isRequired,
-  updateFavoriteStatus: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, {match}) => {

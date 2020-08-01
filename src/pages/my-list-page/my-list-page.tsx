@@ -1,17 +1,22 @@
-import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {connect} from 'react-redux';
-import MoviePropType from '../../prop-types/movie';
 import {Operation as MoviesOperation} from '../../store/reducers/movies/operations';
 import {getErrorStatus, getLoadingStatus, getFavorites} from '../../store/reducers/movies/selectors';
-import Header from '../../components/header/header.tsx';
-import Footer from '../../components/footer/footer.tsx';
-import MovieListCardWrapped from '../../components/movie-list-card/movie-list-card.tsx';
-import Loader from '../../components/loader/loader.tsx';
+import {Movie} from '../../interfaces';
 import {Errors, LoaderSetup, ViewMode} from '../../const';
+import Header from '../../components/header/header';
+import Footer from '../../components/footer/footer';
+import MovieListCardWrapped from '../../components/movie-list-card/movie-list-card';
+import Loader from '../../components/loader/loader';
 
+type Props = {
+  favorites: Movie[],
+  loading: boolean,
+  error: boolean,
+  fetchFavoriteMovies: () => void,
+}
 
-class MyListPage extends PureComponent {
+class MyListPage extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
   }
@@ -68,13 +73,6 @@ class MyListPage extends PureComponent {
   }
 
 }
-
-MyListPage.propTypes = {
-  favorites: PropTypes.arrayOf(MoviePropType).isRequired,
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.bool.isRequired,
-  fetchFavoriteMovies: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = (state) => {
   return {

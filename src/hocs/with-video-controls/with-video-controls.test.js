@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import withVideoControls from './with-video-controls';
-import FullPagePlayer from '../../components/full-page-player/full-page-player.jsx';
+import FullPagePlayer from '../../components/full-page-player/full-page-player.tsx';
 
 const props = {
   title: `Fantastic Beasts: The Crimes of Grindelwald`,

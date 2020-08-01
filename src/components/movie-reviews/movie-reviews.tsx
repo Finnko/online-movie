@@ -1,7 +1,6 @@
-import React, {Fragment, PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {connect} from 'react-redux';
-import ReviewPropType from '../../prop-types/review';
+import {Review} from '../../interfaces';
 import {
   getLoadingStatus,
   getErrorStatus,
@@ -11,20 +10,29 @@ import {
 import {divideReviewsIntoColumns} from '../../utils/common';
 import {Operation as CommentsOperation} from '../../store/reducers/comments/operations';
 import {EmptyText, Errors, LoaderSetup} from '../../const';
-import MovieReviewsItem from '../movie-reviews-item/movie-reviews-item.tsx';
-import Loader from '../loader/loader.tsx';
+import MovieReviewsItem from '../movie-reviews-item/movie-reviews-item';
+import Loader from '../loader/loader';
 
-class MovieReviews extends PureComponent {
-  constructor(props) {
+type MovieReviewProps = {
+  movieId: number,
+  reviews: Review[],
+  fetchCommentsData: (id: number) => Review[],
+  loading: boolean,
+  error: boolean,
+  onceLoaded: boolean,
+}
+
+class MovieReviews extends React.PureComponent<MovieReviewProps> {
+  constructor(props: MovieReviewProps) {
     super(props);
   }
 
-  componentDidMount() {
+  componentDidMount():void {
     const {movieId, fetchCommentsData} = this.props;
     fetchCommentsData(movieId);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps):void {
     const {movieId} = prevProps;
     const {movieId: newId, fetchCommentsData} = this.props;
 
@@ -54,44 +62,35 @@ class MovieReviews extends PureComponent {
         }
 
         {!loading && !error && reviews.length > 0 &&
-          <Fragment>
+          <React.Fragment>
             <div className="movie-card__reviews-col">
               {this.renderReviews(firstColumn)}
             </div>
             <div className="movie-card__reviews-col">
               {secondColumn.length > 0 && this.renderReviews(secondColumn)}
             </div>
-          </Fragment>
+          </React.Fragment>
         }
 
         {!loading && !error && onceLoaded && reviews.length === 0 &&
-          <Fragment>
+          <React.Fragment>
             <div className="movie-card__reviews-col">
               {EmptyText.COMMENTS}
             </div>
-          </Fragment>
+          </React.Fragment>
         }
 
         {!loading && error &&
-          <Fragment>
+          <React.Fragment>
             <div className="movie-card__reviews-col">
               {Errors.FETCHING_DATA}
             </div>
-          </Fragment>
+          </React.Fragment>
         }
       </div>
     );
   }
 }
-
-MovieReviews.propTypes = {
-  movieId: PropTypes.number.isRequired,
-  reviews: PropTypes.arrayOf(ReviewPropType).isRequired,
-  fetchCommentsData: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.bool.isRequired,
-  onceLoaded: PropTypes.bool.isRequired,
-};
 
 const mapStateToProps = (state) => {
   return {

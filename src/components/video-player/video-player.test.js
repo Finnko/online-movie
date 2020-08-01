@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import VideoPlayer from './video-player.jsx';
+import VideoPlayer from './video-player.tsx';
 
 const props = {
   muted: true,

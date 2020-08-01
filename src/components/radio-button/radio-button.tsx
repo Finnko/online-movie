@@ -2,6 +2,7 @@ import * as React from 'react';
 
 type Props = {
   checked: boolean,
+  disabled: boolean,
   groupName: string,
   label: string,
   id: string,
@@ -15,6 +16,7 @@ const RadioButton:React.FC<Props> = ({
   id,
   groupName,
   value,
+  disabled,
   onRadioChange
 }) => {
   return (
@@ -27,6 +29,7 @@ const RadioButton:React.FC<Props> = ({
         value={value}
         checked={checked}
         onChange={onRadioChange}
+        disabled={disabled}
       />
 
       <label className="rating__label" htmlFor={id}>

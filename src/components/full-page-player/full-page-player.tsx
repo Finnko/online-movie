@@ -1,11 +1,25 @@
-import React, {Fragment, PureComponent} from "react";
-import PropTypes from "prop-types";
+import * as React from 'react';
 import history from '../../history';
-import Loader from '../loader/loader.tsx';
-import Icon from '../icon/icon.tsx';
+import Loader from '../loader/loader';
+import Icon from '../icon/icon';
 import {LoaderSetup} from '../../const';
 
-class FullPagePlayer extends PureComponent {
+type PlayerProps = {
+  title: string,
+  progress: number,
+  duration: number,
+  currentTime: number,
+  timeLeft: string,
+  isPlaying: boolean,
+  isLoading: boolean,
+  isWaiting: boolean,
+  onTogglePlay: () => void,
+  onRequestFullScreen: () => void,
+  onProgressBarClick: () => void,
+  children: React.ReactNode,
+}
+
+class FullPagePlayer extends React.PureComponent<PlayerProps> {
   constructor(props) {
     super(props);
 
@@ -13,19 +27,19 @@ class FullPagePlayer extends PureComponent {
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount():void {
     window.addEventListener(`keydown`, this.handleKeyDown);
   }
 
-  componentWillUnmount() {
+  componentWillUnmount():void {
     window.removeEventListener(`keydown`, this.handleKeyDown);
   }
 
-  handleExitClick() {
+  handleExitClick():void {
     history.goBack();
   }
 
-  handleKeyDown({code}) {
+  handleKeyDown({code}):void {
     if (code === `Escape`) {
       this.handleExitClick();
     }
@@ -59,7 +73,7 @@ class FullPagePlayer extends PureComponent {
         />}
 
         {!isLoading && !isWaiting &&
-        <Fragment >
+        <React.Fragment >
           <button
             type="button"
             className="player__exit"
@@ -91,14 +105,14 @@ class FullPagePlayer extends PureComponent {
                 onClick={onTogglePlay}
               >
                 {!isPlaying
-                  ? <Fragment>
+                  ? <React.Fragment>
                     <Icon width="19" height="19" name="play-s"/>
                     <span>Play</span>
-                  </Fragment>
-                  : <Fragment>
+                  </React.Fragment>
+                  : <React.Fragment>
                     <Icon width="14" height="21" name="pause"/>
                     <span>Pause</span>
-                  </Fragment>
+                  </React.Fragment>
                 }
               </button>
 
@@ -114,26 +128,11 @@ class FullPagePlayer extends PureComponent {
               </button>
             </div>
           </div>
-        </Fragment>
+        </React.Fragment>
         }
 
       </div>);
   }
 }
-
-FullPagePlayer.propTypes = {
-  title: PropTypes.string.isRequired,
-  progress: PropTypes.number.isRequired,
-  duration: PropTypes.number.isRequired,
-  currentTime: PropTypes.number.isRequired,
-  timeLeft: PropTypes.string.isRequired,
-  isPlaying: PropTypes.bool.isRequired,
-  isLoading: PropTypes.bool.isRequired,
-  isWaiting: PropTypes.bool.isRequired,
-  onTogglePlay: PropTypes.func.isRequired,
-  onRequestFullScreen: PropTypes.func.isRequired,
-  onProgressBarClick: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired,
-};
 
 export default FullPagePlayer;
