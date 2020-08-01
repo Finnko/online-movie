@@ -19,7 +19,6 @@ describe(`FullPagePlayer snapshot test`, () => {
       .create(
           <FullPagePlayer
             isPlaying={true}
-            isLoading={false}
             isWaiting={false}
             {...props}
           >

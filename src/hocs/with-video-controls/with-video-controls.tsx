@@ -8,7 +8,6 @@ type State = {
   currentTime: number;
   timeLeft: string;
   isPlaying: boolean;
-  isLoading: boolean;
   isWaiting: boolean;
 }
 
@@ -23,7 +22,6 @@ type InjectingProps = {
   currentTime: number;
   timeLeft: string;
   isPlaying: boolean;
-  isLoading: boolean;
   isWaiting: boolean;
   onTogglePlay: () => void;
   onRequestFullScreen: () => void;
@@ -51,7 +49,6 @@ const withVideoControls = (Component) => {
         currentTime: 0,
         timeLeft: `00:00:00`,
         isPlaying: false,
-        isLoading: true,
         isWaiting: true,
       };
     }
@@ -71,7 +68,6 @@ const withVideoControls = (Component) => {
 
       video.oncanplaythrough = () => {
         this.setState({
-          isLoading: false,
           isPlaying: true,
         });
       };
@@ -151,7 +147,6 @@ const withVideoControls = (Component) => {
         duration,
         timeLeft,
         currentTime,
-        isLoading,
         isWaiting,
         isPlaying
       } = this.state;
@@ -165,7 +160,6 @@ const withVideoControls = (Component) => {
         currentTime={currentTime}
         isPlaying={isPlaying}
         isWaiting={isWaiting}
-        isLoading={isLoading}
         onTogglePlay={this._handleTogglePlay}
         onRequestFullScreen={this._handleFullScreenChange}
         onProgressBarClick={this._handleProgressBarClick}

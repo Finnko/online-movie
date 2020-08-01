@@ -11,7 +11,6 @@ type PlayerProps = {
   currentTime: number;
   timeLeft: string;
   isPlaying: boolean;
-  isLoading: boolean;
   isWaiting: boolean;
   onTogglePlay: () => void;
   onRequestFullScreen: () => void;
@@ -52,7 +51,6 @@ class FullPagePlayer extends React.PureComponent<PlayerProps> {
       duration,
       timeLeft,
       currentTime,
-      isLoading,
       isPlaying,
       isWaiting,
       onTogglePlay,
@@ -66,13 +64,13 @@ class FullPagePlayer extends React.PureComponent<PlayerProps> {
       <div className="player">
         {children}
 
-        {isLoading && isWaiting &&
+        {isWaiting &&
         <Loader
           size={LoaderSetup.SIZE.MEDIUM}
           style={LoaderSetup.POSITION.FIXED}
         />}
 
-        {!isLoading && !isWaiting &&
+        {!isWaiting &&
         <React.Fragment >
           <button
             type="button"
