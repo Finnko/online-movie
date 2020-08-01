@@ -3,11 +3,13 @@ import {Movie} from "../../interfaces";
 import MovieListCardWrapped from '../movie-list-card/movie-list-card';
 
 type Props = {
-  movies: Movie[],
-  viewMode: string,
+  movies: Movie[];
+  viewMode: string;
 }
 
-const MoviesList:React.FC<Props> = ({movies, viewMode}) => {
+const MoviesList: React.FC<Props> = (props: Props) => {
+  const {movies, viewMode} = props;
+
   return (
     <div className="catalog__movies-list">
       {movies.map((item) => {

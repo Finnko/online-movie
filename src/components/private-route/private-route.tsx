@@ -5,18 +5,20 @@ import {getAuthStatus} from '../../store/reducers/user/selectors';
 import {AuthStatus, PathName} from '../../const';
 
 type Props = {
-  authStatus: string,
-  exact: boolean,
-  path: string,
-  children?: any,
+  authStatus: string;
+  exact: boolean;
+  path: string;
+  children?: React.ReactNode;
 }
 
-const PrivateRoute:React.FC<Props> = ({
-  authStatus,
-  path,
-  exact,
-  children,
-}) => {
+const PrivateRoute: React.FC<Props> = (props: Props) => {
+  const {
+    authStatus,
+    path,
+    exact,
+    children,
+  } = props;
+
   return (
     <Route
       path={path}

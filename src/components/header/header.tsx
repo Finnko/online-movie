@@ -3,11 +3,13 @@ import Logo from '../logo/logo';
 import Avatar from '../avatar/avatar';
 
 type HeaderProps = {
-  className?: string,
-  children?: any,
+  className?: string;
+  children?: React.ReactNode;
 }
 
-const Header:React.FC<HeaderProps> = ({className = ``, children}) => {
+const Header: React.FC<HeaderProps> = (props: HeaderProps) => {
+  const {className = ``, children} = props;
+
   return (
     <header className={`page-header ${className}`}>
       <Logo />

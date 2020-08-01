@@ -2,7 +2,13 @@ import * as React from 'react';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 
-const Error:React.FC<{error: string}> = ({error}) => {
+type Props = {
+  error: string;
+}
+
+const Error: React.FC<Props> = (props: Props) => {
+  const {error} = props;
+
   return (
     <React.Fragment>
       <Header />

@@ -1,12 +1,14 @@
 import * as React from 'react';
 
 type Props = {
-  activeTab: string,
-  onTabClick: (name: string) => void,
-  tabNames: string[],
+  activeTab: string;
+  onTabClick: (name: string) => void;
+  tabNames: string[];
 }
 
-const TabList:React.FC<Props> = ({activeTab, tabNames, onTabClick}) => {
+const TabList: React.FC<Props> = (props: Props) => {
+  const {activeTab, tabNames, onTabClick} = props;
+
   return (
     <ul className="movie-nav__list">
       {tabNames.map((name, index) => {

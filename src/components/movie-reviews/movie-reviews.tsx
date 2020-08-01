@@ -14,25 +14,25 @@ import MovieReviewsItem from '../movie-reviews-item/movie-reviews-item';
 import Loader from '../loader/loader';
 
 type MovieReviewProps = {
-  movieId: number,
-  reviews: Review[],
-  fetchCommentsData: (id: number) => Review[],
-  loading: boolean,
-  error: boolean,
-  onceLoaded: boolean,
+  movieId: number;
+  reviews: Review[];
+  fetchCommentsData: (id: number) => Review[];
+  loading: boolean;
+  error: boolean;
+  onceLoaded: boolean;
 }
 
 class MovieReviews extends React.PureComponent<MovieReviewProps> {
-  constructor(props: MovieReviewProps) {
+  constructor(props) {
     super(props);
   }
 
-  componentDidMount():void {
+  componentDidMount(): void {
     const {movieId, fetchCommentsData} = this.props;
     fetchCommentsData(movieId);
   }
 
-  componentDidUpdate(prevProps):void {
+  componentDidUpdate(prevProps): void {
     const {movieId} = prevProps;
     const {movieId: newId, fetchCommentsData} = this.props;
 

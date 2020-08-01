@@ -8,22 +8,24 @@ import Header from '../header/header';
 import Icon from '../icon/icon';
 
 type Props = {
-  movie: Movie,
-  viewMode: string,
-  updateFavoriteStatus: (id: number, status: number) => void,
-  loading: boolean,
-  error: boolean,
-  isAuth: boolean,
+  movie: Movie;
+  viewMode: string;
+  updateFavoriteStatus: (id: number, status: number) => void;
+  loading: boolean;
+  error: boolean;
+  isAuth: boolean;
 }
 
-const MovieBanner:React.FC<Props> = ({
-  movie,
-  viewMode,
-  updateFavoriteStatus,
-  loading,
-  error,
-  isAuth,
-}) => {
+const MovieBanner: React.FC<Props> = (props: Props) => {
+  const {
+    movie,
+    viewMode,
+    updateFavoriteStatus,
+    loading,
+    error,
+    isAuth,
+  } = props;
+
   const {
     id,
     title,

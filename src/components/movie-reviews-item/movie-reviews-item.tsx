@@ -2,7 +2,12 @@ import * as React from 'react';
 import {getFormattedDate, getFormattedTagDate} from '../../utils/common';
 import {Review} from "../../interfaces";
 
-const MovieReviewsItem:React.FC<{review: Review}> = ({review}) => {
+type Props = {
+  review: Review;
+}
+
+const MovieReviewsItem: React.FC<Props> = (props: Props) => {
+  const {review} = props;
   const {comment, user, date, rating} = review;
 
   return (

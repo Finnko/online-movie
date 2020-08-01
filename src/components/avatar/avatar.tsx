@@ -6,11 +6,13 @@ import {Link} from 'react-router-dom';
 import {User} from "../../interfaces";
 
 type AvatarProps = {
-  userInfo: User,
-  authStatus: string,
+  userInfo: User;
+  authStatus: string;
 }
 
-const Avatar:React.FC<AvatarProps> = ({userInfo, authStatus}) => {
+const Avatar: React.FC<AvatarProps> = (props: AvatarProps) => {
+  const {userInfo, authStatus} = props;
+
   let avatar = ``;
   if (userInfo !== null) {
     avatar = userInfo.avatarUrl;

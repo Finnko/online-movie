@@ -11,15 +11,15 @@ import Loader from '../../components/loader/loader';
 import {Movie} from '../../interfaces';
 
 type AddReviewProps = {
-  currentMovie: Movie,
-  loading: boolean,
-  error: boolean,
-  movieId: number,
-  rating: string,
-  review: string,
-  isFormValid: boolean,
-  onInputChange: () => void,
-  onFormSubmit: ({}) => void,
+  currentMovie: Movie;
+  loading: boolean;
+  error: boolean;
+  movieId: number;
+  rating: string;
+  review: string;
+  isFormValid: boolean;
+  onInputChange: () => void;
+  onFormSubmit: ({}) => void;
 }
 
 class AddReviewPage extends React.PureComponent<AddReviewProps> {
@@ -29,7 +29,7 @@ class AddReviewPage extends React.PureComponent<AddReviewProps> {
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
-  handleFormSubmit(evt: React.FormEvent<HTMLFormElement>) {
+  handleFormSubmit(evt: React.FormEvent<HTMLFormElement>): void {
     evt.preventDefault();
     const {movieId, rating, review} = this.props;
 

@@ -2,12 +2,12 @@ import * as React from 'react';
 import {Subtract} from 'utility-types';
 
 type State = {
-  activeItem: string,
+  activeItem: string;
 }
 
 type InjectingProps = {
-  activeItem: string,
-  onActiveItemChange: () => void,
+  activeItem: string;
+  onActiveItemChange: () => void;
 }
 
 const withActiveItem = (Component) => {
@@ -25,7 +25,7 @@ const withActiveItem = (Component) => {
       this._handleActiveItemChange = this._handleActiveItemChange.bind(this);
     }
 
-    _handleActiveItemChange(newItem: string):void {
+    _handleActiveItemChange(newItem: string): void {
       this.setState({
         activeItem: newItem,
       });

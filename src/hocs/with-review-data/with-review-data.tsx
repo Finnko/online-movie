@@ -3,20 +3,20 @@ import {Subtract} from 'utility-types';
 import {Config} from '../../const';
 
 type State = {
-  isFormValid: boolean,
+  isFormValid: boolean;
   rating: {
-    value: string,
-  },
+    value: string;
+  };
   review: {
-    value: string,
-  }
+    value: string;
+  };
 }
 
 type InjectingProps = {
-  isFormValid: boolean,
-  rating: string,
-  review: string,
-  onInputChange: () => void,
+  isFormValid: boolean;
+  rating: string;
+  review: string;
+  onInputChange: () => void;
 }
 
 const withReviewData = (Component) => {
@@ -40,7 +40,7 @@ const withReviewData = (Component) => {
       this._handleInputChange = this._handleInputChange.bind(this);
     }
 
-    _handleInputChange(evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>):void {
+    _handleInputChange(evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
       const {value, name} = evt.target;
       const {review, rating} = this.state;
 

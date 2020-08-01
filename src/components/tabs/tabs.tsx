@@ -7,16 +7,14 @@ import MovieDetails from '../movie-details/movie-details';
 import MovieReviews from '../movie-reviews/movie-reviews';
 
 type Props = {
-  movie: Movie,
-  activeItem: string,
-  onActiveItemChange: () => void,
+  movie: Movie;
+  activeItem: string;
+  onActiveItemChange: () => void;
 }
 
-const Tabs:React.FC<Props> = ({
-  movie,
-  activeItem,
-  onActiveItemChange
-}) => {
+const Tabs: React.FC<Props> = (props: Props) => {
+  const {movie, activeItem, onActiveItemChange} = props;
+
   const {
     id,
     actors,

@@ -1,16 +1,13 @@
 import * as React from 'react';
 
 type PlayerProps = {
-  isPlaying: boolean,
-  muted: boolean,
-  poster: string,
-  videoSrc: string,
+  isPlaying: boolean;
+  muted: boolean;
+  poster: string;
+  videoSrc: string;
 }
 
 class VideoPlayer extends React.PureComponent<PlayerProps> {
-  private readonly _videoRef: React.RefObject<HTMLVideoElement>;
-  private _timer: ReturnType<typeof setTimeout>;
-
   constructor(props) {
     super(props);
 
@@ -18,14 +15,14 @@ class VideoPlayer extends React.PureComponent<PlayerProps> {
     this._timer = null;
   }
 
-  componentDidMount():void {
+  componentDidMount(): void {
     const {muted} = this.props;
 
     const video = this._videoRef.current;
     video.muted = muted;
   }
 
-  componentDidUpdate():void {
+  componentDidUpdate(): void {
     const video = this._videoRef.current;
 
     if (this.props.isPlaying) {
@@ -36,7 +33,7 @@ class VideoPlayer extends React.PureComponent<PlayerProps> {
     }
   }
 
-  componentWillUnmount():void {
+  componentWillUnmount(): void {
     const video = this._videoRef.current;
     clearTimeout(this._timer);
 
@@ -45,7 +42,10 @@ class VideoPlayer extends React.PureComponent<PlayerProps> {
     video.onplay = null;
   }
 
-  play():void {
+  private readonly _videoRef: React.RefObject<HTMLVideoElement>;
+  private _timer: ReturnType<typeof setTimeout>;
+
+  play(): void {
     const video = this._videoRef.current;
     const videoPlay = () => video.play();
     this._timer = setTimeout(videoPlay, 1000);

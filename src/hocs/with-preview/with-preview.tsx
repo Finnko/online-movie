@@ -2,13 +2,13 @@ import * as React from 'react';
 import {Subtract} from 'utility-types';
 
 type State = {
-  isPlaying: boolean,
+  isPlaying: boolean;
 }
 
 type InjectingProps = {
-  isPlaying: boolean,
-  onMovieMouseEnter: () => void,
-  onMovieMouseLeave: () => void,
+  isPlaying: boolean;
+  onMovieMouseEnter: () => void;
+  onMovieMouseLeave: () => void;
 }
 
 const withPreview = (Component) => {
@@ -27,13 +27,13 @@ const withPreview = (Component) => {
       this._handleCardMouseLeave = this._handleCardMouseLeave.bind(this);
     }
 
-    _handleCardMouseEnter():void {
+    _handleCardMouseEnter(): void {
       this.setState({
         isPlaying: true
       });
     }
 
-    _handleCardMouseLeave():void {
+    _handleCardMouseLeave(): void {
       this.setState({
         isPlaying: false
       });

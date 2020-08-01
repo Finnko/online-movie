@@ -12,22 +12,24 @@ import withActiveItem from '../../hocs/with-active-item/with-active-item';
 const GenresListWrapped = withActiveItem(GenresList);
 
 type Props = {
-  genres: string[],
-  filteredMovies: Movie[],
-  activeGenre: string,
-  renderLimit: number,
-  handleGenreChange: () => void,
-  handleShowMoreClick: () => void,
+  genres: string[];
+  filteredMovies: Movie[];
+  activeGenre: string;
+  renderLimit: number;
+  handleGenreChange: () => void;
+  handleShowMoreClick: () => void;
 }
 
-const MainContent:React.FC<Props> = ({
-  genres,
-  filteredMovies,
-  activeGenre,
-  renderLimit,
-  handleGenreChange,
-  handleShowMoreClick
-}) => {
+const MainContent: React.FC<Props> = (props: Props) => {
+  const {
+    genres,
+    filteredMovies,
+    activeGenre,
+    renderLimit,
+    handleGenreChange,
+    handleShowMoreClick
+  } = props;
+
   const isShowMoreVisible = renderLimit > filteredMovies.length;
 
   return (

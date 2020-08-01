@@ -2,18 +2,20 @@ import * as React from 'react';
 import classNames from 'classnames';
 
 type Props = {
-  genres: string[],
-  activeItem: string,
-  onGenreChange: (genre: string) => void,
-  onActiveItemChange: (genre: string) => void,
+  genres: string[];
+  activeItem: string;
+  onGenreChange: (genre: string) => void;
+  onActiveItemChange: (genre: string) => void;
 }
 
-const GenresList:React.FC<Props> = ({
-  genres,
-  onGenreChange,
-  activeItem,
-  onActiveItemChange
-}) => {
+const GenresList: React.FC<Props> = (props: Props) => {
+  const {
+    genres,
+    onGenreChange,
+    activeItem,
+    onActiveItemChange
+  } = props;
+
   return (
     <ul className="catalog__genres-list">
       {genres.map((genre) => {

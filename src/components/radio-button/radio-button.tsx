@@ -1,24 +1,26 @@
 import * as React from 'react';
 
 type Props = {
-  checked: boolean,
-  disabled: boolean,
-  groupName: string,
-  label: string,
-  id: string,
-  value: string,
-  onRadioChange: () => void,
+  checked: boolean;
+  disabled: boolean;
+  groupName: string;
+  label: string;
+  id: string;
+  value: string;
+  onRadioChange: () => void;
 }
 
-const RadioButton:React.FC<Props> = ({
-  checked,
-  label,
-  id,
-  groupName,
-  value,
-  disabled,
-  onRadioChange
-}) => {
+const RadioButton: React.FC<Props> = (props: Props) => {
+  const {
+    checked,
+    label,
+    id,
+    groupName,
+    value,
+    disabled,
+    onRadioChange
+  } = props;
+
   return (
     <React.Fragment>
       <input

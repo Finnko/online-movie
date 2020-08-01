@@ -7,6 +7,7 @@ import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import Input from '../../components/input/input';
 import Loader from '../../components/loader/loader';
+import {FormField} from "../../interfaces";
 
 const inputNames = {
   email: `Email address`,
@@ -14,12 +15,15 @@ const inputNames = {
 };
 
 type SignInProps = {
-  loading: boolean,
-  error: boolean,
-  formControls: any,
-  isFormValid: boolean,
-  onInputChange: () => void,
-  onFormSubmit: ({}) => void,
+  loading: boolean;
+  error: boolean;
+  formControls: {
+    email: FormField;
+    password: FormField;
+  };
+  isFormValid: boolean;
+  onInputChange: () => void;
+  onFormSubmit: ({}) => void;
 }
 
 class SignIn extends React.PureComponent<SignInProps> {
@@ -29,7 +33,7 @@ class SignIn extends React.PureComponent<SignInProps> {
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
-  handleFormSubmit(evt: React.FormEvent<HTMLFormElement>) {
+  handleFormSubmit(evt: React.FormEvent<HTMLFormElement>): void {
     evt.preventDefault();
 
     const {email, password} = this.props.formControls;

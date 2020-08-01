@@ -60,7 +60,6 @@ describe(`Should hoc withVideoControls works correctly`, () => {
     it(`should _handleTogglePlay works correctly`, () => {
       instance.setState({isPlaying: false});
       instance._handleTogglePlay();
-      console.log(component.debug());
       expect(component.state().isPlaying).toBe(true);
     });
   });

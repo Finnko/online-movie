@@ -18,26 +18,28 @@ import Loader from '../../components/loader/loader';
 const TabsWrapped = withActiveItem(Tabs);
 
 type MoviePageProps = {
-  currentMovie: Movie,
-  loading: boolean,
-  error: boolean,
-  favoriteLoading: boolean,
-  favoriteError: boolean,
-  similarMovies: Movie[],
-  authStatus: string,
-  updateFavoriteStatus: () => void,
+  currentMovie: Movie;
+  loading: boolean;
+  error: boolean;
+  favoriteLoading: boolean;
+  favoriteError: boolean;
+  similarMovies: Movie[];
+  authStatus: string;
+  updateFavoriteStatus: () => void;
 }
 
-const MoviePage:React.FC<MoviePageProps> = ({
-  currentMovie,
-  similarMovies,
-  error,
-  loading,
-  favoriteError,
-  favoriteLoading,
-  authStatus,
-  updateFavoriteStatus,
-}) => {
+const MoviePage: React.FC<MoviePageProps> = (props: MoviePageProps) => {
+  const {
+    currentMovie,
+    similarMovies,
+    error,
+    loading,
+    favoriteError,
+    favoriteLoading,
+    authStatus,
+    updateFavoriteStatus,
+  } = props;
+
   if (loading) {
     return <Loader style={LoaderSetup.POSITION.FIXED} size={LoaderSetup.SIZE.MEDIUM}/>;
   }

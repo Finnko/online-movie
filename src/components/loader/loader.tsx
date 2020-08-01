@@ -1,13 +1,14 @@
 import * as React from 'react';
 
 type LoaderProps = {
-  size: string,
+  size: string;
   style: {
     [key: string]: string;
   };
 }
 
-const Loader:React.FC<LoaderProps> = ({size, style}) => {
+const Loader: React.FC<LoaderProps> = (props: LoaderProps) => {
+  const {size, style} = props;
 
   return (
     <div className="loader-wrapper" style={style}>

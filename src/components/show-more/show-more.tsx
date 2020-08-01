@@ -1,11 +1,13 @@
 import * as React from 'react';
 
 type Props = {
-  offset: number,
-  onButtonClick: (offset: number) => void,
+  offset: number;
+  onButtonClick: (offset: number) => void;
 }
 
-const ShowMore:React.FC<Props> = ({offset, onButtonClick}) => {
+const ShowMore: React.FC<Props> = (props: Props) => {
+  const {offset, onButtonClick} = props;
+
   return (
     <div className="catalog__more">
       <button

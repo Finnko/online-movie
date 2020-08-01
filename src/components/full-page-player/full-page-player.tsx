@@ -5,18 +5,18 @@ import Icon from '../icon/icon';
 import {LoaderSetup} from '../../const';
 
 type PlayerProps = {
-  title: string,
-  progress: number,
-  duration: number,
-  currentTime: number,
-  timeLeft: string,
-  isPlaying: boolean,
-  isLoading: boolean,
-  isWaiting: boolean,
-  onTogglePlay: () => void,
-  onRequestFullScreen: () => void,
-  onProgressBarClick: () => void,
-  children: React.ReactNode,
+  title: string;
+  progress: number;
+  duration: number;
+  currentTime: number;
+  timeLeft: string;
+  isPlaying: boolean;
+  isLoading: boolean;
+  isWaiting: boolean;
+  onTogglePlay: () => void;
+  onRequestFullScreen: () => void;
+  onProgressBarClick: () => void;
+  children: React.ReactNode;
 }
 
 class FullPagePlayer extends React.PureComponent<PlayerProps> {
@@ -27,19 +27,19 @@ class FullPagePlayer extends React.PureComponent<PlayerProps> {
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
-  componentDidMount():void {
+  componentDidMount(): void {
     window.addEventListener(`keydown`, this.handleKeyDown);
   }
 
-  componentWillUnmount():void {
+  componentWillUnmount(): void {
     window.removeEventListener(`keydown`, this.handleKeyDown);
   }
 
-  handleExitClick():void {
+  handleExitClick(): void {
     history.goBack();
   }
 
-  handleKeyDown({code}):void {
+  handleKeyDown({code}): void {
     if (code === `Escape`) {
       this.handleExitClick();
     }

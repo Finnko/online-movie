@@ -3,20 +3,22 @@ import {Config} from '../../const';
 import {getLevelFromRating} from '../../utils/common';
 
 type Props = {
-  actors: string[],
-  rating: number,
-  ratingCount: number,
-  description: string,
-  director: string,
+  actors: string[];
+  rating: number;
+  ratingCount: number;
+  description: string;
+  director: string;
 }
 
-const MovieOverview:React.FC<Props> = ({
-  actors,
-  rating,
-  ratingCount,
-  director,
-  description
-}) => {
+const MovieOverview: React.FC<Props> = (props: Props) => {
+  const {
+    actors,
+    rating,
+    ratingCount,
+    director,
+    description
+  } = props;
+
   const ratingFormatted = getLevelFromRating(rating, Config.MOVIE_RATING_MAP);
   const actorsFormatted = actors.slice(0, Config.MOVIE_ACTORS_TO_SHOW).join(`, `);
 

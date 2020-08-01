@@ -19,26 +19,28 @@ import MainContent from '../../components/main-content/main-content';
 import {getAuthStatus} from '../../store/reducers/user/selectors';
 
 type MainProps = {
-  promo: MoviePropType,
-  loading: boolean,
-  error: boolean,
-  favoriteLoading: boolean,
-  favoriteError: boolean,
-  errorText: string,
-  authStatus: string,
-  updateFavoriteStatus: () => void,
+  promo: MoviePropType;
+  loading: boolean;
+  error: boolean;
+  favoriteLoading: boolean;
+  favoriteError: boolean;
+  errorText: string;
+  authStatus: string;
+  updateFavoriteStatus: () => void;
 }
 
-const MainPage:React.FC<MainProps> = ({
-  promo,
-  loading,
-  error,
-  errorText,
-  favoriteLoading,
-  favoriteError,
-  authStatus,
-  updateFavoriteStatus,
-}) => {
+const MainPage: React.FC<MainProps> = (props: MainProps) => {
+  const {
+    promo,
+    loading,
+    error,
+    errorText,
+    favoriteLoading,
+    favoriteError,
+    authStatus,
+    updateFavoriteStatus,
+  } = props;
+
   const isAuth = AuthStatus.AUTH === authStatus;
 
   return (

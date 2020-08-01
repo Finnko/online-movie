@@ -9,7 +9,13 @@ import withVideoControls from '../../hocs/with-video-controls/with-video-control
 
 const FullPagePlayerWrapped = withVideoControls(FullPagePlayer);
 
-const PlayerPage:React.FC<{currentMovie: Movie}> = ({currentMovie}) => {
+type Props = {
+  currentMovie: Movie;
+}
+
+const PlayerPage: React.FC<Props> = (props: Props) => {
+  const {currentMovie} = props;
+
   if (!currentMovie) {
     return <Redirect to={PathName.ROOT}/>;
   }

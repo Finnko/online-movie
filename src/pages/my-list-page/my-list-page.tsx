@@ -10,10 +10,10 @@ import MovieListCardWrapped from '../../components/movie-list-card/movie-list-ca
 import Loader from '../../components/loader/loader';
 
 type Props = {
-  favorites: Movie[],
-  loading: boolean,
-  error: boolean,
-  fetchFavoriteMovies: () => void,
+  favorites: Movie[];
+  loading: boolean;
+  error: boolean;
+  fetchFavoriteMovies: () => void;
 }
 
 class MyListPage extends React.PureComponent<Props> {
@@ -21,7 +21,7 @@ class MyListPage extends React.PureComponent<Props> {
     super(props);
   }
 
-  componentDidMount():void {
+  componentDidMount(): void {
     const {fetchFavoriteMovies} = this.props;
     fetchFavoriteMovies();
   }

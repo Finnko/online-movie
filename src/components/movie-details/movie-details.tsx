@@ -2,20 +2,22 @@ import * as React from 'react';
 import {getFormattedMovieTime} from '../../utils/common';
 
 type Props = {
-  actors: string[],
-  releaseYear: number,
-  genre: string,
-  runTime: number,
-  director: string,
+  actors: string[];
+  releaseYear: number;
+  genre: string;
+  runTime: number;
+  director: string;
 }
 
-const MovieDetails:React.FC<Props> = ({
-  actors,
-  releaseYear,
-  genre,
-  runTime,
-  director
-}) => {
+const MovieDetails: React.FC<Props> = (props: Props) => {
+  const {
+    actors,
+    releaseYear,
+    genre,
+    runTime,
+    director
+  } = props;
+
   return (
     <div className="movie-card__text movie-card__row">
       <div className="movie-card__text-col">

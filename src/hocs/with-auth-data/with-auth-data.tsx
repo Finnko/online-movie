@@ -5,20 +5,20 @@ import {validateControl} from '../../utils/validation';
 import {FormField} from "../../interfaces";
 
 type State = {
-  isFormValid: boolean,
+  isFormValid: boolean;
   formControls: {
-    email: FormField,
-    password: FormField,
-  }
+    email: FormField;
+    password: FormField;
+  };
 }
 
 type InjectingProps = {
   formControls: {
-    email: FormField,
-    password: FormField,
-  },
-  isFormValid: boolean,
-  onInputChange: () => void,
+    email: FormField;
+    password: FormField;
+  };
+  isFormValid: boolean;
+  onInputChange: () => void;
 }
 
 const withAuthData = (Component) => {
@@ -56,7 +56,7 @@ const withAuthData = (Component) => {
       this._handleInputChange = this._handleInputChange.bind(this);
     }
 
-    _handleInputChange(evt: React.ChangeEvent<HTMLInputElement>):void {
+    _handleInputChange(evt: React.ChangeEvent<HTMLInputElement>): void {
       const {value, name} = evt.target;
       let isFormValid = true;
       const formControls = Object.assign({}, this.state.formControls);
