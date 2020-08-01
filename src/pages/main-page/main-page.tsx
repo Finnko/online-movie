@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import MoviePropType from '../../prop-types/movie';
 import {ViewMode, LoaderSetup, AuthStatus} from '../../const';
 import {
   getErrorStatus,
@@ -11,15 +10,16 @@ import {
   getPromo
 } from '../../store/reducers/movies/selectors';
 import {Operation as MoviesOperation} from '../../store/reducers/movies/operations';
+import {getAuthStatus} from '../../store/reducers/user/selectors';
+import {Movie} from '../../interfaces';
 import Footer from '../../components/footer/footer';
 import MovieBanner from '../../components/movie-banner/movie-banner';
 import Loader from '../../components/loader/loader';
 import Error from '../../components/error/error';
 import MainContent from '../../components/main-content/main-content';
-import {getAuthStatus} from '../../store/reducers/user/selectors';
 
 type MainProps = {
-  promo: MoviePropType;
+  promo: Movie;
   loading: boolean;
   error: boolean;
   favoriteLoading: boolean;
