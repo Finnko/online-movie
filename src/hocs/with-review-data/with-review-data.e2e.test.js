@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import withReviewData from './with-review-data';
-import RadioButton from '../../components/radio-button/radio-button.jsx';
+import RadioButton from '../../components/radio-button/radio-button.tsx';
 
 Enzyme.configure({
   adapter: new Adapter(),

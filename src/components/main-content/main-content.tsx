@@ -1,18 +1,26 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {connect} from 'react-redux';
-import MoviePropType from '../../prop-types/movie';
 import {Config, ViewMode} from '../../const';
+import {Movie} from '../../interfaces';
 import {ActionCreator} from '../../store/actions/action-creator';
 import {getActiveGenre, getGenres, getMoviesByGenre, getMoviesRenderLimit} from '../../store/reducers/app/selectors';
-import MoviesList from '../movies-list/movies-list.jsx';
-import ShowMore from '../show-more/show-more.jsx';
-import GenresList from '../genres-list/genres-list.tsx';
+import MoviesList from '../movies-list/movies-list';
+import ShowMore from '../show-more/show-more';
+import GenresList from '../genres-list/genres-list';
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
 
 const GenresListWrapped = withActiveItem(GenresList);
 
-const MainContent = ({
+type Props = {
+  genres: string[],
+  filteredMovies: Movie[],
+  activeGenre: string,
+  renderLimit: number,
+  handleGenreChange: () => void,
+  handleShowMoreClick: () => void,
+}
+
+const MainContent:React.FC<Props> = ({
   genres,
   filteredMovies,
   activeGenre,
@@ -23,8 +31,8 @@ const MainContent = ({
   const isShowMoreVisible = renderLimit > filteredMovies.length;
 
   return (
-    <section className="catalog">
-      <h2 className="catalog__title visually-hidden">Catalog</h2>
+    <section className='catalog'>
+      <h2 className='catalog__title visually-hidden'>Catalog</h2>
 
       <GenresListWrapped
         activeItem={activeGenre}
@@ -45,15 +53,6 @@ const MainContent = ({
       }
     </section>
   );
-};
-
-MainContent.propTypes = {
-  filteredMovies: PropTypes.arrayOf(MoviePropType).isRequired,
-  activeGenre: PropTypes.string.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  renderLimit: PropTypes.number,
-  handleGenreChange: PropTypes.func.isRequired,
-  handleShowMoreClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {

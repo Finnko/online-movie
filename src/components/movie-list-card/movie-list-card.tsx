@@ -1,13 +1,25 @@
-import React, {memo} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {Link} from 'react-router-dom';
-import {compose} from 'redux';
-import MoviePropType from '../../prop-types/movie';
 import {PathName, ViewMode} from '../../const';
 import withPreview from '../../hocs/with-preview/with-preview';
 import VideoPlayer from '../video-player/video-player.jsx';
+import {Movie} from "../../interfaces";
 
-const MovieListCard = ({movie, viewMode, /* from hoc */ isPlaying, onMovieMouseEnter, onMovieMouseLeave}) => {
+type Props = {
+  onMovieMouseEnter: () => void,
+  onMovieMouseLeave: () => void,
+  movie: Movie,
+  viewMode: string,
+  isPlaying: boolean,
+}
+
+const MovieListCard:React.FC<Props> = ({
+  movie,
+  viewMode,
+  isPlaying,
+  onMovieMouseEnter,
+  onMovieMouseLeave
+}) => {
   const {id, title, thumb, preview} = movie;
   const isWithPlayer = viewMode === ViewMode.MOVIE_CARD.WITH_PLAYER;
 
@@ -47,18 +59,7 @@ const MovieListCard = ({movie, viewMode, /* from hoc */ isPlaying, onMovieMouseE
   );
 };
 
-MovieListCard.propTypes = {
-  onMovieMouseEnter: PropTypes.func,
-  onMovieMouseLeave: PropTypes.func,
-  movie: MoviePropType.isRequired,
-  viewMode: PropTypes.string.isRequired,
-  isPlaying: PropTypes.bool.isRequired,
-};
-
-const MovieListCardWrapped = compose(
-    withPreview,
-    memo
-)(MovieListCard);
+const MovieListCardWrapped = withPreview(MovieListCard);
 
 export {MovieListCard};
 export default MovieListCardWrapped;

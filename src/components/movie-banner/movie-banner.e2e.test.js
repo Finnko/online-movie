@@ -7,7 +7,7 @@ import {AuthStatus, PathName} from '../../const.ts';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import NameSpace from '../../store/name-space';
-import MovieBanner from './movie-banner.jsx';
+import MovieBanner from './movie-banner.tsx';
 
 Enzyme.configure({
   adapter: new Adapter(),

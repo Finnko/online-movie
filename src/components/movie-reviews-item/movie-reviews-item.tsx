@@ -1,8 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import {getFormattedDate, getFormattedTagDate} from '../../utils/common';
-import ReviewPropType from '../../prop-types/review';
+import {Review} from "../../interfaces";
 
-const MovieReviewsItem = ({review}) => {
+const MovieReviewsItem:React.FC<{review: Review}> = ({review}) => {
   const {comment, user, date, rating} = review;
 
   return (
@@ -19,10 +19,6 @@ const MovieReviewsItem = ({review}) => {
       <div className="review__rating">{rating}</div>
     </div>
   );
-};
-
-MovieReviewsItem.propTypes = {
-  review: ReviewPropType,
 };
 
 export default MovieReviewsItem;

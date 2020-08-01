@@ -1,7 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
-const TabList = ({activeTab, tabNames, onTabClick}) => {
+type Props = {
+  activeTab: string,
+  onTabClick: (name: string) => void,
+  tabNames: string[],
+}
+
+const TabList:React.FC<Props> = ({activeTab, tabNames, onTabClick}) => {
   return (
     <ul className="movie-nav__list">
       {tabNames.map((name, index) => {
@@ -26,12 +31,6 @@ const TabList = ({activeTab, tabNames, onTabClick}) => {
       })}
     </ul>
   );
-};
-
-TabList.propTypes = {
-  activeTab: PropTypes.string.isRequired,
-  onTabClick: PropTypes.func.isRequired,
-  tabNames: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default TabList;

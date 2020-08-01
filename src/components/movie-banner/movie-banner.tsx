@@ -1,13 +1,22 @@
-import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {Link} from 'react-router-dom';
 import {Errors, PathName, ViewMode} from '../../const';
-import MoviePropType from '../../prop-types/movie';
+import {Movie} from '../../interfaces';
+import classNames from 'classnames';
 import history from '../../history';
-import Header from '../header/header.tsx';
-import Icon from '../icon/icon.tsx';
+import Header from '../header/header';
+import Icon from '../icon/icon';
 
-const MovieBanner = ({
+type Props = {
+  movie: Movie,
+  viewMode: string,
+  updateFavoriteStatus: (id: number, status: number) => void,
+  loading: boolean,
+  error: boolean,
+  isAuth: boolean,
+}
+
+const MovieBanner:React.FC<Props> = ({
   movie,
   viewMode,
   updateFavoriteStatus,
@@ -27,6 +36,12 @@ const MovieBanner = ({
 
   const isMainView = viewMode === ViewMode.PROMO.MAIN;
 
+  const movieCardClass = classNames({'movie-card__info': isMainView});
+  const moviePosterClass = classNames({
+    'movie-card__poster': isMainView,
+    'visually-hidden': !isMainView,
+  });
+
   const handleMyListButtonClick = () => {
     if (!isAuth) {
       history.push(PathName.SIGN_IN);
@@ -36,7 +51,7 @@ const MovieBanner = ({
   };
 
   return (
-    <Fragment>
+    <React.Fragment>
       <div className="movie-card__bg" >
         <img src={backgroundImage} alt={title}/>
       </div>
@@ -46,8 +61,8 @@ const MovieBanner = ({
       <Header className={`movie-card__head`}/>
 
       <div className="movie-card__wrap">
-        <div className={isMainView ? `movie-card__info` : ``}>
-          <div className={isMainView ? `movie-card__poster` : `visually-hidden`}>
+        <div className={movieCardClass}>
+          <div className={moviePosterClass}>
             <img src={poster} alt={title} width="218" height="327"/>
           </div>
 
@@ -95,18 +110,8 @@ const MovieBanner = ({
           </div>
         </div>
       </div>
-    </Fragment>
+    </React.Fragment>
   );
 };
-
-MovieBanner.propTypes = {
-  movie: MoviePropType.isRequired,
-  viewMode: PropTypes.string.isRequired,
-  updateFavoriteStatus: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.bool.isRequired,
-  isAuth: PropTypes.bool.isRequired,
-};
-
 
 export default MovieBanner;

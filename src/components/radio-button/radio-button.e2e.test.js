@@ -1,7 +1,7 @@
 import React from 'react';
 import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import RadioButton from './radio-button.jsx';
+import RadioButton from './radio-button.tsx';
 
 Enzyme.configure({
   adapter: new Adapter(),

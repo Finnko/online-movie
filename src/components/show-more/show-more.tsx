@@ -1,7 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
-const ShowMore = ({offset, onButtonClick}) => {
+type Props = {
+  offset: number,
+  onButtonClick: (offset: number) => void,
+}
+
+const ShowMore:React.FC<Props> = ({offset, onButtonClick}) => {
   return (
     <div className="catalog__more">
       <button
@@ -13,11 +17,6 @@ const ShowMore = ({offset, onButtonClick}) => {
       </button>
     </div>
   );
-};
-
-ShowMore.propTypes = {
-  offset: PropTypes.number.isRequired,
-  onButtonClick: PropTypes.func.isRequired,
 };
 
 export default ShowMore;

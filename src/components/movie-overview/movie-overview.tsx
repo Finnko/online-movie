@@ -1,15 +1,27 @@
-import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import {Config} from '../../const';
 import {getLevelFromRating} from '../../utils/common';
 
+type Props = {
+  actors: string[],
+  rating: number,
+  ratingCount: number,
+  description: string,
+  director: string,
+}
 
-const MovieOverview = ({actors, rating, ratingCount, director, description}) => {
+const MovieOverview:React.FC<Props> = ({
+  actors,
+  rating,
+  ratingCount,
+  director,
+  description
+}) => {
   const ratingFormatted = getLevelFromRating(rating, Config.MOVIE_RATING_MAP);
   const actorsFormatted = actors.slice(0, Config.MOVIE_ACTORS_TO_SHOW).join(`, `);
 
   return (
-    <Fragment>
+    <React.Fragment>
       <div className="movie-rating">
         <div className="movie-rating__score">{rating}</div>
         <p className="movie-rating__meta">
@@ -32,16 +44,8 @@ const MovieOverview = ({actors, rating, ratingCount, director, description}) => 
           </strong>
         </p>
       </div>
-    </Fragment>
+    </React.Fragment>
   );
-};
-
-MovieOverview.propTypes = {
-  actors: PropTypes.arrayOf(PropTypes.string).isRequired,
-  director: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-  ratingCount: PropTypes.number.isRequired,
-  description: PropTypes.string.isRequired,
 };
 
 export default MovieOverview;

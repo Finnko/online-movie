@@ -6,7 +6,7 @@ import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import NameSpace from '../../store/name-space';
 import {AuthStatus} from '../../const.ts';
-import MovieBanner from './movie-banner.jsx';
+import MovieBanner from './movie-banner.tsx';
 
 const mock = {
   id: 1,

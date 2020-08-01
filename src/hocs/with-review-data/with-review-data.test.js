@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import renderer from 'react-test-renderer';
-import RadioButton from '../../components/radio-button/radio-button.jsx';
+import RadioButton from '../../components/radio-button/radio-button.tsx';
 import withReviewData from './with-review-data';
 
 const MockComponent = ({

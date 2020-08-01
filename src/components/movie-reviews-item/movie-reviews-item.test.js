@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import MovieReviewsItem from './movie-reviews-item.jsx';
+import MovieReviewsItem from './movie-reviews-item.tsx';
 
 const mockReview = {
   comment: `Good comment!`,

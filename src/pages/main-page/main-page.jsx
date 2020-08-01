@@ -13,10 +13,10 @@ import {
 } from '../../store/reducers/movies/selectors';
 import {Operation as MoviesOperation} from '../../store/reducers/movies/operations';
 import Footer from '../../components/footer/footer';
-import MovieBanner from '../../components/movie-banner/movie-banner.jsx';
+import MovieBanner from '../../components/movie-banner/movie-banner.tsx';
 import Loader from '../../components/loader/loader';
 import Error from '../../components/error/error';
-import MainContent from '../../components/main-content/main-content.jsx';
+import MainContent from '../../components/main-content/main-content.tsx';
 import {getAuthStatus} from '../../store/reducers/user/selectors';
 
 

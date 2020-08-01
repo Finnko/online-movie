@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import TabList from './tab-list.jsx';
+import TabList from './tab-list.tsx';
 
 const props = {
   activeTab: `Overview`,

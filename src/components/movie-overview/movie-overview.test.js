@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import MovieOverview from './movie-overview.jsx';
+import MovieOverview from './movie-overview.tsx';
 
 const props = {
   genre: `drama`,

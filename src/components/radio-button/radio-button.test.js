@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import RadioButton from './radio-button.jsx';
+import RadioButton from './radio-button.tsx';
 
 const props = {
   type: `radio`,

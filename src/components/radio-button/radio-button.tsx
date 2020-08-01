@@ -1,7 +1,15 @@
-import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 
-const RadioButton = ({
+type Props = {
+  checked: boolean,
+  groupName: string,
+  label: string,
+  id: string,
+  value: string,
+  onRadioChange: () => void,
+}
+
+const RadioButton:React.FC<Props> = ({
   checked,
   label,
   id,
@@ -10,7 +18,7 @@ const RadioButton = ({
   onRadioChange
 }) => {
   return (
-    <Fragment>
+    <React.Fragment>
       <input
         type="radio"
         name={groupName}
@@ -24,17 +32,8 @@ const RadioButton = ({
       <label className="rating__label" htmlFor={id}>
         {label}
       </label>
-    </Fragment>
+    </React.Fragment>
   );
-};
-
-RadioButton.propTypes = {
-  checked: PropTypes.bool.isRequired,
-  groupName: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  onRadioChange: PropTypes.func.isRequired,
 };
 
 export default RadioButton;

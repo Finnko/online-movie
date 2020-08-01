@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from "prop-types";
 import {TabName} from '../../const';
 import MoviePropType from '../../prop-types/movie';
-import TabList from '../tab-list/tab-list.jsx';
-import MovieOverview from '../movie-overview/movie-overview.jsx';
+import TabList from '../tab-list/tab-list.tsx';
+import MovieOverview from '../movie-overview/movie-overview.tsx';
 import MovieDetails from '../movie-details/movie-details.tsx';
 import MovieReviews from '../movie-reviews/movie-reviews.jsx';
 
