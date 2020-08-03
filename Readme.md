@@ -1,12 +1,14 @@
-# Личный проект «Что посмотреть»
+# Проект онлайн кинотеатра «Что посмотреть»
 
-* Выполнил: [Алексей Хабиров](https://up.htmlacademy.ru/react/4/user/963185).
----
 Установка зависимостей `npm i`
 
 Запуск в dev режиме `npm run start`
 
 Запуск в prod режиме `npm run build`
+
+Запуск тестов `npm run test`
+
+[Live demo](https://wtw-online.vercel.app/)
 
 ---
 
