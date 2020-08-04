@@ -43,11 +43,10 @@ const withReviewData = (Component) => {
     _handleInputChange(evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
       const {value, name} = evt.target;
       const {review, rating} = this.state;
-      console.log(review.value.length)
+
       const isFormValid = review.value.length > Config.COMMENT_LENGTH.MIN &&
         review.value.length < Config.COMMENT_LENGTH.MAX && rating.value === ``;
-
-      console.log(isFormValid)
+      
       this.setState((prevState) => Object.assign({}, prevState, {
         [name]: {
           value,
