@@ -70,7 +70,7 @@ const LoaderSetup = {
   }
 };
 
-const END_POINT = `https://4.react.pages.academy/wtw`;
+const END_POINT = `https://5.react.pages.academy/wtw`;
 const TIMEOUT = 5000; // ms
 const EMAIL_PATTERN = /^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i;
 
