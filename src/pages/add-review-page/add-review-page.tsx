@@ -48,10 +48,12 @@ class AddReviewPage extends React.PureComponent<AddReviewProps, State> {
 
   _handleInputChange(evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
     const {value, name} = evt.target;
-    const {review, rating} = this.state;
+    const {review} = this.state;
 
     const isFormValid = review.value.length > Config.COMMENT_LENGTH.MIN &&
-      review.value.length < Config.COMMENT_LENGTH.MAX && rating.value === ``;
+      review.value.length < Config.COMMENT_LENGTH.MAX;
+
+    console.log(isFormValid)
 
     this.setState((prevState) => Object.assign({}, prevState, {
       [name]: {
