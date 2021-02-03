@@ -3,26 +3,30 @@ import {Link} from 'react-router-dom';
 import {PathName, ViewMode} from '../../const';
 import withPreview from '../../hocs/with-preview/with-preview';
 import VideoPlayer from '../video-player/video-player';
-import {Movie} from "../../interfaces";
 
 type Props = {
   onMovieMouseEnter: () => void;
   onMovieMouseLeave: () => void;
-  movie: Movie;
+  id: number;
+  title: string;
+  thumb: string;
+  preview: string;
   viewMode: string;
   isPlaying: boolean;
 }
 
 const MovieListCard: React.FC<Props> = (props: Props) => {
   const {
-    movie,
+    id,
+    title,
+    thumb,
+    preview,
     viewMode,
     isPlaying,
     onMovieMouseEnter,
     onMovieMouseLeave
   } = props;
 
-  const {id, title, thumb, preview} = movie;
   const isWithPlayer = viewMode === ViewMode.MOVIE_CARD.WITH_PLAYER;
 
   return (

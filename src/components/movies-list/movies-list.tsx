@@ -16,7 +16,10 @@ const MoviesList: React.FC<Props> = (props: Props) => {
         return (
           <MovieListCardWrapped
             key={item.id}
-            movie={item}
+            id={item.id}
+            title={item.title}
+            thumb={item.thumb}
+            preview={item.preview}
             viewMode={viewMode}
           />);
       })}
@@ -24,4 +27,4 @@ const MoviesList: React.FC<Props> = (props: Props) => {
   );
 };
 
-export default MoviesList;
+export default React.memo(MoviesList);

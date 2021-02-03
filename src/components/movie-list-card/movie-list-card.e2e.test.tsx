@@ -40,7 +40,10 @@ describe(`Test e2e MovieListCard component`, () => {
     const wrapper = Enzyme.shallow(
         <MovieListCard
           isPlaying={false}
-          movie={mock}
+          id={mock.id}
+          title={mock.title}
+          thumb={mock.thumb}
+          preview={mock.preview}
           onMovieMouseEnter={movieMouseEnterHandler}
           onMovieMouseLeave={movieMouseLeaveHandler}
           viewMode={`WITH_PLAYER`}
@@ -57,7 +60,10 @@ describe(`Test e2e MovieListCard component`, () => {
     const wrapper = Enzyme.shallow(
         <MovieListCard
           isPlaying={false}
-          movie={mock}
+          id={mock.id}
+          title={mock.title}
+          thumb={mock.thumb}
+          preview={mock.preview}
           onMovieMouseEnter={movieMouseEnterHandler}
           onMovieMouseLeave={movieMouseLeaveHandler}
           viewMode={`WITH_PLAYER`}
@@ -77,7 +83,10 @@ describe(`Test e2e MovieListCard component`, () => {
         <Router history={history}>
           <MovieListCard
             isPlaying={false}
-            movie={mock}
+            id={mock.id}
+            title={mock.title}
+            thumb={mock.thumb}
+            preview={mock.preview}
             onMovieMouseLeave={() => null}
             onMovieMouseEnter={() => null}
             viewMode={`IMAGE`}
