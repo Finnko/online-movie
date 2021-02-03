@@ -7,7 +7,7 @@ type Props = {
   label: string;
   id: string;
   value: string;
-  onRadioChange: () => void;
+  onRadioChange: ({}) => void;
 }
 
 const RadioButton: React.FC<Props> = (props: Props) => {
@@ -30,7 +30,7 @@ const RadioButton: React.FC<Props> = (props: Props) => {
         className="rating__input"
         value={value}
         checked={checked}
-        onChange={onRadioChange}
+        onChange={(evt) => onRadioChange(evt)}
         disabled={disabled}
       />
 

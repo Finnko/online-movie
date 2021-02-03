@@ -10,32 +10,65 @@ import RadioButton from '../../components/radio-button/radio-button';
 import Loader from '../../components/loader/loader';
 import {Movie} from '../../interfaces';
 
+type State = {
+  isFormValid: boolean;
+  rating: {
+    value: string;
+  };
+  review: {
+    value: string;
+  };
+}
+
 type AddReviewProps = {
   currentMovie: Movie;
   loading: boolean;
   error: boolean;
   movieId: number;
-  rating: string;
-  review: string;
-  isFormValid: boolean;
-  onInputChange: () => void;
   onFormSubmit: ({}) => void;
 }
 
-class AddReviewPage extends React.PureComponent<AddReviewProps> {
+class AddReviewPage extends React.PureComponent<AddReviewProps, State> {
   constructor(props) {
     super(props);
 
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.state = {
+      isFormValid: false,
+      rating: {
+        value: `3`,
+      },
+      review: {
+        value: ``,
+      },
+    };
+
+    this._handleFormSubmit = this._handleFormSubmit.bind(this);
+    this._handleInputChange = this._handleInputChange.bind(this);
   }
 
-  handleFormSubmit(evt: React.FormEvent<HTMLFormElement>): void {
+  _handleInputChange(evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
+    const {value, name} = evt.target;
+    const {review, rating} = this.state;
+
+    const isFormValid = review.value.length > Config.COMMENT_LENGTH.MIN &&
+      review.value.length < Config.COMMENT_LENGTH.MAX && rating.value === ``;
+
+    this.setState((prevState) => Object.assign({}, prevState, {
+      [name]: {
+        value,
+      },
+      isFormValid,
+    }));
+  }
+
+  _handleFormSubmit(evt: React.FormEvent<HTMLFormElement>): void {
     evt.preventDefault();
-    const {movieId, rating, review} = this.props;
+    const {movieId} = this.props;
+    const {rating, review} = this.state;
 
     this.props.onFormSubmit({
-      rating: parseInt(rating, 10),
-      comment: review,
+      rating: parseInt(rating.value, 10),
+      comment: review.value,
       id: movieId,
     });
   }
@@ -46,11 +79,9 @@ class AddReviewPage extends React.PureComponent<AddReviewProps> {
       loading,
       error,
       movieId,
-      review,
-      rating,
-      isFormValid,
-      onInputChange,
     } = this.props;
+
+    const {rating, review, isFormValid} = this.state;
 
     if (!currentMovie) {
       return <Redirect to={PathName.ROOT}/>;
@@ -102,7 +133,7 @@ class AddReviewPage extends React.PureComponent<AddReviewProps> {
           <form
             action="#"
             className="add-review__form"
-            onSubmit={this.handleFormSubmit}
+            onSubmit={this._handleFormSubmit}
           >
             <div className="rating">
               <div className="rating__stars">
@@ -111,11 +142,11 @@ class AddReviewPage extends React.PureComponent<AddReviewProps> {
                     key={id}
                     id={`star-${id}`}
                     groupName="rating"
-                    checked={rating === Config.COMMENT_RATING_MAP[id]}
+                    checked={rating.value === Config.COMMENT_RATING_MAP[id]}
                     value={Config.COMMENT_RATING_MAP[id]}
                     label={`Rating ${Config.COMMENT_RATING_MAP[id]}`}
                     disabled={loading}
-                    onRadioChange={onInputChange}
+                    onRadioChange={this._handleInputChange}
                   />
                 ))}
               </div>
@@ -127,9 +158,9 @@ class AddReviewPage extends React.PureComponent<AddReviewProps> {
                 name="review"
                 id="review"
                 placeholder="Review text"
-                value={review}
+                value={review.value}
                 disabled={loading}
-                onChange={onInputChange}
+                onChange={this._handleInputChange}
               />
 
               <div className="add-review__submit">

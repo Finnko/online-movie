@@ -18,7 +18,7 @@ describe(`FullPagePlayer snapshot test`, () => {
     const tree = renderer
       .create(
           <FullPagePlayer
-            isPlaying={true}
+            isPlaying
             isWaiting={false}
             {...props}
           >

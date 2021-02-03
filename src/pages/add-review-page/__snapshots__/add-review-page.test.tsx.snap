@@ -205,14 +205,14 @@ exports[`AddReviewPage component render correctly Should AddReviewPage component
           name="review"
           onChange={[Function]}
           placeholder="Review text"
-          value="Test"
+          value=""
         />
         <div
           className="add-review__submit"
         >
           <button
             className="add-review__btn"
-            disabled={false}
+            disabled={true}
             type="submit"
           >
             Post
@@ -429,7 +429,7 @@ exports[`AddReviewPage component render correctly Should AddReviewPage component
           name="review"
           onChange={[Function]}
           placeholder="Review text"
-          value="Test"
+          value=""
         />
         <div
           className="add-review__submit"
@@ -439,7 +439,7 @@ exports[`AddReviewPage component render correctly Should AddReviewPage component
           </p>
           <button
             className="add-review__btn"
-            disabled={false}
+            disabled={true}
             type="submit"
           >
             Post
@@ -597,7 +597,7 @@ exports[`AddReviewPage component render correctly Should AddReviewPage component
             Rating 2
           </label>
           <input
-            checked={false}
+            checked={true}
             className="rating__input"
             disabled={false}
             id="star-3"
@@ -880,7 +880,7 @@ exports[`AddReviewPage component render correctly Should AddReviewPage component
           name="review"
           onChange={[Function]}
           placeholder="Review text"
-          value="Test"
+          value=""
         />
         <div
           className="add-review__submit"
