@@ -9,11 +9,10 @@ import SignIn from '../../pages/sign-in/sign-in';
 import MyListPage from '../../pages/my-list-page/my-list-page';
 import PlayerPage from '../../pages/player-page/player-page';
 import PrivateRoute from '../private-route/private-route';
-import withAuthData from '../../hocs/with-auth-data/with-auth-data';
 
 const MoviePageWrapped = withRouter(MoviePage);
 const PlayerPageWrapped = withRouter(PlayerPage);
-const SignInPageWrapped = withAuthData(SignIn);
+const SignInPageWrapped = withRouter(SignIn);
 const AddReviewPageWrapped = withRouter(AddReviewPage);
 
 const App = () => {
