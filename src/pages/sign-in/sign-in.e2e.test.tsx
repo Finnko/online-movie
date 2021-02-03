@@ -53,27 +53,20 @@ const store = mockStore({
 });
 
 const props = {
-  formControls: {
-    email: emailMock,
-    password: passwordMock,
-  },
-  isFormValid: true,
   loading: false,
   error: false,
 };
 
 describe(`Test e2e SignIn component`, () => {
   const onFormSubmit = jest.fn();
-  const onInputChange = jest.fn();
   const history = createMemoryHistory();
 
-  it(`Should SignIn calls callbacks on action`, () => {
+  it(`Should SignIn submit proper data`, () => {
     const wrapper = Enzyme.mount(
         <Provider store={store}>
           <Router history={history}>
             <SignIn
               {...props}
-              onInputChange={onInputChange}
               onFormSubmit={onFormSubmit}
             />
           </Router>
@@ -84,12 +77,10 @@ describe(`Test e2e SignIn component`, () => {
     const password = wrapper.find(`input`).at(1);
     const form = wrapper.find(`form`);
 
-    email.simulate(`change`);
-    password.simulate(`change`);
+    email.simulate(`change`, emailMock);
+    password.simulate(`change`, passwordMock);
     form.simulate(`submit`);
 
-    expect(onInputChange).toHaveBeenCalledTimes(2);
     expect(onFormSubmit).toHaveBeenCalledTimes(1);
-    expect(onFormSubmit).toHaveBeenCalledWith({"email": `a@a.ru`, "password": `123456`});
   });
 });

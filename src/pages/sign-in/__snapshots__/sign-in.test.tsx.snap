@@ -104,7 +104,7 @@ exports[`SignIn component render correctly Should SignIn component render correc
       >
         <button
           className="sign-in__btn"
-          disabled={false}
+          disabled={true}
           type="submit"
         >
           Sign in
@@ -259,7 +259,7 @@ exports[`SignIn component render correctly Should SignIn component render correc
       >
         <button
           className="sign-in__btn"
-          disabled={false}
+          disabled={true}
           type="submit"
         >
           Sign in
@@ -410,7 +410,7 @@ exports[`SignIn component render correctly Should SignIn component render correc
       >
         <button
           className="sign-in__btn"
-          disabled={false}
+          disabled={true}
           type="submit"
         >
           <div

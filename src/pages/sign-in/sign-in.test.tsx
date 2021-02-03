@@ -16,26 +16,6 @@ const mockUser: User = {
   avatarUrl: `img/1.png`
 };
 
-const emailMock: FormField = {
-  value: ``,
-  valid: false,
-  touched: false,
-  validation: {
-    required: true,
-    email: true,
-  }
-};
-
-const passwordMock: FormField = {
-  value: ``,
-  valid: false,
-  touched: false,
-  validation: {
-    required: true,
-    minLength: 6,
-  }
-};
-
 const mockStore = configureStore([]);
 
 const store = mockStore({
@@ -48,13 +28,7 @@ const store = mockStore({
 });
 
 const props = {
-  formControls: {
-    email: emailMock,
-    password: passwordMock,
-  },
-  isFormValid: true,
   onFormSubmit: () => null,
-  onInputChange: () => null,
 };
 
 describe(`SignIn component render correctly`, () => {

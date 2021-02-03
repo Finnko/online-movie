@@ -2,7 +2,8 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {Operation as UserOperation} from '../../store/reducers/user/operations';
 import {getErrorStatus, getLoadingStatus} from '../../store/reducers/user/selectors';
-import {Errors, LoaderSetup} from '../../const';
+import {Config, Errors, LoaderSetup} from '../../const';
+import {validateControl} from '../../utils/validation';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import Input from '../../components/input/input';
@@ -14,29 +15,78 @@ const inputNames = {
   password: `Password`,
 };
 
-type SignInProps = {
-  loading: boolean;
-  error: boolean;
+type State = {
+  isFormValid: boolean;
   formControls: {
     email: FormField;
     password: FormField;
   };
-  isFormValid: boolean;
-  onInputChange: () => void;
+}
+
+type SignInProps = {
+  loading: boolean;
+  error: boolean;
   onFormSubmit: ({}) => void;
 }
 
-class SignIn extends React.PureComponent<SignInProps> {
+class SignIn extends React.PureComponent<SignInProps, State> {
   constructor(props) {
     super(props);
 
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.state = {
+      isFormValid: false,
+      formControls: {
+        email: {
+          value: ``,
+          valid: false,
+          touched: false,
+          validation: {
+            required: true,
+            email: true
+          }
+        },
+        password: {
+          value: ``,
+          valid: false,
+          touched: false,
+          validation: {
+            required: true,
+            minLength: Config.PASSWORD_MIN_LENGTH,
+          }
+        }
+      }
+    };
+
+    this._handleFormSubmit = this._handleFormSubmit.bind(this);
+    this._handleInputChange = this._handleInputChange.bind(this);
   }
 
-  handleFormSubmit(evt: React.FormEvent<HTMLFormElement>): void {
+  _handleInputChange(evt: React.ChangeEvent<HTMLInputElement>): void {
+    const {value, name} = evt.target;
+    let isFormValid = true;
+    const formControls = Object.assign({}, this.state.formControls);
+    const control = Object.assign({}, this.state.formControls[name]);
+
+    control.value = value;
+    control.touched = true;
+    control.valid = validateControl(control.value, control.validation);
+
+    formControls[name] = control;
+
+    Object.keys(formControls).forEach((controlName) => {
+      isFormValid = formControls[controlName].valid && isFormValid;
+    });
+
+    this.setState({
+      formControls,
+      isFormValid,
+    });
+  }
+
+  _handleFormSubmit(evt: React.FormEvent<HTMLFormElement>): void {
     evt.preventDefault();
 
-    const {email, password} = this.props.formControls;
+    const {email, password} = this.state.formControls;
     this.props.onFormSubmit({
       email: email.value,
       password: password.value,
@@ -44,15 +94,15 @@ class SignIn extends React.PureComponent<SignInProps> {
   }
 
   renderInputs() {
-    const {onInputChange, formControls, loading} = this.props;
+    const {loading} = this.props;
 
-    return Object.keys(formControls).map((name, index) => {
+    return Object.keys(this.state.formControls).map((name, index) => {
       const {
         value,
         valid,
         touched,
         validation
-      } = formControls[name];
+      } = this.state.formControls[name];
 
       return (
         <Input
@@ -66,7 +116,7 @@ class SignIn extends React.PureComponent<SignInProps> {
           touched={touched}
           shouldValidate={!!validation}
           disabled={loading}
-          onInputChange={onInputChange}
+          onInputChange={this._handleInputChange}
         />
       );
     });
@@ -76,10 +126,9 @@ class SignIn extends React.PureComponent<SignInProps> {
     const {
       loading,
       error,
-      formControls,
-      isFormValid,
     } = this.props;
-    const {email, password} = formControls;
+
+    const {email, password} = this.state.formControls;
 
     return (
       <div className="user-page">
@@ -89,7 +138,7 @@ class SignIn extends React.PureComponent<SignInProps> {
           <form
             action="#"
             className="sign-in__form"
-            onSubmit={this.handleFormSubmit}
+            onSubmit={this._handleFormSubmit}
           >
             <div className="sign-in__message">
               {!email.valid && email.touched && <p>{`${Errors.WRONG_EMAIL}`}</p>}
@@ -106,7 +155,7 @@ class SignIn extends React.PureComponent<SignInProps> {
               <button
                 className="sign-in__btn"
                 type="submit"
-                disabled={!isFormValid}
+                disabled={!this.state.isFormValid}
               >
                 {loading &&
                   <Loader

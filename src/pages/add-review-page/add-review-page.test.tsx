@@ -54,11 +54,7 @@ const store = mockStore({
 const props = {
   currentMovie: mock[0],
   movieId: mock[0].id,
-  review: `Test`,
-  rating: `3`,
-  isFormValid: true,
   onFormSubmit: () => null,
-  onInputChange: () => null,
 };
 
 describe(`AddReviewPage component render correctly`, () => {
@@ -121,14 +117,10 @@ describe(`AddReviewPage component render correctly`, () => {
           <Provider store={store}>
             <Router history={history}>
               <AddReviewPage
-                rating=""
-                review=""
-                isFormValid={false}
                 error={false}
                 loading={false}
                 movieId={mock[0].id}
                 currentMovie={mock[0]}
-                onInputChange={() => null}
                 onFormSubmit={() => null}
               />
             </Router>

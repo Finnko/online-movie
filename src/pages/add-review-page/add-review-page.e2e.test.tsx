@@ -42,6 +42,8 @@ const mockUser: User = {
   avatarUrl: `img/1.png`
 };
 
+const VALID_REVIEW = `Hello world! Hello world! Hello world! Hello world! Hello world! Hello world!`;
+
 const mockStore = configureStore([]);
 
 const store = mockStore({
@@ -68,8 +70,14 @@ const props = {
 
 describe(`Test e2e AddReviewPage component`, () => {
   const onFormSubmit = jest.fn();
-  const onInputChange = jest.fn();
   const history = createMemoryHistory();
+
+  const textareaEvent = {
+    target: {
+      value: VALID_REVIEW,
+      name: `review`,
+    },
+  };
 
   it(`Should AddReviewPage calls callbacks on action`, () => {
     const wrapper = Enzyme.mount(
@@ -77,7 +85,6 @@ describe(`Test e2e AddReviewPage component`, () => {
           <Router history={history}>
             <AddReviewPage
               {...props}
-              onInputChange={onInputChange}
               onFormSubmit={onFormSubmit}
             />
           </Router>
@@ -89,11 +96,13 @@ describe(`Test e2e AddReviewPage component`, () => {
     const form = wrapper.find(`form`);
 
     radioBtn.simulate(`change`);
-    textarea.simulate(`change`);
+    textarea.simulate(`change`, textareaEvent);
     form.simulate(`submit`);
 
-    expect(onInputChange).toHaveBeenCalledTimes(2);
-    expect(onFormSubmit).toHaveBeenCalledTimes(1);
-    expect(onFormSubmit).toHaveBeenCalledWith({"comment": `Test`, "id": 1, "rating": 3});
+    expect(onFormSubmit).toHaveBeenCalledWith({
+      'comment': VALID_REVIEW,
+      'id': 1,
+      'rating': 1,
+    });
   });
 });
